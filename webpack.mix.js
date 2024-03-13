@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
+// 單頁開發不再需要某活動頁的scss的話 請註解掉
+
+mix.js("resources/js/app.js", "public/js")
+    .sass(
+        "resources/sass/event/prereg/style.scss",
+        "public/css/event/prereg/style.css"
+    )
+
+    .postCss("resources/css/app.css", "public/css", [
         //
-    ]);
+    ])
+    .vue();
