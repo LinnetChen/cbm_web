@@ -18,8 +18,10 @@ mix.js("resources/js/app.js", "public/js")
         "resources/sass/event/prereg/style.scss",
         "public/css/event/prereg/style.css"
     )
-
     .postCss("resources/css/app.css", "public/css", [
         //
     ])
+    .define({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false, //把黃色警告擋掉
+    })
     .vue();

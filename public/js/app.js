@@ -20510,9 +20510,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", null, "5156156", -1 /* HOISTED */);
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "just Test444", -1 /* HOISTED */);
-var _hoisted_3 = [_hoisted_1, _hoisted_2];
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<header class=\"header\"><div class=\"menuBtn\"></div><div class=\"content\"><div class=\"title\"></div><div class=\"typeBtn\"><a href=\"\" class=\"google\" target=\"_blank\"></a><a href=\"\" class=\"ios\" target=\"_blank\"></a></div><div class=\"arrow\"></div></div></header><main class=\"main\"><section class=\"sec01\"><div class=\"sub01\"></div><div class=\"stepWrap\"><div class=\"left stepBox\"></div><div class=\"right stepBox\"></div></div></section></main>", 2);
+var _hoisted_3 = [_hoisted_1];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [].concat(_hoisted_3));
 }
