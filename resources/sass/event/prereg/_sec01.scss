@@ -1,0 +1,19 @@
+.sec01 {
+	height: 950px;
+	border: 1px solid red;
+	@extend %f-c-c;
+
+	.sub01 {
+		@include size(581px, 183px);
+		background-image: url('/img/prereg/s1Title.png');
+	}
+
+	.stepWrap {
+		width: 60%;
+		margin: 0 auto;
+		border: 1px solid red;
+
+		.left {}
+	}
+
+}

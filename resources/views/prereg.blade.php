@@ -8,8 +8,11 @@
     <link href="{{ mix('css/event/prereg/style.css') }}" rel="stylesheet">
 </head>
 
-<body id="app">
-    <v-prereg></v-prereg>
+<body>
+    <div id="app">
+        <v-prereg></v-prereg>
+    </div>
+
 </body>
 <script src="{{ mix('js/app.js') }}"></script>
 

@@ -1,10 +1,14 @@
-
 @import '../../base/reset';
 @import '../../base/rwd';
+@import '../../base/placeholder';
 
-@import 'navbar';
 
 
-h2{
-	color: blue;
+@import 'header';
+
+.main {
+	max-width: 1920px;
+	background-image: url('/img/prereg/bg.jpg');
 }
+
+@import 'sec01';
