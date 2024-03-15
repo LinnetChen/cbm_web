@@ -1,0 +1,17 @@
+@import "../../base/reset";
+@import "../../base/rwd";
+@import "../../base/placeholder";
+
+body {
+    background-color: rgba(38, 38, 38, 0.8);
+    .wrap {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1920px;
+        max-height: 950px;
+    }
+}
+
+@import "header";
+@import "sec01";
+@import "sec02";

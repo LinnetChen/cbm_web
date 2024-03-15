@@ -1,0 +1,137 @@
+.section {
+    position: relative;
+    width: 100%;
+    // max-height: 985px;
+    // height: 100vh;
+    @include lg {
+        height: 100vh;
+    }
+}
+
+.header {
+    background-image: url("/img/20240403_joinAct/headerPCBg.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    max-width: 1920px;
+    width: 100%;
+    height: 100%;
+    @include xl {
+        background-position: -650px 0px;
+    }
+    @include lg {
+        background-position: -800px 0px;
+    }
+    @include m3d {
+        max-width: 900px;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: top;
+        background-image: url("/img/20240403_joinAct/headerMBg.jpg");
+    }
+    .bgBox {
+        padding: 110px 30px 80px;
+        border: 1px solid red;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0, 0.5) 70%, rgb(0, 0, 0) 100%);
+        @include m3d {
+            padding: 70% 0px 20%;
+            height: 100%;
+        }
+        .leftBox {
+            background-color: rgba(175, 138, 250, 0.2);
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @include m3d {
+                width: 100%;
+            }
+            .logoBox {
+                border: 1px solid rgb(255, 165, 165);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                height: 10%;
+                @include m3d {
+                    flex-direction: column;
+                }
+                a {
+                    width: 45%;
+                    max-width: 491px;
+                }
+                .logo {
+                    width: 100%;
+                }
+                .crossBox {
+                    width: 8%;
+                    text-align: center;
+                }
+                .cross {
+                    max-width: 80px;
+                    max-height: 80px;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .subtitle {
+                border: 1px red solid;
+                width: 30%;
+                height: 100%;
+                margin-bottom: 25px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    max-width: 384px;
+                    max-height: 86px;
+                }
+            }
+            .phone {
+                border: 1px rgb(255, 255, 255) solid;
+                // width: 75%;
+                width: 100%;
+                height: 100%;
+                margin-bottom: 25px;
+                text-align: center;
+                background-image: url("/img/20240403_joinAct/phone.png");
+                background-repeat: no-repeat;
+                max-width: 741px;
+                max-height: 392px;
+                @include m3d {
+                    display: none;
+                }
+                .videoBox {
+                    position: relative;
+                    width: 100%;
+                    height: 0;
+                    padding-bottom: 56.25%;
+                    iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                // img {
+                //     width: 100%;
+                //     height: 100%;
+                // }
+            }
+            .btnBoxPC {
+                border: 1px rgb(255, 255, 255) solid;
+                width: 63%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    max-width: 304px;
+                    max-height: 88px;
+                }
+            }
+        }
+    }
+}
