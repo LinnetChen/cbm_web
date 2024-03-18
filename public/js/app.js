@@ -20530,8 +20530,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
-  "class": "section header"
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"barPC\"><div class=\"menu\"><ul class=\"menuList\"><li class=\"menuListItem\"><a href=\"\">Mobile事前預約​</a></li><li class=\"menuListItem\"><a href=\"#header\">聯動活動​</a></li><li class=\"menuListItem\"><a href=\"\">涅瓦雷斯人才招募中心​</a></li></ul></div></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  id: "fb-root"
+}, null, -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "fixBg"
+}, null, -1 /* HOISTED */);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
+  "class": "section header",
+  id: "header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bgBox"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -20542,24 +20550,24 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   href: ""
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "logo",
-  src: "\\img\\20240403_joinAct\\cbmLOGO.png",
+  src: "/img/20240403_joinAct/cbmLOGO.png",
   alt: ""
 })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "crossBox"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "cross",
-  src: "\\img\\20240403_joinAct\\cross.png",
+  src: "/img/20240403_joinAct/cross.png",
   alt: ""
 })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: ""
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "logo",
-  src: "\\img\\20240403_joinAct\\cbLOGO.png",
+  src: "/img/20240403_joinAct/cbLOGO.png",
   alt: ""
 })])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "subtitle"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "\\img\\20240403_joinAct\\subtitle.png",
+  src: "/img/20240403_joinAct/subtitle.png",
   alt: ""
 })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "phone"
@@ -20575,70 +20583,106 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "google",
   href: ""
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "\\img\\20240403_joinAct\\headerGoogle.png"
+  src: "/img/20240403_joinAct/headerGoogle.png"
 })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   "class": "ios",
   href: ""
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "\\img\\20240403_joinAct\\headerIos.png"
+  src: "/img/20240403_joinAct/headerIos.png"
 })])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"btnBoxM\" v-if=\"menu.isAndroid || menu.isiOS\">\r\n                    <a v-if=\"menu.isAndroid\" class=\"google\"\r\n                        href=\"https://play.google.com/store/apps/details?id=com.digeam.a.bptw\"><img\r\n                            src=\"/img/front/sec01Google.png\"></a>\r\n                    <a v-if=\"menu.isiOS\" class=\"ios\" href=\"https://apps.apple.com/TW/app/id6470368870\"><img\r\n                            src=\"/img/front/sec01Ios.png\"></a>\r\n                </div> ")])])], -1 /* HOISTED */);
-var _hoisted_2 = {
+var _hoisted_5 = {
   "class": "section sec01"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec01Title"
 }, null, -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec01Text"
-}, null, -1 /* HOISTED */);
-var _hoisted_5 = {
+}, "完成即可領取電腦 + 手機雙平台獎勵！​", -1 /* HOISTED */);
+var _hoisted_8 = {
   "class": "stepBox"
 };
-var _hoisted_6 = {
+var _hoisted_9 = {
   "class": "stepBg"
 };
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "stepTitle"
 }, "STEP.1", -1 /* HOISTED */);
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, null, -1 /* HOISTED */);
-var _hoisted_11 = {
-  key: 0
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "註冊並登入DiGeam掘夢網平台帳號​", -1 /* HOISTED */);
+var _hoisted_14 = {
+  key: 0,
+  "class": "logBox"
 };
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "您已登入掘夢網帳號", -1 /* HOISTED */);
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "您已登入掘夢網帳號", -1 /* HOISTED */);
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "account"
 }, null, -1 /* HOISTED */);
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "logout"
 }, null, -1 /* HOISTED */);
-var _hoisted_15 = {
-  key: 1
+var _hoisted_18 = {
+  key: 1,
+  "class": "logBox"
 };
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "login"
-}, null, -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+}, "登入", -1 /* HOISTED */);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("※新用戶請點此​"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: ""
-})], -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"stepBg\"><div class=\"deco1\"></div><div class=\"deco2\"></div><p class=\"stepTitle\">STEP.2</p><div class=\"btnBox\"></div></div><div class=\"stepBg\"><div class=\"deco1\"></div><div class=\"deco2\"></div><p class=\"stepTitle\">STEP.3</p><p></p><div class=\"fb\"></div><div class=\"checkBox\"><label><input type=\"checkbox\" name=\"privacy\"> 我已閱讀並同意<span>隱私權政策</span></label></div><div class=\"checkBox\"><label><input type=\"checkbox\" name=\"notice\"> 我已閱讀並同意<span>注意事項</span></label></div></div>", 2);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"rewardBox\"><div class=\"rewardPC\"><div class=\"left\"><img src=\"\" alt=\"\"><select name=\"\" id=\"\"></select></div><div class=\"right\"><div class=\"iconBox\"></div><div class=\"rewardBtn\"></div></div></div><div class=\"rewardM\"><div class=\"topBox\"><img src=\"\" alt=\"\"><div class=\"iconBox\"></div></div><div class=\"rewardBtn\"></div></div></div>", 1);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+}, "前往註冊")], -1 /* HOISTED */);
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"stepBg\"><div class=\"deco1\"></div><div class=\"deco2\"></div><p class=\"stepTitle\">STEP.2</p><p>立即預約</p><div class=\"storeBtnBox\"><a class=\"google\" href=\"\"><img src=\"/img/20240403_joinAct/sec01Google.png\"></a><a class=\"ios\" href=\"\"><img src=\"/img/20240403_joinAct/sec01Ios.png\"></a></div></div>", 1);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "stepBg"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco1"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco2"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "stepTitle"
+}, "STEP.3"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "按讚追蹤官方Facebook粉絲團​"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "fb"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fb-page\" data-href=\"https://www.facebook.com/DiGeamCabalM/\" data-tabs=\"timeline\"\r\n                        data-width=\"287\" data-height=\"72\" data-small-header=\"true\" data-adapt-container-width=\"false\"\r\n                        data-hide-cover=\"false\" data-show-facepile=\"true\">\r\n                        <blockquote cite=\"https://www.facebook.com/DiGeamCabalM/\" class=\"fb-xfbml-parse-ignore\"><a\r\n                                href=\"https://www.facebook.com/DiGeamCabalM/\">黑色契約 Mobile</a></blockquote>\r\n                    </div> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+  src: "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDiGeamCabalM%2F&tabs=timeline&width=287&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId",
+  width: "287",
+  height: "70",
+  style: {
+    "border": "none",
+    "overflow": "hidden"
+  },
+  scrolling: "no",
+  frameborder: "0",
+  allowfullscreen: "true",
+  allow: "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "checkBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "checkbox",
+  name: "privacy"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 我已閱讀並同意"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "隱私權政策")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "checkBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "checkbox",
+  name: "notice"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 我已閱讀並同意"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "注意事項")])])], -1 /* HOISTED */);
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"rewardBox\"><div class=\"rewardPC\"><div class=\"left\"><img src=\"/img/20240403_joinAct/rewardLogoCb.png\" alt=\"\"><select name=\"\" id=\"\"><option value=\"\">1</option></select></div><div class=\"right\"><div class=\"iconBox\"><img src=\"/img/20240403_joinAct/rewardLight.png\" alt=\"\"><p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p></div><div class=\"rewardBtn\">立即領獎</div></div></div><div class=\"rewardM\"><div class=\"topBox\"><img src=\"/img/20240403_joinAct/rewardLogoCbm.png\" alt=\"\"><div class=\"iconBox\"><img src=\"/img/20240403_joinAct/rewardLight.png\" alt=\"\"><p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p></div></div><div class=\"rewardBtn\">XWE0000000000000</div></div></div>", 1);
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "section sec02"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "box"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"sec02Title\"><img src=\"/img/20240403_joinAct/sec02Title.png\" alt=\"\"></div> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec02Title"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec02Text"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/20240403_joinAct/stayTuned.png",
+  alt: ""
 })])], -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"barPC\">\r\n        <div class=\"menu\">\r\n            <ul class=\"menuList\">\r\n                <li class=\"menuListItem\"><a href=\"\"></a></li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n    <div class=\"barM\">\r\n        <input type=\"checkbox\">\r\n        <span></span>\r\n        <span></span>\r\n        <span></span>\r\n        <ul class=\"menu\">\r\n            <li class=\"menuListItem\"><a href=\"\"></a></li>\r\n        </ul>\r\n    </div> "), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, $data.login ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 已登入 "), _hoisted_12, _hoisted_13, _hoisted_14])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 未登入 "), _hoisted_16, _hoisted_17]))]), _hoisted_18]), _hoisted_20]), _hoisted_21], 64 /* STABLE_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"barM\">\r\n        <input type=\"checkbox\">\r\n        <span></span>\r\n        <span></span>\r\n        <span></span>\r\n        <ul class=\"menu\">\r\n            <li class=\"menuListItem\"><a href=\"\"></a></li>\r\n        </ul>\r\n    </div> "), _hoisted_2, _hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, $data.login ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登出鈕 "), _hoisted_15, _hoisted_16, _hoisted_17])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登入鈕 "), _hoisted_19, _hoisted_20]))]), _hoisted_21, _hoisted_22]), _hoisted_23]), _hoisted_24], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

@@ -146,14 +146,68 @@ a {
   text-decoration: none;
 }
 
+html {
+  background-color: black;
+  font-size: 16px;
+  line-height: 16px;
+}
+@media all and (max-width: 1024px) {
+  html {
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+@media all and (max-width: 768px) {
+  html {
+    font-size: 11px;
+    line-height: 11px;
+  }
+}
+
 body {
   background-color: rgba(38, 38, 38, 0.8);
+  font-family: "Noto Sans TC";
 }
 body .wrap {
   width: 100%;
   margin: 0 auto;
   max-width: 1920px;
   max-height: 950px;
+}
+
+.barPC {
+  width: 100vw;
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.barPC .menu {
+  width: 55%;
+  border: 1px solid red;
+}
+.barPC .menu .menuListItem a {
+  color: #fff;
+}
+
+.fixBg {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url("/img/20240403_joinAct/sec01BgPC.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 1920px;
+  width: 100%;
+  height: 985px;
+}
+@media all and (max-width: 800px) {
+  .fixBg {
+    background-position: -304px 0px;
+  }
 }
 
 .section {
@@ -267,8 +321,10 @@ body .wrap {
   text-align: center;
   background-image: url("/img/20240403_joinAct/phone.png");
   background-repeat: no-repeat;
+  background-size: contain;
   max-width: 741px;
   max-height: 392px;
+  padding: 40px 50px;
 }
 @media all and (max-width: 800px) {
   .header .bgBox .leftBox .phone {
@@ -279,7 +335,7 @@ body .wrap {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%;
+  padding-bottom: 50%;
 }
 .header .bgBox .leftBox .phone .videoBox iframe {
   position: absolute;
@@ -310,24 +366,356 @@ body .wrap {
   width: 100%;
   height: 985px;
   border: 1px solid rgb(169, 255, 182);
-}
-
-.sec02 {
-  background-image: url("/img/20240403_joinAct/sec02BgPC.jpg");
-  background-repeat: no-repeat;
-  background-position: right top;
-  max-width: 1920px;
-  width: 100%;
-  height: 985px;
-  border: 1px solid rgb(169, 252, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.sec02 .box {
+@media all and (max-width: 800px) {
+  .sec01 {
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgb(0, 0, 0) 100%);
+    height: 100%;
+  }
+}
+.sec01 .sec01Title {
+  width: 100%;
+  height: 100%;
+  max-width: 830px;
+  max-height: 156px;
+  background-image: url("/img/20240403_joinAct/sec01Title.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid rgb(255, 169, 169);
+}
+.sec01 .sec01Text {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 15px 0;
+}
+.sec01 .stepBox {
+  border: 1px solid rgb(169, 255, 179);
+  width: 80%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+@media all and (max-width: 800px) {
+  .sec01 .stepBox {
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+}
+.sec01 .stepBox .stepBg {
+  width: 32%;
+  height: 100%;
+  max-width: 486px;
+  max-height: 297px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+@media all and (max-width: 800px) {
+  .sec01 .stepBox .stepBg {
+    width: 100%;
+  }
+}
+.sec01 .stepBox .stepBg .stepTitle {
+  font-family: "Noto Serif TC";
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(to bottom, #fff 50%, #484848);
+  background: -webkit-linear-gradient(to bottom, #fff 50%, #484848);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.8rem;
+}
+.sec01 .stepBox .stepBg p {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.sec01 .stepBox .stepBg .deco1 {
+  width: 100%;
+  max-width: 486px;
+}
+.sec01 .stepBox .stepBg .deco1::before, .sec01 .stepBox .stepBg .deco1::after {
+  top: 0;
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url("/img/20240403_joinAct/stepDeco.png");
+  background-position: center center;
+  background-size: cover;
+}
+.sec01 .stepBox .stepBg .deco1::before {
+  right: 0;
+}
+.sec01 .stepBox .stepBg .deco1::after {
+  left: 0;
+  transform: scaleX(-1);
+}
+.sec01 .stepBox .stepBg .deco2 {
+  position: absolute;
+  width: 100%;
+  max-width: 486px;
+  bottom: 0.5rem;
+}
+.sec01 .stepBox .stepBg .deco2::before, .sec01 .stepBox .stepBg .deco2::after {
+  bottom: 0;
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url("/img/20240403_joinAct/stepDeco.png");
+  background-position: center center;
+  background-size: cover;
+}
+.sec01 .stepBox .stepBg .deco2::before {
+  left: 0.5rem;
+  transform: scaleY(-1) scaleX(-1);
+}
+.sec01 .stepBox .stepBg .deco2::after {
+  right: 0.5rem;
+  transform: scaleY(-1);
+}
+.sec01 .stepBox .stepBg .logBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sec01 .stepBox .stepBg .logBox .login {
+  margin: 1.3rem 0;
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+  width: 100%;
+  height: 100%;
+  max-width: 167px;
+  max-height: 51px;
+  background-image: url("/img/20240403_joinAct/loginBtnBg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 1.56rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  cursor: pointer;
+}
+.sec01 .stepBox .stepBg .logBox a {
+  margin: 0 0.3rem;
+  color: #00b4ff;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+.sec01 .stepBox .stepBg .storeBtnBox {
+  margin: 1.3rem 0;
+  border: 1px solid rgb(169, 255, 179);
+  width: 47%;
+  height: 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sec01 .stepBox .stepBg .storeBtnBox img {
+  width: 100%;
+}
+.sec01 .stepBox .stepBg .fb {
+  height: 29%;
+  padding-bottom: 1%;
+  text-align: center;
+  margin: 1.3rem 0 0.6rem;
+}
+.sec01 .stepBox .stepBg .fb iframe {
+  width: 100%;
+  height: 100%;
+}
+.sec01 .stepBox .stepBg .checkBox label {
+  color: #fff;
+}
+.sec01 .stepBox .stepBg .checkBox label span {
+  font-size: 1.12rem;
+  margin: 0 0.3rem;
+  color: #00b4ff;
+}
+.sec01 .rewardBox {
+  width: 79%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rem;
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox {
+    flex-direction: column;
+  }
+}
+.sec01 .rewardBox .rewardPC {
+  background-color: rgba(127, 255, 212, 0.422);
+  display: flex;
+  justify-content: center;
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox .rewardPC {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.sec01 .rewardBox .rewardPC .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-right: 0.4rem;
+}
+.sec01 .rewardBox .rewardPC .left img {
+  width: 100%;
+  height: 100%;
+  max-width: 361px;
+  max-height: 145px;
+}
+.sec01 .rewardBox .rewardPC .left select {
+  margin: 0rem 0 1.2rem;
+  font-size: 1.25rem;
+  width: 300px;
+  height: 65px;
+  color: #fff;
+  border-radius: 0px;
+  border: 1px solid #4a4a4a;
+  background-color: #4a4a4a;
+  line-height: 1.25rem;
+  margin: 1.9rem 0 0 0;
+}
+.sec01 .rewardBox .rewardPC .right {
+  width: 38%;
+}
+.sec01 .rewardBox .rewardPC .right .iconBox {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  max-width: 395px;
+  max-height: 151px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0rem 0 1.2rem;
+}
+.sec01 .rewardBox .rewardPC .right .iconBox img {
+  width: 100%;
+  height: 100%;
+  max-width: 135px;
+  max-height: 135px;
+}
+.sec01 .rewardBox .rewardPC .right .iconBox p {
+  max-width: 395px;
+  font-family: "Noto Serif TC";
+  color: #fff;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.sec01 .rewardBox .rewardPC .right .rewardBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 288px;
+  max-height: 65px;
+  background-image: url("/img/20240403_joinAct/rewardBtn.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-weight: 700;
+  font-size: 1.87rem;
+  font-family: "Noto Serif TC";
+  color: #fff;
+}
+.sec01 .rewardBox .rewardM {
+  background-color: rgba(127, 255, 212, 0.422);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
   height: 100%;
-  border: 1px solid rgb(208, 255, 169);
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox .rewardM {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.sec01 .rewardBox .rewardM .topBox {
+  display: flex;
+}
+.sec01 .rewardBox .rewardM .topBox .iconBox {
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  max-width: 395px;
+  max-height: 151px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0rem 0 1.2rem;
+}
+.sec01 .rewardBox .rewardM .topBox .iconBox img {
+  width: 100%;
+  height: 100%;
+  max-width: 135px;
+  max-height: 135px;
+}
+.sec01 .rewardBox .rewardM .topBox .iconBox p {
+  max-width: 395px;
+  font-family: "Noto Serif TC";
+  color: #fff;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.sec01 .rewardBox .rewardM .topBox img {
+  width: 100%;
+  height: 100%;
+  max-width: 368px;
+  max-height: 131px;
+}
+.sec01 .rewardBox .rewardM .rewardBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 531px;
+  max-height: 65px;
+  background-image: url("/img/20240403_joinAct/serialNumBtn.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-weight: 700;
+  font-size: 1.87rem;
+  font-family: "Noto Serif TC";
+  color: #fff;
+}
+
+.sec02 {
+  z-index: 1;
+  background-image: url("/img/20240403_joinAct/sec02BgPC.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 1920px;
+  width: 100%;
+  height: 985px;
+  border: 1px solid rgb(169, 252, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,13 +728,15 @@ body .wrap {
   background-image: url("/img/20240403_joinAct/sec02Title.png");
   background-repeat: no-repeat;
   background-size: contain;
+  border: 1px solid rgb(255, 169, 169);
 }
 .sec02 .sec02Text {
+  border: 1px solid rgb(255, 169, 169);
+  text-align: center;
+  margin-top: 15%;
+}
+.sec02 .sec02Text img {
   width: 100%;
   height: 100%;
-  max-width: 458px;
-  max-height: 124px;
-  background-image: url("/img/20240403_joinAct/stayTuned.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  border: 1px solid rgb(255, 255, 255);
 }

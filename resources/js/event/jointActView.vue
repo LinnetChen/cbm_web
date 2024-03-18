@@ -1,12 +1,14 @@
 <template>
-    <!-- <div class="barPC">
+    <div class="barPC">
         <div class="menu">
             <ul class="menuList">
-                <li class="menuListItem"><a href=""></a></li>
+                <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
+                <li class="menuListItem"><a href="#header">聯動活動​</a></li>
+                <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
             </ul>
         </div>
     </div>
-    <div class="barM">
+    <!-- <div class="barM">
         <input type="checkbox">
         <span></span>
         <span></span>
@@ -16,17 +18,19 @@
         </ul>
     </div> -->
 
-    <header class="section header">
+    <div id="fb-root"></div>
+    <div class="fixBg"></div>
+    <header class="section header" id="header">
         <div class="bgBox">
             <div class="leftBox">
                 <div class="logoBox">
-                    <a href=""><img class="logo" src="\img\20240403_joinAct\cbmLOGO.png" alt=""></a>
+                    <a href=""><img class="logo" src="/img/20240403_joinAct/cbmLOGO.png" alt=""></a>
                     <div class="crossBox">
-                        <img class="cross" src="\img\20240403_joinAct\cross.png" alt="">
+                        <img class="cross" src="/img/20240403_joinAct/cross.png" alt="">
                     </div>
-                    <a href=""><img class="logo" src="\img\20240403_joinAct\cbLOGO.png" alt=""></a>
+                    <a href=""><img class="logo" src="/img/20240403_joinAct/cbLOGO.png" alt=""></a>
                 </div>
-                <div class="subtitle"><img src="\img\20240403_joinAct\subtitle.png" alt=""></div>
+                <div class="subtitle"><img src="/img/20240403_joinAct/subtitle.png" alt=""></div>
                 <div class="phone">
                     <div class="videoBox">
                         <iframe frameborder="0" src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op"
@@ -34,8 +38,8 @@
                     </div>
                 </div>
                 <div class="btnBoxPC">
-                    <a class="google" href=""><img src="\img\20240403_joinAct\headerGoogle.png"></a>
-                    <a class="ios" href=""><img src="\img\20240403_joinAct\headerIos.png"></a>
+                    <a class="google" href=""><img src="/img/20240403_joinAct/headerGoogle.png"></a>
+                    <a class="ios" href=""><img src="/img/20240403_joinAct/headerIos.png"></a>
                 </div>
                 <!-- <div class="btnBoxM" v-if="menu.isAndroid || menu.isiOS">
                     <a v-if="menu.isAndroid" class="google"
@@ -49,37 +53,53 @@
     </header>
     <div class="section sec01">
         <div class="sec01Title"></div>
-        <div class="sec01Text"></div>
+        <div class="sec01Text">完成即可領取電腦 + 手機雙平台獎勵！​</div>
         <div class="stepBox">
             <div class="stepBg">
                 <div class="deco1"></div>
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.1</p>
-                <p></p>
-                <div v-if="login">
-                    <!-- 已登入 -->
+                <p>註冊並登入DiGeam掘夢網平台帳號​</p>
+                <div class="logBox" v-if="login">
+                    <!-- 這邊登出鈕 -->
                     <p>您已登入掘夢網帳號</p>
                     <p class="account"></p>
                     <div class="logout"></div>
                 </div>
-                <div v-else>
-                    <!-- 未登入 -->
-                    <div class="login"></div>
-                    <p><a href=""></a></p>
+                <div class="logBox" v-else>
+                    <!-- 這邊登入鈕 -->
+                    <div class="login">登入</div>
+                    <p>※新用戶請點此​<a href="">前往註冊</a></p>
                 </div>
             </div>
             <div class="stepBg">
                 <div class="deco1"></div>
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.2</p>
-                <div class="btnBox"></div>
+                <p>立即預約</p>
+                <div class="storeBtnBox">
+                    <a class="google" href=""><img src="/img/20240403_joinAct/sec01Google.png"></a>
+                    <a class="ios" href=""><img src="/img/20240403_joinAct/sec01Ios.png"></a>
+                </div>
             </div>
             <div class="stepBg">
                 <div class="deco1"></div>
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.3</p>
-                <p></p>
-                <div class="fb"></div>
+                <p>按讚追蹤官方Facebook粉絲團​</p>
+                <div class="fb">
+                    <!-- <div class="fb-page" data-href="https://www.facebook.com/DiGeamCabalM/" data-tabs="timeline"
+                        data-width="287" data-height="72" data-small-header="true" data-adapt-container-width="false"
+                        data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/DiGeamCabalM/" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/DiGeamCabalM/">黑色契約 Mobile</a></blockquote>
+                    </div> -->
+                    <iframe
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDiGeamCabalM%2F&tabs=timeline&width=287&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
+                        width="287" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
                 <div class="checkBox">
                     <label>
                         <input type="checkbox" name="privacy">
@@ -95,29 +115,34 @@
         <div class="rewardBox">
             <div class="rewardPC">
                 <div class="left">
-                    <img src="" alt="">
-                    <select name="" id=""></select>
+                    <img src="/img/20240403_joinAct/rewardLogoCb.png" alt="">
+                    <select name="" id="">
+                        <option value="">1</option>
+                    </select>
                 </div>
                 <div class="right">
-                    <div class="iconBox"></div>
-                    <div class="rewardBtn"></div>
+                    <div class="iconBox">
+                        <img src="/img/20240403_joinAct/rewardLight.png" alt="">
+                        <p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p>
+                    </div>
+                    <div class="rewardBtn">立即領獎</div>
                 </div>
             </div>
             <div class="rewardM">
                 <div class="topBox">
-                    <img src="" alt="">
-                    <div class="iconBox"></div>
+                    <img src="/img/20240403_joinAct/rewardLogoCbm.png" alt="">
+                    <div class="iconBox">
+                        <img src="/img/20240403_joinAct/rewardLight.png" alt="">
+                        <p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p>
+                    </div>
                 </div>
-                <div class="rewardBtn"></div>
+                <div class="rewardBtn">XWE0000000000000</div>
             </div>
         </div>
     </div>
     <div class="section sec02">
-        <div class="box">
-            <!-- <div class="sec02Title"><img src="/img/20240403_joinAct/sec02Title.png" alt=""></div> -->
-            <div class="sec02Title"></div>
-            <div class="sec02Text"></div>
-        </div>
+        <div class="sec02Title"></div>
+        <div class="sec02Text"><img src="/img/20240403_joinAct/stayTuned.png" alt=""></div>
     </div>
 </template>
 
