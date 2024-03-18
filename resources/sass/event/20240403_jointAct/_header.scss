@@ -76,6 +76,9 @@
                 a {
                     width: 45%;
                     max-width: 491px;
+                    @include m3d {
+                        width: 70%;
+                    }
                 }
                 .logo {
                     width: 100%;
@@ -93,7 +96,7 @@
             }
             .subtitle {
                 border: 1px red solid;
-                width: 30%;
+                width: 40%;
                 height: 100%;
                 margin-bottom: 25px;
                 img {

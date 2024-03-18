@@ -1,25 +1,34 @@
 <template>
-    <div class="barPC">
+    <div class="barPC" v-if="screenWidth > 900">
         <div class="menu">
             <ul class="menuList">
                 <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
+                <li class="menuDeco"></li>
                 <li class="menuListItem"><a href="#header">聯動活動​</a></li>
+                <li class="menuDeco"></li>
                 <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
+                <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li>
+
             </ul>
         </div>
     </div>
-    <!-- <div class="barM">
-        <input type="checkbox">
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul class="menu">
-            <li class="menuListItem"><a href=""></a></li>
-        </ul>
-    </div> -->
+    <div class="barM" v-if="screenWidth <= 900" @click="menuShow()">
+        <div class="spanBox" :class="{'active':menuM}">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <ul class="menuM" v-if="screenWidth <= 900 && menuM == true ">
+        <a class="logo" href=""><img src="/img/20240403_joinAct/cbmLOGO.png" alt=""></a>
+        <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
+        <li class="menuListItem"><a href="#header">聯動活動​</a></li>
+        <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
+        <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li>
+    </ul>
 
     <div id="fb-root"></div>
-    <div class="fixBg"></div>
+    <div class="fixBg" v-if="screenWidth <= 900"></div>
     <header class="section header" id="header">
         <div class="bgBox">
             <div class="leftBox">
@@ -153,14 +162,27 @@ export default {
     data() {
         return {
             login: false,
-
+            screenWidth: window.innerWidth,
+            menuM:false,
         }
     },
+    computed: {
+    },
     methods: {
-
+        updateScreenWidth() {
+            this.screenWidth = window.innerWidth;
+        },
+        menuShow(){
+            this.menuM = !this.menuM;
+        },
     },
     mounted() {
-
+        // 监听窗口大小变化
+        window.addEventListener('resize', this.updateScreenWidth);
+    },
+    beforeUnmount() {
+        // 组件销毁前移除事件监听器
+        window.removeEventListener('resize', this.updateScreenWidth);
     }
 };
 </script>

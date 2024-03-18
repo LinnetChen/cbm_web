@@ -20489,11 +20489,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      login: false
+      login: false,
+      screenWidth: window.innerWidth,
+      menuM: false
     };
   },
-  methods: {},
-  mounted: function mounted() {}
+  computed: {},
+  methods: {
+    updateScreenWidth: function updateScreenWidth() {
+      this.screenWidth = window.innerWidth;
+    },
+    menuShow: function menuShow() {
+      this.menuM = !this.menuM;
+    }
+  },
+  mounted: function mounted() {
+    // 监听窗口大小变化
+    window.addEventListener('resize', this.updateScreenWidth);
+  },
+  beforeUnmount: function beforeUnmount() {
+    // 组件销毁前移除事件监听器
+    window.removeEventListener('resize', this.updateScreenWidth);
+  }
 });
 
 /***/ }),
@@ -20530,14 +20547,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"barPC\"><div class=\"menu\"><ul class=\"menuList\"><li class=\"menuListItem\"><a href=\"\">Mobile事前預約​</a></li><li class=\"menuListItem\"><a href=\"#header\">聯動活動​</a></li><li class=\"menuListItem\"><a href=\"\">涅瓦雷斯人才招募中心​</a></li></ul></div></div>", 1);
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_1 = {
+  key: 0,
+  "class": "barPC"
+};
+var _hoisted_2 = {
+  "class": "menu"
+};
+var _hoisted_3 = {
+  "class": "menuList"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"menuListItem\"><a href=\"\">Mobile事前預約​</a></li><li class=\"menuDeco\"></li><li class=\"menuListItem\"><a href=\"#header\">聯動活動​</a></li><li class=\"menuDeco\"></li><li class=\"menuListItem\"><a href=\"\">涅瓦雷斯人才招募中心​</a></li>", 5);
+var _hoisted_9 = {
+  "class": "menuListItem"
+};
+var _hoisted_10 = {
+  href: ""
+};
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, null, -1 /* HOISTED */);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, null, -1 /* HOISTED */);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, null, -1 /* HOISTED */);
+var _hoisted_14 = [_hoisted_11, _hoisted_12, _hoisted_13];
+var _hoisted_15 = {
+  key: 2,
+  "class": "menuM"
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a class=\"logo\" href=\"\"><img src=\"/img/20240403_joinAct/cbmLOGO.png\" alt=\"\"></a><li class=\"menuListItem\"><a href=\"\">Mobile事前預約​</a></li><li class=\"menuListItem\"><a href=\"#header\">聯動活動​</a></li><li class=\"menuListItem\"><a href=\"\">涅瓦雷斯人才招募中心​</a></li>", 4);
+var _hoisted_20 = {
+  "class": "menuListItem"
+};
+var _hoisted_21 = {
+  href: ""
+};
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   id: "fb-root"
 }, null, -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_23 = {
+  key: 3,
   "class": "fixBg"
-}, null, -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
+};
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
   "class": "section header",
   id: "header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -20590,54 +20639,54 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/20240403_joinAct/headerIos.png"
 })])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"btnBoxM\" v-if=\"menu.isAndroid || menu.isiOS\">\r\n                    <a v-if=\"menu.isAndroid\" class=\"google\"\r\n                        href=\"https://play.google.com/store/apps/details?id=com.digeam.a.bptw\"><img\r\n                            src=\"/img/front/sec01Google.png\"></a>\r\n                    <a v-if=\"menu.isiOS\" class=\"ios\" href=\"https://apps.apple.com/TW/app/id6470368870\"><img\r\n                            src=\"/img/front/sec01Ios.png\"></a>\r\n                </div> ")])])], -1 /* HOISTED */);
-var _hoisted_5 = {
+var _hoisted_25 = {
   "class": "section sec01"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec01Title"
 }, null, -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec01Text"
 }, "完成即可領取電腦 + 手機雙平台獎勵！​", -1 /* HOISTED */);
-var _hoisted_8 = {
+var _hoisted_28 = {
   "class": "stepBox"
 };
-var _hoisted_9 = {
+var _hoisted_29 = {
   "class": "stepBg"
 };
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "stepTitle"
 }, "STEP.1", -1 /* HOISTED */);
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "註冊並登入DiGeam掘夢網平台帳號​", -1 /* HOISTED */);
-var _hoisted_14 = {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "註冊並登入DiGeam掘夢網平台帳號​", -1 /* HOISTED */);
+var _hoisted_34 = {
   key: 0,
   "class": "logBox"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "您已登入掘夢網帳號", -1 /* HOISTED */);
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "您已登入掘夢網帳號", -1 /* HOISTED */);
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "account"
 }, null, -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "logout"
 }, null, -1 /* HOISTED */);
-var _hoisted_18 = {
+var _hoisted_38 = {
   key: 1,
   "class": "logBox"
 };
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "login"
 }, "登入", -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("※新用戶請點此​"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("※新用戶請點此​"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: ""
 }, "前往註冊")], -1 /* HOISTED */);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"stepBg\"><div class=\"deco1\"></div><div class=\"deco2\"></div><p class=\"stepTitle\">STEP.2</p><p>立即預約</p><div class=\"storeBtnBox\"><a class=\"google\" href=\"\"><img src=\"/img/20240403_joinAct/sec01Google.png\"></a><a class=\"ios\" href=\"\"><img src=\"/img/20240403_joinAct/sec01Ios.png\"></a></div></div>", 1);
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"stepBg\"><div class=\"deco1\"></div><div class=\"deco2\"></div><p class=\"stepTitle\">STEP.2</p><p>立即預約</p><div class=\"storeBtnBox\"><a class=\"google\" href=\"\"><img src=\"/img/20240403_joinAct/sec01Google.png\"></a><a class=\"ios\" href=\"\"><img src=\"/img/20240403_joinAct/sec01Ios.png\"></a></div></div>", 1);
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "stepBg"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
@@ -20670,8 +20719,8 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   type: "checkbox",
   name: "notice"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 我已閱讀並同意"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "注意事項")])])], -1 /* HOISTED */);
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"rewardBox\"><div class=\"rewardPC\"><div class=\"left\"><img src=\"/img/20240403_joinAct/rewardLogoCb.png\" alt=\"\"><select name=\"\" id=\"\"><option value=\"\">1</option></select></div><div class=\"right\"><div class=\"iconBox\"><img src=\"/img/20240403_joinAct/rewardLight.png\" alt=\"\"><p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p></div><div class=\"rewardBtn\">立即領獎</div></div></div><div class=\"rewardM\"><div class=\"topBox\"><img src=\"/img/20240403_joinAct/rewardLogoCbm.png\" alt=\"\"><div class=\"iconBox\"><img src=\"/img/20240403_joinAct/rewardLight.png\" alt=\"\"><p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p></div></div><div class=\"rewardBtn\">XWE0000000000000</div></div></div>", 1);
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"rewardBox\"><div class=\"rewardPC\"><div class=\"left\"><img src=\"/img/20240403_joinAct/rewardLogoCb.png\" alt=\"\"><select name=\"\" id=\"\"><option value=\"\">1</option></select></div><div class=\"right\"><div class=\"iconBox\"><img src=\"/img/20240403_joinAct/rewardLight.png\" alt=\"\"><p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p></div><div class=\"rewardBtn\">立即領獎</div></div></div><div class=\"rewardM\"><div class=\"topBox\"><img src=\"/img/20240403_joinAct/rewardLogoCbm.png\" alt=\"\"><div class=\"iconBox\"><img src=\"/img/20240403_joinAct/rewardLight.png\" alt=\"\"><p>【坐騎外觀】<br>​滅殺之​菲皇<br>的小雞​(30日)</p></div></div><div class=\"rewardBtn\">XWE0000000000000</div></div></div>", 1);
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "section sec02"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sec02Title"
@@ -20682,7 +20731,17 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   alt: ""
 })])], -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"barM\">\r\n        <input type=\"checkbox\">\r\n        <span></span>\r\n        <span></span>\r\n        <span></span>\r\n        <ul class=\"menu\">\r\n            <li class=\"menuListItem\"><a href=\"\"></a></li>\r\n        </ul>\r\n    </div> "), _hoisted_2, _hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, $data.login ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登出鈕 "), _hoisted_15, _hoisted_16, _hoisted_17])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登入鈕 "), _hoisted_19, _hoisted_20]))]), _hoisted_21, _hoisted_22]), _hoisted_23]), _hoisted_24], 64 /* STABLE_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.screenWidth > 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.screenWidth) + "​", 1 /* TEXT */)])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.screenWidth <= 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 1,
+    "class": "barM",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.menuShow();
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["spanBox", {
+      'active': $data.menuM
+    }])
+  }, [].concat(_hoisted_14), 2 /* CLASS */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.screenWidth <= 900 && $data.menuM == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.screenWidth) + "​", 1 /* TEXT */)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_22, $data.screenWidth <= 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, _hoisted_31, _hoisted_32, _hoisted_33, $data.login ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登出鈕 "), _hoisted_35, _hoisted_36, _hoisted_37])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登入鈕 "), _hoisted_39, _hoisted_40]))]), _hoisted_41, _hoisted_42]), _hoisted_43]), _hoisted_44], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
