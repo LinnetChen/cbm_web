@@ -47,15 +47,15 @@
         background-image: url("/img/20240403_joinAct/headerMBg.jpg");
     }
     .bgBox {
-        padding: 110px 30px 80px;
-        border: 1px solid red;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0, 0.5) 70%, rgb(0, 0, 0) 100%);
+        padding: 90px 30px 80px;
+        // border: 1px solid red;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0, 0) 75%, rgb(0, 0, 0, 0.5) 90%, rgb(0, 0, 0) 100%);
         @include m3d {
             padding: 70% 0px 20%;
             height: 100%;
         }
         .leftBox {
-            background-color: rgba(175, 138, 250, 0.2);
+            // background-color: rgba(175, 138, 250, 0.2);
             width: 55%;
             display: flex;
             flex-direction: column;
@@ -64,7 +64,7 @@
                 width: 100%;
             }
             .logoBox {
-                border: 1px solid rgb(255, 165, 165);
+                // border: 1px solid rgb(255, 165, 165);
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -95,7 +95,7 @@
                 }
             }
             .subtitle {
-                border: 1px red solid;
+                // border: 1px red solid;
                 width: 40%;
                 height: 100%;
                 margin-bottom: 25px;
@@ -107,7 +107,7 @@
                 }
             }
             .phone {
-                border: 1px rgb(255, 255, 255) solid;
+                // border: 1px rgb(255, 255, 255) solid;
                 // width: 75%;
                 width: 100%;
                 height: 100%;
@@ -142,8 +142,8 @@
                 //     height: 100%;
                 // }
             }
-            .btnBoxPC {
-                border: 1px rgb(255, 255, 255) solid;
+            .btnBoxPC , .btnBoxM {
+                // border: 1px rgb(255, 255, 255) solid;
                 width: 63%;
                 height: 100%;
                 display: flex;

@@ -213,8 +213,9 @@ body .wrap {
   color: #00b4ff;
   text-shadow: 0.1rem 0.1rem 1rem #000, 0.1rem 0.1rem 1rem #000, 0.1rem 0.1rem 1rem #000;
 }
-.barPC .menu .menuList .menuDeco:after {
-  content: "|";
+.barPC .menu .menuList .menuDeco {
+  font-size: 1.56rem;
+  margin: 1.25rem;
   color: rgba(255, 255, 255, 0.5098039216);
 }
 
@@ -265,7 +266,7 @@ body .wrap {
 }
 .menuM .menuListItem {
   text-align: center;
-  height: 15%;
+  height: 10%;
 }
 @media all and (max-width: 800px) {
   .menuM .menuListItem {
@@ -281,12 +282,17 @@ body .wrap {
 }
 .menuM .logo {
   position: absolute;
-  top: 5%;
+  top: 2%;
   width: 55%;
+}
+@media all and (max-width: 960px) {
+  .menuM .logo {
+    top: 5%;
+  }
 }
 @media all and (max-width: 800px) {
   .menuM .logo {
-    top: 15%;
+    top: 12%;
   }
 }
 .menuM .logo img {
@@ -351,9 +357,8 @@ body .wrap {
   }
 }
 .header .bgBox {
-  padding: 110px 30px 80px;
-  border: 1px solid red;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 70%, rgb(0, 0, 0) 100%);
+  padding: 90px 30px 80px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.5) 90%, rgb(0, 0, 0) 100%);
 }
 @media all and (max-width: 800px) {
   .header .bgBox {
@@ -362,7 +367,6 @@ body .wrap {
   }
 }
 .header .bgBox .leftBox {
-  background-color: rgba(175, 138, 250, 0.2);
   width: 55%;
   display: flex;
   flex-direction: column;
@@ -374,7 +378,6 @@ body .wrap {
   }
 }
 .header .bgBox .leftBox .logoBox {
-  border: 1px solid rgb(255, 165, 165);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -409,7 +412,6 @@ body .wrap {
   height: 100%;
 }
 .header .bgBox .leftBox .subtitle {
-  border: 1px red solid;
   width: 40%;
   height: 100%;
   margin-bottom: 25px;
@@ -421,7 +423,6 @@ body .wrap {
   max-height: 86px;
 }
 .header .bgBox .leftBox .phone {
-  border: 1px rgb(255, 255, 255) solid;
   width: 100%;
   height: 100%;
   margin-bottom: 25px;
@@ -451,14 +452,13 @@ body .wrap {
   width: 100%;
   height: 100%;
 }
-.header .bgBox .leftBox .btnBoxPC {
-  border: 1px rgb(255, 255, 255) solid;
+.header .bgBox .leftBox .btnBoxPC, .header .bgBox .leftBox .btnBoxM {
   width: 63%;
   height: 100%;
   display: flex;
   justify-content: space-between;
 }
-.header .bgBox .leftBox .btnBoxPC img {
+.header .bgBox .leftBox .btnBoxPC img, .header .bgBox .leftBox .btnBoxM img {
   width: 100%;
   height: 100%;
   max-width: 304px;
@@ -466,13 +466,12 @@ body .wrap {
 }
 
 .sec01 {
-  background-image: url("/img/20240403_joinAct/sec01BgPC.png");
+  background-image: url("/img/20240403_joinAct/sec01BgPC.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0px -52px;
   max-width: 1920px;
   width: 100%;
   height: 985px;
-  border: 1px solid rgb(169, 255, 182);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -491,16 +490,28 @@ body .wrap {
   background-image: url("/img/20240403_joinAct/sec01Title.png");
   background-repeat: no-repeat;
   background-size: contain;
-  border: 1px solid rgb(255, 169, 169);
+}
+@media all and (max-width: 660px) {
+  .sec01 .sec01Title {
+    height: 6%;
+    transform: scale(0.9);
+    background-size: cover;
+    background-position: center;
+  }
 }
 .sec01 .sec01Text {
   font-size: 1.8rem;
   color: #fff;
   margin: 15px 0;
+  text-align: center;
+}
+@media all and (max-width: 768px) {
+  .sec01 .sec01Text {
+    font-size: 2.2rem;
+  }
 }
 .sec01 .stepBox {
   position: relative;
-  border: 1px solid rgb(169, 255, 179);
   width: 80%;
   height: 30%;
   display: flex;
@@ -511,7 +522,7 @@ body .wrap {
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    height: 50%;
+    height: 47%;
   }
 }
 .sec01 .stepBox .stepBg {
@@ -528,6 +539,7 @@ body .wrap {
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
+  text-align: center;
 }
 @media all and (max-width: 800px) {
   .sec01 .stepBox .stepBg {
@@ -545,9 +557,23 @@ body .wrap {
   color: transparent;
   margin-bottom: 1.8rem;
 }
-.sec01 .stepBox .stepBg p {
+@media all and (max-width: 768px) {
+  .sec01 .stepBox .stepBg .stepTitle {
+    margin-top: 1.3rem;
+    font-size: 3.5rem;
+  }
+}
+.sec01 .stepBox .stepBg .text, .sec01 .stepBox .stepBg p {
   color: #fff;
   font-size: 1.5rem;
+}
+@media all and (max-width: 768px) {
+  .sec01 .stepBox .stepBg .text, .sec01 .stepBox .stepBg p {
+    font-size: 2rem;
+  }
+}
+.sec01 .stepBox .stepBg .text {
+  line-height: 1.8rem;
 }
 .sec01 .stepBox .stepBg .deco1 {
   width: 100%;
@@ -601,23 +627,47 @@ body .wrap {
   flex-direction: column;
   align-items: center;
 }
+.sec01 .stepBox .stepBg .logBox .account {
+  font-size: 1.3rem;
+  margin-top: 1.3rem;
+  line-height: 1.6rem;
+}
+.sec01 .stepBox .stepBg .logBox .account span {
+  color: #00b4ff;
+}
+@media all and (max-width: 768px) {
+  .sec01 .stepBox .stepBg .logBox .account {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+}
+.sec01 .stepBox .stepBg .logBox .logout,
 .sec01 .stepBox .stepBg .logBox .login {
   margin: 1.3rem 0;
+  background-image: url("/img/20240403_joinAct/loginBtnBg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  font-weight: 400;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sec01 .stepBox .stepBg .logBox .logout {
+  width: 50%;
+  height: 50%;
+  max-width: 88px;
+  max-height: 27px;
+  font-size: 1rem;
+}
+.sec01 .stepBox .stepBg .logBox .login {
   filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
   width: 100%;
   height: 100%;
   max-width: 167px;
   max-height: 51px;
-  background-image: url("/img/20240403_joinAct/loginBtnBg.png");
-  background-repeat: no-repeat;
-  background-size: contain;
   font-size: 1.56rem;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 400;
-  cursor: pointer;
 }
 .sec01 .stepBox .stepBg .logBox a {
   margin: 0 0.3rem;
@@ -627,15 +677,34 @@ body .wrap {
 }
 .sec01 .stepBox .stepBg .storeBtnBox {
   margin: 1.3rem 0;
-  border: 1px solid rgb(169, 255, 179);
   width: 47%;
   height: 52%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+}
+@media all and (max-width: 1440px) {
+  .sec01 .stepBox .stepBg .storeBtnBox {
+    width: 60%;
+  }
+}
+@media all and (max-width: 960px) {
+  .sec01 .stepBox .stepBg .storeBtnBox {
+    width: 90%;
+  }
+}
+@media all and (max-width: 800px) {
+  .sec01 .stepBox .stepBg .storeBtnBox {
+    width: 50%;
+    height: 100%;
+  }
+}
+@media all and (max-width: 320px) {
+  .sec01 .stepBox .stepBg .storeBtnBox {
+    width: 85%;
+    height: 100%;
+  }
 }
 .sec01 .stepBox .stepBg .storeBtnBox img {
   width: 100%;
+  margin-bottom: 10px;
 }
 .sec01 .stepBox .stepBg .fb {
   height: 29%;
@@ -647,8 +716,12 @@ body .wrap {
   width: 100%;
   height: 100%;
 }
+.sec01 .stepBox .stepBg .checkBox {
+  text-align: left;
+}
 .sec01 .stepBox .stepBg .checkBox label {
   color: #fff;
+  line-height: 1.3rem;
 }
 .sec01 .stepBox .stepBg .checkBox label span {
   font-size: 1.12rem;
@@ -661,16 +734,24 @@ body .wrap {
   height: 40%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-@media all and (max-width: 800px) {
+@media all and (max-width: 960px) {
   .sec01 .rewardBox {
     flex-direction: column;
   }
 }
 .sec01 .rewardBox .rewardPC {
-  background-color: rgba(127, 255, 212, 0.422);
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-right: 3%;
+}
+@media all and (max-width: 960px) {
+  .sec01 .rewardBox .rewardPC {
+    margin-right: 0;
+  }
 }
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardPC {
@@ -682,79 +763,98 @@ body .wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 50%;
+  height: 100%;
   margin-right: 0.4rem;
 }
 .sec01 .rewardBox .rewardPC .left img {
   width: 100%;
-  height: 100%;
   max-width: 361px;
   max-height: 145px;
 }
 .sec01 .rewardBox .rewardPC .left select {
-  margin: 0rem 0 1.2rem;
   font-size: 1.25rem;
-  width: 300px;
-  height: 65px;
+  max-width: 300px;
+  max-height: 60px;
+  width: 100%;
+  height: 100%;
   color: #fff;
-  border-radius: 0px;
   border: 1px solid #4a4a4a;
   background-color: #4a4a4a;
   line-height: 1.25rem;
-  margin: 1.9rem 0 0 0;
+  margin: 3.2rem 0 0 0;
+  cursor: pointer;
 }
 .sec01 .rewardBox .rewardPC .right {
-  width: 38%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .sec01 .rewardBox .rewardPC .right .iconBox {
   background-color: #000;
   width: 100%;
-  height: 100%;
-  max-width: 395px;
+  height: 50%;
+  max-width: 295px;
   max-height: 151px;
   display: flex;
   align-items: center;
   padding: 0.5rem;
-  margin: 0rem 0 1.2rem;
+  margin: 0rem 0 0.8rem;
 }
 .sec01 .rewardBox .rewardPC .right .iconBox img {
-  width: 100%;
-  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 50%;
   max-width: 135px;
   max-height: 135px;
+  cursor: pointer;
 }
 .sec01 .rewardBox .rewardPC .right .iconBox p {
+  width: 50%;
   max-width: 395px;
   font-family: "Noto Serif TC";
   color: #fff;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  line-height: 1.6rem;
 }
 .sec01 .rewardBox .rewardPC .right .rewardBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 50%;
   max-width: 288px;
   max-height: 65px;
   background-image: url("/img/20240403_joinAct/rewardBtn.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+.sec01 .rewardBox .rewardPC .right .rewardBtn p {
+  padding: 0.9rem;
+  top: 3px;
   font-weight: 700;
-  font-size: 1.87rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.2rem;
   font-family: "Noto Serif TC";
   color: #fff;
 }
 .sec01 .rewardBox .rewardM {
-  background-color: rgba(127, 255, 212, 0.422);
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 .sec01 .rewardBox .rewardM .topBox {
+  width: 100%;
+  height: 43%;
   display: flex;
 }
 @media all and (max-width: 800px) {
@@ -764,38 +864,37 @@ body .wrap {
   }
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox {
-  background-color: #000000;
-  width: 100%;
-  height: 100%;
-  max-width: 395px;
-  max-height: 151px;
+  background-color: #000;
+  width: 50%;
+  max-width: 295px;
+  max-height: 152px;
   display: flex;
   align-items: center;
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox img {
-  width: 100%;
-  height: 100%;
+  width: 50%;
   max-width: 135px;
   max-height: 135px;
+  cursor: pointer;
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox p {
+  width: 50%;
   max-width: 395px;
   font-family: "Noto Serif TC";
   color: #fff;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  line-height: 1.6rem;
 }
 .sec01 .rewardBox .rewardM .topBox img {
-  width: 100%;
-  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 50%;
   max-width: 368px;
   max-height: 131px;
 }
 .sec01 .rewardBox .rewardM .rewardBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
   max-width: 627px;
@@ -803,8 +902,18 @@ body .wrap {
   background-image: url("/img/20240403_joinAct/serialNumBtn.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.sec01 .rewardBox .rewardM .rewardBtn P {
+  padding: 0.9rem;
+  top: 3px;
   font-weight: 700;
-  font-size: 1.87rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.2rem;
   font-family: "Noto Serif TC";
   color: #fff;
 }
@@ -817,7 +926,6 @@ body .wrap {
   max-width: 1920px;
   width: 100%;
   height: 985px;
-  border: 1px solid rgb(169, 252, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -830,15 +938,20 @@ body .wrap {
   background-image: url("/img/20240403_joinAct/sec02Title.png");
   background-repeat: no-repeat;
   background-size: contain;
-  border: 1px solid rgb(255, 169, 169);
+}
+@media all and (max-width: 660px) {
+  .sec02 .sec02Title {
+    height: 12%;
+    transform: scale(0.9);
+    background-size: cover;
+    background-position: center;
+  }
 }
 .sec02 .sec02Text {
-  border: 1px solid rgb(255, 169, 169);
   text-align: center;
   margin-top: 15%;
 }
 .sec02 .sec02Text img {
   width: 100%;
   height: 100%;
-  border: 1px solid rgb(255, 255, 255);
 }
