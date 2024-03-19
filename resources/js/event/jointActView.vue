@@ -126,7 +126,8 @@
                 <div class="left">
                     <img src="/img/20240403_joinAct/rewardLogoCb.png" alt="">
                     <select name="" id="">
-                        <option value="">1</option>
+                        <option value="0">黑恆星</option>
+                        <option value="1">冰珀星</option>
                     </select>
                 </div>
                 <div class="right">
