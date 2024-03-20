@@ -1,0 +1,22 @@
+.mask {
+	@extend %mask;
+	background-color: rgba(0, 0, 0, .8);
+}
+
+.videoBox {
+	@extend %mask;
+	z-index: 56;
+	background-color: rgba(255, 255, 255, .1);
+}
+
+
+#player {
+	@extend %mask;
+	width: 50%;
+	height: 50%;
+	z-index: 57;
+
+	@include md() {
+		width: 90%;
+	}
+}

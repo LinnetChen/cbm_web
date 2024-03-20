@@ -53,6 +53,12 @@ $xs-media: 320px;
     }
 }
 
+@mixin sm() {
+    @media all and (max-width: $sm-media) {
+        @content;
+    }
+}
+
 @mixin x3s() {
     @media all and (max-width: $x3s-media) {
         @content;

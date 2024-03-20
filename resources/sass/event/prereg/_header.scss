@@ -12,7 +12,8 @@ header {
 	}
 
 	.title {
-		width: 939px;
+		width: 100%;
+		max-width: 939px;
 		height: 212px;
 		@extend %bg-contain;
 		background-image: url('/img/prereg/headerTitle.png');

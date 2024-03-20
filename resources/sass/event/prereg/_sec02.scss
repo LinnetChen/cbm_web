@@ -1,0 +1,160 @@
+.sec02 {
+	border: 1px solid red;
+	padding: 25px 0;
+	padding-top: 155px;
+
+	.sec02Wrap {
+		width: 100%;
+		margin: 0 auto;
+		// border: 1px solid red;
+		display: flex;
+		position: relative;
+
+		// @include x3l() {
+		// 	width: 80%;
+		// }
+
+		// @include xl() {
+		// 	width: 100%;
+		// }
+
+		.sub02 {
+			position: absolute;
+			z-index: 2;
+			max-width: 581px;
+			@include size(100%, 183px);
+			top: 10%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			@extend %bg-contain;
+			background-size: 100%;
+			margin: 0px 10px;
+			background-image: url("/img/prereg/s2Title.png");
+		}
+
+		.swiper {
+			position: relative;
+
+			.swiper-slide-active {
+				animation: fadeIn 2s !important;
+
+				@keyframes fadeIn {
+					0% {
+						opacity: 0;
+					}
+
+					100% {
+						opacity: 1;
+					}
+				}
+			}
+
+			.item {
+				max-width: 1920px;
+				width: 100%;
+				@extend %f-c-c;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.item_img {
+				object-fit: cover;
+				object-position: center;
+			}
+
+			.item_box {
+				position: absolute;
+				bottom: 0px;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 10;
+				width: 95%;
+				@extend %f-c-c;
+
+				@include sm() {
+					bottom: -60px;
+				}
+
+				img {
+					max-width: 601px;
+					width: 100%;
+					object-fit: contain;
+					object-position: center;
+				}
+
+				p {
+					font-size: 1.2em;
+					line-height: 1.3em;
+					text-align: center;
+					color: #fff;
+					word-break: break-all;
+					text-shadow: 0px 0px 5px #000, 0px 0px 5px #000,
+						0px 0px 5px #000;
+					width: 60%;
+
+					@include md() {
+						width: 90%;
+					}
+				}
+			}
+		}
+	}
+
+	.swiper-pagination {
+		margin: 0 auto;
+		position: absolute;
+		bottom: 0px;
+		left: 50% !important;
+		transform: translate(-50%, -50%);
+		@extend %f-r-c;
+		z-index: 10;
+	}
+
+	.swiper-pagination-bullet {
+		@include size(14px, 15px);
+		@extend %bg-contain;
+		background-color: transparent;
+		opacity: 1;
+		background-image: url("/img/prereg/carousel.png");
+		transition: all 0.5s ease-in-out;
+		margin: 0 10px !important;
+	}
+
+	.swiper-pagination-bullet-active {
+		@include size(24px, 25px);
+		@extend %bg-contain;
+		background-color: transparent;
+		background-image: url("/img/prereg/carouselHover.png");
+		margin: 0 10px !important;
+	}
+
+	.swiper-button-prev {
+		max-width: 50px;
+		@include size(100%, 108px);
+		background-image: url("/img/prereg/carouselArrow.png");
+		@extend %bg-contain;
+
+		&::after {
+			content: "";
+		}
+	}
+
+	.swiper-button-next {
+		max-width: 50px;
+		@include size(100%, 108px);
+		transform: scaleX(-1);
+		background-image: url("/img/prereg/carouselArrow.png");
+		@extend %bg-contain;
+
+		&::after {
+			content: "";
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		// top: 0;
+		// bottom: -10px;
+	}
+}
