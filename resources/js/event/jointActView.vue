@@ -7,8 +7,7 @@
                 <li class="menuListItem"><a href="#header">聯動活動​</a></li>
                 <li class="menuDeco">|</li>
                 <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
-                <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li>
-
+                <!-- <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li> -->
             </ul>
         </div>
     </div>
@@ -24,7 +23,7 @@
         <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
         <li class="menuListItem"><a href="#header">聯動活動​</a></li>
         <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
-        <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li>
+        <!-- <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li> -->
     </ul>
 
     <div id="fb-root"></div>
@@ -42,8 +41,8 @@
                 <div class="subtitle"><img src="/img/20240403_joinAct/subtitle.png" alt=""></div>
                 <div class="phone">
                     <div class="videoBox">
-                        <iframe frameborder="0" src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op"
-                            allowfullscreen="true"></iframe>
+                        <!-- <iframe ref="youtubePlayer" frameborder="0" src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op&autoplay=1&playlist=5sYIlYpAQNU&loop=1"
+                            allowfullscreen="true"></iframe> -->
                     </div>
                 </div>
                 <div class="btnBoxPC" v-if="!device.isAndroid && !device.isiOS">
@@ -87,8 +86,9 @@
                 <p class="stepTitle">STEP.2</p>
                 <p>立即預約</p>
                 <div class="storeBtnBox">
-                    <a class="google" href=""><img src="/img/20240403_joinAct/sec01Google.png"></a>
-                    <a class="ios" href=""><img src="/img/20240403_joinAct/sec01Ios.png"></a>
+                    <a class="google" @click="handleClick('google')"><img
+                            src="/img/20240403_joinAct/sec01Google.png"></a>
+                    <a class="ios" @click="handleClick('ios')"><img src="/img/20240403_joinAct/sec01Ios.png"></a>
                 </div>
             </div>
             <div class="stepBg">
@@ -152,6 +152,31 @@
         <div class="sec02Title"></div>
         <div class="sec02Text"><img src="/img/20240403_joinAct/stayTuned.png" alt=""></div>
     </div>
+
+    <footer class="section footer">
+        <div class="footerbox_logo">
+            <a href="https://www.digeam.com/index" target="_blank"><img class="logo_digeam"
+                    src="/img/footer/digeam_logo.png"></a>
+            <img class="est_icon" src="/img/footer/est_icon.png">
+        </div>
+        <div class="spec">
+            <a href="https://www.digeam.com/terms" target="_blank">會員服務條款</a>
+            <a href="https://www.digeam.com/terms2" target="_blank">隱私條款</a>
+            <a href="https://www.digeam.com/cs" target="_blank">客服中心</a>
+            <p class="Copyright">Copyright © ESTgames Corp. All rights reserved.​
+                2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​
+                CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​</p>
+        </div>
+        <div class="classlavel">
+            <img src="/img/footer/15_icon.png" alt="普遍級">
+            <ul>
+                <li>本遊戲為免費使用，部分內容涉及暴力情節。​</li>
+                <li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li>
+                <li>請注意遊戲時間，避免沉迷。​</li>
+                <li>本遊戲服務區域包含台灣、香港、澳門。​</li>
+            </ul>
+        </div>
+    </footer>
 </template>
 
 
@@ -167,6 +192,10 @@ export default {
             device: {
                 isAndroid: null,
                 isiOS: null,
+            },
+            click: {
+                Android: this.getCookie('Android') ? parseInt(this.getCookie('Android')) : 0,
+                iOS: this.getCookie('iOS') ? parseInt(this.getCookie('iOS')) : 0,
             }
         }
     },
@@ -182,7 +211,7 @@ export default {
         //         console.error("Error:", error);
         //     }
         // }
-        
+
         updateScreenWidth() {
             this.screenWidth = window.innerWidth;
         },
@@ -196,7 +225,37 @@ export default {
             const isAndroid = ua.includes("Android") || ua.includes("Adr");
             const isiOS = /\b(iPad|iPhone|iPod)\b/.test(ua);
             this.device = { isAndroid, isiOS };
+        },
+
+        handleClick(platform) {
+            // 将点击记录存储到 cookie 中，过期时间设置为永久，路径设置为根路径
+            this.setCookie(platform, '1', 365);
+            // 根据平台更新 Vue 实例中的数据
+            this[platform] = 1;
+            console.log(123);
+            console.log(this.click.Android);
+            console.log(this.click.iOS);
+        },
+        // 读取 cookie
+        getCookie(name) {
+            const cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split('=');
+                if (name === cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        },
+        // 设置 cookie
+        setCookie(name, value, days) {
+            const expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + days);
+            const cookieValue = encodeURIComponent(name) + '=' + encodeURIComponent(value) +
+                ';expires=' + expiryDate.toUTCString() + ';path=/';
+            document.cookie = cookieValue;
         }
+
     },
     mounted() {
         // API位址
@@ -206,6 +265,10 @@ export default {
         window.addEventListener('resize', this.updateScreenWidth);
 
         this.deviceDetection();
+
+
+        // const youtubePlayer = this.$refs.youtubePlayer;
+        // youtubePlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
     },
     beforeUnmount() {
         // 組件銷毀前移除事件監聽

@@ -20,7 +20,7 @@
             rgb(0, 0, 0, 0) 85%,
             rgb(0, 0, 0, 1) 100%
         );
-        height: 2000px;
+        height: 2100px;
     }
     .sec01Title {
         width: 100%;
@@ -31,9 +31,9 @@
         background-repeat: no-repeat;
         background-size: contain;
         // border: 1px solid rgb(255, 169, 169);
+
         @include mmd {
             height: 6%;
-            transform: scale(0.9);
             background-size: cover;
             background-position: center;
         }
@@ -43,7 +43,7 @@
         color: #fff;
         margin: 15px 0;
         text-align: center;
-        @include md{
+        @include md {
             font-size: 2.2rem;
         }
     }
@@ -55,6 +55,10 @@
         height: 30%;
         display: flex;
         justify-content: space-between;
+
+        @include lg {
+            width: 100%;
+        }
 
         @include m3d {
             justify-content: space-between;
@@ -77,7 +81,7 @@
             align-items: center;
             padding: 0.5rem;
             text-align: center;
-            
+
             @include m3d {
                 width: 100%;
             }
@@ -92,20 +96,20 @@
                 -webkit-background-clip: text;
                 color: transparent;
                 margin-bottom: 1.8rem;
-                @include md{
+                @include md {
                     margin-top: 1.3rem;
                     font-size: 3.5rem;
                 }
-                
             }
-            .text, p {
+            .text,
+            p {
                 color: #fff;
                 font-size: 1.5rem;
-                @include md{
-                    font-size: 2.0rem;
+                @include md {
+                    font-size: 2rem;
                 }
             }
-            .text{
+            .text {
                 line-height: 1.8rem;
             }
             .deco1 {
@@ -172,8 +176,8 @@
                     span {
                         color: #00b4ff;
                     }
-                    @include md{
-                        font-size: 2.0rem;
+                    @include md {
+                        font-size: 2rem;
                         line-height: 2.4rem;
                     }
                 }
@@ -258,7 +262,7 @@
                     color: #fff;
                     line-height: 1.3rem;
 
-                    @include md{
+                    @include md {
                         font-size: 1.5rem;
                         line-height: 2.2rem;
                     }
@@ -268,7 +272,7 @@
                         margin: 0 0.3rem;
                         color: #00b4ff;
 
-                        @include md{
+                        @include md {
                             font-size: 1.5rem;
                             line-height: 2.2rem;
                         }
@@ -287,45 +291,49 @@
         justify-content: center;
         @include lg {
             flex-direction: column;
+            height: 45%;
         }
-        @include m3d{
+        @include m3d {
             width: 100%;
         }
-        
+
         .rewardPC {
             // border: 1px solid rgb(0, 149, 255);
-            background-color: rgba(196, 134, 187, 0.422);
+            // background-color: rgba(196, 134, 187, 0.422);
 
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
-
+            height: 58%;
             margin-right: 3%;
 
             @include lg {
                 margin-right: 0;
+                margin-top: 2.0rem;
             }
             @include m3d {
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
+                height: 71%;
+                margin-bottom: 20px;
             }
 
             .left {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
                 width: 50%;
                 height: 100%;
                 margin-right: 0.4rem;
-                // background-color: rgba(196, 134, 187, 0.422);
+                // background-color: rgba(108, 76, 207, 0.422);
 
                 img {
                     width: 100%;
-                    max-width: 361px;
-                    max-height: 145px;
+                    max-width: 357px;
+                    max-height: 151px;
+                    margin: auto 0;
                 }
                 select {
                     font-size: 1.25rem;
@@ -339,21 +347,25 @@
                     border: 1px solid #4a4a4a;
                     background-color: #4a4a4a;
                     line-height: 1.25rem;
-                    margin: 3.2rem 0 0 0;
                     cursor: pointer;
                 }
             }
             .right {
+                // background-color: rgba(76, 207, 207, 0.422);
                 width: 50%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
+
+                @include m3d {
+                    align-items: center;
+                }
 
                 .iconBox {
                     background-color: #000;
                     width: 100%;
-                    height: 50%;
+                    height: 100%;
                     max-width: 295px;
                     max-height: 151px;
                     display: flex;
@@ -405,33 +417,48 @@
             }
         }
         .rewardM {
-            background-color: rgba(127, 255, 212, 0.422);
+            // background-color: rgba(127, 255, 212, 0.422);
             display: flex;
-            justify-content: center;
             flex-direction: column;
             align-items: center;
-            height: 100%;
-
-            @include m3d{
+            justify-content: space-between;
+            height: 58%;
+            
+            @include lg {
+                margin-top: 2.0rem;
+            }
+            
+            @include m3d {
+                margin-top: 0rem;
                 width: 100%;
+                margin-bottom: 80px;
             }
 
             .topBox {
+                // background-color: rgba(197, 127, 255, 0.422);
+
                 width: 100%;
-                height: 43%;
+                height: 72%;
                 display: flex;
-                @include m3d {
+                @include lg {
                     height: 100%;
+                }
+                @include m3d {
                     flex-direction: column;
                     align-items: center;
+                    width: 50%;
                 }
                 .iconBox {
                     background-color: #000;
                     width: 50%;
+                    height: 100%;
                     max-width: 295px;
                     max-height: 152px;
                     display: flex;
                     align-items: center;
+                    @include lg {
+                        width: 100%;
+                    }
                     img {
                         width: 50%;
                         max-width: 135px;
@@ -452,11 +479,20 @@
                 img {
                     object-fit: contain;
                     width: 50%;
-                    max-width: 368px;
-                    max-height: 131px;
+                    max-width: 357px;
+                    max-height: 151px;
+                    margin: auto 0;
+                    @include lg {
+                        width: 50%;
+                    }
+                    @include m3d {
+                        width: 100%;
+                    }
                 }
             }
             .rewardBtn {
+                // background-color: rgba(229, 255, 127, 0.422);
+
                 width: 100%;
                 height: 100%;
                 max-width: 627px;
@@ -469,6 +505,13 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                @include m3d {
+                    max-width: 288px;
+                    max-height: 65px;
+                    background-image: url("/img/20240403_joinAct/rewardBtn.png");
+                    width: 50%;
+                }
+
                 P {
                     padding: 0.9rem;
                     top: 3px;

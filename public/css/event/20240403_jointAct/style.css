@@ -485,7 +485,7 @@ body .wrap {
 @media all and (max-width: 800px) {
   .sec01 {
     background-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgb(0, 0, 0) 100%);
-    height: 2000px;
+    height: 2100px;
   }
 }
 .sec01 .sec01Title {
@@ -500,7 +500,6 @@ body .wrap {
 @media all and (max-width: 660px) {
   .sec01 .sec01Title {
     height: 6%;
-    transform: scale(0.9);
     background-size: cover;
     background-position: center;
   }
@@ -522,6 +521,11 @@ body .wrap {
   height: 30%;
   display: flex;
   justify-content: space-between;
+}
+@media all and (max-width: 960px) {
+  .sec01 .stepBox {
+    width: 100%;
+  }
 }
 @media all and (max-width: 800px) {
   .sec01 .stepBox {
@@ -569,12 +573,14 @@ body .wrap {
     font-size: 3.5rem;
   }
 }
-.sec01 .stepBox .stepBg .text, .sec01 .stepBox .stepBg p {
+.sec01 .stepBox .stepBg .text,
+.sec01 .stepBox .stepBg p {
   color: #fff;
   font-size: 1.5rem;
 }
 @media all and (max-width: 768px) {
-  .sec01 .stepBox .stepBg .text, .sec01 .stepBox .stepBg p {
+  .sec01 .stepBox .stepBg .text,
+  .sec01 .stepBox .stepBg p {
     font-size: 2rem;
   }
 }
@@ -757,6 +763,7 @@ body .wrap {
 @media all and (max-width: 960px) {
   .sec01 .rewardBox {
     flex-direction: column;
+    height: 45%;
   }
 }
 @media all and (max-width: 800px) {
@@ -765,16 +772,16 @@ body .wrap {
   }
 }
 .sec01 .rewardBox .rewardPC {
-  background-color: rgba(196, 134, 187, 0.422);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 58%;
   margin-right: 3%;
 }
 @media all and (max-width: 960px) {
   .sec01 .rewardBox .rewardPC {
     margin-right: 0;
+    margin-top: 2rem;
   }
 }
 @media all and (max-width: 800px) {
@@ -782,21 +789,24 @@ body .wrap {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 71%;
+    margin-bottom: 20px;
   }
 }
 .sec01 .rewardBox .rewardPC .left {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 50%;
   height: 100%;
   margin-right: 0.4rem;
 }
 .sec01 .rewardBox .rewardPC .left img {
   width: 100%;
-  max-width: 361px;
-  max-height: 145px;
+  max-width: 357px;
+  max-height: 151px;
+  margin: auto 0;
 }
 .sec01 .rewardBox .rewardPC .left select {
   font-size: 1.25rem;
@@ -808,7 +818,6 @@ body .wrap {
   border: 1px solid #4a4a4a;
   background-color: #4a4a4a;
   line-height: 1.25rem;
-  margin: 3.2rem 0 0 0;
   cursor: pointer;
 }
 .sec01 .rewardBox .rewardPC .right {
@@ -816,12 +825,17 @@ body .wrap {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox .rewardPC .right {
+    align-items: center;
+  }
 }
 .sec01 .rewardBox .rewardPC .right .iconBox {
   background-color: #000;
   width: 100%;
-  height: 50%;
+  height: 100%;
   max-width: 295px;
   max-height: 151px;
   display: flex;
@@ -871,37 +885,54 @@ body .wrap {
   color: #fff;
 }
 .sec01 .rewardBox .rewardM {
-  background-color: rgba(127, 255, 212, 0.422);
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  justify-content: space-between;
+  height: 58%;
+}
+@media all and (max-width: 960px) {
+  .sec01 .rewardBox .rewardM {
+    margin-top: 2rem;
+  }
 }
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardM {
+    margin-top: 0rem;
     width: 100%;
+    margin-bottom: 80px;
   }
 }
 .sec01 .rewardBox .rewardM .topBox {
   width: 100%;
-  height: 43%;
+  height: 72%;
   display: flex;
+}
+@media all and (max-width: 960px) {
+  .sec01 .rewardBox .rewardM .topBox {
+    height: 100%;
+  }
 }
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardM .topBox {
-    height: 100%;
     flex-direction: column;
     align-items: center;
+    width: 50%;
   }
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox {
   background-color: #000;
   width: 50%;
+  height: 100%;
   max-width: 295px;
   max-height: 152px;
   display: flex;
   align-items: center;
+}
+@media all and (max-width: 960px) {
+  .sec01 .rewardBox .rewardM .topBox .iconBox {
+    width: 100%;
+  }
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox img {
   width: 50%;
@@ -923,8 +954,19 @@ body .wrap {
   -o-object-fit: contain;
      object-fit: contain;
   width: 50%;
-  max-width: 368px;
-  max-height: 131px;
+  max-width: 357px;
+  max-height: 151px;
+  margin: auto 0;
+}
+@media all and (max-width: 960px) {
+  .sec01 .rewardBox .rewardM .topBox img {
+    width: 50%;
+  }
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox .rewardM .topBox img {
+    width: 100%;
+  }
 }
 .sec01 .rewardBox .rewardM .rewardBtn {
   width: 100%;
@@ -939,6 +981,14 @@ body .wrap {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox .rewardM .rewardBtn {
+    max-width: 288px;
+    max-height: 65px;
+    background-image: url("/img/20240403_joinAct/rewardBtn.png");
+    width: 50%;
+  }
 }
 .sec01 .rewardBox .rewardM .rewardBtn P {
   padding: 0.9rem;
@@ -987,4 +1037,91 @@ body .wrap {
 .sec02 .sec02Text img {
   width: 100%;
   height: 100%;
+}
+
+footer.section {
+  height: 100px;
+  width: 100%;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #000000;
+}
+@media all and (max-width: 768px) {
+  footer.section {
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    justify-content: flex-start;
+  }
+}
+footer.section .footerbox_logo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 1rem;
+}
+footer.section .footerbox_logo .logo_digeam {
+  margin-right: 1rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+footer.section .footerbox_logo .est_icon {
+  -o-object-fit: contain;
+     object-fit: contain;
+  pointer-events: none;
+  filter: invert(1);
+}
+footer.section .spec {
+  width: 25%;
+}
+@media all and (max-width: 768px) {
+  footer.section .spec {
+    width: 38%;
+  }
+}
+footer.section .spec a {
+  color: orange;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 5px 5px;
+}
+footer.section .spec a:hover {
+  color: #008612;
+}
+footer.section .spec .Copyright {
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.1rem;
+}
+footer.section .classlavel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer.section .classlavel img {
+  width: 12%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+footer.section .classlavel ul {
+  margin-left: 10px;
+}
+footer.section .classlavel li {
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.1rem;
+}
+footer.section .classlavel li:nth-child(4) {
+  color: orange;
+}
+@media all and (max-width: 960px) {
+  footer.section a.logo_rw,
+  footer.section .classlavel {
+    margin: 10px auto;
+  }
 }
