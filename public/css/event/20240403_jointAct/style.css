@@ -747,6 +747,7 @@ body .wrap {
   font-size: 1.12rem;
   margin: 0 0.3rem;
   color: #00b4ff;
+  cursor: pointer;
 }
 @media all and (max-width: 768px) {
   .sec01 .stepBox .stepBg .checkBox label span {
@@ -771,6 +772,7 @@ body .wrap {
 @media all and (max-width: 800px) {
   .sec01 .rewardBox {
     width: 100%;
+    margin-bottom: 6rem;
   }
 }
 .sec01 .rewardBox .rewardPC {
@@ -791,7 +793,7 @@ body .wrap {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 71%;
+    height: 75%;
     margin-bottom: 20px;
   }
 }
@@ -803,6 +805,12 @@ body .wrap {
   width: 50%;
   height: 100%;
   margin-right: 0.4rem;
+}
+@media all and (max-width: 800px) {
+  .sec01 .rewardBox .rewardPC .left {
+    width: 80%;
+    margin-right: 0rem;
+  }
 }
 .sec01 .rewardBox .rewardPC .left img {
   width: 100%;
@@ -846,7 +854,10 @@ body .wrap {
 }
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardPC .right {
+    width: 80%;
+    height: 87%;
     align-items: center;
+    margin-top: 1rem;
   }
 }
 .sec01 .rewardBox .rewardPC .right .iconBox {
@@ -917,8 +928,7 @@ body .wrap {
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardM {
     margin-top: 0rem;
-    width: 100%;
-    margin-bottom: 80px;
+    width: 80%;
   }
 }
 .sec01 .rewardBox .rewardM .topBox {
@@ -935,7 +945,7 @@ body .wrap {
   .sec01 .rewardBox .rewardM .topBox {
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 100%;
   }
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox {
@@ -1004,10 +1014,22 @@ body .wrap {
 }
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardM .rewardBtn {
+    max-width: 627px;
+    max-height: 65px;
+    background-image: url("/img/20240403_joinAct/serialNumBtn.png");
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+  }
+}
+@media all and (max-width: 768px) {
+  .sec01 .rewardBox .rewardM .rewardBtn {
     max-width: 288px;
     max-height: 65px;
     background-image: url("/img/20240403_joinAct/rewardBtn.png");
-    width: 50%;
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
   }
 }
 .sec01 .rewardBox .rewardM .rewardBtn P {
@@ -1027,11 +1049,41 @@ body .wrap {
   height: 985px;
   width: 100%;
 }
+@media all and (max-width: 1024px) {
+  .sec02 {
+    height: 730px;
+  }
+}
+@media all and (max-width: 960px) {
+  .sec02 {
+    height: 700px;
+  }
+}
 @media all and (max-width: 800px) {
   .sec02 {
     max-width: 900px;
     width: 100%;
-    height: 1600px;
+    height: 1417px;
+  }
+}
+@media all and (max-width: 660px) {
+  .sec02 {
+    height: 1170px;
+  }
+}
+@media all and (max-width: 576px) {
+  .sec02 {
+    height: 1021px;
+  }
+}
+@media all and (max-width: 425px) {
+  .sec02 {
+    height: 757px;
+  }
+}
+@media all and (max-width: 320px) {
+  .sec02 {
+    height: 600px;
   }
 }
 .sec02 .sec02Bg {
@@ -1051,6 +1103,16 @@ body .wrap {
     background-position: top;
   }
 }
+.sec02 .sec02Bg p {
+  font-family: "Noto Serif TC";
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to bottom, rgb(255, 255, 255) 40%, #484848);
+  background: -webkit-linear-gradient(to bottom, #fff 50%, #484848);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 .sec02 .sec02Title {
   width: 100%;
   height: 100%;
@@ -1059,12 +1121,34 @@ body .wrap {
   background-image: url("/img/20240403_joinAct/sec02Title.png");
   background-repeat: no-repeat;
   background-size: contain;
+  margin-top: 3%;
+  filter: drop-shadow(0px 0px 4px #000);
 }
 @media all and (max-width: 660px) {
   .sec02 .sec02Title {
-    height: 8%;
+    height: 10%;
     background-size: cover;
     background-position: center;
+  }
+}
+@media all and (max-width: 576px) {
+  .sec02 .sec02Title {
+    height: 13%;
+  }
+}
+@media all and (max-width: 425px) {
+  .sec02 .sec02Title {
+    height: 16%;
+  }
+}
+@media all and (max-width: 375px) {
+  .sec02 .sec02Title {
+    height: 17%;
+  }
+}
+@media all and (max-width: 320px) {
+  .sec02 .sec02Title {
+    height: 17%;
   }
 }
 .sec02 .sec02Text {
@@ -1191,6 +1275,16 @@ body .wrap {
   color: #fff;
   font-size: 1.3rem;
   line-height: 1.8rem;
+}
+.popBig .popBg .text ul li {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 2.5rem;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+.popBig .popBg .text ul li::marker {
+  color: #00b4ff;
 }
 .popBig .popBg .imgBox {
   margin-top: 3.5rem;
