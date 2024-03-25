@@ -2,13 +2,49 @@
 @import '../../base/rwd';
 @import '../../base/placeholder';
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap');
 
+@import 'animetion';
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #a0917e;
+}
+
+::-webkit-scrollbar-track {
+	background: #4a2208;
+}
+
+
+.wrap {
+	// width: 1920px;
+	font-size: 16px;
+
+	@include xl() {
+		font-size: 14px;
+	}
+
+	@include sm() {
+		font-size: 12px;
+	}
+}
 
 @import 'header';
 
 .main {
+	width: 100%;
 	max-width: 1920px;
 	background-image: url('/img/prereg/bg.jpg');
 }
 
 @import 'sec01';
+@import 'sec02';
+@import 'sec03';
+@import 'sec04';
+@import 'sec05';
+
+@import 'pop';
+@import 'aside';
