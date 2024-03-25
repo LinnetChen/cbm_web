@@ -107,7 +107,6 @@
             background-repeat: no-repeat;
         }
 
-        
         .title {
             font-family: "Noto Serif TC";
             font-size: 1.6rem;
@@ -116,10 +115,21 @@
             text-align: center;
             line-height: 2.8rem;
         }
-        .text{
+        .text {
             color: #fff;
             font-size: 1.3rem;
             line-height: 1.8rem;
+
+            ul li {
+                color: #fff;
+                font-size: 1.1rem;
+                line-height: 2.5rem;
+                list-style-type: decimal;
+                list-style-position: inside;
+                &::marker {
+                    color: #00b4ff;
+                }
+            }
         }
 
         .imgBox {
@@ -127,7 +137,7 @@
             position: relative;
             max-width: 170px;
         }
-        .rewardCbmImg{
+        .rewardCbmImg {
             max-width: 240px;
         }
         img {

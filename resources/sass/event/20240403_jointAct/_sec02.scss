@@ -6,14 +6,32 @@
     // max-height: 985px;
     width: 100%;
     // height:100%;
-
-    @include m3d{
+    
+    @include xl{
+        height: 730px;
+    }
+    @include lg{
+        height: 700px;
+    }
+    @include m3d {
         max-width: 900px;
         width: 100%;
-        height: 1600px;
+        height: 1417px;
     }
-    
-    .sec02Bg{
+    @include mmd{
+        height: 1170px;
+    }
+    @include sm{
+        height: 1021px;
+    }
+    @include x3s{
+        height: 757px;
+    }
+    @include xs{
+        height: 600px;
+    }
+
+    .sec02Bg {
         background-image: url("/img/20240403_joinAct/sec02BgPC2.png");
         background-repeat: no-repeat;
         background-position: center;
@@ -24,19 +42,27 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        @include m3d{
+
+        @include m3d {
             background-image: url("/img/20240403_joinAct/sec02BgM2.png");
             // background-position: 0 50px;
             background-position: top;
         }
-        
+
+        p {
+            font-family: "Noto Serif TC";
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to bottom, rgb(255, 255, 255) 40%, #484848);
+            background: -webkit-linear-gradient(to bottom, #fff 50%, #484848);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
     }
 
-
-    
-    
     .sec02Title {
+        // border: 1px solid rgb(255, 169, 169);
         width: 100%;
         height: 100%;
         max-width: 830px;
@@ -44,12 +70,24 @@
         background-image: url("/img/20240403_joinAct/sec02Title.png");
         background-repeat: no-repeat;
         background-size: contain;
-        // border: 1px solid rgb(255, 169, 169);
-        @include mmd{
-            height: 8%;
-            // transform:  scale(.9);
+        margin-top: 3%;
+        filter: drop-shadow( 0px 0px 4px #000  );
+        @include mmd {
+            height: 10%;
             background-size: cover;
             background-position: center;
+        }
+        @include sm{
+            height: 13%;
+        }
+        @include x3s{
+            height: 16%;
+        }
+        @include xxs{
+            height: 17%;
+        }
+        @include xs{
+            height: 17%;
         }
     }
     .sec02Text {

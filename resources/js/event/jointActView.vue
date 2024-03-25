@@ -7,7 +7,6 @@
                 <li class="menuListItem"><a href="#header">聯動活動​</a></li>
                 <li class="menuDeco">|</li>
                 <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
-                <!-- <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li> -->
             </ul>
         </div>
     </div>
@@ -23,7 +22,6 @@
         <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
         <li class="menuListItem"><a href="#header">聯動活動​</a></li>
         <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
-        <!-- <li class="menuListItem"><a href="">{{ screenWidth }}​</a></li> -->
     </ul>
 
     <!-- 大跳窗 -->
@@ -35,9 +33,11 @@
                 <div class="imgBox" v-if="key.includes('img')"
                     :class="{ 'rewardCbmImg': value.includes('rewardCbmImg1') }">
                     <img :src="value">
-                    <div class="t" v-if="value.includes('rewardCbmImg1')">1111</div>
+                    <div class="t" v-if="value.includes('rewardCbmImg1')"></div>
                 </div>
                 <div class="text" v-if="key.includes('text')">{{ value }}</div>
+                <div class="text" v-if="key.includes('Ul')" v-html="popBig.noticeValue.Ul">
+                </div>
             </div>
         </div>
         <div class="x" @click="popBVisable()"></div>
@@ -74,7 +74,8 @@
                 <div class="btnBoxPC" v-if="!device.isAndroid && !device.isiOS">
                     <a class="google" href="#" @click="saveBtnClick('Android')"><img
                             src="/img/20240403_joinAct/headerGoogle.png"></a>
-                    <a class="ios" href="" @click="saveBtnClick('iOS')"><img src="/img/20240403_joinAct/headerIos.png"></a>
+                    <a class="ios" href="#" @click="saveBtnClick('iOS')"><img
+                            src="/img/20240403_joinAct/headerIos.png"></a>
                 </div>
                 <div class="btnBoxM" v-if="device.isAndroid || device.isiOS">
                     <a class="google" v-if="device.isAndroid" href=""><img
@@ -113,9 +114,9 @@
                 <p class="stepTitle">STEP.2</p>
                 <p>立即預約</p>
                 <div class="storeBtnBox">
-                    <a class="google" @click="handleClick('google')"><img
+                    <a class="google" @click="saveBtnClick('Android')"><img
                             src="/img/20240403_joinAct/sec01Google.png"></a>
-                    <a class="ios" @click="handleClick('ios')"><img src="/img/20240403_joinAct/sec01Ios.png"></a>
+                    <a class="ios" @click="saveBtnClick('ios')"><img src="/img/20240403_joinAct/sec01Ios.png"></a>
                 </div>
             </div>
             <div class="stepBg">
@@ -133,11 +134,11 @@
                 <div class="checkBox">
                     <label for="privacy">
                         <input type="checkbox" name="privacy" value="privacy" v-model="checkList">
-                        我已閱讀並同意<span>隱私權政策</span></label>
+                        我已閱讀並同意<a href="https://www.digeam.com/terms2" target="_blank"><span>隱私權政策</span></a></label>
                     <br>
                     <label for="notice">
                         <input type="checkbox" name="notice" value="notice" v-model="checkList">
-                        我已閱讀並同意<span>注意事項</span></label>
+                        我已閱讀並同意<span @click="popBVisable('notice')">注意事項</span></label>
                 </div>
             </div>
         </div>
@@ -145,20 +146,22 @@
             <div class="rewardPC">
                 <div class="left">
                     <img src="/img/20240403_joinAct/rewardLogoCb.png" alt="">
-                    <!-- <select name="" id="" v-model="selected">
+                    <select name="" id="" v-model="selected" v-if=" user.serverCheck == null ">
                         <option value="" hidden selected disabled>請選擇領獎伺服器</option>
                         <option value="0">黑恆星</option>
                         <option value="1">冰珀星</option>
-                    </select> -->
-                    <div class="serverCheck">黑恆星</div>
+                    </select>
+                    <div class="serverCheck" v-if=" user.serverCheck == 0 ">黑恆星</div>
+                    <div class="serverCheck" v-if=" user.serverCheck == 1 ">冰珀星</div>
                 </div>
                 <div class="right">
                     <div class="iconBox">
                         <img src="/img/20240403_joinAct/rewardLightPC.png" @click="popBVisable('PC')">
                         <p>【坐騎外觀】<br>貴族小菲雞<br>的小雞​(30日)</p>
                     </div>
-                    <div class="rewardBtn" @click="rewardCb()">
-                        <p>立即領獎</p>
+                    <div class="rewardBtn" @click="reward('Cb')">
+                        <p v-if=" user.serverCheck == 0 || user.serverCheck == 1 ">領獎完畢</p>
+                        <p v-if=" user.serverCheck == null ">立即領獎</p>
                     </div>
                 </div>
             </div>
@@ -170,9 +173,10 @@
                         <p>黑色契約校服<br>​(30日)</p>
                     </div>
                 </div>
-                <div class="rewardBtn" @click="rewardCbm()">
+                <div class="rewardBtn" @click="reward('m')">
                     <!-- 立即預約 -->
-                    <p>{{ user.serialNum }}</p>
+                    <p v-if="user.serialNum !== null ">{{ user.serialNum }}</p>
+                    <p v-if="user.serialNum == null ">立即領獎</p>
                 </div>
             </div>
         </div>
@@ -180,6 +184,9 @@
     <div class="section sec02">
         <div class="sec02Bg">
             <div class="sec02Title"></div>
+            <!-- <p>更多聯動合作內容​</p>
+            <p>上市後請前往 《黑色契約Mobile》 與 《黑色契約Cabal Online》​</p>
+            <p>在涅瓦雷斯一探究竟！​</p> -->
             <!-- <div class="sec02Text"><img src="/img/20240403_joinAct/stayTuned.png" alt=""></div> -->
         </div>
     </div>
@@ -224,19 +231,14 @@ export default {
                 isiOS: null,
             },
             click: {
-                // Android:  this.getCookie('Android') ? JSON.parse(this.getCookie('Android')) : 0,
-                // iOS:  this.getCookie('iOS') ? JSON.parse(this.getCookie('iOS')) : 0,
-
                 Android: null,
                 iOS: null,
-
-                // Android: JSON.parse(localStorage.getItem('Android')) || 0,
-                // iOS: JSON.parse(localStorage.getItem('iOS')) || 0,
             },
             user: {
                 account: null,
                 // serialNum:null,
                 serialNum: 'XWE1234567891234',
+                serverCheck: null,
             },
             popBig: {
                 visable: false,
@@ -255,30 +257,56 @@ export default {
                     title: '【時裝箱】黑色契約校服(30日)',
                     text: '領取後可使用30天，包含1個空插槽，不可交易。​',
                 },
+                noticeValue:{
+                    title:'注意事項​',
+                    Ul: `
+                    <ul>
+                        <li>【上市聯動活動】自即日起至《黑色契約Mobile》事前預約結束止。</li>
+                        <li>每個掘夢網帳號僅能參加一次活動、領取一次獎勵。​</li>
+                        <li>必須完成活動指定條件才符合獲獎資格。​</li>
+                        <li>選擇《黑色契約Cabal Online》領獎伺服器，並點擊「立即領獎」後，將無法變更領獎伺服器，請多加注意。</li>
+                        <li>《黑色契約Cabal Online》獎勵領取後，將發送至該帳號「活動背包」內。 ​</li>
+                        <li>序號兌換：打開手遊/設定/資訊/登錄序號即可兌換。​</li>
+                        <li>如遇不可抗拒之因素，掘夢網保有隨時修改活動辦法及獎項或中止本活動之權利。​</li>
+                        <li>其他未規定事項，官方會依據狀況於遊戲網站或遊戲中公告或補充，參加者不得異議。</li>
+                        <li>掘夢網保留活動最終修改、解釋權利。</li>
+                    </ul>
+                    `,
+                }
             },
             popSmall: {
                 visable: false,
-                text: '請先登入',
+                text: '',
             },
-            selected: '',
+
+            // 隨著選項而改變
+            selected: null,
+
+            // 隱私權、注意事項點擊狀態
             checkList: [],
         }
     },
     computed: {
         items() {
             // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
-            return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.cbmValue;
+            // return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.cbmValue;
+            return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.useCbValue === 1 ? this.popBig.cbmValue : this.popBig.noticeValue;
         }
     },
     methods: {
 
         async getSetting() {
+            console.log(9999);
             try {
                 const response = await axios.post(api, {
                     type: "login",
                     user: this.user.account,
                 });
                 if (response.data.status == 1) {
+                    // 序號
+                    this.user.serialNum = response.data.serial_num;
+                    // 伺服器
+                    this.user.serverCheck = response.data.serve;
 
                 } else { console.error("Status is not 1:", response.data); }
             } catch (error) { console.error("Error:", error); }
@@ -290,15 +318,17 @@ export default {
             this.popSmall.visable = !this.popSmall.visable;
         },
         popBVisable(detection) {
-            this.popBig.visable = !this.popBig.visable;
             if (detection == 'PC') {
                 this.popBig.useCbValue = 0;
             } else if (detection == 'm') {
                 this.popBig.useCbValue = 1;
+            } else if (detection =='notice'){
+                this.popBig.useCbValue = 2;
+                console.log(11288);
             }
+            this.popBig.visable = !this.popBig.visable;
+
         },
-
-
 
 
         checkCookie(name) {
@@ -320,50 +350,82 @@ export default {
             this.menuM = !this.menuM;
         },
 
-        rewardCb() {
-            if (this.user.account !== null) {
-                if (this.selected == '0' || this.selected == '1') {
-                    this.popSVisable('領取成功')
-                }
-                else {
-                    this.popSVisable('請選擇領獎伺服器')
-                }
-            }
+        async rewardCb() {
+            if (this.user.selected !== null) {
+
+                try {
+                    const response = await axios.post(api, {
+                        type: "reward_cb",
+                        user: this.user.account,
+                        serve: this.selected,
+                    });
+
+                    if (response.data.status == 1) {
+                        this.popSVisable('領取成功');
+                        this.user.serialNum = response.data.serial_num;
+                    } else if (response.data.status == -99) {
+                        // 未有端遊角色
+                        this.popSVisable('請在黑色契約Online中<br>​創建至少一個角色<br><a href="#">​前往創建</a>​');
+                    } else if (response.data.status == -98) {
+                        console.error("Error:", error);
+                    }
+                    else { console.error("Status is not 1:", response.data); }
+
+                } catch (error) { console.error("Error:", error); }
+
+            } else { this.popSVisable('請選領獎伺服器​') }
+
         },
         async rewardCbm() {
+            try {
+                const response = await axios.post(api, {
+                    type: "reward_m",
+                    user: this.user.account,
+                });
+
+                if (response.data.status == 1) {
+                    this.popSVisable('領取成功');
+                    this.user.serialNum = response.data.serial_num;
+                } else {
+                    console.error("Status is not 1:", response.data);
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        },
+        reward(actType) {
             const privacy = this.checkList.includes('privacy')
             const notice = this.checkList.includes('notice')
 
-            if (this.user.account !== null) {
-                // 有登入 帳號
-                if (privacy && notice) {
-                    // 有同意隱私
-
-                    try {
-                        const response = await axios.post(api, {
-                            type: "reward_m",
-                            user: this.user.account,
-                        });
-
-                        if (response.data.status == 1) {
-                            this.popSVisable('領取成功');
-                            this.user.serialNum = response.data.serial_num;
-                        } else {
-                            console.error("Status is not 1:", response.data);
-                        }
-
-                    } catch (error) {
-                        console.error("Error:", error);
-                    }
-                } else {
-                    this.popSVisable('請閱讀並同意<br>​隱私權政策與注意事項​')
-                }
+            if (actType == 'm' && this.user.serialNum !== null) {
+                // CBM獎勵已經領取
+                return
             } else {
-                this.popSVisable('請登入<br>DiGeam掘夢網平台帳號​')
+                // 驗證step123
+                if (this.user.account !== null) {
+                    // 有登入 帳號
+
+                    if (this.click.Android || this.click.iOS) {
+
+                        if (privacy && notice) {
+                            // 有同意隱私
+
+                            if (actType == 'Cb') {
+                                this.rewardCb();
+                            } else
+                                if (actType == 'm') {
+                                    this.rewardCbm();
+                                }
+
+                        } else { this.popSVisable('請閱讀並同意<br>​隱私權政策與注意事項​') }
+
+                    } else { this.popSVisable('請點擊商店按紐<br>完成預約​​') }
+
+                } else { this.popSVisable('請登入<br>DiGeam掘夢網平台帳號​') }
             }
+
         },
-
-
 
         // 偵測 And / IOS
         deviceDetection() {
@@ -373,26 +435,15 @@ export default {
             this.device = { isAndroid, isiOS };
         },
 
-        handleClick(platform) {
-            // 将点击记录存储到 cookie 中，过期时间设置为永久，路径设置为根路径
-            this.setCookie(platform, '1', 365);
-            // 根据平台更新 Vue 实例中的数据
-            this[platform] = 1;
-            console.log(123);
-            console.log(this.click.Android);
-            console.log(this.click.iOS);
-        },
-
-
         // 點擊APP BTN紀錄 存取
         saveBtnClick(a) {
-            console.log(a);
-            console.log(123);
-            if (a == 'Android'){
+            if (a == 'Android') {
                 localStorage.setItem('Android', true);
+                this.click.Android = true;
             }
-            if (a == 'iOS'){
+            if (a == 'iOS') {
                 localStorage.setItem('iOS', true);
+                this.click.iOS = true;
             }
         },
 
@@ -400,34 +451,25 @@ export default {
     mounted() {
         // API位址
         var api = "";
+        this.getSetting();
 
         // 監聽瀏覽器縮放
         window.addEventListener('resize', this.updateScreenWidth);
 
         this.deviceDetection();
 
-        if (this.checkCookie('StrID')) {
-            this.user.account = this.checkCookie('StrID');
-        }
+        if (this.checkCookie('StrID')) { this.user.account = this.checkCookie('StrID'); }
 
-        console.log(this.click.Android);
-        console.log(this.click.iOS);
-        
-        const Android= localStorage.getItem('Android');
+        const Android = localStorage.getItem('Android');
         const iOS = localStorage.getItem('iOS');
 
-        if ( Android == undefined  ){
-            this.click.Android = null;
-        }else{
-            this.click.Android = true;
-        }
-        if ( iOS == undefined  ){
-            this.click.iOS = null;
-        }else{
-            this.click.iOS = true;
-        }
+        if (Android == undefined) { this.click.Android = null; }
+        else { this.click.Android = true; }
+        if (iOS == undefined) { this.click.iOS = null; }
+        else { this.click.iOS = true; }
 
     },
+
     beforeUnmount() {
         // 組件銷毀前移除事件監聽
         window.removeEventListener('resize', this.updateScreenWidth);
