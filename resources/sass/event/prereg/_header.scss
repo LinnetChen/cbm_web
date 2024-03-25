@@ -12,13 +12,20 @@ header {
 	}
 
 	.title {
-		width: 939px;
+		width: 100%;
+		max-width: 939px;
 		height: 212px;
 		@extend %bg-contain;
 		background-image: url('/img/prereg/headerTitle.png');
 		display: block;
 		margin: 0 auto;
 		z-index: 1;
+
+		@include md() {
+			max-width: 700px;
+			height: 245px;
+			background-image: url('/img/prereg/headerTitleM.png');
+		}
 	}
 
 	.typeBtn {
@@ -26,17 +33,58 @@ header {
 
 		a {
 			display: flex;
-			@extend %bg-contain;
-			@include size(227px, 66px);
-			margin: 0px 10px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 227px;
+			height: 66px;
+			margin: 0px 20px;
 			margin-top: 25px;
+			position: relative;
+
+			span {
+				float: left;
+				position: absolute;
+				top: 0;
+				left: 0;
+				margin-left: 0.02rem;
+				margin-top: 0.02rem;
+				border-radius: 10px;
+				display: inline;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+
+				.effect {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: -100%;
+					z-index: 2;
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(120deg, transparent, transparent, rgba(255, 255, 255, 0.4), transparent, transparent);
+					transition: all 650ms;
+					animation: bling 2s linear infinite;
+				}
+			}
 		}
+
+		@keyframes bling {
+			0% {
+				left: -100%;
+			}
+
+			100% {
+				left: 100%;
+			}
+		}
+
 
 		.google {
 			background-image: url('/img/prereg/Google.png');
 		}
 
-		.ios {
+		.appStore {
 			background-image: url('/img/prereg/ios.png');
 		}
 	}

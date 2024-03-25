@@ -1,0 +1,307 @@
+.sec03 {
+	@extend %f-c-c;
+	padding-top: 155px;
+
+	.sub03 {
+		max-width: 581px;
+		@include size(100%, 183px);
+		@extend %bg-contain;
+		background-size: 100%;
+		margin: 0px 10px;
+		background-image: url('/img/prereg/s3Title.png');
+		z-index: 2;
+	}
+
+	.sec03Wrap {
+		width: 100%;
+		height: 950px;
+		margin: 0 auto;
+		overflow: hidden;
+		display: flex;
+		@extend %f-c-c;
+		flex-wrap: wrap;
+		margin-top: -220px;
+
+		@include md() {
+			height: auto;
+			margin-top: -108px;
+		}
+
+		@include sm() {
+			margin-top: -15%;
+
+		}
+
+		.swiper_char {
+			width: 90%;
+			height: auto;
+
+			@include xxl() {
+				width: 100%;
+			}
+
+			.swiper-slide {
+				// margin-top: -90px;
+				@extend %f-r-c;
+
+			}
+		}
+
+		.charWrap {
+			width: 100%;
+			@extend %f-r-c;
+
+			@include md() {
+				flex-direction: column;
+			}
+
+			.char_box {
+				width: 60%;
+				@extend %bg-contain;
+				position: relative;
+				margin-right: -10%;
+
+				@include md() {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					width: 100%;
+					margin: 0 auto;
+					margin-right: 10%;
+				}
+
+				.charImg {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					z-index: 2;
+
+					@include sm() {
+						left: -190px;
+						width: 160%;
+					}
+
+					@include x3s() {
+						left: -146px;
+					}
+
+
+				}
+
+				.bgImg {
+					width: 100%;
+					mix-blend-mode: screen;
+					filter: drop-shadow(10px 100px 25px #000);
+
+					@include sm() {
+						width: 160%;
+					}
+				}
+			}
+
+			.char_info {
+				width: 40%;
+				margin-right: 10%;
+				z-index: 3;
+
+
+				@include md() {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					width: 100%;
+					margin-right: 0%;
+					margin-top: -10%;
+				}
+
+				@include sm() {
+					margin-top: -30%;
+				}
+
+				.info1 {
+					@extend %f-r-c;
+					justify-content: flex-start;
+
+					@include sm() {
+						justify-content: center;
+					}
+
+					.titleImg {
+						@include sm() {
+							width: 100%;
+						}
+					}
+
+					.linkImg {
+						margin-left: 2%;
+						cursor: pointer;
+						transition: all ease-in-out .5s;
+
+						&:hover {
+							box-shadow: 0px 0px 10px #fff;
+						}
+
+						@include sm() {
+							display: none;
+						}
+					}
+				}
+
+				.info2 {
+					margin: 3% 0;
+
+
+					@include sm() {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+
+					.videoBut {
+						width: 15%;
+						display: none;
+						margin-right: 5%;
+
+						@include sm() {
+							display: block;
+						}
+					}
+
+					p {
+						font-family: "Noto Serif TC", serif;
+						font-weight: 700;
+						font-style: normal;
+						color: #fff;
+						font-size: 1.7em;
+						line-height: 1.5em;
+						text-shadow: 0px 0px 18px #000, 0px 0px 84px #000, 0px 0px 47px #000;
+
+						@include sm() {
+							font-size: 1.4em;
+						}
+					}
+				}
+
+				.info3 {
+					padding-right: 15%;
+
+					p {
+						color: #fff;
+						font-size: 1.2em;
+						line-height: 1.4em;
+						text-shadow: 0px 0px 18px #000, 0px 0px 84px #000, 0px 0px 47px #000;
+
+						@include md() {
+							display: none;
+						}
+					}
+				}
+			}
+
+
+
+		}
+
+
+
+		.swiper_thumbs {
+			max-width: 1340px;
+			width: 100%;
+			position: relative;
+			overflow-x: hidden;
+			@extend %f-r-c;
+			margin-top: -130px;
+			z-index: 3;
+
+			@include md() {
+				margin-top: 0px;
+			}
+
+			@include sm() {}
+
+			.swiper_tab {
+				width: 70%;
+				margin: 0 auto;
+
+				@include md() {
+					width: 61%;
+				}
+
+				.swiper-slide-thumb-active {
+					img {
+						filter: drop-shadow(0px 0px 1px #fff);
+						opacity: 1 !important;
+					}
+				}
+
+				.swiper-slide-visible {
+					img {
+						opacity: .8;
+					}
+				}
+
+
+			}
+
+			.swiper_nav {
+				width: 85%;
+				position: absolute;
+				bottom: 60px;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+				@include md() {
+					width: 90%;
+				}
+
+				@include sm() {
+					width: 105%;
+				}
+
+
+				.swiper-button-prev {
+					max-width: 60px;
+					@include size(100%, 80px);
+					background-image: url('/img/prereg/carouselArrow.png');
+					@extend %bg-contain;
+
+					&::after {
+						content: '';
+					}
+
+					// @include sm() {
+					// 	display: none;
+					// }
+				}
+
+
+				.swiper-button-next {
+					max-width: 60px;
+					@include size(100%, 80px);
+					transform: scaleX(-1);
+					background-image: url('/img/prereg/carouselArrow.png');
+					@extend %bg-contain;
+
+					&::after {
+						content: '';
+					}
+
+					// @include sm() {
+					// 	display: none;
+					// }
+				}
+			}
+
+		}
+
+
+		.swiper-other {
+			@extend %f-r-c;
+		}
+
+
+
+	}
+}

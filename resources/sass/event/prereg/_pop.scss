@@ -1,0 +1,91 @@
+.mask {
+	@extend %mask;
+	background-color: rgba(27, 17, 5, 0.8);
+	cursor: pointer;
+}
+
+.videoBox {
+	@extend %mask;
+	z-index: 56;
+	background-color: rgba(255, 255, 255, .1);
+	cursor: pointer;
+}
+
+#player {
+	@extend %mask;
+	width: 50%;
+	height: 50%;
+	z-index: 57;
+
+
+	@include md() {
+		width: 90%;
+	}
+
+	@include sm() {
+		width: 95%;
+		height: 30%;
+	}
+}
+
+.pop {
+	@extend %mask;
+	max-width: 800px;
+	@include size(100%, 500px);
+	border: 5px solid #885f2e;
+	border-radius: 15px;
+	background-image: url('/img/prereg/popBg.png');
+	@extend %bg-cover;
+	z-index: 56;
+	padding: 25px;
+	@extend %f-c-c;
+
+	@include sm() {
+		height: 300px;
+	}
+
+	.popWrap {
+		@extend %f-c-c;
+
+		@include sm() {
+			height: 300px;
+			overflow-y: scroll;
+		}
+	}
+
+	.noticeTitle {
+		font-family: "Noto Serif TC", serif;
+		font-weight: 700;
+		font-size: 1.7em;
+		text-align: center;
+		color: #4d2300;
+	}
+
+	.notice {
+		list-style: decimal;
+		padding: 0 15px;
+		margin: 15px;
+		margin-top: 20px;
+		margin-left: 40px;
+
+		font-size: 1.2em;
+
+		li {
+			font-weight: bold;
+			margin: 10px 0;
+		}
+	}
+}
+
+.popClose {
+	position: absolute;
+	top: -10px;
+	right: 10px;
+	border: none;
+	background-color: transparent;
+	background-image: url('/img/prereg/popClose.png');
+	max-width: 54px;
+	cursor: pointer;
+	@include size(100%, 83px);
+	z-index: 2;
+}

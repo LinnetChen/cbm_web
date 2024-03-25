@@ -20744,9 +20744,309 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/modules'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/css'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/css/navigation'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/css/pagination'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/css/effect-fade'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+
+
+
+// let api = "/api/prereg";
+
+var api = "http://192.168.0.42:8081/api/prereg";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Swiper: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    SwiperSlide: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+  },
+  setup: function setup() {
+    var thumbsSwiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var setThumbsSwiper = function setThumbsSwiper(swiper) {
+      thumbsSwiper.value = swiper;
+    };
+    return {
+      thumbsSwiper: thumbsSwiper,
+      setThumbsSwiper: setThumbsSwiper,
+      modules: [Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/modules'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/modules'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/modules'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())]
+    };
+  },
   data: function data() {
-    return {};
+    return {
+      slick02Data: [{
+        img: "/img/prereg/s2Photo01.png",
+        imgM: "/img/prereg/s2Photo01_m.png",
+        title: "/img/prereg/s2TitleInner01.png",
+        titleAlt: "祂的存在",
+        content: "沒人知道祂誕生何處與來自哪裡。是生命？亦或是機械？甚至連是否真實存在，都不得而知。<br><br>祂的目的，是創造一個「更加完整」的世界。為此，祂挑選了能延續後代的「種族」，並觀察他們的文明發展，最後在做出評價後破壞殆盡。在這漫長的時間洪流中，祂就這樣不停地持續著。祂還將名為「絕對萬靈磁心」的工具交予祂選上的種族，以協助他們發展成更完整的文明。"
+      }, {
+        img: "/img/prereg/s2Photo02.png",
+        imgM: "/img/prereg/s2Photo02_m.png",
+        title: "/img/prereg/s2TitleInner02.png",
+        titleAlt: "絕對萬靈磁心 ",
+        content: "絕對萬靈磁心象徵著權能與力量。此外，它既是知識，也是各文明發展與滅亡的紀錄。<br><br>要使用絕對萬靈磁心需要擁有特殊的資格。依據資格的高低，能掌握的能力也有所不同。絕對萬靈磁心的外型長什麼樣子，以及是否擁有實體等，這些資訊都只有獲得絕對萬靈磁心的人才會知道。也有人認為，當絕對萬靈磁心遇上擁有資格的人，會被吸收至其遺傳基因中，並世世代代傳承。"
+      }, {
+        img: "/img/prereg/s2Photo03.png",
+        imgM: "/img/prereg/s2Photo03_m.png",
+        title: "/img/prereg/s2TitleInner03.png",
+        titleAlt: "原始時代，一個令人尊敬的時代",
+        content: "在這個時代，力量與核心科技的相關研究達到了頂峰。<br><br>對比過去紀錄全部遺失而不可考的「失落時代」，這個時代被評價為「值得為後世尊敬的時代」。就是在這個時期，出現了名為「白士德博士」的天才科學家。他完善了統一場理論，並將所有能量總結為「第5種力量」。他認為，只要妥善運用這種力量，人類的潛力就能得到無限的發展。"
+      }, {
+        img: "/img/prereg/s2Photo04.png",
+        imgM: "/img/prereg/s2Photo04_m.png",
+        title: "/img/prereg/s2TitleInner04.png",
+        titleAlt: "大破壞與聖．瓦倫丁",
+        content: "沒有人知道「大破壞」的起因是不是因為超能力的失衡，也沒有人知道這究竟是誰、又是怎麼造成的。<br><br>據傳當時天空與大地都竄出了人類未曾見過的魔物，同時世界各地出現海嘯、地震、火山爆發等一連串天災，人們卻無能為力。超能力者「聖．瓦倫丁」在此時挺身而出，表示大破壞是由一個名為「魔王」的存在帶來的，而他決定犧牲自己來封印魔王，同時在臨終之時，留下「魔王終將復活」的預言。"
+      }, {
+        img: "/img/prereg/s2Photo05.png",
+        imgM: "/img/prereg/s2Photo05_m.png",
+        title: "/img/prereg/s2TitleInner05.png",
+        titleAlt: "踏上道路的人們",
+        content: "聖．瓦倫丁在封印魔王並臨終之時，留下了一句警告。<br><br>他預言1000年後，當他力量耗盡時，魔王將會復活。賢者之塔的大賢者西里烏斯意識到預言的這天即將到來，於是在他的主導之下，大陸各地紛紛設立起特殊管理殖民地。這些特殊管理殖民地都位於氣候條件嚴苛的地方，並派遣了具有能力的官員與教官駐守。在修恩大陸的特殊管理殖民地呼嘯沙漠上，一位名為馬克的男子稱我是他一直在等待的「戰士之星」，並要我跟隨命運，踏上拯救世界的道路...... "
+      }],
+      slick03Data: [{
+        bgImg: "/img/prereg/WarriorBling1.png",
+        charImg: "/img/prereg/Warrior.png",
+        charName: "/img/prereg/WarriorText.png",
+        title: "/img/prereg/WarriorText.png",
+        weapon: "武器：巨劍、大刀",
+        sub: "超強的劍術，近戰中的支配者",
+        content: "狂劍士先天就具備強壯的體格，崇尚強大的力量而不是技巧與速度，鍛鍊目標是為了徹底掌控身體，因此不需要培養魔力的理解能力，每次攻擊都帶來極強的破壞力，讓敵人不得不退避三舍。",
+        linkImg: "/img/prereg/WarriorVideo.png",
+        link: "https://youtu.be/9nolxJjTmZQ"
+      }, {
+        bgImg: "/img/prereg/BladerBling.png",
+        charImg: "/img/prereg/Blader.png",
+        charName: "/img/prereg/BladerText.png",
+        title: "/img/prereg/BladerText.png",
+        weapon: "武器：單手刀、劍",
+        sub: "絢爛與速度相結合的刀術",
+        content: "雙劍士追求精湛的技巧與敏捷的速度，有著超乎常人的反應能力，利用極高的敏捷特性在戰場上迅速穿梭，極快的速度讓他們能夠產生分身幻象擾亂敵人視線，讓敵人難以抓住他的身影，創造絕佳的攻擊機會。",
+        linkImg: "/img/prereg/BladerVideo.png",
+        link: "https://youtu.be/5sYIlYpAQNU"
+      }, {
+        bgImg: "/img/prereg/ForceShielderBling.png",
+        charImg: "/img/prereg/ForceShielder.png",
+        charName: "/img/prereg/ForceShielderText.png",
+        title: "/img/prereg/ForceShielderText.png",
+        weapon: "武器：單手刀",
+        sub: "意志與信念並存的防禦者",
+        content: "盾劍士渴望極強的防禦能力，不滿足於穿戴防禦力較高的重型盔甲，他們嘗試將魔力運用在防禦上，讓武器轉變為星之盾，開創出新的魔力運用方式。成為擁有絕對防禦能力的戰士。",
+        linkImg: "/img/prereg/ForceShielderVideo.png",
+        link: "https://youtu.be/Gm1DfYKWVqU"
+      }, {
+        bgImg: "/img/prereg/ForceBladerBling.png",
+        charImg: "/img/prereg/ForceBlader.png",
+        charName: "/img/prereg/ForceBladerText.png",
+        title: "/img/prereg/ForceBladerText.png",
+        weapon: "武器：單手刀",
+        sub: "魔法與劍並存的暗殺者",
+        content: "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
+        linkImg: "/img/prereg/ForceBladerVideo.png",
+        link: "https://youtu.be/p7ucdOrt-4I"
+      }, {
+        bgImg: "/img/prereg/WizardBling.png",
+        charImg: "/img/prereg/Wizard.png",
+        charName: "/img/prereg/WizardText.png",
+        title: "/img/prereg/WizardText.png",
+        weapon: "武器：魔徽",
+        sub: "絕對的破壞力，魔法的支配者",
+        content: "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
+        linkImg: "/img/prereg/WizardVideo.png",
+        link: "https://youtu.be/czCbTzStADw"
+      }, {
+        bgImg: "/img/prereg/ForceArcherBling.png",
+        charImg: "/img/prereg/ForceArcher.png",
+        charName: "/img/prereg/ForceArcherText.png",
+        title: "/img/prereg/ForceArcherText.png",
+        weapon: "武器：星紋",
+        sub: "穿過暴風的致命一擊",
+        content: "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
+        linkImg: "/img/prereg/ForceArcherVideo.png",
+        link: "https://youtu.be/tyS3vfKZ39U"
+      }],
+      slick03tab: [{
+        img: "/img/prereg/s3Btn01Hover.png"
+      }, {
+        img: "/img/prereg/s3Btn02Hover.png"
+      }, {
+        img: "/img/prereg/s3Btn03Hover.png"
+      }, {
+        img: "/img/prereg/s3Btn04Hover.png"
+      }, {
+        img: "/img/prereg/s3Btn05Hover.png"
+      }, {
+        img: "/img/prereg/s3Btn06Hover.png"
+      }],
+      slick04Data: [{
+        img: "/img/prereg/s4Photo01.png"
+      }, {
+        img: "/img/prereg/s4Photo02.png"
+      }, {
+        img: "/img/prereg/s4Photo03.png"
+      }, {
+        img: "/img/prereg/s4Photo04.png"
+      }, {
+        img: "/img/prereg/s4Photo05.png"
+      }],
+      mask: false,
+      pop: false,
+      popS: false,
+      videOpen: false,
+      noticeOpen: false,
+      isAside: false,
+      isNavBarList: false,
+      src: "",
+      user: {
+        moblieArea: "",
+        moblieNum: "",
+        read: "",
+        device: ""
+      }
+    };
+  },
+  methods: {
+    videoId: function videoId(idx) {
+      this.mask = true;
+      this.videOpen = true;
+      var id = "";
+      switch (idx) {
+        case 0:
+          id = "9nolxJjTmZQ";
+          break;
+        case 1:
+          id = "5sYIlYpAQNU";
+          break;
+        case 2:
+          id = "Gm1DfYKWVqU";
+          break;
+        case 3:
+          id = "p7ucdOrt-4I";
+          break;
+        case 4:
+          id = "czCbTzStADw";
+          break;
+        case 5:
+          id = "tyS3vfKZ39U";
+          break;
+        default:
+          break;
+      }
+      this.src = "https://www.youtube.com/embed/" + id;
+    },
+    isMobileDevice: function isMobileDevice() {
+      var ua = navigator.userAgent;
+      var android = ua.indexOf("Android") > -1 || ua.indexOf("Adr") > -1; // android
+      var iOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); // ios
+      if (android == true) {
+        this.user.device = "android";
+      } else if (iOS == true) {
+        this.user.device = "iOS";
+      } else {
+        this.user.device = "PC";
+      }
+    },
+    resever: function resever() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var area, mobile, read, res;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              area = _this.user.moblieArea;
+              mobile = _this.user.moblieNum;
+              read = _this.user.read;
+              console.log(area, mobile, read);
+              return _context.abrupt("return");
+            case 11:
+              if (!(area == "+886" && mobile.length == 9 && !isNaN(mobile) && mobile.substring(0, 1) == 9)) {
+                _context.next = 14;
+                break;
+              }
+              _context.next = 23;
+              break;
+            case 14:
+              if (!(area == "+886" && mobile.length == 10 && !isNaN(mobile) && mobile.substring(0, 1) == 0)) {
+                _context.next = 18;
+                break;
+              }
+              _this.user.moblieNum = mobile.substring(1, 11);
+              _context.next = 23;
+              break;
+            case 18:
+              if (!((area == "+852" || area == "+853") && mobile.length == 8 && !isNaN(mobile))) {
+                _context.next = 21;
+                break;
+              }
+              _context.next = 23;
+              break;
+            case 21:
+              _this.popSmsg("reserve", -98);
+              return _context.abrupt("return");
+            case 23:
+              _this.pop.mask2 = true;
+              _context.prev = 24;
+              _context.next = 27;
+              return axios.post(api, {
+                type: "reserve",
+                user: _this.user.account,
+                phone: _this.user.moblieArea + _this.user.moblieNum
+              });
+            case 27:
+              res = _context.sent;
+              res.data.status == 1 ? _this.popSmsg("reserve", 1) : res.data.status == -99 ? _this.popSmsg("reserve", -99) : _this.popSmsg("reserve", -98);
+              res.data.status == 1 ? _this.getSetting() : "";
+              return _context.abrupt("return", res);
+            case 33:
+              _context.prev = 33;
+              _context.t0 = _context["catch"](24);
+              console.error(_context.t0);
+            case 36:
+              _context.prev = 36;
+              setTimeout(function () {
+                TheVue.pop.mask2 = false;
+              }, 2000);
+              return _context.finish(36);
+            case 39:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[24, 33, 36, 39]]);
+      }))();
+    },
+    popOpen: function popOpen() {
+      this.mask = true;
+      this.pop = true;
+    },
+    close: function close() {
+      this.mask = false;
+      this.videOpen = false;
+      this.pop = false;
+    },
+    closeVideo: function closeVideo() {
+      this.mask = false;
+      this.videOpen = false;
+    },
+    toggleAside: function toggleAside() {
+      this.isAside = !this.isAside;
+    },
+    toggleNavBarList: function toggleNavBarList() {
+      this.isNavBarList = !this.isNavBarList;
+    }
+  },
+  mounted: function mounted() {
+    this.isMobileDevice();
   }
 });
 
@@ -21131,10 +21431,470 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<header class=\"header\"><div class=\"menuBtn\"></div><div class=\"content\"><div class=\"title\"></div><div class=\"typeBtn\"><a href=\"\" class=\"google\" target=\"_blank\"></a><a href=\"\" class=\"ios\" target=\"_blank\"></a></div><div class=\"arrow\"></div></div></header><main class=\"main\"><section class=\"sec01\"><div class=\"sub01\"></div><div class=\"stepWrap\"><div class=\"left stepBox\"></div><div class=\"right stepBox\"></div></div></section></main>", 2);
-var _hoisted_3 = [_hoisted_1];
+var _hoisted_1 = {
+  "class": "wrap"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "popS"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre")], -1 /* HOISTED */);
+var _hoisted_3 = {
+  key: 1,
+  "class": "pop"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "popWrap"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "noticeTitle"
+}, "注意事項"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+  "class": "notice"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, " 事前預約時間為即日起至5月5日當天(GMT+8) 23:59:59截止。 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, " 本活動限定台灣、香港、澳門地區的玩家參與，一組手機號碼僅限參加一次事前預約，參加者請確保手機號碼填寫正確。參與預約活動即表示同意個人資料蒐集使用及接收簡訊。 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, " 預約活動獎勵將會於遊戲上線後一周內，以郵件方式送到玩家遊戲內信箱。 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, "本活動贈送的虛寶獎勵，無法折換現金或等值商品。"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, " 玩家如因個人因素造成線路不穩、異常而無法正常參加活動，將無法額外進行補發獎勵。 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, " 活動期間系統若發生問題，本公司保留變更或終止本活動時間、內容之權利。​ "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, " 官方將保留變更活動內容以及核准兌換與否之權利，詳細活動規則、獎勵及異動說明均以網站或FB公告最後一次公佈為準，請玩家密切留意網站公告訊息。活動開始後，所有玩家視同同意最後公告之內容。 ")])], -1 /* HOISTED */);
+var _hoisted_5 = ["src"];
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<header class=\"header\" id=\"header\"><div class=\"menuBtn\"></div><div class=\"content\"><div class=\"title\"></div><div class=\"typeBtn\"><a href=\"https://play.google.com/store/apps/details?id=com.estgames.cm.tw\" class=\"google\" target=\"_blank\"><span><i class=\"effect\"></i></span></a><a href=\"https://apps.apple.com/TW/app/id6476968999\" class=\"appStore\" target=\"_blank\"><span><i class=\"effect\"></i></span></a></div><div class=\"arrow\"></div></div></header>", 1);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"asideBox\"><div class=\"qrBox\"><p>掃描預約</p><img src=\"/img/prereg/qrcode.png\" alt=\"雙平台掃描預約\"></div><a href=\"https://play.google.com/store/apps/details?id=com.estgames.cm.tw\" class=\"google\" target=\"_blank\"><span><i class=\"effect\"></i></span></a><a href=\"https://apps.apple.com/TW/app/id6476968999\" class=\"appStore\" target=\"_blank\"><span><i class=\"effect\"></i></span></a><a href=\"https://www.facebook.com/DiGeamCabalM\" class=\"fb\"></a><a href=\"#header\" class=\"goTop\"></a></div>", 1);
+var _hoisted_8 = {
+  "class": "asideM"
+};
+var _hoisted_9 = {
+  "class": "asideMbox"
+};
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "#header",
+  "class": "goTop"
+}, null, -1 /* HOISTED */);
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "https://www.facebook.com/DiGeamCabalM",
+  target: "_blank",
+  "class": "fb"
+}, null, -1 /* HOISTED */);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "typeBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "https://play.google.com/store/apps/details?id=com.estgames.cm.tw",
+  target: "_blank",
+  rel: "noopener noreferrer",
+  "class": "google"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "https://apps.apple.com/TW/app/id6476968999",
+  target: "_blank",
+  rel: "noopener noreferrer",
+  "class": "appStore"
+})], -1 /* HOISTED */);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "char"
+}, null, -1 /* HOISTED */);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"###\" class=\"logo\"></a><div class=\"linkBox\"><a href=\"#header\">首頁</a><a href=\"#sec01\">事前預約</a><a href=\"#sec02\">世界觀背景</a><a href=\"#sec03\">職業介紹</a><a href=\"#sec04\">遊戲特色</a><a href=\"#sec05\"> 手遊X端遊<br> 聯動特別活動 </a></div>", 2);
+var _hoisted_16 = {
+  "class": "main"
+};
+var _hoisted_17 = {
+  "class": "sec01"
+};
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "sub01",
+  id: "sec01"
+}, null, -1 /* HOISTED */);
+var _hoisted_19 = {
+  "class": "stepWrap"
+};
+var _hoisted_20 = {
+  "class": "left stepBox"
+};
+var _hoisted_21 = {
+  "class": "stepBoxWrap"
+};
+var _hoisted_22 = {
+  action: "",
+  method: "post"
+};
+var _hoisted_23 = {
+  "class": "phoneBox"
+};
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  disabled: "",
+  value: ""
+}, "區碼", -1 /* HOISTED */);
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "+886"
+}, "台灣(+886)", -1 /* HOISTED */);
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "+852"
+}, "香港(+852)", -1 /* HOISTED */);
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "+853"
+}, "澳門(+853)", -1 /* HOISTED */);
+var _hoisted_28 = [_hoisted_24, _hoisted_25, _hoisted_26, _hoisted_27];
+var _hoisted_29 = {
+  "class": "checkBox"
+};
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "check"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("勾選即同意"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "​https://www.digeam.com/terms2",
+  target: "_blank"
+}, "事前預約相關隱私權條款")], -1 /* HOISTED */);
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "awardBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/prereg/giftPhone.png",
+  alt: ""
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/prereg/giftPhone.png",
+  alt: ""
+})], -1 /* HOISTED */);
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"right stepBox\"><div class=\"stepBox2 stepBoxS\"><div class=\"stepBoxWrap\"><div class=\"awardBox\"><img src=\"/img/prereg/step2Gift.png\" alt=\"\"></div><div class=\"typeBtn\"><a href=\"https://play.google.com/store/apps/details?id=com.estgames.cm.tw\" class=\"google\" target=\"_blank\"></a><a href=\"https://apps.apple.com/TW/app/id6476968999\" class=\"appStore\" target=\"_blank\"></a></div></div></div><div class=\"stepBox3 stepBoxS\"><div class=\"stepBoxWrap\"><div class=\"awardBox\"><img src=\"/img/prereg/step3Gift.png\" alt=\"\"></div><div class=\"typeBtn\"><div class=\"fb-page\" data-href=\"https://www.facebook.com/DiGeamCabalM\" data-tabs=\"timeline\" data-width=\"225\" data-height=\"75\" data-small-header=\"true\" data-adapt-container-width=\"false\" data-hide-cover=\"false\" data-show-facepile=\"false\"><blockquote cite=\"https://www.facebook.com/DiGeamCabalM\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/DiGeamCabalM\">黑色契約 Mobile</a></blockquote></div></div></div></div></div>", 1);
+var _hoisted_33 = {
+  "class": "sec02"
+};
+var _hoisted_34 = {
+  "class": "sec02Wrap"
+};
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "sub02",
+  id: "sec02"
+}, null, -1 /* HOISTED */);
+var _hoisted_36 = {
+  "class": "item"
+};
+var _hoisted_37 = ["src"];
+var _hoisted_38 = ["src"];
+var _hoisted_39 = {
+  "class": "item_box"
+};
+var _hoisted_40 = ["src"];
+var _hoisted_41 = ["innerHTML"];
+var _hoisted_42 = {
+  "class": "sec03"
+};
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "sub03",
+  id: "sec03"
+}, null, -1 /* HOISTED */);
+var _hoisted_44 = {
+  "class": "sec03Wrap"
+};
+var _hoisted_45 = {
+  "class": "charWrap"
+};
+var _hoisted_46 = {
+  "class": "char_box"
+};
+var _hoisted_47 = ["src"];
+var _hoisted_48 = ["src"];
+var _hoisted_49 = {
+  "class": "char_info"
+};
+var _hoisted_50 = {
+  "class": "info1"
+};
+var _hoisted_51 = ["src"];
+var _hoisted_52 = ["src", "onClick"];
+var _hoisted_53 = {
+  "class": "info2"
+};
+var _hoisted_54 = ["onClick"];
+var _hoisted_55 = {
+  "class": "infoBox"
+};
+var _hoisted_56 = {
+  "class": "info3"
+};
+var _hoisted_57 = {
+  "class": "swiper_thumbs"
+};
+var _hoisted_58 = ["src"];
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "swiper_nav"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "swiper-button-prev"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "swiper-button-next"
+})], -1 /* HOISTED */);
+var _hoisted_60 = {
+  "class": "sec04"
+};
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "sub04",
+  id: "sec04"
+}, null, -1 /* HOISTED */);
+var _hoisted_62 = {
+  "class": "sec04Wrap"
+};
+var _hoisted_63 = {
+  "class": "item"
+};
+var _hoisted_64 = ["src"];
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"sec05\"><div class=\"sub05\" id=\"sec05\"></div><div class=\"sec05Wrap\"><a href=\"https://cbo.digeam.com/jointAct\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"前往黑色契約手遊X端遊聯動頁\"><img src=\"/img/prereg/s5Photo.png\" alt=\"黑色契約與黑色契約M聯動確定\"></a><div class=\"contentBox\"><p> 坐著玩、站著玩、走著玩還是躺著好玩！​<br> 聯動端遊與手遊帳號，領取超稀有時裝和坐騎！​ </p></div></div></section>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [].concat(_hoisted_3));
+  var _component_swiper_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper-slide");
+  var _component_swiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [this.mask == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
+    "class": "mask",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.close();
+    })
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_2, this.pop == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "popClose",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.close();
+    })
+  }), _hoisted_4])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), this.videOpen == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 2,
+    "class": "videoBox",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.closeVideo();
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+    id: "player",
+    type: "text/html",
+    width: "600",
+    height: "360",
+    src: this.src,
+    frameborder: "0"
+  }, null, 8 /* PROPS */, _hoisted_5), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" > ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"fb-root\"></div> "), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["aside", {
+      active: _ctx.isAside
+    }])
+  }, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["asideBtn", {
+      active: _ctx.isAside
+    }]),
+    onClick: _cache[3] || (_cache[3] = function () {
+      return $options.toggleAside && $options.toggleAside.apply($options, arguments);
+    })
+  }, null, 2 /* CLASS */)], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "openList",
+    onClick: _cache[4] || (_cache[4] = function () {
+      return $options.toggleNavBarList && $options.toggleNavBarList.apply($options, arguments);
+    })
+  }), _hoisted_10, _hoisted_11]), _hoisted_12, _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "navListBtn",
+    onClick: _cache[5] || (_cache[5] = function () {
+      return $options.toggleNavBarList && $options.toggleNavBarList.apply($options, arguments);
+    })
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["navBarList", {
+      active: !_ctx.isNavBarList
+    }])
+  }, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "closeBtn",
+    onClick: _cache[6] || (_cache[6] = function () {
+      return $options.toggleNavBarList && $options.toggleNavBarList.apply($options, arguments);
+    })
+  })], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    name: "phone_area",
+    id: "phone_area",
+    value: "+886",
+    required: "",
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return _ctx.user.moblieArea = $event;
+    })
+  }, [].concat(_hoisted_28), 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.user.moblieArea]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "tel",
+    maxlength: "10",
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+      return _ctx.user.moblieNum = $event;
+    }),
+    placeholder: "912345678",
+    required: ""
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.user.moblieNum]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "checkbox",
+    name: "check",
+    id: "check",
+    "class": "cheack",
+    required: "",
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return _ctx.user.read = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.user.read]]), _hoisted_30]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "submitBtn",
+    type: "button",
+    onClick: _cache[10] || (_cache[10] = function ($event) {
+      return $options.resever();
+    }),
+    value: ""
+  })]), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "s1Notice",
+    onClick: _cache[11] || (_cache[11] = function ($event) {
+      return $options.popOpen();
+    })
+  })])]), _hoisted_32])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+    navigation: true,
+    pagination: {
+      clickable: true
+    },
+    centeredSlides: true,
+    swiperOptions: {
+      speed: 500,
+      autoplay: true
+    },
+    modules: $setup.modules
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.slick02Data, function (item, idx) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_swiper_slide, {
+          key: idx
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.img,
+              alt: "",
+              "class": "item_img"
+            }, null, 8 /* PROPS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.imgM,
+              alt: "",
+              "class": "item_img_m"
+            }, null, 8 /* PROPS */, _hoisted_38), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.title,
+              alt: "item.titleAlt",
+              "class": "item_title"
+            }, null, 8 /* PROPS */, _hoisted_40), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+              innerHTML: item.content,
+              "class": "item_content"
+            }, null, 8 /* PROPS */, _hoisted_41)])])];
+          }),
+          _: 2 /* DYNAMIC */
+        }, 1024 /* DYNAMIC_SLOTS */);
+      }), 128 /* KEYED_FRAGMENT */))];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["modules"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    thumbs: {
+      swiper: $setup.thumbsSwiper
+    },
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    swiperOptions: {
+      speed: 400,
+      autoplay: true
+    },
+    modules: $setup.modules,
+    loop: true,
+    "class": "swiper_char"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.slick03Data, function (item, idx) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_swiper_slide, {
+          key: idx
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.bgImg,
+              alt: "",
+              "class": "bgImg"
+            }, null, 8 /* PROPS */, _hoisted_47), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.charImg,
+              alt: "",
+              "class": "charImg"
+            }, null, 8 /* PROPS */, _hoisted_48)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.title,
+              alt: "",
+              "class": "titleImg"
+            }, null, 8 /* PROPS */, _hoisted_51), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.linkImg,
+              alt: "",
+              onClick: function onClick($event) {
+                return $options.videoId(idx);
+              },
+              "class": "linkImg"
+            }, null, 8 /* PROPS */, _hoisted_52)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: "/img/prereg/videoBut.png",
+              alt: "",
+              onClick: function onClick($event) {
+                return $options.videoId(idx);
+              },
+              "class": "videoBut"
+            }, null, 8 /* PROPS */, _hoisted_54), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.sub), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.weapon), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.content), 1 /* TEXT */)])])])];
+          }),
+          _: 2 /* DYNAMIC */
+        }, 1024 /* DYNAMIC_SLOTS */);
+      }), 128 /* KEYED_FRAGMENT */))];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["navigation", "thumbs", "modules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+    onSwiper: $setup.setThumbsSwiper,
+    spaceBetween: 20,
+    slidesPerView: 6,
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    loop: true,
+    breakpoints: {
+      '320': {
+        slidesPerView: 3,
+        spaceBetween: 20
+      },
+      '576': {
+        slidesPerView: 3,
+        spaceBetween: 10
+      },
+      '768': {
+        slidesPerView: 4,
+        spaceBetween: 0
+      },
+      '1024': {
+        slidesPerView: 5,
+        spaceBetween: 50
+      },
+      '1440': {
+        slidesPerView: 6,
+        spaceBetween: 50
+      }
+    },
+    watchSlidesProgress: true,
+    modules: $setup.modules,
+    "class": "swiper_tab"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.slick03tab, function (item, idx) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_swiper_slide, {
+          key: idx
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.img,
+              alt: "",
+              "class": "tab_img"
+            }, null, 8 /* PROPS */, _hoisted_58)];
+          }),
+          _: 2 /* DYNAMIC */
+        }, 1024 /* DYNAMIC_SLOTS */);
+      }), 128 /* KEYED_FRAGMENT */))];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["onSwiper", "modules"]), _hoisted_59])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_60, [_hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+    navigation: true,
+    pagination: {
+      clickable: true
+    },
+    centeredSlides: true,
+    swiperOptions: {
+      speed: 500,
+      autoplay: true
+    },
+    modules: $setup.modules
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.slick04Data, function (item, idx) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_swiper_slide, {
+          key: idx
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+              src: item.img,
+              alt: "",
+              "class": "item_img"
+            }, null, 8 /* PROPS */, _hoisted_64)])];
+          }),
+          _: 2 /* DYNAMIC */
+        }, 1024 /* DYNAMIC_SLOTS */);
+      }), 128 /* KEYED_FRAGMENT */))];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["modules"])])]), _hoisted_65])]);
 }
 
 /***/ }),
@@ -39177,9 +39937,9 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/event/prereg/style": 0,
 /******/ 			"css/app": 0,
-/******/ 			"css/event/20240403_jointAct/style": 0,
-/******/ 			"css/event/prereg/style": 0
+/******/ 			"css/event/20240403_jointAct/style": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -39229,10 +39989,10 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/event/20240403_jointAct/style","css/event/prereg/style"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/event/20240403_jointAct/style","css/event/prereg/style"], () => (__webpack_require__("./resources/sass/event/prereg/style.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/event/20240403_jointAct/style","css/event/prereg/style"], () => (__webpack_require__("./resources/sass/event/20240403_jointAct/style.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/event/20240403_jointAct/style","css/event/prereg/style"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/event/prereg/style","css/app","css/event/20240403_jointAct/style"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/event/prereg/style","css/app","css/event/20240403_jointAct/style"], () => (__webpack_require__("./resources/sass/event/prereg/style.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/event/prereg/style","css/app","css/event/20240403_jointAct/style"], () => (__webpack_require__("./resources/sass/event/20240403_jointAct/style.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/event/prereg/style","css/app","css/event/20240403_jointAct/style"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
