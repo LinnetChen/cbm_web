@@ -2,9 +2,11 @@
 @import '../../base/rwd';
 @import '../../base/placeholder';
 
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap');
 
 @import 'animetion';
+@import 'rwd';
 
 ::-webkit-scrollbar {
 	width: 5px;
@@ -20,16 +22,20 @@
 
 
 .wrap {
-	// width: 1920px;
+	max-width: 1920px;
+	margin: 0 auto;
 	font-size: 16px;
+
 
 	@include xl() {
 		font-size: 14px;
 	}
 
-	@include sm() {
+	@include x3s {
 		font-size: 12px;
 	}
+
+
 }
 
 @import 'header';
@@ -45,6 +51,8 @@
 @import 'sec03';
 @import 'sec04';
 @import 'sec05';
+
+@import 'footer';
 
 @import 'pop';
 @import 'aside';
