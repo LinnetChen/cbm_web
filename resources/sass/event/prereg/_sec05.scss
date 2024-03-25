@@ -1,0 +1,44 @@
+.sec05 {
+	@extend %f-c-c;
+	padding: 155px 0;
+
+	.sub05 {
+		max-width: 1092px;
+		@include size(100%, 183px);
+		@extend %bg-contain;
+		background-size: 100%;
+		margin: 0px 10px;
+		background-image: url('/img/prereg/s5Title.png');
+		z-index: 2;
+
+		@include sm() {
+			height: 90px;
+		}
+	}
+
+	.sec05Wrap {
+		width: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		display: flex;
+		@extend %f-c-c;
+		flex-wrap: wrap;
+		margin-top: 3px;
+		max-width: 1200px;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.contentBox {
+		text-align: center;
+		font-size: 1.5em;
+		line-height: 1.2em;
+
+		p {
+			font-weight: bold;
+			color: #fff;
+		}
+	}
+}

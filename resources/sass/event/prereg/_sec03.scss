@@ -12,34 +12,38 @@
 		z-index: 2;
 	}
 
-	.stepWrap {
+	.sec03Wrap {
 		width: 100%;
-		// height: 950px;
+		height: 950px;
 		margin: 0 auto;
 		overflow: hidden;
 		display: flex;
+		@extend %f-c-c;
 		flex-wrap: wrap;
-		margin-top: -86px;
+		margin-top: -220px;
 
-		@include sm() {
-			overflow: auto;
-			margin-top: 0px;
+		@include md() {
+			height: auto;
+			margin-top: -108px;
 		}
 
-		.swiper {
-			width: 70%;
+		@include sm() {
+			margin-top: -15%;
+
+		}
+
+		.swiper_char {
+			width: 90%;
+			height: auto;
 
 			@include xxl() {
 				width: 100%;
 			}
-		}
 
-		.swiper-slide {
-			margin-top: -90px;
-			@extend %f-r-c;
+			.swiper-slide {
+				// margin-top: -90px;
+				@extend %f-r-c;
 
-			@include sm() {
-				margin-top: 20px;
 			}
 		}
 
@@ -47,8 +51,7 @@
 			width: 100%;
 			@extend %f-r-c;
 
-
-			@include sm() {
+			@include md() {
 				flex-direction: column;
 			}
 
@@ -58,8 +61,13 @@
 				position: relative;
 				margin-right: -10%;
 
-				@include sm() {
+				@include md() {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
 					width: 100%;
+					margin: 0 auto;
 					margin-right: 10%;
 				}
 
@@ -71,11 +79,14 @@
 					z-index: 2;
 
 					@include sm() {
+						left: -190px;
 						width: 160%;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%, -76%);
 					}
+
+					@include x3s() {
+						left: -146px;
+					}
+
 
 				}
 
@@ -85,11 +96,7 @@
 					filter: drop-shadow(10px 100px 25px #000);
 
 					@include sm() {
-						position: absolute;
 						width: 160%;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%, -50%);
 					}
 				}
 			}
@@ -99,12 +106,18 @@
 				margin-right: 10%;
 				z-index: 3;
 
-				@include sm() {
+
+				@include md() {
 					display: flex;
 					flex-direction: column;
 					align-items: center;
-					width: 80%;
+					width: 100%;
 					margin-right: 0%;
+					margin-top: -10%;
+				}
+
+				@include sm() {
+					margin-top: -30%;
 				}
 
 				.info1 {
@@ -139,6 +152,23 @@
 				.info2 {
 					margin: 3% 0;
 
+
+					@include sm() {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+
+					.videoBut {
+						width: 15%;
+						display: none;
+						margin-right: 5%;
+
+						@include sm() {
+							display: block;
+						}
+					}
+
 					p {
 						font-family: "Noto Serif TC", serif;
 						font-weight: 700;
@@ -147,120 +177,130 @@
 						font-size: 1.7em;
 						line-height: 1.5em;
 						text-shadow: 0px 0px 18px #000, 0px 0px 84px #000, 0px 0px 47px #000;
+
+						@include sm() {
+							font-size: 1.4em;
+						}
 					}
 				}
 
 				.info3 {
+					padding-right: 15%;
+
 					p {
 						color: #fff;
 						font-size: 1.2em;
 						line-height: 1.4em;
 						text-shadow: 0px 0px 18px #000, 0px 0px 84px #000, 0px 0px 47px #000;
 
-						@include sm() {
+						@include md() {
 							display: none;
 						}
 					}
 				}
 			}
+
+
+
 		}
 
-		.swiperTab {
-			width: 40%;
-			border: 1px solid red;
 
-			.swiper-slide {
+
+		.swiper_thumbs {
+			max-width: 1340px;
+			width: 100%;
+			position: relative;
+			overflow-x: hidden;
+			@extend %f-r-c;
+			margin-top: -130px;
+			z-index: 3;
+
+			@include md() {
 				margin-top: 0px;
 			}
-		}
 
-		.swiper-other {
-			@extend %f-r-c;
-			width: 70%;
-			margin: 0 auto;
-			margin-top: -255px;
-			position: relative;
+			@include sm() {}
 
-			.swiper-pagination {
+			.swiper_tab {
+				width: 70%;
+				margin: 0 auto;
 
-				position: absolute;
-				top: -27px;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
+				@include md() {
+					width: 61%;
+				}
 
-			.swiper-pagination-bullet {
-				max-width: 139px;
-				@include size(100%, 127px);
-				@extend %bg-contain;
-				background-color: transparent;
-				opacity: .5;
-				background-image: url('/img/prereg/s3Btn01Hover.png');
-				transition: all .5s ease-in-out;
-				margin: 0 -10px !important;
-
-				&-active {
-					filter: brightness(1.1) drop-shadow(0px 0px 1px #fff);
-					animation: light 3s infinite;
-					opacity: 1;
-
-					@keyframes light {
-						0% {
-							filter: brightness(1) drop-shadow(0px 0px 0px #fff);
-						}
-
-						50% {
-							filter: brightness(1.1) drop-shadow(0px 0px 3px #fff);
-						}
-
-						100% {
-							filter: brightness(1) drop-shadow(0px 0px 0px #fff);
-						}
+				.swiper-slide-thumb-active {
+					img {
+						filter: drop-shadow(0px 0px 1px #fff);
+						opacity: 1 !important;
 					}
 				}
 
-				&:hover {
-					opacity: .8;
+				.swiper-slide-visible {
+					img {
+						opacity: .8;
+					}
 				}
+
+
 			}
 
-			@for $i from 1 through 6 {
-				.swiper-pagination-bullet:nth-child(#{$i}) {
-					background-image: url('/img/prereg/s3Btn0' + $i + 'Hover.png');
-				}
-			}
+			.swiper_nav {
+				width: 85%;
+				position: absolute;
+				bottom: 60px;
+				left: 50%;
+				transform: translate(-50%, -50%);
 
-			.swiper-button-prev {
-				max-width: 60px;
-				@include size(100%, 80px);
-				background-image: url('/img/prereg/carouselArrow.png');
-				@extend %bg-contain;
-
-				&::after {
-					content: '';
+				@include md() {
+					width: 90%;
 				}
 
 				@include sm() {
-					display: none;
+					width: 105%;
+				}
+
+
+				.swiper-button-prev {
+					max-width: 60px;
+					@include size(100%, 80px);
+					background-image: url('/img/prereg/carouselArrow.png');
+					@extend %bg-contain;
+
+					&::after {
+						content: '';
+					}
+
+					// @include sm() {
+					// 	display: none;
+					// }
+				}
+
+
+				.swiper-button-next {
+					max-width: 60px;
+					@include size(100%, 80px);
+					transform: scaleX(-1);
+					background-image: url('/img/prereg/carouselArrow.png');
+					@extend %bg-contain;
+
+					&::after {
+						content: '';
+					}
+
+					// @include sm() {
+					// 	display: none;
+					// }
 				}
 			}
 
-			.swiper-button-next {
-				max-width: 60px;
-				@include size(100%, 80px);
-				transform: scaleX(-1);
-				background-image: url('/img/prereg/carouselArrow.png');
-				@extend %bg-contain;
-
-				&::after {
-					content: '';
-				}
-
-				@include sm() {
-					display: none;
-				}
-			}
 		}
+
+
+		.swiper-other {
+			@extend %f-r-c;
+		}
+
 
 
 	}

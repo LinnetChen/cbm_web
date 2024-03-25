@@ -1,10 +1,38 @@
-<!-- <script setup>
-
-</script> -->
-
 <template>
     <div class="wrap">
-        <div class="mask" v-if="this.mask == true"></div>
+        <div class="mask" v-if="this.mask == true" @click="close()"></div>
+
+        <div class="popS">
+            <pre></pre>
+        </div>
+
+        <div class="pop" v-if="this.pop == true">
+            <button class="popClose" @click="close()"></button>
+            <div class="popWrap">
+                <div class="noticeTitle">注意事項</div>
+                <ul class="notice">
+                    <li>
+                        事前預約時間為即日起至5月5日當天(GMT+8) 23:59:59截止。
+                    </li>
+                    <li>
+                        本活動限定台灣、香港、澳門地區的玩家參與，一組手機號碼僅限參加一次事前預約，參加者請確保手機號碼填寫正確。參與預約活動即表示同意個人資料蒐集使用及接收簡訊。
+                    </li>
+                    <li>
+                        預約活動獎勵將會於遊戲上線後一周內，以郵件方式送到玩家遊戲內信箱。
+                    </li>
+                    <li>本活動贈送的虛寶獎勵，無法折換現金或等值商品。</li>
+                    <li>
+                        玩家如因個人因素造成線路不穩、異常而無法正常參加活動，將無法額外進行補發獎勵。
+                    </li>
+                    <li>
+                        活動期間系統若發生問題，本公司保留變更或終止本活動時間、內容之權利。​
+                    </li>
+                    <li>
+                        官方將保留變更活動內容以及核准兌換與否之權利，詳細活動規則、獎勵及異動說明均以網站或FB公告最後一次公佈為準，請玩家密切留意網站公告訊息。活動開始後，所有玩家視同同意最後公告之內容。
+                    </li>
+                </ul>
+            </div>
+        </div>
 
         <div
             class="videoBox"
@@ -14,31 +42,117 @@
             <iframe
                 id="player"
                 type="text/html"
-                width="640"
-                height="390"
-                src="https://www.youtube.com/embed/5glPHD3Dsoo"
+                width="600"
+                height="360"
+                :src="this.src"
                 frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
             ></iframe>
+            >
         </div>
 
         <!-- <div id="fb-root"></div> -->
-        <header class="header">
+        <header class="header" id="header">
             <div class="menuBtn"></div>
             <div class="content">
                 <div class="title"></div>
                 <div class="typeBtn">
-                    <a href="" class="google" target="_blank"></a>
-                    <a href="" class="ios" target="_blank"></a>
+                    <a
+                        href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw"
+                        class="google"
+                        target="_blank"
+                    >
+                        <span><i class="effect"></i></span>
+                    </a>
+                    <a
+                        href="https://apps.apple.com/TW/app/id6476968999"
+                        class="appStore"
+                        target="_blank"
+                    >
+                        <span><i class="effect"></i></span>
+                    </a>
                 </div>
                 <div class="arrow"></div>
             </div>
         </header>
 
+        <aside class="aside" :class="{ active: isAside }">
+            <div class="asideBox">
+                <div class="qrBox">
+                    <p>掃描預約</p>
+                    <img src="/img/prereg/qrcode.png" alt="雙平台掃描預約" />
+                </div>
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw"
+                    class="google"
+                    target="_blank"
+                >
+                    <span><i class="effect"></i></span>
+                </a>
+                <a
+                    href="https://apps.apple.com/TW/app/id6476968999"
+                    class="appStore"
+                    target="_blank"
+                >
+                    <span><i class="effect"></i></span>
+                </a>
+                <a href="https://www.facebook.com/DiGeamCabalM" class="fb"></a>
+                <a href="#header" class="goTop"></a>
+            </div>
+            <button
+                class="asideBtn"
+                :class="{ active: isAside }"
+                @click="toggleAside"
+            ></button>
+        </aside>
+
+        <div class="asideM">
+            <div class="asideMbox">
+                <button class="openList" @click="toggleNavBarList"></button>
+                <a href="#header" class="goTop"></a>
+                <a
+                    href="https://www.facebook.com/DiGeamCabalM"
+                    target="_blank"
+                    class="fb"
+                ></a>
+            </div>
+            <div class="typeBox">
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="google"
+                ></a>
+                <a
+                    href="https://apps.apple.com/TW/app/id6476968999"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="appStore"
+                ></a>
+            </div>
+            <div class="char"></div>
+        </div>
+
+        <button class="navListBtn" @click="toggleNavBarList"></button>
+
+        <div class="navBarList" :class="{ active: !isNavBarList }">
+            <a href="###" class="logo"></a>
+            <div class="linkBox">
+                <a href="#header">首頁</a>
+                <a href="#sec01">事前預約</a>
+                <a href="#sec02">世界觀背景</a>
+                <a href="#sec03">職業介紹</a>
+                <a href="#sec04">遊戲特色</a>
+                <a href="#sec05">
+                    手遊X端遊<br />
+                    聯動特別活動
+                </a>
+            </div>
+            <button class="closeBtn" @click="toggleNavBarList"></button>
+        </div>
+
         <main class="main">
             <section class="sec01">
-                <div class="sub01"></div>
+                <div class="sub01" id="sec01"></div>
                 <div class="stepWrap">
                     <div class="left stepBox">
                         <div class="stepBoxWrap">
@@ -47,14 +161,24 @@
                                     <select
                                         name="phone_area"
                                         id="phone_area"
+                                        value="+886"
                                         required
+                                        v-model="user.moblieArea"
                                     >
+                                        <option disabled value="">區碼</option>
                                         <option value="+886">台灣(+886)</option>
                                         <option value="+852">香港(+852)</option>
                                         <option value="+853">澳門(+853)</option>
                                     </select>
-                                    <input type="tel" maxlength="10" required />
+                                    <input
+                                        type="tel"
+                                        maxlength="10"
+                                        v-model="user.moblieNum"
+                                        placeholder="912345678"
+                                        required
+                                    />
                                 </div>
+
                                 <div class="checkBox">
                                     <input
                                         type="checkbox"
@@ -62,16 +186,20 @@
                                         id="check"
                                         class="cheack"
                                         required
+                                        v-model="user.read"
                                     />
                                     <label for="check"
-                                        >勾選即同意<a href="http://"
+                                        >勾選即同意<a
+                                            href="​https://www.digeam.com/terms2"
+                                            target="_blank"
                                             >事前預約相關隱私權條款</a
                                         ></label
                                     >
                                 </div>
                                 <input
                                     class="submitBtn"
-                                    type="submit"
+                                    type="button"
+                                    @click="resever()"
                                     value=""
                                 />
                             </form>
@@ -79,7 +207,10 @@
                                 <img src="/img/prereg/giftPhone.png" alt="" />
                                 <img src="/img/prereg/giftPhone.png" alt="" />
                             </div>
-                            <button class="s1Notice"></button>
+                            <button
+                                class="s1Notice"
+                                @click="popOpen()"
+                            ></button>
                         </div>
                     </div>
                     <div class="right stepBox">
@@ -87,17 +218,21 @@
                             <div class="stepBoxWrap">
                                 <div class="awardBox">
                                     <img
-                                        src="/img/prereg/giftPhone2.png"
+                                        src="/img/prereg/step2Gift.png"
                                         alt=""
                                     />
                                 </div>
                                 <div class="typeBtn">
                                     <a
-                                        href=""
+                                        href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw"
                                         class="google"
                                         target="_blank"
                                     ></a>
-                                    <a href="" class="ios" target="_blank"></a>
+                                    <a
+                                        href="https://apps.apple.com/TW/app/id6476968999"
+                                        class="appStore"
+                                        target="_blank"
+                                    ></a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +241,7 @@
                             <div class="stepBoxWrap">
                                 <div class="awardBox">
                                     <img
-                                        src="/img/prereg/giftPhone2.png"
+                                        src="/img/prereg/step3Gift.png"
                                         alt=""
                                     />
                                 </div>
@@ -140,7 +275,7 @@
             </section>
             <section class="sec02">
                 <div class="sec02Wrap">
-                    <div class="sub02"></div>
+                    <div class="sub02" id="sec02"></div>
                     <swiper
                         :navigation="true"
                         :pagination="{ clickable: true }"
@@ -149,11 +284,16 @@
                         :modules="modules"
                     >
                         <swiper-slide
-                            v-for="item in slick02Data"
-                            :key="slick02Data.id"
+                            v-for="(item, idx) in slick02Data"
+                            :key="idx"
                         >
                             <div class="item">
                                 <img :src="item.img" alt="" class="item_img" />
+                                <img
+                                    :src="item.imgM"
+                                    alt=""
+                                    class="item_img_m"
+                                />
                                 <div class="item_box">
                                     <img
                                         :src="item.title"
@@ -171,20 +311,20 @@
                 </div>
             </section>
             <section class="sec03">
-                <div class="sub03"></div>
-                <!-- <div class="stepWrap">
+                <div class="sub03" id="sec03"></div>
+                <div class="sec03Wrap">
                     <swiper
                         :navigation="{
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
                         }"
-                        :pagination="{
-                            clickable: true,
-                            el: '.swiper-pagination',
-                        }"
+                        :thumbs="{ swiper: thumbsSwiper }"
                         :centeredSlides="true"
+                        :centeredSlidesBounds="true"
                         :swiperOptions="{ speed: 400, autoplay: true }"
                         :modules="modules"
+                        :loop="true"
+                        class="swiper_char"
                     >
                         <swiper-slide
                             v-for="(item, idx) in slick03Data"
@@ -213,13 +353,21 @@
                                         <img
                                             :src="item.linkImg"
                                             alt=""
-                                            @click="onYouTubeIframeAPIReady()"
+                                            @click="videoId(idx)"
                                             class="linkImg"
                                         />
                                     </div>
                                     <div class="info2">
-                                        <p>{{ item.sub }}</p>
-                                        <p>{{ item.weapon }}</p>
+                                        <img
+                                            src="/img/prereg/videoBut.png"
+                                            alt=""
+                                            @click="videoId(idx)"
+                                            class="videoBut"
+                                        />
+                                        <div class="infoBox">
+                                            <p>{{ item.sub }}</p>
+                                            <p>{{ item.weapon }}</p>
+                                        </div>
                                     </div>
                                     <div class="info3">
                                         <p>{{ item.content }}</p>
@@ -227,87 +375,95 @@
                                 </div>
                             </div>
                         </swiper-slide>
-                        <div class="swiper-other">
+                    </swiper>
+                    <div class="swiper_thumbs">
+                        <swiper
+                            @swiper="setThumbsSwiper"
+                            :spaceBetween="20"
+                            :slidesPerView="6"
+                            :centeredSlides="true"
+                            :centeredSlidesBounds="true"
+                            :loop="true"
+                            :breakpoints="{
+                                '320': {
+                                    slidesPerView: 3,
+                                    spaceBetween: 20,
+                                },
+                                '576': {
+                                    slidesPerView: 3,
+                                    spaceBetween: 10,
+                                },
+                                '768': {
+                                    slidesPerView: 4,
+                                    spaceBetween: 0,
+                                },
+                                '1024': {
+                                    slidesPerView: 5,
+                                    spaceBetween: 50,
+                                },
+                                '1440': {
+                                    slidesPerView: 6,
+                                    spaceBetween: 50,
+                                },
+                            }"
+                            :watchSlidesProgress="true"
+                            :modules="modules"
+                            class="swiper_tab"
+                        >
+                            <swiper-slide
+                                v-for="(item, idx) in slick03tab"
+                                :key="idx"
+                                ><img :src="item.img" alt="" class="tab_img"
+                            /></swiper-slide>
+                        </swiper>
+                        <div class="swiper_nav">
                             <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
                             <div class="swiper-button-next"></div>
                         </div>
-                    </swiper>
-                </div> -->
-                <div class="stepWrap">
+                    </div>
+                </div>
+            </section>
+            <section class="sec04">
+                <div class="sub04" id="sec04"></div>
+                <div class="sec04Wrap">
                     <swiper
-                        class="swiperFrist"
-                        :onSwiper="onSwiperFirst"
-                        @slideChange="onSlideChange"
+                        :navigation="true"
+                        :pagination="{ clickable: true }"
                         :centeredSlides="true"
-                        :swiperOptions="{ speed: 400, autoplay: true }"
+                        :swiperOptions="{ speed: 500, autoplay: true }"
                         :modules="modules"
                     >
                         <swiper-slide
-                            v-for="(item, idx) in slick03Data"
+                            v-for="(item, idx) in slick04Data"
                             :key="idx"
                         >
-                            <div class="charWrap">
-                                <div class="char_box">
-                                    <img
-                                        :src="item.bgImg"
-                                        alt=""
-                                        class="bgImg"
-                                    />
-                                    <img
-                                        :src="item.charImg"
-                                        alt=""
-                                        class="charImg"
-                                    />
-                                </div>
-                                <div class="char_info">
-                                    <div class="info1">
-                                        <img
-                                            :src="item.title"
-                                            alt=""
-                                            class="titleImg"
-                                        />
-                                        <img
-                                            :src="item.linkImg"
-                                            alt=""
-                                            @click="onYouTubeIframeAPIReady()"
-                                            class="linkImg"
-                                        />
-                                    </div>
-                                    <div class="info2">
-                                        <p>{{ item.sub }}</p>
-                                        <p>{{ item.weapon }}</p>
-                                    </div>
-                                    <div class="info3">
-                                        <p>{{ item.content }}</p>
-                                    </div>
-                                </div>
+                            <div class="item">
+                                <img :src="item.img" alt="" class="item_img" />
                             </div>
                         </swiper-slide>
-                        <!-- <div class="swiper-other">
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                            <div class="swiper-button-next"></div>
-                        </div> -->
                     </swiper>
-                    <swiper
-                        class="swiperTab"
-                        :onSwiper="onSwiperSecond"
-                        @slideChange="onSlideChange"
-                        :navigation="true"
-                        :centeredSlides="true"
-                        :swiperOptions="{ speed: 400, autoplay: true }"
-                        :modules="modules"
-                        :slides-per-view="6"
-                        :space-between="50"
+                </div>
+            </section>
+            <section class="sec05">
+                <div class="sub05" id="sec05"></div>
+                <div class="sec05Wrap">
+                    <a
+                        href="https://cbo.digeam.com/jointAct"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="前往黑色契約手遊X端遊聯動頁"
                     >
-                        <swiper-slide
-                            v-for="(item, idx) in slick03Tab"
-                            :key="idx"
-                        >
-                            <img :src="item.img" alt="" />
-                        </swiper-slide>
-                    </swiper>
+                        <img
+                            src="/img/prereg/s5Photo.png"
+                            alt="黑色契約與黑色契約M聯動確定"
+                        />
+                    </a>
+                    <div class="contentBox">
+                        <p>
+                            坐著玩、站著玩、走著玩還是躺著好玩！​<br />
+                            聯動端遊與手遊帳號，領取超稀有時裝和坐騎！​
+                        </p>
+                    </div>
                 </div>
             </section>
         </main>
@@ -317,25 +473,39 @@
 <script>
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-const firstSwiper = ref(null);
-const secondSwiper = ref(null);
+// let api = "/api/prereg";
+
+let api = "http://192.168.0.42:8081/api/prereg";
+
 export default {
     components: {
         Swiper,
         SwiperSlide,
     },
+    setup() {
+        const thumbsSwiper = ref(null);
+        const setThumbsSwiper = (swiper) => {
+            thumbsSwiper.value = swiper;
+        };
+
+        return {
+            thumbsSwiper,
+            setThumbsSwiper,
+            modules: [Navigation, Pagination, Thumbs],
+        };
+    },
     data: function () {
         return {
-            modules: [Navigation, Pagination],
             slick02Data: [
                 {
                     img: "/img/prereg/s2Photo01.png",
+                    imgM: "/img/prereg/s2Photo01_m.png",
                     title: "/img/prereg/s2TitleInner01.png",
                     titleAlt: "祂的存在",
                     content:
@@ -343,6 +513,7 @@ export default {
                 },
                 {
                     img: "/img/prereg/s2Photo02.png",
+                    imgM: "/img/prereg/s2Photo02_m.png",
                     title: "/img/prereg/s2TitleInner02.png",
                     titleAlt: "絕對萬靈磁心 ",
                     content:
@@ -350,6 +521,7 @@ export default {
                 },
                 {
                     img: "/img/prereg/s2Photo03.png",
+                    imgM: "/img/prereg/s2Photo03_m.png",
                     title: "/img/prereg/s2TitleInner03.png",
                     titleAlt: "原始時代，一個令人尊敬的時代",
                     content:
@@ -357,6 +529,7 @@ export default {
                 },
                 {
                     img: "/img/prereg/s2Photo04.png",
+                    imgM: "/img/prereg/s2Photo04_m.png",
                     title: "/img/prereg/s2TitleInner04.png",
                     titleAlt: "大破壞與聖．瓦倫丁",
                     content:
@@ -364,6 +537,7 @@ export default {
                 },
                 {
                     img: "/img/prereg/s2Photo05.png",
+                    imgM: "/img/prereg/s2Photo05_m.png",
                     title: "/img/prereg/s2TitleInner05.png",
                     titleAlt: "踏上道路的人們",
                     content:
@@ -444,7 +618,7 @@ export default {
                     link: "https://youtu.be/tyS3vfKZ39U",
                 },
             ],
-            slick03Tab: [
+            slick03tab: [
                 {
                     img: "/img/prereg/s3Btn01Hover.png",
                 },
@@ -464,61 +638,158 @@ export default {
                     img: "/img/prereg/s3Btn06Hover.png",
                 },
             ],
+            slick04Data: [
+                {
+                    img: "/img/prereg/s4Photo01.png",
+                },
+                {
+                    img: "/img/prereg/s4Photo02.png",
+                },
+                {
+                    img: "/img/prereg/s4Photo03.png",
+                },
+                {
+                    img: "/img/prereg/s4Photo04.png",
+                },
+                {
+                    img: "/img/prereg/s4Photo05.png",
+                },
+            ],
             mask: false,
+            pop: false,
+            popS: false,
             videOpen: false,
-            src: "https://www.youtube.com/watch?v=bHQqvYy5KYo",
+            noticeOpen: false,
+            isAside: false,
+            isNavBarList: false,
+            src: "",
+            user: {
+                moblieArea: "",
+                moblieNum: "",
+                read: "",
+                device: "",
+            },
         };
     },
     methods: {
-        onYouTubeIframeAPIReady() {
+        videoId(idx) {
             this.mask = true;
             this.videOpen = true;
-            var player;
-            var player = new YT.Player("player", {
-                height: "390",
-                width: "640",
-                videoId: "M7lc1UVf-VE",
-                playerVars: {
-                    playsinline: 1,
-                },
-                events: {
-                    onReady: this.onPlayerReady,
-                    onStateChange: this.onPlayerStateChange,
-                },
-            });
-        },
-        onPlayerReady(event) {
-            event.target.playVideo();
-        },
-        onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
-                setTimeout(stopVideo, 6000);
-                done = true;
+            let id = "";
+            switch (idx) {
+                case 0:
+                    id = "9nolxJjTmZQ";
+                    break;
+                case 1:
+                    id = "5sYIlYpAQNU";
+                    break;
+                case 2:
+                    id = "Gm1DfYKWVqU";
+                    break;
+                case 3:
+                    id = "p7ucdOrt-4I";
+                    break;
+                case 4:
+                    id = "czCbTzStADw";
+                    break;
+                case 5:
+                    id = "tyS3vfKZ39U";
+                    break;
+                default:
+                    break;
             }
+            this.src = "https://www.youtube.com/embed/" + id;
+        },
+        isMobileDevice() {
+            let ua = navigator.userAgent;
+            let android = ua.indexOf("Android") > -1 || ua.indexOf("Adr") > -1; // android
+            let iOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); // ios
+            if (android == true) {
+                this.user.device = "android";
+            } else if (iOS == true) {
+                this.user.device = "iOS";
+            } else {
+                this.user.device = "PC";
+            }
+        },
+        async resever() {
+            let area = this.user.moblieArea;
+            let mobile = this.user.moblieNum;
+            let read = this.user.read;
+
+            console.log(area, mobile, read);
+            return;
+            if (read == false) {
+                this.popSmsg("reserve", -97);
+                this.pop.btnType = "close";
+                return;
+            } else if (
+                area == "+886" &&
+                mobile.length == 9 &&
+                !isNaN(mobile) &&
+                mobile.substring(0, 1) == 9
+            ) {
+            } else if (
+                area == "+886" &&
+                mobile.length == 10 &&
+                !isNaN(mobile) &&
+                mobile.substring(0, 1) == 0
+            ) {
+                this.user.moblieNum = mobile.substring(1, 11);
+            } else if (
+                (area == "+852" || area == "+853") &&
+                mobile.length == 8 &&
+                !isNaN(mobile)
+            ) {
+            } else {
+                this.popSmsg("reserve", -98);
+                return;
+            }
+
+            this.pop.mask2 = true;
+            try {
+                const res = await axios.post(api, {
+                    type: "reserve",
+                    user: this.user.account,
+                    phone: this.user.moblieArea + this.user.moblieNum,
+                });
+                res.data.status == 1
+                    ? this.popSmsg("reserve", 1)
+                    : res.data.status == -99
+                    ? this.popSmsg("reserve", -99)
+                    : this.popSmsg("reserve", -98);
+                res.data.status == 1 ? this.getSetting() : "";
+                return res;
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setTimeout(function () {
+                    TheVue.pop.mask2 = false;
+                }, 2000);
+            }
+        },
+        popOpen() {
+            this.mask = true;
+            this.pop = true;
+        },
+        close() {
+            this.mask = false;
+            this.videOpen = false;
+            this.pop = false;
         },
         closeVideo() {
             this.mask = false;
             this.videOpen = false;
         },
-        onSwiperFirst(swiper) {
-            firstSwiper.value = swiper;
+        toggleAside() {
+            this.isAside = !this.isAside;
         },
-        onSwiperSecond(swiper) {
-            secondSwiper.value = swiper;
-        },
-        onSlideChange(swiper) {
-            if (swiper === firstSwiper.value) {
-                secondSwiper.value.slideTo(swiper.activeIndex);
-            } else if (swiper === secondSwiper.value) {
-                firstSwiper.value.slideTo(swiper.activeIndex);
-            }
+        toggleNavBarList() {
+            this.isNavBarList = !this.isNavBarList;
         },
     },
     mounted() {
-        var tag = document.createElement("script");
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName("script")[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        this.isMobileDevice();
     },
 };
 </script>

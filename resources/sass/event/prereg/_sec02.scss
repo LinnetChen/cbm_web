@@ -1,12 +1,11 @@
 .sec02 {
-	border: 1px solid red;
+
 	padding: 25px 0;
 	padding-top: 155px;
 
 	.sec02Wrap {
 		width: 100%;
 		margin: 0 auto;
-		// border: 1px solid red;
 		display: flex;
 		position: relative;
 
@@ -30,6 +29,10 @@
 			background-size: 100%;
 			margin: 0px 10px;
 			background-image: url("/img/prereg/s2Title.png");
+
+			@include sm() {
+				width: 90%;
+			}
 		}
 
 		.swiper {
@@ -61,6 +64,20 @@
 			.item_img {
 				object-fit: cover;
 				object-position: center;
+
+				@include sm() {
+					display: none;
+				}
+			}
+
+			.item_img_m {
+				object-fit: cover;
+				object-position: center;
+				display: none;
+
+				@include sm() {
+					display: block;
+				}
 			}
 
 			.item_box {
@@ -109,6 +126,10 @@
 		transform: translate(-50%, -50%);
 		@extend %f-r-c;
 		z-index: 10;
+
+		@include x3s() {
+			transform: translate(-50%, 30%);
+		}
 	}
 
 	.swiper-pagination-bullet {
