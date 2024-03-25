@@ -18,6 +18,10 @@ mix.js("resources/js/app.js", "public/js")
         "resources/sass/event/prereg/style.scss",
         "public/css/event/prereg/style.css"
     )
+    .sass(
+        "resources/sass/event/20240403_jointAct/style.scss",
+        "public/css/event/20240403_jointAct/style.css"
+    )
     .postCss("resources/css/app.css", "public/css", [
         //
     ])
