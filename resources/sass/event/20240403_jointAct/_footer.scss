@@ -1,17 +1,23 @@
 footer.section {
-    height: 100px;
+    height: 120px;
     width: 100%;
     background-size: contain;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
-    background-color: #000000;
+    background-color: #000;
+    @include lg{
+        height: 180px;
+    }
+    @include m3d{
+        height: 215px;
+    }
     @include md {
         flex-direction: column;
         align-items: center;
-        height: 300px;
-        justify-content: flex-start;
+        height: 190px;
+        justify-content: space-evenly
     }
 
     .footerbox_logo {
@@ -33,12 +39,19 @@ footer.section {
     
     .spec {
         width: 25%;
+
         @include md{
-            width: 38%;
+            width: 40%;
+        }
+        @include mmd{
+            width: 55%;
+        }
+        @include xxs{
+            width: 80%;
         }
         
         a {
-            color: orange;
+            color: #00b4ff;
             text-decoration: underline;
             display: inline-block;
             font-size: 1rem;
@@ -58,7 +71,7 @@ footer.section {
         display: flex;
         justify-content: center;
         align-items: center;
-    
+        
         img {
             width: 12%;
             height: 100%;
@@ -72,15 +85,8 @@ footer.section {
             font-size: .8rem;
             line-height: 1.1rem;
             &:nth-child(4) {
-                color: orange;
+                color: #00b4ff;
             }
-        }
-    }
-    
-    a.logo_rw,
-    .classlavel {
-        @include lg {
-            margin: 10px auto;
         }
     }
 }

@@ -1,16 +1,41 @@
 .sec02 {
     z-index: 1;
     background-color: black;
-    background-image: url("/img/20240403_joinAct/sec02BgPC.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
     max-width: 1920px;
-    width: 100%;
     height: 985px;
-    // border: 1px solid rgb(169, 252, 255);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // max-height: 985px;
+    width: 100%;
+    // height:100%;
+
+    @include m3d{
+        max-width: 900px;
+        width: 100%;
+        height: 1600px;
+    }
+    
+    .sec02Bg{
+        background-image: url("/img/20240403_joinAct/sec02BgPC2.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        @include m3d{
+            background-image: url("/img/20240403_joinAct/sec02BgM2.png");
+            // background-position: 0 50px;
+            background-position: top;
+        }
+        
+    }
+
+
+    
+    
     .sec02Title {
         width: 100%;
         height: 100%;
@@ -21,8 +46,8 @@
         background-size: contain;
         // border: 1px solid rgb(255, 169, 169);
         @include mmd{
-            height: 12%;
-            transform:  scale(.9);
+            height: 8%;
+            // transform:  scale(.9);
             background-size: cover;
             background-position: center;
         }

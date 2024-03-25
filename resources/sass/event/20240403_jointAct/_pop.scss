@@ -1,0 +1,139 @@
+.popSmall {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mask {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+    .popBg {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        max-width: 493px;
+        max-height: 331px;
+        background-image: url("/img/20240403_joinAct/popup_s.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .text {
+            font-family: "Noto Serif TC";
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            line-height: 2.8rem;
+        }
+    }
+}
+.popBig {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .mask {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+    .popBg {
+        z-index: 1;
+        width: 80%;
+        height: 80%;
+        max-width: 730px;
+        max-height: 600px;
+        // width: 730px;
+        // height: 600px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border: 2px solid #fff;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        overflow-y: scroll;
+        padding: 3rem 7rem;
+
+        &::-webkit-scrollbar-track {
+            // 捲軸底色
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #000;
+        }
+        &::-webkit-scrollbar {
+            // 捲軸寬度
+            width: 4px;
+            background-color: black;
+        }
+        &::-webkit-scrollbar-thumb {
+            //捲軸本體顏色
+            background-color: #565656;
+        }
+
+        &::before {
+            position: absolute;
+            top: 8px;
+            content: "";
+            max-width: 2370px;
+            max-height: 176px;
+            width: 60%;
+            height: 5.5%;
+            background-image: url("/img/20240403_joinAct/popTop.png");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        
+        .title {
+            font-family: "Noto Serif TC";
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            line-height: 2.8rem;
+        }
+        .text{
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1.8rem;
+        }
+
+        .imgBox {
+            margin-top: 3.5rem;
+            position: relative;
+            max-width: 170px;
+        }
+        .rewardCbmImg{
+            max-width: 240px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}

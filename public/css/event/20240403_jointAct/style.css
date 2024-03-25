@@ -665,6 +665,8 @@ body .wrap {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
 }
 .sec01 .stepBox .stepBg .logBox .logout {
   width: 50%;
@@ -820,6 +822,21 @@ body .wrap {
   line-height: 1.25rem;
   cursor: pointer;
 }
+.sec01 .rewardBox .rewardPC .left .serverCheck {
+  font-size: 1.7rem;
+  max-width: 300px;
+  max-height: 60px;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: 1px solid #4a4a4a;
+  background-color: #4a4a4a;
+  line-height: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .sec01 .rewardBox .rewardPC .right {
   width: 50%;
   height: 100%;
@@ -833,7 +850,8 @@ body .wrap {
   }
 }
 .sec01 .rewardBox .rewardPC .right .iconBox {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6) inset;
   width: 100%;
   height: 100%;
   max-width: 295px;
@@ -921,13 +939,15 @@ body .wrap {
   }
 }
 .sec01 .rewardBox .rewardM .topBox .iconBox {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6) inset;
   width: 50%;
   height: 100%;
   max-width: 295px;
   max-height: 152px;
   display: flex;
   align-items: center;
+  padding: 0.5rem;
 }
 @media all and (max-width: 960px) {
   .sec01 .rewardBox .rewardM .topBox .iconBox {
@@ -1003,15 +1023,33 @@ body .wrap {
 .sec02 {
   z-index: 1;
   background-color: black;
-  background-image: url("/img/20240403_joinAct/sec02BgPC.jpg");
+  max-width: 1920px;
+  height: 985px;
+  width: 100%;
+}
+@media all and (max-width: 800px) {
+  .sec02 {
+    max-width: 900px;
+    width: 100%;
+    height: 1600px;
+  }
+}
+.sec02 .sec02Bg {
+  background-image: url("/img/20240403_joinAct/sec02BgPC2.png");
   background-repeat: no-repeat;
   background-position: center;
-  max-width: 1920px;
+  background-size: contain;
   width: 100%;
-  height: 985px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media all and (max-width: 800px) {
+  .sec02 .sec02Bg {
+    background-image: url("/img/20240403_joinAct/sec02BgM2.png");
+    background-position: top;
+  }
 }
 .sec02 .sec02Title {
   width: 100%;
@@ -1024,8 +1062,7 @@ body .wrap {
 }
 @media all and (max-width: 660px) {
   .sec02 .sec02Title {
-    height: 12%;
-    transform: scale(0.9);
+    height: 8%;
     background-size: cover;
     background-position: center;
   }
@@ -1039,22 +1076,163 @@ body .wrap {
   height: 100%;
 }
 
+.popSmall {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popSmall .mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.popSmall .popBg {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-width: 493px;
+  max-height: 331px;
+  background-image: url("/img/20240403_joinAct/popup_s.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popSmall .popBg .text {
+  font-family: "Noto Serif TC";
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 2.8rem;
+}
+
+.popBig {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popBig .mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.popBig .popBg {
+  z-index: 1;
+  width: 80%;
+  height: 80%;
+  max-width: 730px;
+  max-height: 600px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #fff;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 3rem 7rem;
+}
+.popBig .popBg::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #000;
+}
+.popBig .popBg::-webkit-scrollbar {
+  width: 4px;
+  background-color: black;
+}
+.popBig .popBg::-webkit-scrollbar-thumb {
+  background-color: #565656;
+}
+.popBig .popBg::before {
+  position: absolute;
+  top: 8px;
+  content: "";
+  max-width: 2370px;
+  max-height: 176px;
+  width: 60%;
+  height: 5.5%;
+  background-image: url("/img/20240403_joinAct/popTop.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.popBig .popBg .title {
+  font-family: "Noto Serif TC";
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 2.8rem;
+}
+.popBig .popBg .text {
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+.popBig .popBg .imgBox {
+  margin-top: 3.5rem;
+  position: relative;
+  max-width: 170px;
+}
+.popBig .popBg .rewardCbmImg {
+  max-width: 240px;
+}
+.popBig .popBg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 footer.section {
-  height: 100px;
+  height: 120px;
   width: 100%;
   background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  background-color: #000000;
+  background-color: #000;
+}
+@media all and (max-width: 960px) {
+  footer.section {
+    height: 180px;
+  }
+}
+@media all and (max-width: 800px) {
+  footer.section {
+    height: 215px;
+  }
 }
 @media all and (max-width: 768px) {
   footer.section {
     flex-direction: column;
     align-items: center;
-    height: 300px;
-    justify-content: flex-start;
+    height: 190px;
+    justify-content: space-evenly;
   }
 }
 footer.section .footerbox_logo {
@@ -1079,11 +1257,21 @@ footer.section .spec {
 }
 @media all and (max-width: 768px) {
   footer.section .spec {
-    width: 38%;
+    width: 40%;
+  }
+}
+@media all and (max-width: 660px) {
+  footer.section .spec {
+    width: 55%;
+  }
+}
+@media all and (max-width: 375px) {
+  footer.section .spec {
+    width: 80%;
   }
 }
 footer.section .spec a {
-  color: orange;
+  color: #00b4ff;
   text-decoration: underline;
   display: inline-block;
   font-size: 1rem;
@@ -1117,11 +1305,5 @@ footer.section .classlavel li {
   line-height: 1.1rem;
 }
 footer.section .classlavel li:nth-child(4) {
-  color: orange;
-}
-@media all and (max-width: 960px) {
-  footer.section a.logo_rw,
-  footer.section .classlavel {
-    margin: 10px auto;
-  }
+  color: #00b4ff;
 }
