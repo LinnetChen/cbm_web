@@ -1,5 +1,4 @@
 .sec01 {
-	border: 1px solid red;
 	@extend %f-c-c;
 
 	.sub01 {
@@ -14,7 +13,6 @@
 	.stepWrap {
 		width: 60%;
 		margin: 0 auto;
-		border: 1px solid red;
 		overflow: hidden;
 		display: flex;
 		flex-wrap: wrap;
@@ -50,13 +48,13 @@
 				top: 15%;
 				left: 3%;
 				padding: 15px 0;
-				border: 2px solid red;
 
 				@include md() {
 					top: 19%;
 				}
 
 				@include x3s() {
+					left: 4%;
 					top: 15%;
 				}
 
@@ -92,7 +90,7 @@
 
 						}
 
-						@include sm() {
+						@include x3s() {
 							font-size: 1.2em;
 						}
 
@@ -154,12 +152,26 @@
 						animation: heartbeat 1.5s ease-in-out infinite both;
 						transition: all ease-in-out .5s;
 
+						&.active {
+							cursor: default;
+							animation: none;
+							background-image: url('/img/prereg/s1ButConfirmD.png');
+						}
+
 						&:hover {
 							filter: brightness(1.7);
 						}
 
+						@include xs() {
+							font-size: 1.5em;
+						}
+
 						@include x3s() {
 							height: 65px;
+						}
+
+						@include xs() {
+							height: 48px;
 						}
 					}
 				}
@@ -171,14 +183,29 @@
 				margin: 20px 0;
 				@extend %f-r-c;
 
+				@include xl {
+					width: 86%;
+				}
+
 				@include x3s() {
+					justify-content: space-around;
 					width: 75%;
-					margin: 15px 0;
+					margin: 0 15px;
+				}
+
+				@include xxs() {
+					width: 65%;
+					margin: 0;
 				}
 
 				img {
 					width: 40%;
 					margin: 0 15px;
+
+					@include x3s() {
+						width: 45%;
+						margin: 0;
+					}
 				}
 			}
 
@@ -194,10 +221,20 @@
 
 				@include md() {
 					max-width: 200px;
+					height: 75px;
+				}
+
+				@include sm {
+					height: 55px;
 				}
 
 				@include x3s() {
+					margin-top: 10px;
 					height: 45px;
+				}
+
+				@include xs() {
+					height: 34px;
 				}
 
 				&:hover {
@@ -245,6 +282,14 @@
 					left: 6%;
 					padding: 0px 0;
 
+					@include xl {
+						width: 78%;
+						top: 32%;
+						left: 10%;
+					}
+
+
+
 					@include x3s() {
 						justify-content: space-around;
 					}
@@ -253,8 +298,12 @@
 						width: 100%;
 
 						@include md() {
-							width: 36%;
+							width: 56%;
 						}
+
+						// @include sm {
+						// 	width: 56%;
+						// }
 
 						img {
 							width: 100%;
@@ -264,6 +313,10 @@
 					.typeBtn {
 						width: 100%;
 						@extend %f-c-c;
+
+						@include xl {
+							width: 80%;
+						}
 
 						@include md() {
 							width: 50%;
@@ -276,8 +329,20 @@
 							@include size(100%, 66px);
 							margin: 10px;
 
+							@include x3s {}
+
+							@include xl {
+								margin: 0px;
+							}
+
+							@include sm {
+								margin: 5px 0px;
+								height: 53px;
+							}
+
 							@include x3s() {
 								margin: 0 10px;
+								height: 46px;
 							}
 						}
 
@@ -308,8 +373,9 @@
 						width: 30%;
 
 						@include md() {
-							width: 36%;
+							width: 32%;
 						}
+
 
 						img {
 							width: 100%;
@@ -317,13 +383,25 @@
 					}
 
 					.typeBtn {
+						@extend %f-c-c;
+						padding: 0 11px;
 
 						@include md() {
 							width: 50%;
 						}
 
-						@extend %f-c-c;
-						padding: 0 11px;
+						.fb-page {
+							@include x3s() {
+								width: 180px;
+								overflow-x: hidden;
+							}
+
+							@include xxs() {
+								scale: .8;
+							}
+						}
+
+
 					}
 				}
 

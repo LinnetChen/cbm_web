@@ -1,0 +1,8 @@
+$x3s-media: 456px;
+
+
+@mixin x3s() {
+    @media all and (max-width: $x3s-media) {
+        @content;
+    }
+}

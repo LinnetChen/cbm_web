@@ -2,6 +2,10 @@
 	@extend %f-c-c;
 	padding-top: 155px;
 
+	@include x3s {
+		padding-top: 0;
+	}
+
 	.sub03 {
 		max-width: 581px;
 		@include size(100%, 183px);
@@ -71,6 +75,14 @@
 					margin-right: 10%;
 				}
 
+				@include sm {
+					width: 80%;
+				}
+
+				@include x3s {
+					width: 100%;
+				}
+
 				.charImg {
 					position: absolute;
 					top: 0;
@@ -85,6 +97,10 @@
 
 					@include x3s() {
 						left: -146px;
+					}
+
+					@include xxs() {
+						left: -116px;
 					}
 
 
@@ -215,11 +231,18 @@
 			margin-top: -130px;
 			z-index: 3;
 
-			@include md() {
-				margin-top: 0px;
+			@include xl() {
+				margin: -48px;
 			}
 
-			@include sm() {}
+			@include md() {
+				margin: 0;
+				margin-top: 30px;
+			}
+
+			@include sm() {
+				margin: 0;
+			}
 
 			.swiper_tab {
 				width: 70%;
