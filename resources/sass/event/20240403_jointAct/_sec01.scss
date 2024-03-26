@@ -56,7 +56,7 @@
         display: flex;
         justify-content: space-between;
 
-        @include lg {
+        @include xl {
             width: 100%;
         }
 
@@ -535,6 +535,9 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                @include lg{
+                    margin-top: 2%;
+                }
                 @include m3d {
                     max-width: 627px;
                     max-height: 65px;

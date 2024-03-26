@@ -22,23 +22,26 @@
         height: 1170px;
     }
     @include sm{
-        height: 1021px;
+        height: 1008px;
     }
     @include x3s{
-        height: 757px;
+        height: 755px;
+    }
+    @include xxs{
+        height: 667px
     }
     @include xs{
-        height: 600px;
+        height: 567px;
     }
 
     .sec02Bg {
+        // border: 1px solid red;
         background-image: url("/img/20240403_joinAct/sec02BgPC2.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
         width: 100%;
         height: 100%;
-        // border: 1px solid red;
         display: flex;
         flex-direction: column;
         align-items: center;

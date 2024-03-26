@@ -25,6 +25,7 @@
     </ul>
 
     <!-- 大跳窗 -->
+    <!-- <div class="popBig"> -->
     <div class="popBig" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
@@ -58,33 +59,34 @@
         <div class="bgBox">
             <div class="leftBox">
                 <div class="logoBox">
-                    <a href=""><img class="logo" src="/img/20240403_joinAct/cbmLOGO.png" alt=""></a>
+                    <a :href="link.mIndex"><img class="logo" src="/img/20240403_joinAct/cbmLOGO.png"></a>
                     <div class="crossBox">
-                        <img class="cross" src="/img/20240403_joinAct/cross.png" alt="">
+                        <img class="cross" src="/img/20240403_joinAct/cross.png">
                     </div>
-                    <a href=""><img class="logo" src="/img/20240403_joinAct/cbLOGO.png" alt=""></a>
+                    <a :href="link.cbIndex" target="_blank"><img class="logo" src="/img/20240403_joinAct/cbLOGO.png"></a>
                 </div>
-                <div class="subtitle"><img src="/img/20240403_joinAct/subtitle.png" alt=""></div>
+                <div class="subtitle"><img src="/img/20240403_joinAct/subtitle.png"></div>
                 <div class="phone">
                     <div class="videoBox">
-                        <!-- <iframe ref="youtubePlayer" frameborder="0" src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op&autoplay=1&playlist=5sYIlYpAQNU&loop=1"
-                            allowfullscreen="true"></iframe> -->
+                        <iframe ref="youtubePlayer" frameborder="0" src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op&autoplay=1&playlist=5sYIlYpAQNU&loop=1"
+                            allowfullscreen="true"></iframe>
                     </div>
                 </div>
                 <div class="btnBoxPC" v-if="!device.isAndroid && !device.isiOS">
-                    <a class="google" href="#" @click="saveBtnClick('Android')"><img
+                    <a class="google" :href="link.androidLink" target="_blank" @click="saveBtnClick('Android')"><img
                             src="/img/20240403_joinAct/headerGoogle.png"></a>
-                    <a class="ios" href="#" @click="saveBtnClick('iOS')"><img
+                    <a class="ios" :href="link.iOSLink" target="_blank" @click="saveBtnClick('iOS')"><img
                             src="/img/20240403_joinAct/headerIos.png"></a>
                 </div>
                 <div class="btnBoxM" v-if="device.isAndroid || device.isiOS">
-                    <a class="google" v-if="device.isAndroid" href=""><img
+                    <a class="google" v-if="device.isAndroid" :href="link.androidLink" target="_blank"><img
                             src="/img/20240403_joinAct/headerGoogle.png"></a>
-                    <a class="ios" v-if="device.isiOS" href=""><img src="/img/20240403_joinAct/headerIos.png"></a>
+                    <a class="ios" v-if="device.isiOS" :href="link.iOSLink" target="_blank"><img src="/img/20240403_joinAct/headerIos.png"></a>
                 </div>
             </div>
         </div>
     </header>
+
     <div class="section sec01">
         <div class="sec01Title"></div>
         <div class="sec01Text">完成即可領取電腦 + 手機雙平台獎勵！​</div>
@@ -105,7 +107,7 @@
                 <div class="logBox" v-if="!user.account">
                     <!-- 這邊登入鈕 -->
                     <button class="login">登入</button>
-                    <p>※新用戶請點此​<a href="">前往註冊</a></p>
+                    <p>※新用戶請點此​<a href="https://www.digeam.com/register">前往註冊</a></p>
                 </div>
             </div>
             <div class="stepBg">
@@ -114,9 +116,9 @@
                 <p class="stepTitle">STEP.2</p>
                 <p>立即預約</p>
                 <div class="storeBtnBox">
-                    <a class="google" @click="saveBtnClick('Android')"><img
+                    <a class="google" :href="link.androidLink" target="_blank" @click="saveBtnClick('Android')"><img
                             src="/img/20240403_joinAct/sec01Google.png"></a>
-                    <a class="ios" @click="saveBtnClick('ios')"><img src="/img/20240403_joinAct/sec01Ios.png"></a>
+                    <a class="ios" :href="link.iOSLink" target="_blank" @click="saveBtnClick('ios')"><img src="/img/20240403_joinAct/sec01Ios.png"></a>
                 </div>
             </div>
             <div class="stepBg">
@@ -145,8 +147,8 @@
         <div class="rewardBox">
             <div class="rewardPC">
                 <div class="left">
-                    <img src="/img/20240403_joinAct/rewardLogoCb.png" alt="">
-                    <select name="" id="" v-model="selected" v-if=" user.serverCheck == null ">
+                    <img src="/img/20240403_joinAct/rewardLogoCb.png">
+                    <select v-model="selected" v-if=" user.serverCheck == null ">
                         <option value="" hidden selected disabled>請選擇領獎伺服器</option>
                         <option value="0">黑恆星</option>
                         <option value="1">冰珀星</option>
@@ -225,20 +227,12 @@ export default {
         return {
             screenWidth: window.innerWidth,
             menuM: false,
+            link:{
+                androidLink:'https://play.google.com/store/apps/details?id=com.estgames.cm.tw',
+                iOSLink:'https://apps.apple.com/TW/app/id6476968999',
 
-            device: {
-                isAndroid: null,
-                isiOS: null,
-            },
-            click: {
-                Android: null,
-                iOS: null,
-            },
-            user: {
-                account: null,
-                // serialNum:null,
-                serialNum: 'XWE1234567891234',
-                serverCheck: null,
+                cbIndex:'https://cbo.digeam.com/index', //cb端遊官網
+                mIndex:'', //m的官網
             },
             popBig: {
                 visable: false,
@@ -277,6 +271,24 @@ export default {
             popSmall: {
                 visable: false,
                 text: '',
+            },
+
+            // 當前裝置系統
+            device: {
+                isAndroid: null,
+                isiOS: null,
+            },
+            // 有無點擊APP BTN
+            click: {
+                Android: null,
+                iOS: null,
+            },
+
+            user: {
+                account: null,
+                serialNum:null,
+                // serialNum: 'XWE1234567891234',
+                serverCheck: null, //伺服器選後存入
             },
 
             // 隨著選項而改變

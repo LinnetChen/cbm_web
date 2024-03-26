@@ -526,7 +526,7 @@ body .wrap {
   display: flex;
   justify-content: space-between;
 }
-@media all and (max-width: 960px) {
+@media all and (max-width: 1024px) {
   .sec01 .stepBox {
     width: 100%;
   }
@@ -1016,6 +1016,11 @@ body .wrap {
   justify-content: center;
   cursor: pointer;
 }
+@media all and (max-width: 960px) {
+  .sec01 .rewardBox .rewardM .rewardBtn {
+    margin-top: 2%;
+  }
+}
 @media all and (max-width: 800px) {
   .sec01 .rewardBox .rewardM .rewardBtn {
     max-width: 627px;
@@ -1077,17 +1082,22 @@ body .wrap {
 }
 @media all and (max-width: 576px) {
   .sec02 {
-    height: 1021px;
+    height: 1008px;
   }
 }
 @media all and (max-width: 425px) {
   .sec02 {
-    height: 757px;
+    height: 755px;
+  }
+}
+@media all and (max-width: 375px) {
+  .sec02 {
+    height: 667px;
   }
 }
 @media all and (max-width: 320px) {
   .sec02 {
-    height: 600px;
+    height: 567px;
   }
 }
 .sec02 .sec02Bg {
@@ -1242,6 +1252,11 @@ body .wrap {
   flex-direction: column;
   overflow-y: scroll;
   padding: 3rem 7rem;
+}
+@media all and (max-width: 800px) {
+  .popBig .popBg {
+    padding: 1% 6%;
+  }
 }
 .popBig .popBg::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
