@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>聯動頁</title>
+    <link rel="icon" sizes="192x192" href="/img/footer/favicon.ico">
     <link href="{{ mix('css/event/20240403_jointAct/style.css') }}" rel="stylesheet">
 </head>
 
