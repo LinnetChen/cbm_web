@@ -2,6 +2,19 @@
 	@extend %f-c-c;
 	padding-top: 155px;
 
+	@include xl {
+		padding-top: 0;
+	}
+
+	@include md {
+		padding-top: 155px;
+	}
+
+	// @include sm {
+	// 	padding-top: 155px;
+
+	// }
+
 	.sub04 {
 		max-width: 602px;
 		@include size(100%, 179px);
@@ -20,7 +33,11 @@
 		overflow: hidden;
 		@extend %f-c-c;
 		margin-top: 3px;
-		width: 100%;
+		width: 50%;
+
+		@include xl() {
+			width: 100%;
+		}
 
 		.swiper {
 			margin: 0 auto;
@@ -36,6 +53,10 @@
 
 					img {
 						width: 90%;
+
+						@include xxl {
+							width: 80%;
+						}
 					}
 				}
 			}
@@ -75,7 +96,7 @@
 				@include size(100%, 108px);
 				background-image: url("/img/prereg/carouselArrow.png");
 				@extend %bg-contain;
-				transform: translate(0px, -30px);
+				transform: translate(-20px, -40px);
 
 				&::after {
 					content: "";
@@ -92,7 +113,7 @@
 
 				background-image: url("/img/prereg/carouselArrow.png");
 				@extend %bg-contain;
-				transform: scaleX(-1) translate(0px, -30px);
+				transform: scaleX(-1) translate(-20px, -40px);
 
 				&::after {
 					content: "";

@@ -17,6 +17,10 @@
 	height: 50%;
 	z-index: 57;
 
+	@include xl {
+		width: 70%;
+	}
+
 
 	@include md() {
 		width: 90%;
@@ -25,6 +29,41 @@
 	@include sm() {
 		width: 95%;
 		height: 30%;
+	}
+}
+
+.popS {
+	@extend %mask;
+	@extend %bg-cover;
+	max-width: 500px;
+	@include size(100%, 300px);
+	border: 5px solid #885f2e;
+	z-index: 56;
+	border-radius: 20px;
+	background-image: url('/img/prereg/popBg.png');
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+
+
+	@include x3s() {
+		width: 85%;
+		height: 220px;
+	}
+
+	@include xs() {
+		width: 95%;
+		font-size: 1.1em;
+	}
+
+
+	pre {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 50;
+		line-height: 1.2em;
 	}
 }
 
@@ -41,41 +80,54 @@
 	@extend %f-c-c;
 
 	@include sm() {
-		height: 300px;
+		height: 390px;
 	}
 
-	.popWrap {
-		@extend %f-c-c;
 
-		@include sm() {
-			height: 300px;
-			overflow-y: scroll;
-		}
-	}
+
+	// .popWrap {
+	// 	@extend %f-c-c;
+
+	// 	@include sm() {
+	// 		height: 300px;
+	// 		overflow-y: scroll;
+	// 	}
+	// }
 
 	.noticeTitle {
 		font-family: "Noto Serif TC", serif;
 		font-weight: 700;
-		font-size: 1.7em;
+		font-size: 2em;
 		text-align: center;
 		color: #4d2300;
+		margin-top: 3%;
 	}
 
 	.notice {
 		list-style: decimal;
 		padding: 0 15px;
 		margin: 15px;
-		margin-top: 20px;
+		margin-top: 0px;
 		margin-left: 40px;
+		font-size: 1.3em;
 
-		font-size: 1.2em;
+		@include sm() {
+			height: 300px;
+			padding: 0 25px;
+			overflow-y: scroll;
+		}
 
 		li {
 			font-weight: bold;
-			margin: 10px 0;
+			margin: 20px 0;
 		}
+
 	}
+
+
+
 }
+
 
 .popClose {
 	position: absolute;
@@ -88,4 +140,9 @@
 	cursor: pointer;
 	@include size(100%, 83px);
 	z-index: 2;
+	@extend %bg-contain;
+
+	@include x3s() {
+		height: 67px;
+	}
 }

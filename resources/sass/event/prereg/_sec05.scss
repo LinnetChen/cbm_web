@@ -26,6 +26,10 @@
 		margin-top: 3px;
 		max-width: 1200px;
 
+		@include lg {
+			width: 80%;
+		}
+
 		img {
 			width: 100%;
 		}

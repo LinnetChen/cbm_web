@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta http-equiv="Cache-control" content="no-cache">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
@@ -19,6 +20,6 @@
     src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v19.0&appId=407675791678391" nonce="hWhRw8gS">
 </script>
 
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/event/prereg.js') }}"></script>
 
 </html>

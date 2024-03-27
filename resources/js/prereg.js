@@ -1,10 +1,10 @@
 require("./bootstrap");
 
 import { createApp } from "vue";
-import jointActView from "./event/jointActView.vue";
+import preregView from "./event/preregView.vue";
 
 createApp({
     components: {
-        "v-joint-act": jointActView,
+        "v-prereg": preregView,
     },
 }).mount("#app");

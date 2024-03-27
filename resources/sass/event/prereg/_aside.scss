@@ -24,6 +24,7 @@
 		width: 87%;
 		height: 355px;
 		@extend %f-c-c;
+
 	}
 
 	.qrBox {
@@ -93,6 +94,15 @@
 		@extend %bg-contain;
 	}
 
+	.typeBox {
+		@extend %f-c-c;
+		width: 70%;
+
+		@include md() {
+			width: 83%;
+		}
+	}
+
 	.google {
 		background-image: url(/img/prereg/sideBarGoogle.png);
 	}
@@ -102,6 +112,7 @@
 	}
 
 	.fb {
+		max-width: 153px;
 		background-image: url(/img/prereg/sideBarfb.png);
 	}
 
@@ -145,28 +156,43 @@
 	left: 0;
 	display: none;
 	z-index: 40;
+	transition: all ease-in-out 1s;
+	transform: translate(0px, 1000px);
+
+	&.active {
+		transform: translate(0px, 0px);
+	}
 
 	@include sm() {
 		display: flex;
-		justify-content: space-around;
+		justify-content: center;
 		align-items: center;
 	}
 
 
 
 	.asideMbox {
-		width: 35%;
+		width: 30%;
 		@extend %f-r-c;
 		justify-content: flex-start;
-		margin-left: 15px;
+		// margin-left: 15px;
+
+		@include sm() {
+			width: 35%;
+		}
 
 		.openList {
-			max-width: 39px;
+			max-width: 52px;
 			@extend %bg-contain;
-			@include size(100%, 65px);
+			@include size(100%, 85px);
 			background-image: url('/img/prereg/hamburgerM.png');
 			border: none;
 			background-color: transparent;
+
+			@include sm() {
+				max-width: 43px;
+				height: 62px;
+			}
 
 			@include xs() {
 				max-width: 25px;
@@ -174,41 +200,44 @@
 		}
 
 		.goTop {
-			max-width: 40px;
+			// max-width: 40px;
 			@extend %bg-contain;
-			@include size(100%, 65px);
+			@include size(100%, 75px);
 			background-image: url('/img/prereg/topM.png');
-			margin: 0 15px;
+			margin: 0 8px;
 		}
 
 		.fb {
-			max-width: 40px;
+			// max-width: 40px;
 			@extend %bg-contain;
-			@include size(100%, 65px);
+			@include size(100%, 75px);
 			background-image: url('/img/prereg/fbM.png');
+			margin-right: 5px;
 		}
 
 	}
 
 	.typeBox {
-		width: 30%;
+		width: 40%;
 		@extend %f-r-c;
-		margin: 0 10px 0 15px;
+		margin: 0;
+
 
 		.google {
 			max-width: 153px;
 			@extend %bg-contain;
-			@include size(100%, 40px);
+			@include size(100%, 50px);
 			background-image: url('/img/prereg/sideBarGoogle.png');
+			display: block;
 		}
 
-		// 	.appStore {
-		// 		max-width: 153px;
-		// 		@extend %bg-contain;
-		// 		@include size(100%, 40px);
-		// 		background-image: url('/img/prereg/sideBarIos.png');
-		// 	}
-		// }
+		.appStore {
+			max-width: 153px;
+			@extend %bg-contain;
+			@include size(100%, 50px);
+			display: block;
+			background-image: url('/img/prereg/sideBarIos.png');
+		}
 
 
 
@@ -221,9 +250,15 @@
 		margin-bottom: 80px;
 		background-image: url('/img/prereg/preserveBtnM.png');
 
+		@include sm {
+			height: 79px;
+			max-width: 91px;
+			margin-bottom: 20px;
+		}
+
 		@include x3s() {
-			max-width: 113px;
-			margin-bottom: 40px;
+			max-width: 91px;
+			margin-bottom: 20px;
 		}
 
 		@include xs() {
@@ -237,7 +272,7 @@
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	width: 25%;
+	width: 35%;
 	height: 100%;
 	z-index: 45;
 	background-color: rgba(0, 0, 0, .8);
@@ -257,8 +292,9 @@
 	}
 
 	@include sm() {
-		width: 70%;
+		width: 80%;
 	}
+
 
 
 }
@@ -340,4 +376,9 @@
 	left: 15px;
 	cursor: pointer;
 	z-index: 45;
+
+	@include sm() {
+		display: none
+	}
+
 }
