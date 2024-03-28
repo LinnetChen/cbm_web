@@ -147,7 +147,7 @@ a {
   text-decoration: none;
 }
 
-.asideM .typeBox, .asideM .asideMbox, .sec04 .sec04Wrap .swiper .swiper-pagination, .sec03 .sec03Wrap .swiper-other, .sec03 .sec03Wrap .swiper_thumbs .swiper-slide, .sec03 .sec03Wrap .swiper_thumbs, .sec03 .sec03Wrap .charWrap .char_info .info1, .sec03 .sec03Wrap .charWrap, .sec03 .sec03Wrap .swiper_char .swiper-slide, .sec02 .swiper-pagination, .sec01 .stepWrap .right .stepBox3 .stepBoxWrap, .sec01 .stepWrap .right .stepBox3 .stepTitleBox, .sec01 .stepWrap .right .stepBox2 .stepBoxWrap, .sec01 .stepWrap .right .stepBox2 .stepTitleBox, .sec01 .stepWrap .left .stepBoxWrap .awardBox, .sec01 .stepWrap .left .stepBoxWrap .checkBox, .sec01 .stepWrap .left .stepBoxWrap form .phoneBox, .sec01 .stepWrap .left .stepTitleBox, .sec01 .stepWrap, header .typeBtn {
+.asideM .typeBox, .asideM .asideMbox, .sec04 .sec04Wrap .swiper .swiper-pagination, .sec03 .sec03Wrap .swiper-other, .sec03 .sec03Wrap .swiper_thumbs .swiper-slide, .sec03 .sec03Wrap .swiper_thumbs, .sec03 .sec03Wrap .charWrap .char_info .info1, .sec03 .sec03Wrap .charWrap, .sec03 .sec03Wrap .swiper_char .swiper-slide, .sec02 .sec02Wrap .swiper-pagination, .sec01 .stepWrap .right .stepBox3 .stepBoxWrap, .sec01 .stepWrap .right .stepBox3 .stepTitleBox, .sec01 .stepWrap .right .stepBox2 .stepBoxWrap, .sec01 .stepWrap .right .stepBox2 .stepTitleBox, .sec01 .stepWrap .left .stepBoxWrap .awardBox, .sec01 .stepWrap .left .stepBoxWrap .checkBox, .sec01 .stepWrap .left .stepBoxWrap form .phoneBox, .sec01 .stepWrap .left .stepTitleBox, .sec01 .stepWrap, header .typeBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,7 +162,7 @@ a {
 
 .linkBox a:hover::after, .linkBox a:hover::before, .logo, .closeBtn, .asideM .char, .asideM .typeBox .appStore, .asideM .typeBox .google, .asideM .asideMbox .fb, .asideM .asideMbox .goTop, .asideM .asideMbox .openList, .asideBtn, .aside .goTop, .aside .appStore,
 .aside .google,
-.aside .fb, .aside, .popClose, .sec05 .sub05, .sec04 .sec04Wrap .swiper .swiper-button-next, .sec04 .sec04Wrap .swiper .swiper-button-prev, .sec04 .sec04Wrap .swiper .swiper-pagination-bullet-active, .sec04 .sec04Wrap .swiper .swiper-pagination-bullet, .sec04 .sub04, .sec03 .sec03Wrap .swiper_thumbs .swiper_nav .swiper-button-next, .sec03 .sec03Wrap .swiper_thumbs .swiper_nav .swiper-button-prev, .sec03 .sec03Wrap .charWrap .char_box, .sec03 .sub03, .sec02 .swiper-button-next, .sec02 .swiper-button-prev, .sec02 .swiper-pagination-bullet-active, .sec02 .swiper-pagination-bullet, .sec02 .sec02Wrap .sub02, .sec01 .stepWrap .right .stepBox3 .stepTitleBox .step, .sec01 .stepWrap .right .stepBox2 .stepBoxWrap .typeBox a, .sec01 .stepWrap .right .stepBox2 .stepTitleBox .step, .sec01 .stepWrap .right .decoDown::after, .sec01 .stepWrap .right .decoDown::before, .sec01 .stepWrap .right .decoTop::after, .sec01 .stepWrap .right .decoTop::before, .sec01 .stepWrap .left .stepBoxWrap .s1Notice, .sec01 .stepWrap .left .stepBoxWrap form .submitBtn, .sec01 .stepWrap .left .stepTitleBox .step, .sec01 .stepWrap .left .decoDown::after, .sec01 .stepWrap .left .decoDown::before, .sec01 .stepWrap .left .decoTop::after, .sec01 .stepWrap .left .decoTop::before, .sec01 .sub01, header .arrow, header .title {
+.aside .fb, .aside, .popClose, .sec05 .sub05, .sec04 .sec04Wrap .swiper .swiper-button-next, .sec04 .sec04Wrap .swiper .swiper-button-prev, .sec04 .sec04Wrap .swiper .swiper-pagination-bullet-active, .sec04 .sec04Wrap .swiper .swiper-pagination-bullet, .sec04 .sub04, .sec03 .sec03Wrap .swiper_thumbs .swiper_nav .swiper-button-next, .sec03 .sec03Wrap .swiper_thumbs .swiper_nav .swiper-button-prev, .sec03 .sec03Wrap .charWrap .char_box, .sec03 .sub03, .sec02 .sec02Wrap .swiper-button-next, .sec02 .sec02Wrap .swiper-button-prev, .sec02 .sec02Wrap .swiper-pagination-bullet-active, .sec02 .sec02Wrap .swiper-pagination-bullet, .sec02 .sec02Wrap .sub02, .sec01 .stepWrap .right .stepBox3 .stepTitleBox .step, .sec01 .stepWrap .right .stepBox2 .stepBoxWrap .typeBox a, .sec01 .stepWrap .right .stepBox2 .stepTitleBox .step, .sec01 .stepWrap .right .decoDown::after, .sec01 .stepWrap .right .decoDown::before, .sec01 .stepWrap .right .decoTop::after, .sec01 .stepWrap .right .decoTop::before, .sec01 .stepWrap .left .stepBoxWrap .s1Notice, .sec01 .stepWrap .left .stepBoxWrap form .submitBtn, .sec01 .stepWrap .left .stepTitleBox .step, .sec01 .stepWrap .left .decoDown::after, .sec01 .stepWrap .left .decoDown::before, .sec01 .stepWrap .left .decoTop::after, .sec01 .stepWrap .left .decoTop::before, .sec01 .sub01, header .arrow, header .title {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -923,29 +923,36 @@ header .arrow {
     bottom: 80px;
   }
 }
-.sec02 .sec02Wrap .swiper .item_box img {
-  max-width: 601px;
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  -o-object-position: center;
-     object-position: center;
+@media all and (max-width: 456px) and (max-width: 456px) {
+  .sec02 .sec02Wrap .swiper .item_box {
+    bottom: 80px;
+  }
 }
-.sec02 .sec02Wrap .swiper .item_box p {
-  font-size: 1.2em;
-  line-height: 1.3em;
-  text-align: center;
-  color: #fff;
-  word-break: break-all;
-  text-shadow: 0px 0px 5px #000, 0px 0px 5px #000, 0px 0px 5px #000;
-  width: 60%;
+@media all and (max-width: 456px) {
+  .sec02 .sec02Wrap .swiper .item_box img {
+    max-width: 601px;
+    width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .sec02 .sec02Wrap .swiper .item_box p {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    text-align: center;
+    color: #fff;
+    word-break: break-all;
+    text-shadow: 0px 0px 5px #000, 0px 0px 5px #000, 0px 0px 5px #000;
+    width: 60%;
+  }
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 456px) and (max-width: 768px) {
   .sec02 .sec02Wrap .swiper .item_box p {
     width: 90%;
   }
 }
-.sec02 .swiper-pagination {
+.sec02 .sec02Wrap .swiper-pagination {
   margin: 0 auto;
   position: absolute;
   bottom: 0px;
@@ -954,11 +961,12 @@ header .arrow {
   z-index: 10;
 }
 @media all and (max-width: 456px) {
-  .sec02 .swiper-pagination {
+  .sec02 .sec02Wrap .swiper-pagination {
+    transform: translate(-50%, -490%);
     transform: translate(-50%, -490%);
   }
 }
-.sec02 .swiper-pagination-bullet {
+.sec02 .sec02Wrap .swiper-pagination-bullet {
   width: 14px;
   height: 15px;
   background-color: transparent;
@@ -967,14 +975,14 @@ header .arrow {
   transition: all 0.5s ease-in-out;
   margin: 0 10px !important;
 }
-.sec02 .swiper-pagination-bullet-active {
+.sec02 .sec02Wrap .swiper-pagination-bullet-active {
   width: 24px;
   height: 25px;
   background-color: transparent;
   background-image: url("/img/prereg/carouselHover.png");
   margin: 0 10px !important;
 }
-.sec02 .swiper_nav {
+.sec02 .sec02Wrap .swiper_nav {
   width: 68%;
   height: 108px;
   margin: 0 auto;
@@ -983,31 +991,36 @@ header .arrow {
   left: 17%;
 }
 @media all and (max-width: 768px) {
-  .sec02 .swiper_nav {
+  .sec02 .sec02Wrap .swiper_nav {
     display: none;
   }
 }
-.sec02 .swiper-button-prev {
+.sec02 .sec02Wrap .swiper-button-prev {
   max-width: 50px;
   width: 100%;
   height: 108px;
   background-image: url("/img/prereg/carouselArrow.png");
 }
-.sec02 .swiper-button-prev::after {
+.sec02 .sec02Wrap .swiper-button-prev::after {
   content: "";
 }
-.sec02 .swiper-button-next {
+.sec02 .sec02Wrap .swiper-button-next {
   max-width: 50px;
   width: 100%;
   height: 108px;
   transform: scaleX(-1);
   background-image: url("/img/prereg/carouselArrow.png");
 }
-.sec02 .swiper-button-next::after {
+.sec02 .sec02Wrap .swiper-button-next::after {
   content: "";
 }
 .sec03 {
   padding-top: 155px;
+}
+@media all and (max-width: 456px) {
+  .sec03 {
+    padding-top: 0;
+  }
 }
 @media all and (max-width: 456px) {
   .sec03 {
@@ -1614,6 +1627,11 @@ footer.section .classlavel li:nth-child(4) {
     width: 70%;
   }
 }
+@media all and (max-width: 1024px) {
+  #player {
+    width: 70%;
+  }
+}
 @media all and (max-width: 768px) {
   #player {
     width: 90%;
@@ -1862,6 +1880,7 @@ footer.section .classlavel li:nth-child(4) {
 @media all and (max-width: 576px) {
   .asideM {
     display: flex;
+    justify-content: center;
     justify-content: center;
     align-items: center;
   }
