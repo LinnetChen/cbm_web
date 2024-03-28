@@ -1072,12 +1072,16 @@ header .arrow {
     width: 100%;
   }
 }
+.sec03 .sec03Wrap .swiper_char .swiper-slide {
+  opacity: 0.2;
+}
 .sec03 .sec03Wrap .swiper_char .swiper-slide-active {
-  animation: fadeIn 2s !important;
+  opacity: 0.2;
+  animation: fadeIn 2s 0.3s forwards !important;
 }
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    opacity: 0.2;
   }
   100% {
     opacity: 1;
@@ -1308,10 +1312,18 @@ header .arrow {
 }
 .sec03 .sec03Wrap .swiper_thumbs .swiper_tab .swiper-slide-thumb-active img {
   filter: drop-shadow(0px 0px 1px #fff);
-  opacity: 1 !important;
+  animation: fadeIn 2s 0.3s forwards !important;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .sec03 .sec03Wrap .swiper_thumbs .swiper_tab .swiper-slide-visible img {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 .sec03 .sec03Wrap .swiper_thumbs .swiper_nav {
   width: 85%;

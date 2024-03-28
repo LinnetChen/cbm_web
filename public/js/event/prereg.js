@@ -20519,10 +20519,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+var api = "https://cbm.digeam.com/api/prereg";
 
-// let api = "/api/prereg";
+// let api = "http://192.168.0.42:8081/api/prereg";
 
-var api = "http://192.168.0.42:8081/api/prereg";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Swiper: swiper_vue__WEBPACK_IMPORTED_MODULE_1__.Swiper,
@@ -20599,41 +20599,34 @@ var api = "http://192.168.0.42:8081/api/prereg";
         sub: "意志與信念並存的防禦者",
         content: "盾劍士渴望極強的防禦能力，不滿足於穿戴防禦力較高的重型盔甲，他們嘗試將魔力運用在防禦上，讓武器轉變為星之盾，開創出新的魔力運用方式。成為擁有絕對防禦能力的戰士。",
         linkImg: "/img/prereg/ForceShielderVideo.png"
-      }
-      // {
-      //     bgImg: "/img/prereg/ForceBladerBling.png",
-      //     charImg: "/img/prereg/ForceBlader.png",
-      //     charName: "/img/prereg/ForceBladerText.png",
-      //     title: "/img/prereg/ForceBladerText.png",
-      //     weapon: "武器：單手刀",
-      //     sub: "魔法與劍並存的暗殺者",
-      //     content:
-      //         "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
-      //     linkImg: "/img/prereg/ForceBladerVideo.png",
-      // },
-      // {
-      //     bgImg: "/img/prereg/WizardBling.png",
-      //     charImg: "/img/prereg/Wizard.png",
-      //     charName: "/img/prereg/WizardText.png",
-      //     title: "/img/prereg/WizardText.png",
-      //     weapon: "武器：魔徽",
-      //     sub: "絕對的破壞力，魔法的支配者",
-      //     content:
-      //         "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
-      //     linkImg: "/img/prereg/WizardVideo.png",
-      // },
-      // {
-      //     bgImg: "/img/prereg/ForceArcherBling.png",
-      //     charImg: "/img/prereg/ForceArcher.png",
-      //     charName: "/img/prereg/ForceArcherText.png",
-      //     title: "/img/prereg/ForceArcherText.png",
-      //     weapon: "武器：星紋",
-      //     sub: "穿過暴風的致命一擊",
-      //     content:
-      //         "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
-      //     linkImg: "/img/prereg/ForceArcherVideo.png",
-      // },
-      ],
+      }, {
+        bgImg: "/img/prereg/ForceBladerBling.png",
+        charImg: "/img/prereg/ForceBlader.png",
+        charName: "/img/prereg/ForceBladerText.png",
+        title: "/img/prereg/ForceBladerText.png",
+        weapon: "武器：單手刀",
+        sub: "魔法與劍並存的暗殺者",
+        content: "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
+        linkImg: "/img/prereg/ForceBladerVideo.png"
+      }, {
+        bgImg: "/img/prereg/WizardBling.png",
+        charImg: "/img/prereg/Wizard.png",
+        charName: "/img/prereg/WizardText.png",
+        title: "/img/prereg/WizardText.png",
+        weapon: "武器：魔徽",
+        sub: "絕對的破壞力，魔法的支配者",
+        content: "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
+        linkImg: "/img/prereg/WizardVideo.png"
+      }, {
+        bgImg: "/img/prereg/ForceArcherBling.png",
+        charImg: "/img/prereg/ForceArcher.png",
+        charName: "/img/prereg/ForceArcherText.png",
+        title: "/img/prereg/ForceArcherText.png",
+        weapon: "武器：星紋",
+        sub: "穿過暴風的致命一擊",
+        content: "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
+        linkImg: "/img/prereg/ForceArcherVideo.png"
+      }],
       slick03tab: [{
         img: "/img/prereg/s3Btn01Hover.png"
       }, {

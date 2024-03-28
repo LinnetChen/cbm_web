@@ -158,7 +158,7 @@
                             type="hidden"
                             name="return_url"
                             id="return_url"
-                            value="<?php echo base64_encode('https://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]); ?>"
+                            value={{ link.returnUrl }}
                         />
 
                         <p class="account">
@@ -170,7 +170,6 @@
                             id="logout-button"
                             type="submit"
                             value="Submit"
-                            @click="updateReturnUrl()"
                         >
                             登出
                         </button>
@@ -370,6 +369,8 @@ export default {
             screenWidth: window.innerWidth,
             menuM: false,
             link: {
+                returnUrl:"https://cbm.digeam.com/jointAct",
+                
                 androidLink:
                     "https://play.google.com/store/apps/details?id=com.estgames.cm.tw",
                 iOSLink: "https://apps.apple.com/TW/app/id6476968999",
@@ -628,7 +629,7 @@ export default {
 
         // 登入後再跳轉回來的功能
         updateReturnUrl() {
-            var returnUrl = "http://219.84.160.36/jointAct";
+            var returnUrl = "https://cbm.digeam.com/jointAct";
             var encodedUrl = btoa(returnUrl);
             document.cookie =
                 "return_url=" +
