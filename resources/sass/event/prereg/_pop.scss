@@ -21,6 +21,10 @@
 		width: 70%;
 	}
 
+	@include xl {
+		width: 70%;
+	}
+
 
 	@include md() {
 		width: 90%;
@@ -113,6 +117,7 @@
 
 		@include sm() {
 			height: 300px;
+			padding: 0 25px;
 			overflow-y: scroll;
 		}
 

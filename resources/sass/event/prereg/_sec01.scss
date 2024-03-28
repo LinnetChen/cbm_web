@@ -1,6 +1,10 @@
 .sec01 {
 	@extend %f-c-c;
 
+	@include md() {
+		padding: 5% 0;
+	}
+
 	.sub01 {
 		max-width: 581px;
 		@include size(100%, 183px);
@@ -8,97 +12,132 @@
 		background-size: 100%;
 		margin: 0px 10px;
 		background-image: url('/img/prereg/s1Title.png');
+
+
 	}
 
 	.stepWrap {
-		width: 60%;
+		width: 65%;
 		margin: 0 auto;
 		overflow: hidden;
 		display: flex;
 		flex-wrap: wrap;
+		@extend %f-r-c;
+
+		@include md {
+			flex-direction: column;
+		}
+
 
 		@include x3l() {
-			width: 80%;
+			width: 90%;
 		}
 
 		@include xl() {
 			width: 100%;
 		}
 
+
+
 		.left {
-			margin: 0 auto;
-			display: block;
-			width: 50%;
-			height: auto;
-			padding-bottom: 57%;
-			background-size: contain;
-			background-image: url('/img/prereg/step1Box.png');
-			background-repeat: no-repeat;
+			width: 45%;
+			height: 620px;
+			@extend %bg-cover;
+			background-image: url('/img/prereg/01/s1boxBg.png');
+			border: 1px solid snow;
 			position: relative;
 
 			@include md() {
-				width: 100%;
-				padding-bottom: 117%;
+				height: auto;
+				width: 95%;
+			}
+
+			.decoTop {
+				width: 95%;
+				height: 95%;
+				margin: 0 auto;
+				@include ab-lt(2.5%, 2%);
+				z-index: 2;
+
+				&::before {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-lt(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+				}
+
+				&::after {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-rt(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+					transform: scaleX(-1);
+				}
+			}
+
+			.decoDown {
+				width: 95%;
+				height: 95%;
+				margin: 0 auto;
+				@include ab-lt(2.5%, 2%);
+				z-index: 2;
+				border: 1px solid #2e0c05;
+
+				&::before {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-lb(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+					transform: rotate(270deg);
+				}
+
+				&::after {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-rb(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+					transform: scaleX(-1) rotate(270deg);
+				}
+			}
+
+			.stepTitleBox {
+				padding-top: 2%;
+				height: 80px;
+				@extend %f-r-c;
+				@extend %bg-cover;
+				background-image: url('/img/prereg/01/s1titlebBg.png');
+
+				.step {
+					@extend %bg-contain;
+					@include size(100%, 28px);
+					max-width: 97px;
+					background-image: url('/img/prereg/01/step1.png');
+					margin-right: 2%;
+				}
+
+				p {
+					font-size: 1.5em;
+					color: snow;
+					font-weight: bold;
+				}
+
+
 			}
 
 			.stepBoxWrap {
+				width: 95%;
+				margin: 0 auto;
+				padding-top: 2%;
 				@extend %f-c-c;
-				width: 92%;
-				position: absolute;
-				top: 15%;
-				left: 3%;
-				padding: 15px 0;
+				z-index: 3;
 
 				@include md() {
-					top: 19%;
-				}
-
-				@include x3s() {
-					left: 4%;
-					top: 15%;
-				}
-
-				.checkBox {
-					margin: 10px 0;
-					@extend %f-r-c;
-					font-weight: bold;
-
-					@include md() {
-						margin-top: 5%;
-					}
-
-					input {
-						width: 1.2em;
-						height: 1.2em;
-						border-radius: 15px;
-
-						@include md() {
-							font-size: 1.7em;
-
-						}
-
-						@include sm() {
-							font-size: 1.2em;
-						}
-					}
-
-					label {
-						font-size: 1.2em;
-
-						@include md() {
-							font-size: 1.7em;
-
-						}
-
-						@include x3s() {
-							font-size: 1.2em;
-						}
-
-						a {
-							color: #991d1d;
-							text-decoration: underline;
-						}
-					}
+					padding-top: 2%;
+					padding-bottom: 5%;
 				}
 
 				form {
@@ -113,18 +152,6 @@
 							color: #fff;
 							background-color: #000;
 							padding: 10px;
-						}
-
-						@include md() {
-							font-size: 1.7em;
-						}
-
-						@include sm() {
-							font-size: 1.2em;
-						}
-
-						@include x3s() {
-							font-size: .8em;
 						}
 
 						input {
@@ -176,150 +203,234 @@
 					}
 				}
 
-			}
+				.checkBox {
+					margin: 10px 0;
+					@extend %f-r-c;
+					font-weight: bold;
 
-			.awardBox {
-				width: 96%;
-				margin: 20px 0;
-				@extend %f-r-c;
+					input {
+						width: 1.3em;
+						height: 1.3em;
+						border-radius: 15px;
+					}
 
-				@include xl {
-					width: 86%;
+					label {
+						font-size: 1.2em;
+
+
+
+
+						a {
+							color: #991d1d;
+							text-decoration: underline;
+						}
+					}
+
 				}
 
-				@include x3s() {
-					justify-content: space-around;
-					width: 75%;
-					margin: 0 15px;
-				}
 
-				@include xxs() {
-					width: 65%;
-					margin: 0;
-				}
 
-				img {
-					width: 40%;
-					margin: 0 15px;
 
-					@include x3s() {
-						width: 45%;
-						margin: 0;
+				.awardBox {
+					width: 96%;
+					margin: 20px 0;
+					@extend %f-r-c;
+
+					@include md {
+						width: 66%;
+					}
+
+
+					img {
+						width: 40%;
+						margin: 0 15px;
+
+						@include x3s() {
+							width: 45%;
+							margin: 0;
+						}
 					}
 				}
+
+				.s1Notice {
+					background-color: transparent;
+					cursor: pointer;
+					border: none;
+					@include size(100%, 55px);
+					max-width: 159px;
+					background-image: url('/img/prereg/s1Notice.png');
+					transition: all ease-in-out .5s;
+					@extend %bg-contain;
+
+					&:hover {
+						filter: brightness(1.7);
+					}
+				}
+
 			}
-
-			.s1Notice {
-				background-color: transparent;
-				cursor: pointer;
-				border: none;
-				@include size(100%, 55px);
-				max-width: 159px;
-				background-image: url('/img/prereg/s1Notice.png');
-				transition: all ease-in-out .5s;
-				@extend %bg-contain;
-
-				@include md() {
-					max-width: 200px;
-					height: 75px;
-				}
-
-				@include sm {
-					height: 55px;
-				}
-
-				@include x3s() {
-					margin-top: 10px;
-					height: 45px;
-				}
-
-				@include xs() {
-					height: 34px;
-				}
-
-				&:hover {
-					filter: brightness(1.7);
-				}
-			}
-
 		}
 
 		.right {
-			margin: 0 auto;
-			display: block;
-			width: 50%;
-			height: auto;
-			padding-bottom: 0%;
-			background-size: contain;
-			background-repeat: no-repeat;
+			width: 45%;
+			margin-left: 3%;
+			height: 620px;
 			position: relative;
+			@extend %f-c-c;
+
 
 			@include md() {
-				width: 100%;
-				// padding-bottom: 117%;
+				height: auto;
+				margin-left: 0%;
+				width: 95%;
 			}
+
+			.decoTop {
+				width: 95%;
+				height: 95%;
+				margin: 0 auto;
+				@include ab-lt(2.5%, 3%);
+				z-index: 2;
+
+				&::before {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-lt(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+				}
+
+				&::after {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-rt(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+					transform: scaleX(-1);
+				}
+			}
+
+			.decoDown {
+				width: 95%;
+				height: 95%;
+				margin: 0 auto;
+				@include ab-lt(2.5%, 3%);
+				z-index: 2;
+				border: 1px solid #2e0c05;
+
+				&::before {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-lb(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+					transform: rotate(270deg);
+				}
+
+				&::after {
+					content: '';
+					@include size(37px, 36px);
+					@include ab-rb(5px, 5px);
+					@extend %bg-contain;
+					background-image: url('/img/prereg/01/s1boxDecoIn.png');
+					transform: scaleX(-1) rotate(270deg);
+				}
+			}
+
+
+
+
+			// @include md() {
+			// 	width: 100%;
+			// 	// padding-bottom: 117%;
+			// }
 
 
 			.stepBoxS {
-				margin: 0 auto;
-				display: block;
-				height: auto;
-				padding-bottom: 57%;
-				background-size: contain;
-
-				background-repeat: no-repeat;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				@include size(100%, 100%);
+				margin: 5px 0px 5px 0px;
+				background-image: url('/img/prereg/01/s1boxBg.png');
 			}
 
-
 			.stepBox2 {
-				background-image: url('/img/prereg/step2Box.png');
+				.stepTitleBox {
+					width: 100%;
+					padding-top: 2%;
+					height: 80px;
+					@extend %f-r-c;
+					@extend %bg-cover;
+					background-image: url('/img/prereg/01/s1titlebBg.png');
+
+					.step {
+						@extend %bg-contain;
+						@include size(100%, 28px);
+						max-width: 97px;
+						background-image: url('/img/prereg/01/step2.png');
+						margin-right: 2%;
+					}
+
+					p {
+						font-size: 1.5em;
+						color: snow;
+						font-weight: bold;
+					}
+
+
+				}
+
+				@include md() {
+					margin: 2% 0;
+				}
 
 				.stepBoxWrap {
 					@extend %f-r-c;
-					width: 88%;
-					position: absolute;
-					top: 29%;
-					left: 6%;
-					padding: 0px 0;
+					width: 95%;
+					padding-top: 12px;
+					z-index: 3;
 
-					@include xl {
-						width: 78%;
-						top: 32%;
-						left: 10%;
+					@include md() {
+						width: 95%;
+						// flex-direction: column;
+						padding: 30px 0;
 					}
 
-
-
-					@include x3s() {
-						justify-content: space-around;
+					@include sm {
+						width: 89%;
 					}
 
 					.awardBox {
-						width: 100%;
-
-						@include md() {
-							width: 56%;
-						}
-
-						// @include sm {
-						// 	width: 56%;
-						// }
+						width: 50%;
 
 						img {
 							width: 100%;
 						}
-					}
-
-					.typeBtn {
-						width: 100%;
-						@extend %f-c-c;
-
-						@include xl {
-							width: 80%;
-						}
 
 						@include md() {
-							width: 50%;
+							width: 45%;
+							margin: 0 auto;
+						}
+
+
+						@include sm() {
+							width: 49%;
+						}
+
+
+
+					}
+
+					.typeBox {
+						width: 45%;
+						@extend %f-c-c;
+
+						@include md {
+							width: 45%;
+						}
+
+						@include sm {
+							width: 46%;
 						}
 
 						a {
@@ -327,90 +438,155 @@
 							max-width: 227px;
 							@extend %bg-contain;
 							@include size(100%, 66px);
-							margin: 10px;
+							margin: 10px 0;
 
-							@include x3s {}
+							span {
+								float: left;
+								position: absolute;
+								top: 0;
+								left: 0;
+								margin-left: 0.02rem;
+								margin-top: 0.02rem;
+								border-radius: 10px;
+								display: inline;
+								overflow: hidden;
+								width: 100%;
+								padding-bottom: 29%;
 
-							@include xl {
-								margin: 0px;
-							}
-
-							@include sm {
-								margin: 5px 0px;
-								height: 53px;
-							}
-
-							@include x3s() {
-								margin: 0 10px;
-								height: 46px;
+								.effect {
+									content: "";
+									position: absolute;
+									top: 0;
+									left: -100%;
+									z-index: 2;
+									width: 100%;
+									height: 100%;
+									background: linear-gradient(120deg, transparent, transparent, rgba(255, 255, 255, 0.4), transparent, transparent);
+									transition: all 650ms;
+									animation: bling 2s linear infinite;
+								}
 							}
 						}
 
-						.google {
-							background-image: url('/img/prereg/Google.png');
+						@keyframes bling {
+							0% {
+								left: -100%;
+							}
+
+							100% {
+								left: 100%;
+							}
 						}
 
-						.appStore {
-							background-image: url('/img/prereg/Ios.png');
-						}
+					}
+
+					.google {
+						background-image: url('/img/prereg/Google.png');
+					}
+
+					.appStore {
+						background-image: url('/img/prereg/Ios.png');
 					}
 				}
-
 			}
 
+
+
 			.stepBox3 {
-				background-image: url('/img/prereg/step3Box.png');
+
+				.stepTitleBox {
+					width: 100%;
+					padding-top: 2%;
+					height: 80px;
+					@extend %f-r-c;
+					@extend %bg-cover;
+					background-image: url('/img/prereg/01/s1titlebBg.png');
+
+					.step {
+						@extend %bg-contain;
+						@include size(100%, 28px);
+						max-width: 97px;
+						background-image: url('/img/prereg/01/step3.png');
+						margin-right: 2%;
+					}
+
+					p {
+						font-size: 1.5em;
+						color: snow;
+						font-weight: bold;
+					}
+
+
+
+				}
 
 				.stepBoxWrap {
 					@extend %f-r-c;
-					width: 88%;
-					position: absolute;
-					top: 29%;
-					left: 6%;
-					padding: 0px 0;
+					width: 95%;
+					padding-top: 12px;
+					z-index: 3;
+					height: 195px;
+					position: relative;
+
+
+					@include md() {
+						height: auto;
+						padding: 30px 0;
+					}
+
+					@include sm {
+						justify-content: space-evenly;
+					}
 
 					.awardBox {
-						width: 30%;
-
-						@include md() {
-							width: 32%;
-						}
-
+						width: 29%;
+						object-fit: contain;
 
 						img {
 							width: 100%;
 						}
-					}
-
-					.typeBtn {
-						@extend %f-c-c;
-						padding: 0 11px;
 
 						@include md() {
-							width: 50%;
+							width: 27%;
+							margin-bottom: 3%;
+
+						}
+					}
+
+					.typeBox {
+						width: 45%;
+						@extend %f-c-c;
+						display: flow-root;
+						overflow: hidden;
+						margin-left: 2%;
+
+						@include md {
+							width: 45%;
 						}
 
-						.fb-page {
-							@include x3s() {
-								width: 180px;
-								overflow-x: hidden;
-							}
-
-							@include xxs() {
-								scale: .8;
-							}
+						@include x3s {
+							width: 65%;
 						}
+
+						.fb-page {}
+
 
 
 					}
+
+
+
+
+
+
 				}
+
+
 
 			}
 
 
 		}
-
-
 	}
 
 }

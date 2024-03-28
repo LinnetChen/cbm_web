@@ -6,38 +6,51 @@
                 <li class="menuDeco">|</li>
                 <li class="menuListItem"><a href="#header">聯動活動​</a></li>
                 <li class="menuDeco">|</li>
-                <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
+                <li class="menuListItem">
+                    <a href="">涅瓦雷斯人才招募中心​</a>
+                </li>
             </ul>
         </div>
     </div>
     <div class="barM" v-if="screenWidth <= 900" @click="menuShow()">
-        <div class="spanBox" :class="{ 'active': menuM }">
+        <div class="spanBox" :class="{ active: menuM }">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
     <ul class="menuM" v-if="screenWidth <= 900 && menuM == true">
-        <a class="logo" href=""><img src="/img/20240403_joinAct/cbmLOGO.png" alt=""></a>
+        <a class="logo" href=""
+            ><img src="/img/20240403_joinAct/cbmLOGO.png" alt=""
+        /></a>
         <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
         <li class="menuListItem"><a href="#header">聯動活動​</a></li>
         <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
     </ul>
 
     <!-- 大跳窗 -->
+    <!-- <div class="popBig"> -->
     <div class="popBig" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
             <div class="container" v-for="(value, key) in items" :key="key">
-                <div class="title" v-if="key.includes('title')">{{ value }}</div>
-                <div class="imgBox" v-if="key.includes('img')"
-                    :class="{ 'rewardCbmImg': value.includes('rewardCbmImg1') }">
-                    <img :src="value">
+                <div class="title" v-if="key.includes('title')">
+                    {{ value }}
+                </div>
+                <div
+                    class="imgBox"
+                    v-if="key.includes('img')"
+                    :class="{ rewardCbmImg: value.includes('rewardCbmImg1') }"
+                >
+                    <img :src="value" />
                     <div class="t" v-if="value.includes('rewardCbmImg1')"></div>
                 </div>
                 <div class="text" v-if="key.includes('text')">{{ value }}</div>
-                <div class="text" v-if="key.includes('Ul')" v-html="popBig.noticeValue.Ul">
-                </div>
+                <div
+                    class="text"
+                    v-if="key.includes('Ul')"
+                    v-html="popBig.noticeValue.Ul"
+                ></div>
             </div>
         </div>
         <div class="x" @click="popBVisable()"></div>
@@ -58,33 +71,72 @@
         <div class="bgBox">
             <div class="leftBox">
                 <div class="logoBox">
-                    <a href=""><img class="logo" src="/img/20240403_joinAct/cbmLOGO.png" alt=""></a>
+                    <a :href="link.mIndex"
+                        ><img
+                            class="logo"
+                            src="/img/20240403_joinAct/cbmLOGO.png"
+                    /></a>
                     <div class="crossBox">
-                        <img class="cross" src="/img/20240403_joinAct/cross.png" alt="">
+                        <img
+                            class="cross"
+                            src="/img/20240403_joinAct/cross.png"
+                        />
                     </div>
-                    <a href=""><img class="logo" src="/img/20240403_joinAct/cbLOGO.png" alt=""></a>
+                    <a :href="link.cbIndex" target="_blank"
+                        ><img
+                            class="logo"
+                            src="/img/20240403_joinAct/cbLOGO.png"
+                    /></a>
                 </div>
-                <div class="subtitle"><img src="/img/20240403_joinAct/subtitle.png" alt=""></div>
+                <div class="subtitle">
+                    <img src="/img/20240403_joinAct/subtitle.png" />
+                </div>
                 <div class="phone">
                     <div class="videoBox">
-                        <!-- <iframe ref="youtubePlayer" frameborder="0" src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op&autoplay=1&playlist=5sYIlYpAQNU&loop=1"
-                            allowfullscreen="true"></iframe> -->
+                        <iframe
+                            ref="youtubePlayer"
+                            frameborder="0"
+                            src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op&autoplay=1&playlist=5sYIlYpAQNU&loop=1"
+                            allowfullscreen="true"
+                        ></iframe>
                     </div>
                 </div>
                 <div class="btnBoxPC" v-if="!device.isAndroid && !device.isiOS">
-                    <a class="google" href="#" @click="saveBtnClick('Android')"><img
-                            src="/img/20240403_joinAct/headerGoogle.png"></a>
-                    <a class="ios" href="#" @click="saveBtnClick('iOS')"><img
-                            src="/img/20240403_joinAct/headerIos.png"></a>
+                    <a
+                        class="google"
+                        :href="link.androidLink"
+                        target="_blank"
+                        @click="saveBtnClick('Android')"
+                        ><img src="/img/20240403_joinAct/headerGoogle.png"
+                    /></a>
+                    <a
+                        class="ios"
+                        :href="link.iOSLink"
+                        target="_blank"
+                        @click="saveBtnClick('iOS')"
+                        ><img src="/img/20240403_joinAct/headerIos.png"
+                    /></a>
                 </div>
                 <div class="btnBoxM" v-if="device.isAndroid || device.isiOS">
-                    <a class="google" v-if="device.isAndroid" href=""><img
-                            src="/img/20240403_joinAct/headerGoogle.png"></a>
-                    <a class="ios" v-if="device.isiOS" href=""><img src="/img/20240403_joinAct/headerIos.png"></a>
+                    <a
+                        class="google"
+                        v-if="device.isAndroid"
+                        :href="link.androidLink"
+                        target="_blank"
+                        ><img src="/img/20240403_joinAct/headerGoogle.png"
+                    /></a>
+                    <a
+                        class="ios"
+                        v-if="device.isiOS"
+                        :href="link.iOSLink"
+                        target="_blank"
+                        ><img src="/img/20240403_joinAct/headerIos.png"
+                    /></a>
                 </div>
             </div>
         </div>
     </header>
+
     <div class="section sec01">
         <div class="sec01Title"></div>
         <div class="sec01Text">完成即可領取電腦 + 手機雙平台獎勵！​</div>
@@ -96,16 +148,49 @@
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
                 <div class="logBox" v-if="user.account">
                     <!-- 這邊登出鈕 -->
-                    <p class="account">
+                    <form
+                        id="logout-form"
+                        action="https://www.digeam.com/logout"
+                        method="POST"
+                        v-if="user.account"
+                    >
+                        <input
+                            type="hidden"
+                            name="return_url"
+                            id="return_url"
+                            value="<?php echo base64_encode('https://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]); ?>"
+                        />
+
+                        <p class="account">
+                            您已登入掘夢網帳號<br />
+                            <span>{{ user.account }}</span>
+                        </p>
+                        <button
+                            class="logout"
+                            id="logout-button"
+                            type="submit"
+                            value="Submit"
+                            @click="updateReturnUrl()"
+                        >
+                            登出
+                        </button>
+                    </form>
+
+
+                    <!-- <p class="account">
                         您已登入掘夢網帳號<br>
                         <span>{{ user.account }}</span>
                     </p>
-                    <button class="logout">登出</button>
+                    <button class="logout">登出</button> -->
                 </div>
                 <div class="logBox" v-if="!user.account">
                     <!-- 這邊登入鈕 -->
                     <button class="login">登入</button>
-                    <p>※新用戶請點此​<a href="">前往註冊</a></p>
+                    <p>
+                        ※新用戶請點此​<a href="https://www.digeam.com/register"
+                            >前往註冊</a
+                        >
+                    </p>
                 </div>
             </div>
             <div class="stepBg">
@@ -114,9 +199,20 @@
                 <p class="stepTitle">STEP.2</p>
                 <p>立即預約</p>
                 <div class="storeBtnBox">
-                    <a class="google" @click="saveBtnClick('Android')"><img
-                            src="/img/20240403_joinAct/sec01Google.png"></a>
-                    <a class="ios" @click="saveBtnClick('ios')"><img src="/img/20240403_joinAct/sec01Ios.png"></a>
+                    <a
+                        class="google"
+                        :href="link.androidLink"
+                        target="_blank"
+                        @click="saveBtnClick('Android')"
+                        ><img src="/img/20240403_joinAct/sec01Google.png"
+                    /></a>
+                    <a
+                        class="ios"
+                        :href="link.iOSLink"
+                        target="_blank"
+                        @click="saveBtnClick('ios')"
+                        ><img src="/img/20240403_joinAct/sec01Ios.png"
+                    /></a>
                 </div>
             </div>
             <div class="stepBg">
@@ -127,56 +223,95 @@
                 <div class="fb">
                     <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDiGeamCabalM%2F&tabs=timeline&width=287&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
-                        width="287" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        width="287"
+                        height="70"
+                        style="border: none; overflow: hidden"
+                        scrolling="no"
+                        frameborder="0"
                         allowfullscreen="true"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    ></iframe>
                 </div>
                 <div class="checkBox">
                     <label for="privacy">
-                        <input type="checkbox" name="privacy" value="privacy" v-model="checkList">
-                        我已閱讀並同意<a href="https://www.digeam.com/terms2" target="_blank"><span>隱私權政策</span></a></label>
-                    <br>
+                        <input
+                            type="checkbox"
+                            name="privacy"
+                            value="privacy"
+                            v-model="checkList"
+                        />
+                        我已閱讀並同意<a
+                            href="https://www.digeam.com/terms2"
+                            target="_blank"
+                            ><span>隱私權政策</span></a
+                        ></label
+                    >
+                    <br />
                     <label for="notice">
-                        <input type="checkbox" name="notice" value="notice" v-model="checkList">
-                        我已閱讀並同意<span @click="popBVisable('notice')">注意事項</span></label>
+                        <input
+                            type="checkbox"
+                            name="notice"
+                            value="notice"
+                            v-model="checkList"
+                        />
+                        我已閱讀並同意<span @click="popBVisable('notice')"
+                            >注意事項</span
+                        ></label
+                    >
                 </div>
             </div>
         </div>
         <div class="rewardBox">
             <div class="rewardPC">
                 <div class="left">
-                    <img src="/img/20240403_joinAct/rewardLogoCb.png" alt="">
-                    <select name="" id="" v-model="selected" v-if=" user.serverCheck == null ">
-                        <option value="" hidden selected disabled>請選擇領獎伺服器</option>
+                    <img src="/img/20240403_joinAct/rewardLogoCb.png" />
+                    <select v-model="selected" v-if="user.serverCheck == null">
+                        <option value="null" hidden>請選擇領獎伺服器</option>
                         <option value="0">黑恆星</option>
                         <option value="1">冰珀星</option>
                     </select>
-                    <div class="serverCheck" v-if=" user.serverCheck == 0 ">黑恆星</div>
-                    <div class="serverCheck" v-if=" user.serverCheck == 1 ">冰珀星</div>
+                    <div class="serverCheck" v-if="user.serverCheck == 0">
+                        黑恆星
+                    </div>
+                    <div class="serverCheck" v-if="user.serverCheck == 1">
+                        冰珀星
+                    </div>
                 </div>
                 <div class="right">
                     <div class="iconBox">
-                        <img src="/img/20240403_joinAct/rewardLightPC.png" @click="popBVisable('PC')">
-                        <p>【坐騎外觀】<br>貴族小菲雞<br>的小雞​(30日)</p>
+                        <img
+                            src="/img/20240403_joinAct/rewardLightPC.png"
+                            @click="popBVisable('PC')"
+                        />
+                        <p>【坐騎外觀】<br />貴族小菲雞<br />的小雞​(30日)</p>
                     </div>
                     <div class="rewardBtn" @click="reward('Cb')">
-                        <p v-if=" user.serverCheck == 0 || user.serverCheck == 1 ">領獎完畢</p>
-                        <p v-if=" user.serverCheck == null ">立即領獎</p>
+                        <p
+                            v-if="
+                                user.serverCheck == 0 || user.serverCheck == 1
+                            "
+                        >
+                            領獎完畢
+                        </p>
+                        <p v-if="user.serverCheck == null">立即領獎</p>
                     </div>
                 </div>
             </div>
             <div class="rewardM">
                 <div class="topBox">
-                    <img src="/img/20240403_joinAct/rewardLogoCbm.png">
+                    <img src="/img/20240403_joinAct/rewardLogoCbm.png" />
                     <div class="iconBox">
-                        <img src="/img/20240403_joinAct/rewardLightM.png" @click="popBVisable('m')">
-                        <p>黑色契約校服<br>​(30日)</p>
+                        <img
+                            src="/img/20240403_joinAct/rewardLightM.png"
+                            @click="popBVisable('m')"
+                        />
+                        <p>【時裝箱】<br/>黑色契約校服<br/>​(30日)</p>
                     </div>
                 </div>
                 <div class="rewardBtn" @click="reward('m')">
                     <!-- 立即預約 -->
-                    <p v-if="user.serialNum !== null ">{{ user.serialNum }}</p>
-                    <p v-if="user.serialNum == null ">立即領獎</p>
+                    <p v-if="user.serialNum !== null">{{ user.serialNum }}</p>
+                    <p v-if="user.serialNum == null">立即領獎</p>
                 </div>
             </div>
         </div>
@@ -193,20 +328,26 @@
 
     <footer class="section footer">
         <div class="footerbox_logo">
-            <a href="https://www.digeam.com/index" target="_blank"><img class="logo_digeam"
-                    src="/img/footer/digeam_logo.png"></a>
-            <img class="est_icon" src="/img/footer/est_icon.png">
+            <a href="https://www.digeam.com/index" target="_blank"
+                ><img class="logo_digeam" src="/img/footer/digeam_logo.png"
+            /></a>
+            <img class="est_icon" src="/img/footer/est_icon.png" />
         </div>
         <div class="spec">
-            <a href="https://www.digeam.com/terms" target="_blank">會員服務條款</a>
+            <a href="https://www.digeam.com/terms" target="_blank"
+                >會員服務條款</a
+            >
             <a href="https://www.digeam.com/terms2" target="_blank">隱私條款</a>
             <a href="https://www.digeam.com/cs" target="_blank">客服中心</a>
-            <p class="Copyright">Copyright © ESTgames Corp. All rights reserved.​
-                2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​
-                CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​</p>
+            <p class="Copyright">
+                Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed
+                and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​
+                CABAL Online is a registered trademark of ESTgames Corp (and the
+                logo of ESTgames).​
+            </p>
         </div>
         <div class="classlavel">
-            <img src="/img/footer/15_icon.png" alt="普遍級">
+            <img src="/img/footer/15_icon.png" alt="普遍級" />
             <ul>
                 <li>本遊戲為免費使用，部分內容涉及暴力情節。​</li>
                 <li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li>
@@ -217,48 +358,39 @@
     </footer>
 </template>
 
-
-
 <script>
 export default {
     data() {
         return {
             screenWidth: window.innerWidth,
             menuM: false,
+            link: {
+                androidLink:
+                    "https://play.google.com/store/apps/details?id=com.estgames.cm.tw",
+                iOSLink: "https://apps.apple.com/TW/app/id6476968999",
 
-            device: {
-                isAndroid: null,
-                isiOS: null,
-            },
-            click: {
-                Android: null,
-                iOS: null,
-            },
-            user: {
-                account: null,
-                // serialNum:null,
-                serialNum: 'XWE1234567891234',
-                serverCheck: null,
+                cbIndex: "https://cbo.digeam.com/index", //cb端遊官網
+                mIndex: "", //m的官網
             },
             popBig: {
                 visable: false,
                 useCbValue: 1,
 
                 cbValue: {
-                    img1: '/img/20240403_joinAct/rewardCbImg1.png',
-                    title1: '【坐騎外觀】貴族小菲雞(30日)​',
-                    text1: '坐騎服裝領取後可使用30天，包含特效屬性：致命傷害+9%及3個空插槽，不可交易。',
-                    img2: '/img/20240403_joinAct/rewardCbImg2.png',
-                    title2: 'GM的祝福(Lv.4)聖水 x10',
-                    text2: '裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。',
+                    img1: "/img/20240403_joinAct/rewardCbImg1.png",
+                    title1: "【坐騎外觀】貴族小菲雞(30日)​",
+                    text1: "坐騎服裝領取後可使用30天，包含特效屬性：致命傷害+9%及3個空插槽，不可交易。",
+                    img2: "/img/20240403_joinAct/rewardCbImg2.png",
+                    title2: "GM的祝福(Lv.4)聖水 x10",
+                    text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。",
                 },
                 cbmValue: {
-                    img1: '/img/20240403_joinAct/rewardCbmImg1.png',
-                    title: '【時裝箱】黑色契約校服(30日)',
-                    text: '領取後可使用30天，包含1個空插槽，不可交易。​',
+                    img1: "/img/20240403_joinAct/rewardCbmImg1.png",
+                    title: "【時裝箱】黑色契約校服(30日)",
+                    text: "領取後可使用30天，包含1個空插槽，不可交易。​",
                 },
-                noticeValue:{
-                    title:'注意事項​',
+                noticeValue: {
+                    title: "注意事項​",
                     Ul: `
                     <ul>
                         <li>【上市聯動活動】自即日起至《黑色契約Mobile》事前預約結束止。</li>
@@ -272,29 +404,50 @@ export default {
                         <li>掘夢網保留活動最終修改、解釋權利。</li>
                     </ul>
                     `,
-                }
+                },
             },
             popSmall: {
                 visable: false,
-                text: '',
+                text: "",
             },
 
-            // 隨著選項而改變
+            // 當前裝置系統
+            device: {
+                isAndroid: null,
+                isiOS: null,
+            },
+            // 有無點擊APP BTN
+            click: {
+                Android: null,
+                iOS: null,
+            },
+
+            user: {
+                account: null,
+                serialNum: null,
+                // serialNum: 'XWE1234567891234',
+                serverCheck: null, //伺服器選後、領取後存入
+            },
+
+            // 紀錄伺服器選項變化
             selected: null,
 
             // 隱私權、注意事項點擊狀態
             checkList: [],
-        }
+        };
     },
     computed: {
         items() {
             // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
             // return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.cbmValue;
-            return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.useCbValue === 1 ? this.popBig.cbmValue : this.popBig.noticeValue;
-        }
+            return this.popBig.useCbValue === 0
+                ? this.popBig.cbValue
+                : this.popBig.useCbValue === 1
+                ? this.popBig.cbmValue
+                : this.popBig.noticeValue;
+        },
     },
     methods: {
-
         async getSetting() {
             console.log(9999);
             try {
@@ -307,32 +460,32 @@ export default {
                     this.user.serialNum = response.data.serial_num;
                     // 伺服器
                     this.user.serverCheck = response.data.serve;
-
-                } else { console.error("Status is not 1:", response.data); }
-            } catch (error) { console.error("Error:", error); }
+                } else {
+                    console.error("Status is not 1:", response.data);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
         },
-
 
         popSVisable(text) {
             this.popSmall.text = text;
             this.popSmall.visable = !this.popSmall.visable;
         },
         popBVisable(detection) {
-            if (detection == 'PC') {
+            if (detection == "PC") {
                 this.popBig.useCbValue = 0;
-            } else if (detection == 'm') {
+            } else if (detection == "m") {
                 this.popBig.useCbValue = 1;
-            } else if (detection =='notice'){
+            } else if (detection == "notice") {
                 this.popBig.useCbValue = 2;
                 console.log(11288);
             }
             this.popBig.visable = !this.popBig.visable;
-
         },
 
-
         checkCookie(name) {
-            const cookies = document.cookie.split(';');
+            const cookies = document.cookie.split(";");
             const cookieName = `${name}=`;
             for (let i = 0; i < cookies.length; i++) {
                 let cookie = cookies[i].trim();
@@ -340,7 +493,7 @@ export default {
                     return cookie.substring(cookieName.length, cookie.length);
                 }
             }
-            return '';
+            return "";
         },
 
         updateScreenWidth() {
@@ -351,8 +504,7 @@ export default {
         },
 
         async rewardCb() {
-            if (this.user.selected !== null) {
-
+            if (this.selected !== null) {
                 try {
                     const response = await axios.post(api, {
                         type: "reward_cb",
@@ -361,20 +513,24 @@ export default {
                     });
 
                     if (response.data.status == 1) {
-                        this.popSVisable('領取成功');
+                        this.popSVisable("領取成功");
                         this.user.serialNum = response.data.serial_num;
                     } else if (response.data.status == -99) {
                         // 未有端遊角色
-                        this.popSVisable('請在黑色契約Online中<br>​創建至少一個角色<br><a href="#">​前往創建</a>​');
+                        this.popSVisable(
+                            '請在黑色契約Online中<br>​創建至少一個角色<br><a href="#">​前往創建</a>​'
+                        );
                     } else if (response.data.status == -98) {
                         console.error("Error:", error);
+                    } else {
+                        console.error("Status is not 1:", response.data);
                     }
-                    else { console.error("Status is not 1:", response.data); }
-
-                } catch (error) { console.error("Error:", error); }
-
-            } else { this.popSVisable('請選領獎伺服器​') }
-
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            } else {
+                this.popSVisable("請選領獎伺服器​");
+            }
         },
         async rewardCbm() {
             try {
@@ -384,47 +540,48 @@ export default {
                 });
 
                 if (response.data.status == 1) {
-                    this.popSVisable('領取成功');
+                    this.popSVisable("領取成功");
                     this.user.serialNum = response.data.serial_num;
                 } else {
                     console.error("Status is not 1:", response.data);
                 }
-
             } catch (error) {
                 console.error("Error:", error);
             }
         },
         reward(actType) {
-            const privacy = this.checkList.includes('privacy')
-            const notice = this.checkList.includes('notice')
+            const privacy = this.checkList.includes("privacy");
+            const notice = this.checkList.includes("notice");
 
-            if (actType == 'm' && this.user.serialNum !== null) {
+            if (actType == "m" && this.user.serialNum !== null) {
                 // CBM獎勵已經領取
-                return
+                return;
             } else {
                 // 驗證step123
                 if (this.user.account !== null) {
                     // 有登入 帳號
 
                     if (this.click.Android || this.click.iOS) {
-
                         if (privacy && notice) {
                             // 有同意隱私
 
-                            if (actType == 'Cb') {
+                            if (actType == "Cb") {
                                 this.rewardCb();
-                            } else
-                                if (actType == 'm') {
-                                    this.rewardCbm();
-                                }
-
-                        } else { this.popSVisable('請閱讀並同意<br>​隱私權政策與注意事項​') }
-
-                    } else { this.popSVisable('請點擊商店按紐<br>完成預約​​') }
-
-                } else { this.popSVisable('請登入<br>DiGeam掘夢網平台帳號​') }
+                            } else if (actType == "m") {
+                                this.rewardCbm();
+                            }
+                        } else {
+                            this.popSVisable(
+                                "請閱讀並同意<br>​隱私權政策與注意事項​"
+                            );
+                        }
+                    } else {
+                        this.popSVisable("請點擊商店按紐<br>完成預約​​");
+                    }
+                } else {
+                    this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
+                }
             }
-
         },
 
         // 偵測 And / IOS
@@ -437,16 +594,25 @@ export default {
 
         // 點擊APP BTN紀錄 存取
         saveBtnClick(a) {
-            if (a == 'Android') {
-                localStorage.setItem('Android', true);
+            if (a == "Android") {
+                localStorage.setItem("Android", true);
                 this.click.Android = true;
             }
-            if (a == 'iOS') {
-                localStorage.setItem('iOS', true);
+            if (a == "iOS") {
+                localStorage.setItem("iOS", true);
                 this.click.iOS = true;
             }
         },
 
+        // 登入後再跳轉回來的功能
+        updateReturnUrl() {
+            var returnUrl = "https://nage.digeam.com/event/20240111/";
+            var encodedUrl = btoa(returnUrl);
+            document.cookie =
+                "return_url=" +
+                encodedUrl +
+                "; path=/; domain=.digeam.com; secure";
+        },
     },
     mounted() {
         // API位址
@@ -454,25 +620,32 @@ export default {
         this.getSetting();
 
         // 監聽瀏覽器縮放
-        window.addEventListener('resize', this.updateScreenWidth);
+        window.addEventListener("resize", this.updateScreenWidth);
 
         this.deviceDetection();
 
-        if (this.checkCookie('StrID')) { this.user.account = this.checkCookie('StrID'); }
+        if (this.checkCookie("StrID")) {
+            this.user.account = this.checkCookie("StrID");
+        }
 
-        const Android = localStorage.getItem('Android');
-        const iOS = localStorage.getItem('iOS');
+        const Android = localStorage.getItem("Android");
+        const iOS = localStorage.getItem("iOS");
 
-        if (Android == undefined) { this.click.Android = null; }
-        else { this.click.Android = true; }
-        if (iOS == undefined) { this.click.iOS = null; }
-        else { this.click.iOS = true; }
-
+        if (Android == undefined) {
+            this.click.Android = null;
+        } else {
+            this.click.Android = true;
+        }
+        if (iOS == undefined) {
+            this.click.iOS = null;
+        } else {
+            this.click.iOS = true;
+        }
     },
 
     beforeUnmount() {
         // 組件銷毀前移除事件監聽
-        window.removeEventListener('resize', this.updateScreenWidth);
-    }
+        window.removeEventListener("resize", this.updateScreenWidth);
+    },
 };
 </script>

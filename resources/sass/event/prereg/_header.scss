@@ -7,6 +7,16 @@ header {
 	background-image: url('/img/prereg/headerBg.jpg');
 	//相對於網站根目錄指向public，無論scss在哪裡都是指向這個url
 
+
+	@include md() {
+		background-image: url('/img/prereg/01/headerBgM.jpg');
+	}
+
+	@include sm() {
+		background-image: url('/img/prereg/01/headerBgS.jpg');
+	}
+
+
 	.content {
 		padding-top: 500px;
 	}
@@ -85,7 +95,7 @@ header {
 		}
 
 		.appStore {
-			background-image: url('/img/prereg/ios.png');
+			background-image: url('/img/prereg/Ios.png');
 		}
 	}
 
@@ -95,6 +105,7 @@ header {
 		margin: 0 auto;
 		margin-top: 20px;
 		background-image: url('/img/prereg/scroll.png');
+		animation: fade-in-bottom 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite reverse both;
 	}
 
 

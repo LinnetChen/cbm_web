@@ -22,6 +22,7 @@
         "webpack": "^5.90.3"
     },
     "dependencies": {
+        "aos": "^2.3.4",
         "swiper": "^11.0.7",
         "vue3-carousel": "^0.3.1"
     }

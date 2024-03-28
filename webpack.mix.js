@@ -13,7 +13,9 @@ const mix = require("laravel-mix");
 
 // 單頁開發不再需要某活動頁的scss的話 請註解掉
 
-mix.js("resources/js/app.js", "public/js")
+mix.js("resources/js/app.js", "public/js/")
+    .js("resources/js/jointAct.js", "public/js/event")
+    .js("resources/js/prereg.js", "public/js/event")
     .sass(
         "resources/sass/event/prereg/style.scss",
         "public/css/event/prereg/style.css"
@@ -29,3 +31,7 @@ mix.js("resources/js/app.js", "public/js")
         __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false, //把黃色警告擋掉
     })
     .vue();
+
+if (mix.inProduction()) {
+    mix.version();
+}

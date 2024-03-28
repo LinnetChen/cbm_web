@@ -33,6 +33,7 @@
 			@include sm() {
 				width: 90%;
 			}
+
 		}
 
 		.swiper {
@@ -91,6 +92,8 @@
 
 				@include x3s() {
 					bottom: 80px;
+				@include x3s() {
+					bottom: 80px;
 				}
 
 				img {
@@ -129,6 +132,7 @@
 
 		@include x3s() {
 			transform: translate(-50%, -490%);
+			transform: translate(-50%, -490%);
 		}
 	}
 
@@ -150,15 +154,25 @@
 		margin: 0 10px !important;
 	}
 
+	.swiper_nav {
+		width: 68%;
+		height: 108px;
+		margin: 0 auto;
+		position: absolute;
+		top: 39%;
+		left: 17%;
+
+		@include md() {
+			display: none;
+		}
+	}
+
 	.swiper-button-prev {
 		max-width: 50px;
 		@include size(100%, 108px);
 		background-image: url("/img/prereg/carouselArrow.png");
 		@extend %bg-contain;
 
-		@include sm() {
-			display: none;
-		}
 
 		&::after {
 			content: "";
@@ -172,9 +186,7 @@
 		background-image: url("/img/prereg/carouselArrow.png");
 		@extend %bg-contain;
 
-		@include sm() {
-			display: none;
-		}
+
 
 		&::after {
 			content: "";
@@ -186,4 +198,6 @@
 		// top: 0;
 		// bottom: -10px;
 	}
+}
+
 }
