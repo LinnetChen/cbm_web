@@ -362,7 +362,7 @@
 
 <script>
 
-let api = "/http://219.84.160.36/api/jointAct";
+let api = "http://219.84.160.36/api/jointAct";
 
 
 export default {
