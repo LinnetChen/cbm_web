@@ -20725,6 +20725,7 @@ var api = "https://cbm.digeam.com/api/jointAct";
       var notice = this.checkList.includes("notice");
       if (this.clickWall == 0) {
         this.clickWall = 1;
+        console.log(this.clickWall);
 
         // 驗證step123
         if (this.user.account !== null) {
@@ -20754,6 +20755,7 @@ var api = "https://cbm.digeam.com/api/jointAct";
           this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
         }
         this.clickWall = 0;
+        console.log(this.clickWall);
       }
     },
     // 偵測 And / IOS

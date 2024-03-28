@@ -571,6 +571,7 @@ export default {
 
             if (this.clickWall == 0) {
                 this.clickWall = 1;
+                console.log(this.clickWall);
 
                 // 驗證step123
                 if (this.user.account !== null) {
@@ -602,6 +603,7 @@ export default {
                     this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
                 }
                 this.clickWall = 0;
+                console.log(this.clickWall);
             }
         },
 
