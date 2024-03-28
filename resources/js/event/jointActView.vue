@@ -512,6 +512,7 @@ export default {
         },
 
         async rewardCb() {
+            console.log('CBclick');
             if (this.selected !== null) {
                 try {
                     const response = await axios.post(api, {
@@ -545,6 +546,7 @@ export default {
             }
         },
         async rewardCbm() {
+            console.log('mclick');
             try {
                 const response = await axios.post(api, {
                     type: "reward_m",

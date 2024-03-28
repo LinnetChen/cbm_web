@@ -20636,18 +20636,19 @@ var api = "https://cbm.digeam.com/api/jointAct";
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
+              console.log('CBclick');
               if (!(_this2.selected !== null)) {
-                _context2.next = 13;
+                _context2.next = 14;
                 break;
               }
-              _context2.prev = 1;
-              _context2.next = 4;
+              _context2.prev = 2;
+              _context2.next = 5;
               return axios.post(api, {
                 type: "reward_cb",
                 user: _this2.user.account,
                 serve: _this2.selected
               });
-            case 4:
+            case 5:
               response = _context2.sent;
               if (response.data.status == 1) {
                 _this2.popSVisable("領取成功");
@@ -20664,22 +20665,22 @@ var api = "https://cbm.digeam.com/api/jointAct";
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context2.next = 11;
+              _context2.next = 12;
               break;
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](1);
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
               console.error("Error:", _context2.t0);
-            case 11:
-              _context2.next = 14;
+            case 12:
+              _context2.next = 15;
               break;
-            case 13:
-              _this2.popSVisable("請選領獎伺服器​");
             case 14:
+              _this2.popSVisable("請選領獎伺服器​");
+            case 15:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[1, 8]]);
+        }, _callee2, null, [[2, 9]]);
       }))();
     },
     rewardCbm: function rewardCbm() {
@@ -20689,13 +20690,14 @@ var api = "https://cbm.digeam.com/api/jointAct";
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
+              console.log('mclick');
+              _context3.prev = 1;
+              _context3.next = 4;
               return axios.post(api, {
                 type: "reward_m",
                 user: _this3.user.account
               });
-            case 3:
+            case 4:
               response = _context3.sent;
               if (response.data.status == 1) {
                 _this3.popSVisable("領取成功");
@@ -20707,17 +20709,17 @@ var api = "https://cbm.digeam.com/api/jointAct";
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context3.next = 10;
+              _context3.next = 11;
               break;
-            case 7:
-              _context3.prev = 7;
-              _context3.t0 = _context3["catch"](0);
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
               console.error("Error:", _context3.t0);
-            case 10:
+            case 11:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[1, 8]]);
       }))();
     },
     reward: function reward(actType) {
