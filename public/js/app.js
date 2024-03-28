@@ -20636,19 +20636,18 @@ var api = "https://cbm.digeam.com/api/jointAct";
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _this2.clickWall = 0;
               if (!(_this2.selected !== null)) {
-                _context2.next = 14;
+                _context2.next = 13;
                 break;
               }
-              _context2.prev = 2;
-              _context2.next = 5;
+              _context2.prev = 1;
+              _context2.next = 4;
               return axios.post(api, {
                 type: "reward_cb",
                 user: _this2.user.account,
                 serve: _this2.selected
               });
-            case 5:
+            case 4:
               response = _context2.sent;
               if (response.data.status == 1) {
                 _this2.popSVisable("領取成功");
@@ -20665,22 +20664,22 @@ var api = "https://cbm.digeam.com/api/jointAct";
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context2.next = 12;
+              _context2.next = 11;
               break;
-            case 9:
-              _context2.prev = 9;
-              _context2.t0 = _context2["catch"](2);
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](1);
               console.error("Error:", _context2.t0);
-            case 12:
-              _context2.next = 15;
+            case 11:
+              _context2.next = 14;
               break;
-            case 14:
+            case 13:
               _this2.popSVisable("請選領獎伺服器​");
-            case 15:
+            case 14:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[2, 9]]);
+        }, _callee2, null, [[1, 8]]);
       }))();
     },
     rewardCbm: function rewardCbm() {
@@ -20690,14 +20689,13 @@ var api = "https://cbm.digeam.com/api/jointAct";
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _this3.clickWall = 0;
-              _context3.prev = 1;
-              _context3.next = 4;
+              _context3.prev = 0;
+              _context3.next = 3;
               return axios.post(api, {
                 type: "reward_m",
                 user: _this3.user.account
               });
-            case 4:
+            case 3:
               response = _context3.sent;
               if (response.data.status == 1) {
                 _this3.popSVisable("領取成功");
@@ -20709,17 +20707,17 @@ var api = "https://cbm.digeam.com/api/jointAct";
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context3.next = 11;
+              _context3.next = 10;
               break;
-            case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](1);
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3["catch"](0);
               console.error("Error:", _context3.t0);
-            case 11:
+            case 10:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, null, [[1, 8]]);
+        }, _callee3, null, [[0, 7]]);
       }))();
     },
     reward: function reward(actType) {
@@ -20727,33 +20725,35 @@ var api = "https://cbm.digeam.com/api/jointAct";
       var notice = this.checkList.includes("notice");
       if (this.clickWall == 0) {
         this.clickWall = 1;
-        if (actType == "m" && this.user.serialNum !== null) {
-          // CBM獎勵已經領取
-          return;
-        } else {
-          // 驗證step123
-          if (this.user.account !== null) {
-            // 有登入 帳號
 
-            if (this.click.Android || this.click.iOS) {
-              if (privacy && notice) {
-                // 有同意隱私
+        // 驗證step123
+        if (this.user.account !== null) {
+          // 有登入 帳號
 
-                if (actType == "Cb") {
-                  this.rewardCb();
-                } else if (actType == "m") {
+          if (this.click.Android || this.click.iOS) {
+            if (privacy && notice) {
+              // 有同意隱私
+
+              if (actType == "Cb") {
+                this.rewardCb();
+              } else if (actType == "m") {
+                if (this.user.serialNum !== null) {
+                  // CBM獎勵已經領取
+                  return;
+                } else {
                   this.rewardCbm();
                 }
-              } else {
-                this.popSVisable("請閱讀並同意<br>​隱私權政策與注意事項​");
               }
             } else {
-              this.popSVisable("請點擊商店按紐<br>完成預約​​");
+              this.popSVisable("請閱讀並同意<br>​隱私權政策與注意事項​");
             }
           } else {
-            this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
+            this.popSVisable("請點擊商店按紐<br>完成預約​​");
           }
+        } else {
+          this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
         }
+        this.clickWall = 0;
       }
     },
     // 偵測 And / IOS
@@ -21141,13 +21141,13 @@ var _hoisted_113 = {
   "class": "iconBox"
 };
 var _hoisted_114 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("【時裝箱】"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("黑色契約校服"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("​(30日)")], -1 /* HOISTED */);
-var _hoisted_115 = {
-  key: 0
+var _hoisted_115 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "立即領獎", -1 /* HOISTED */);
+var _hoisted_116 = [_hoisted_115];
+var _hoisted_117 = {
+  key: 1,
+  "class": "rewardBtn"
 };
-var _hoisted_116 = {
-  key: 1
-};
-var _hoisted_117 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"section sec02\"><div class=\"sec02Bg\"><div class=\"sec02Title\"></div><!-- &lt;p&gt;更多聯動合作內容​&lt;/p&gt;\r\n            &lt;p&gt;上市後請前往 《黑色契約Mobile》 與 《黑色契約Cabal Online》​&lt;/p&gt;\r\n            &lt;p&gt;在涅瓦雷斯一探究竟！​&lt;/p&gt; --><!-- &lt;div class=&quot;sec02Text&quot;&gt;&lt;img src=&quot;/img/20240403_joinAct/stayTuned.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt; --></div></div><footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 2);
+var _hoisted_118 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"section sec02\"><div class=\"sec02Bg\"><div class=\"sec02Title\"></div></div></div><footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 2);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.screenWidth > 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [].concat(_hoisted_3))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.screenWidth <= 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
@@ -21286,12 +21286,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[16] || (_cache[16] = function ($event) {
       return $options.popBVisable('m');
     })
-  }), _hoisted_114])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }), _hoisted_114])]), $data.user.serialNum == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
     "class": "rewardBtn",
     onClick: _cache[17] || (_cache[17] = function ($event) {
       return $options.reward('m');
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 立即預約 "), $data.user.serialNum !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_115, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.user.serialNum), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serialNum == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_116, "立即領獎")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), _hoisted_117], 64 /* STABLE_FRAGMENT */);
+  }, [].concat(_hoisted_116))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serialNum !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_117, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.user.serialNum), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), _hoisted_118], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

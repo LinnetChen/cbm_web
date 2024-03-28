@@ -309,10 +309,15 @@
                         <p>【時裝箱】<br />黑色契約校服<br />​(30日)</p>
                     </div>
                 </div>
-                <div class="rewardBtn" @click="reward('m')">
-                    <!-- 立即預約 -->
-                    <p v-if="user.serialNum !== null">{{ user.serialNum }}</p>
-                    <p v-if="user.serialNum == null">立即領獎</p>
+                <div
+                    class="rewardBtn"
+                    @click="reward('m')"
+                    v-if="user.serialNum == null"
+                >
+                    <p>立即領獎</p>
+                </div>
+                <div class="rewardBtn" v-if="user.serialNum !== null">
+                    <p>{{ user.serialNum }}</p>
                 </div>
             </div>
         </div>
@@ -320,10 +325,6 @@
     <div class="section sec02">
         <div class="sec02Bg">
             <div class="sec02Title"></div>
-            <!-- <p>更多聯動合作內容​</p>
-            <p>上市後請前往 《黑色契約Mobile》 與 《黑色契約Cabal Online》​</p>
-            <p>在涅瓦雷斯一探究竟！​</p> -->
-            <!-- <div class="sec02Text"><img src="/img/20240403_joinAct/stayTuned.png" alt=""></div> -->
         </div>
     </div>
 
@@ -457,7 +458,6 @@ export default {
     },
     methods: {
         async getSetting() {
-
             try {
                 const response = await axios.post(api, {
                     type: "login",
@@ -512,8 +512,6 @@ export default {
         },
 
         async rewardCb() {
-            this.clickWall = 0;
-
             if (this.selected !== null) {
                 try {
                     const response = await axios.post(api, {
@@ -547,8 +545,6 @@ export default {
             }
         },
         async rewardCbm() {
-            this.clickWall = 0;
-
             try {
                 const response = await axios.post(api, {
                     type: "reward_m",
@@ -576,35 +572,36 @@ export default {
             if (this.clickWall == 0) {
                 this.clickWall = 1;
 
-                if (actType == "m" && this.user.serialNum !== null) {
-                    // CBM獎勵已經領取
-                    return;
-                } else {
-                    // 驗證step123
-                    if (this.user.account !== null) {
-                        // 有登入 帳號
+                // 驗證step123
+                if (this.user.account !== null) {
+                    // 有登入 帳號
 
-                        if (this.click.Android || this.click.iOS) {
-                            if (privacy && notice) {
-                                // 有同意隱私
+                    if (this.click.Android || this.click.iOS) {
+                        if (privacy && notice) {
+                            // 有同意隱私
 
-                                if (actType == "Cb") {
-                                    this.rewardCb();
-                                } else if (actType == "m") {
+                            if (actType == "Cb") {
+                                this.rewardCb();
+                            } else if (actType == "m") {
+                                if (this.user.serialNum !== null) {
+                                    // CBM獎勵已經領取
+                                    return;
+                                } else {
                                     this.rewardCbm();
                                 }
-                            } else {
-                                this.popSVisable(
-                                    "請閱讀並同意<br>​隱私權政策與注意事項​"
-                                );
                             }
                         } else {
-                            this.popSVisable("請點擊商店按紐<br>完成預約​​");
+                            this.popSVisable(
+                                "請閱讀並同意<br>​隱私權政策與注意事項​"
+                            );
                         }
                     } else {
-                        this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
+                        this.popSVisable("請點擊商店按紐<br>完成預約​​");
                     }
+                } else {
+                    this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
                 }
+                this.clickWall = 0;
             }
         },
 
