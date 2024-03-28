@@ -361,6 +361,10 @@
 </template>
 
 <script>
+
+let api = "/http://219.84.160.36/api/jointAct";
+
+
 export default {
     data() {
         return {
@@ -635,7 +639,6 @@ export default {
     },
     mounted() {
         // API位址
-        var api = "api/jointAct";
         this.getSetting();
 
         // 監聽瀏覽器縮放
