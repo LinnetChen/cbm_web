@@ -362,8 +362,7 @@
 
 <script>
 
-let api = "http://219.84.160.36/api/jointAct";
-
+let api = "https://cbm.digeam.com/api/jointAct";
 
 export default {
     data() {
