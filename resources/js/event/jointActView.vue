@@ -158,7 +158,7 @@
                             type="hidden"
                             name="return_url"
                             id="return_url"
-                            value={{ link.returnUrl }}
+                            v-model=link.returnUrl
                         />
 
                         <p class="account">
@@ -181,7 +181,7 @@
                     </p>
                     <button class="logout">登出</button> -->
                 </div>
-                <div class="logBox" v-if="!user.account">
+                <div class="logBox" v-else-if="!user.account">
                     <!-- 這邊登入鈕 -->
                     <!-- <button><a class="login" href="https://www.digeam.com/login">登入</a></button> -->
                     <a class="login" href="https://www.digeam.com/login"
@@ -360,7 +360,6 @@
 </template>
 
 <script>
-
 let api = "https://cbm.digeam.com/api/jointAct";
 
 export default {
@@ -369,8 +368,8 @@ export default {
             screenWidth: window.innerWidth,
             menuM: false,
             link: {
-                returnUrl:"https://cbm.digeam.com/jointAct",
-                
+                returnUrl: "https://cbm.digeam.com/jointAct",
+
                 androidLink:
                     "https://play.google.com/store/apps/details?id=com.estgames.cm.tw",
                 iOSLink: "https://apps.apple.com/TW/app/id6476968999",
@@ -458,6 +457,8 @@ export default {
     },
     methods: {
         async getSetting() {
+            console.log(this.user.account);
+
             try {
                 const response = await axios.post(api, {
                     type: "login",
@@ -493,10 +494,19 @@ export default {
 
         checkCookie(name) {
             const cookies = document.cookie.split(";");
+            console.log("cookies", cookies);
+
             const cookieName = `${name}=`;
+            console.log("cookieName", cookieName);
+
             for (let i = 0; i < cookies.length; i++) {
                 let cookie = cookies[i].trim();
+                console.log("cookie", cookie);
+
                 if (cookie.indexOf(cookieName) == 0) {
+                    console.log(
+                        cookie.substring(cookieName.length, cookie.length)
+                    );
                     return cookie.substring(cookieName.length, cookie.length);
                 }
             }
@@ -638,6 +648,9 @@ export default {
         },
     },
     mounted() {
+        if (this.checkCookie("StrID")) {
+            this.user.account = this.checkCookie("StrID");
+        }
         // API位址
         this.getSetting();
 
@@ -645,10 +658,6 @@ export default {
         window.addEventListener("resize", this.updateScreenWidth);
 
         this.deviceDetection();
-
-        if (this.checkCookie("StrID")) {
-            this.user.account = this.checkCookie("StrID");
-        }
 
         const Android = localStorage.getItem("Android");
         const iOS = localStorage.getItem("iOS");
