@@ -185,7 +185,8 @@
                 </div>
                 <div class="logBox" v-if="!user.account">
                     <!-- 這邊登入鈕 -->
-                    <button class="login">登入</button>
+                    <!-- <button><a class="login" href="https://www.digeam.com/login">登入</a></button> -->
+                    <a class="login" href="https://www.digeam.com/login">登入</a>
                     <p>
                         ※新用戶請點此​<a href="https://www.digeam.com/register"
                             >前往註冊</a
