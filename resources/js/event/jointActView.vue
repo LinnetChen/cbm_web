@@ -158,7 +158,7 @@
                             type="hidden"
                             name="return_url"
                             id="return_url"
-                            v-model=link.returnUrl
+                            v-model="link.returnUrl"
                         />
 
                         <p class="account">
@@ -457,7 +457,6 @@ export default {
     },
     methods: {
         async getSetting() {
-            console.log(this.user.account);
 
             try {
                 const response = await axios.post(api, {
@@ -467,6 +466,7 @@ export default {
                 if (response.data.status == 1) {
                     // 序號
                     this.user.serialNum = response.data.serial_num;
+
                     // 伺服器
                     this.user.serverCheck = response.data.serve;
                 } else {
@@ -494,19 +494,10 @@ export default {
 
         checkCookie(name) {
             const cookies = document.cookie.split(";");
-            console.log("cookies", cookies);
-
             const cookieName = `${name}=`;
-            console.log("cookieName", cookieName);
-
             for (let i = 0; i < cookies.length; i++) {
                 let cookie = cookies[i].trim();
-                console.log("cookie", cookie);
-
                 if (cookie.indexOf(cookieName) == 0) {
-                    console.log(
-                        cookie.substring(cookieName.length, cookie.length)
-                    );
                     return cookie.substring(cookieName.length, cookie.length);
                 }
             }
