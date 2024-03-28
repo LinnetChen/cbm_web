@@ -301,10 +301,6 @@ body .wrap {
   height: 100%;
 }
 
-.test {
-  color: #000;
-}
-
 .fixBg {
   z-index: 0;
   position: fixed;
