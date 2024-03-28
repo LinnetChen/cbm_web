@@ -1,5 +1,8 @@
 .sec01 {
+	width: 100%;
+
 	@extend %f-c-c;
+
 
 	@include md() {
 		padding: 5% 0;
@@ -12,8 +15,13 @@
 		background-size: 100%;
 		margin: 0px 10px;
 		background-image: url('/img/prereg/s1Title.png');
+		position: relative;
 
-
+		#s1 {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
 	}
 
 	.stepWrap {

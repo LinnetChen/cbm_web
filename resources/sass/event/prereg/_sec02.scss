@@ -30,6 +30,14 @@
 			margin: 0px 10px;
 			background-image: url("/img/prereg/s2Title.png");
 
+
+			#s2 {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+
+
 			@include sm() {
 				width: 90%;
 			}
@@ -92,8 +100,6 @@
 
 				@include x3s() {
 					bottom: 80px;
-				@include x3s() {
-					bottom: 80px;
 				}
 
 				img {
@@ -131,7 +137,6 @@
 		z-index: 10;
 
 		@include x3s() {
-			transform: translate(-50%, -490%);
 			transform: translate(-50%, -490%);
 		}
 	}
@@ -198,6 +203,4 @@
 		// top: 0;
 		// bottom: -10px;
 	}
-}
-
 }

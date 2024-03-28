@@ -20529,7 +20529,6 @@ var api = "http://192.168.0.42:8081/api/prereg";
     SwiperSlide: swiper_vue__WEBPACK_IMPORTED_MODULE_1__.SwiperSlide
   },
   setup: function setup() {
-    var charWrap = document.querySelector(".charWrap");
     var thumbsSwiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var setThumbsSwiper = function setThumbsSwiper(swiper) {
       thumbsSwiper.value = swiper;
@@ -20574,7 +20573,7 @@ var api = "http://192.168.0.42:8081/api/prereg";
         content: "聖．瓦倫丁在封印魔王並臨終之時，留下了一句警告。<br><br>他預言1000年後，當他力量耗盡時，魔王將會復活。賢者之塔的大賢者西里烏斯意識到預言的這天即將到來，於是在他的主導之下，大陸各地紛紛設立起特殊管理殖民地。這些特殊管理殖民地都位於氣候條件嚴苛的地方，並派遣了具有能力的官員與教官駐守。在修恩大陸的特殊管理殖民地呼嘯沙漠上，一位名為馬克的男子稱我是他一直在等待的「戰士之星」，並要我跟隨命運，踏上拯救世界的道路...... "
       }],
       slick03Data: [{
-        bgImg: "/img/prereg/WarriorBling1.png",
+        bgImg: "/img/prereg/WarriorBling.png",
         charImg: "/img/prereg/Warrior.png",
         charName: "/img/prereg/WarriorText.png",
         title: "/img/prereg/WarriorText.png",
@@ -20600,34 +20599,41 @@ var api = "http://192.168.0.42:8081/api/prereg";
         sub: "意志與信念並存的防禦者",
         content: "盾劍士渴望極強的防禦能力，不滿足於穿戴防禦力較高的重型盔甲，他們嘗試將魔力運用在防禦上，讓武器轉變為星之盾，開創出新的魔力運用方式。成為擁有絕對防禦能力的戰士。",
         linkImg: "/img/prereg/ForceShielderVideo.png"
-      }, {
-        bgImg: "/img/prereg/ForceBladerBling.png",
-        charImg: "/img/prereg/ForceBlader.png",
-        charName: "/img/prereg/ForceBladerText.png",
-        title: "/img/prereg/ForceBladerText.png",
-        weapon: "武器：單手刀",
-        sub: "魔法與劍並存的暗殺者",
-        content: "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
-        linkImg: "/img/prereg/ForceBladerVideo.png"
-      }, {
-        bgImg: "/img/prereg/WizardBling.png",
-        charImg: "/img/prereg/Wizard.png",
-        charName: "/img/prereg/WizardText.png",
-        title: "/img/prereg/WizardText.png",
-        weapon: "武器：魔徽",
-        sub: "絕對的破壞力，魔法的支配者",
-        content: "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
-        linkImg: "/img/prereg/WizardVideo.png"
-      }, {
-        bgImg: "/img/prereg/ForceArcherBling.png",
-        charImg: "/img/prereg/ForceArcher.png",
-        charName: "/img/prereg/ForceArcherText.png",
-        title: "/img/prereg/ForceArcherText.png",
-        weapon: "武器：星紋",
-        sub: "穿過暴風的致命一擊",
-        content: "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
-        linkImg: "/img/prereg/ForceArcherVideo.png"
-      }],
+      }
+      // {
+      //     bgImg: "/img/prereg/ForceBladerBling.png",
+      //     charImg: "/img/prereg/ForceBlader.png",
+      //     charName: "/img/prereg/ForceBladerText.png",
+      //     title: "/img/prereg/ForceBladerText.png",
+      //     weapon: "武器：單手刀",
+      //     sub: "魔法與劍並存的暗殺者",
+      //     content:
+      //         "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
+      //     linkImg: "/img/prereg/ForceBladerVideo.png",
+      // },
+      // {
+      //     bgImg: "/img/prereg/WizardBling.png",
+      //     charImg: "/img/prereg/Wizard.png",
+      //     charName: "/img/prereg/WizardText.png",
+      //     title: "/img/prereg/WizardText.png",
+      //     weapon: "武器：魔徽",
+      //     sub: "絕對的破壞力，魔法的支配者",
+      //     content:
+      //         "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
+      //     linkImg: "/img/prereg/WizardVideo.png",
+      // },
+      // {
+      //     bgImg: "/img/prereg/ForceArcherBling.png",
+      //     charImg: "/img/prereg/ForceArcher.png",
+      //     charName: "/img/prereg/ForceArcherText.png",
+      //     title: "/img/prereg/ForceArcherText.png",
+      //     weapon: "武器：星紋",
+      //     sub: "穿過暴風的致命一擊",
+      //     content:
+      //         "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
+      //     linkImg: "/img/prereg/ForceArcherVideo.png",
+      // },
+      ],
       slick03tab: [{
         img: "/img/prereg/s3Btn01Hover.png"
       }, {
@@ -21034,7 +21040,7 @@ var _hoisted_50 = [_hoisted_49];
 var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "char"
 }, null, -1 /* HOISTED */);
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"###\" class=\"logo\"></a><div class=\"linkBox\"><a href=\"#header\">首頁</a><a href=\"#sec01\">事前預約</a><a href=\"#sec02\">世界觀背景</a><a href=\"#sec03\">職業介紹</a><a href=\"#sec04\">遊戲特色</a><a href=\"#sec05\"> 手遊X端遊<br> 聯動特別活動 </a></div>", 2);
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"###\" class=\"logo\"></a><div class=\"linkBox\"><a href=\"#header\">首頁</a><a href=\"#s1\">事前預約</a><a href=\"#s2\">世界觀背景</a><a href=\"#s3\">職業介紹</a><a href=\"#s4\">遊戲特色</a><a href=\"#s5\"> 手遊X端遊<br> 聯動特別活動 </a></div>", 2);
 var _hoisted_54 = {
   "class": "main"
 };
@@ -21043,11 +21049,12 @@ var _hoisted_55 = {
 };
 var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sub01",
-  id: "sec01",
-  "data-aos": "fade-left",
+  "data-aos": "fade-down",
   "data-aos-offset": "100",
   "data-aos-duration": "100"
-}, null, -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  id: "s1"
+})], -1 /* HOISTED */);
 var _hoisted_57 = {
   "class": "stepWrap"
 };
@@ -21220,9 +21227,10 @@ var _hoisted_93 = {
   "class": "sec02Wrap"
 };
 var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "sub02",
-  id: "sec02"
-}, null, -1 /* HOISTED */);
+  "class": "sub02"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  id: "s2"
+})], -1 /* HOISTED */);
 var _hoisted_95 = {
   "class": "item"
 };
@@ -21245,11 +21253,12 @@ var _hoisted_102 = {
 };
 var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sub03",
-  id: "sec03",
   "data-aos": "fade-left",
   "data-aos-offset": "100",
   "data-aos-duration": "100"
-}, null, -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  id: "s3"
+})], -1 /* HOISTED */);
 var _hoisted_104 = {
   "class": "sec03Wrap"
 };
@@ -21295,19 +21304,21 @@ var _hoisted_120 = {
 };
 var _hoisted_121 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "sub04",
-  id: "sec04",
   "data-aos": "fade-left",
   "data-aos-offset": "100",
   "data-aos-duration": "100"
-}, null, -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  id: "s4"
+})], -1 /* HOISTED */);
 var _hoisted_122 = {
-  "class": "sec04Wrap"
+  "class": "sec04Wrap",
+  id: "sec04"
 };
 var _hoisted_123 = {
   "class": "item"
 };
 var _hoisted_124 = ["src"];
-var _hoisted_125 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"sec05\"><div class=\"sub05\" id=\"sec05\" data-aos=\"fade-left\" data-aos-offset=\"100\" data-aos-duration=\"100\"></div><div class=\"sec05Wrap\"><a href=\"https://cbo.digeam.com/jointAct\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"前往黑色契約手遊X端遊聯動頁\"><img src=\"/img/prereg/s5Photo.png\" alt=\"黑色契約與黑色契約M聯動確定\"></a><div class=\"contentBox\"><p> 坐著玩、站著玩、走著玩還是躺著好玩！​<br> 聯動端遊與手遊帳號，領取超稀有時裝和坐騎！​ </p></div></div></section>", 1);
+var _hoisted_125 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"sec05\"><div class=\"sub05\" data-aos=\"fade-left\" data-aos-offset=\"100\" data-aos-duration=\"100\"><div id=\"s5\"></div></div><div class=\"sec05Wrap\" id=\"sec05\"><a href=\"https://cbo.digeam.com/jointAct\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"前往黑色契約手遊X端遊聯動頁\"><img src=\"/img/prereg/s5Photo.png\" alt=\"黑色契約與黑色契約M聯動確定\"></a><div class=\"contentBox\"><p> 坐著玩、站著玩、走著玩還是躺著好玩！​<br> 聯動端遊與手遊帳號，領取超稀有時裝和坐騎！​ </p></div></div></section>", 1);
 var _hoisted_126 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_swiper_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper-slide");

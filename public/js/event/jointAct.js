@@ -20537,6 +20537,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         Android: null,
         iOS: null
       },
+      // 防連點
+      clickWall: 0,
       user: {
         account: null,
         serialNum: null,
@@ -20564,14 +20566,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              console.log(9999);
-              _context.prev = 1;
-              _context.next = 4;
+              _context.prev = 0;
+              _context.next = 3;
               return axios.post(api, {
                 type: "login",
                 user: _this.user.account
               });
-            case 4:
+            case 3:
               response = _context.sent;
               if (response.data.status == 1) {
                 // 序號
@@ -20581,17 +20582,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context.next = 11;
+              _context.next = 10;
               break;
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](1);
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
               console.error("Error:", _context.t0);
-            case 11:
+            case 10:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[1, 8]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     },
     popSVisable: function popSVisable(text) {
@@ -20605,7 +20606,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.popBig.useCbValue = 1;
       } else if (detection == "notice") {
         this.popBig.useCbValue = 2;
-        console.log(11288);
       }
       this.popBig.visable = !this.popBig.visable;
     },
@@ -20633,18 +20633,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
+              _this2.clickWall = 0;
               if (!(_this2.selected !== null)) {
-                _context2.next = 13;
+                _context2.next = 14;
                 break;
               }
-              _context2.prev = 1;
-              _context2.next = 4;
+              _context2.prev = 2;
+              _context2.next = 5;
               return axios.post(api, {
                 type: "reward_cb",
                 user: _this2.user.account,
                 serve: _this2.selected
               });
-            case 4:
+            case 5:
               response = _context2.sent;
               if (response.data.status == 1) {
                 _this2.popSVisable("領取成功");
@@ -20653,26 +20654,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 // 未有端遊角色
                 _this2.popSVisable('請在黑色契約Online中<br>​創建至少一個角色<br><a href="#">​前往創建</a>​');
               } else if (response.data.status == -98) {
-                console.error("Error:", error);
+                _this2.popSVisable("請先登入​");
+              } else if (response.data.status == -97) {
+                _this2.popSVisable("請正確選擇伺服器​");
+              } else if (response.data.status == -96) {
+                _this2.popSVisable("此帳號已領取獎勵");
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context2.next = 11;
+              _context2.next = 12;
               break;
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](1);
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
               console.error("Error:", _context2.t0);
-            case 11:
-              _context2.next = 14;
+            case 12:
+              _context2.next = 15;
               break;
-            case 13:
-              _this2.popSVisable("請選領獎伺服器​");
             case 14:
+              _this2.popSVisable("請選領獎伺服器​");
+            case 15:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[1, 8]]);
+        }, _callee2, null, [[2, 9]]);
       }))();
     },
     rewardCbm: function rewardCbm() {
@@ -20682,61 +20687,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
+              _this3.clickWall = 0;
+              _context3.prev = 1;
+              _context3.next = 4;
               return axios.post(api, {
                 type: "reward_m",
                 user: _this3.user.account
               });
-            case 3:
+            case 4:
               response = _context3.sent;
               if (response.data.status == 1) {
                 _this3.popSVisable("領取成功");
                 _this3.user.serialNum = response.data.serial_num;
+              } else if (response.data.status == -99) {
+                _this3.popSVisable("請先登入​");
+              } else if (response.data.status == -98) {
+                _this3.popSVisable("此帳號已領取");
               } else {
                 console.error("Status is not 1:", response.data);
               }
-              _context3.next = 10;
+              _context3.next = 11;
               break;
-            case 7:
-              _context3.prev = 7;
-              _context3.t0 = _context3["catch"](0);
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
               console.error("Error:", _context3.t0);
-            case 10:
+            case 11:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[1, 8]]);
       }))();
     },
     reward: function reward(actType) {
       var privacy = this.checkList.includes("privacy");
       var notice = this.checkList.includes("notice");
-      if (actType == "m" && this.user.serialNum !== null) {
-        // CBM獎勵已經領取
-        return;
-      } else {
-        // 驗證step123
-        if (this.user.account !== null) {
-          // 有登入 帳號
+      if (this.clickWall == 0) {
+        this.clickWall = 1;
+        if (actType == "m" && this.user.serialNum !== null) {
+          // CBM獎勵已經領取
+          return;
+        } else {
+          // 驗證step123
+          if (this.user.account !== null) {
+            // 有登入 帳號
 
-          if (this.click.Android || this.click.iOS) {
-            if (privacy && notice) {
-              // 有同意隱私
+            if (this.click.Android || this.click.iOS) {
+              if (privacy && notice) {
+                // 有同意隱私
 
-              if (actType == "Cb") {
-                this.rewardCb();
-              } else if (actType == "m") {
-                this.rewardCbm();
+                if (actType == "Cb") {
+                  this.rewardCb();
+                } else if (actType == "m") {
+                  this.rewardCbm();
+                }
+              } else {
+                this.popSVisable("請閱讀並同意<br>​隱私權政策與注意事項​");
               }
             } else {
-              this.popSVisable("請閱讀並同意<br>​隱私權政策與注意事項​");
+              this.popSVisable("請點擊商店按紐<br>完成預約​​");
             }
           } else {
-            this.popSVisable("請點擊商店按紐<br>完成預約​​");
+            this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
           }
-        } else {
-          this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
         }
       }
     },
@@ -20763,14 +20776,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // 登入後再跳轉回來的功能
     updateReturnUrl: function updateReturnUrl() {
-      var returnUrl = "https://nage.digeam.com/event/20240111/";
+      var returnUrl = "http://219.84.160.36/jointAct";
       var encodedUrl = btoa(returnUrl);
       document.cookie = "return_url=" + encodedUrl + "; path=/; domain=.digeam.com; secure";
     }
   },
   mounted: function mounted() {
     // API位址
-    var api = "";
+    var api = "api/jointAct";
     this.getSetting();
 
     // 監聽瀏覽器縮放
@@ -20992,8 +21005,9 @@ var _hoisted_69 = {
   key: 1,
   "class": "logBox"
 };
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "login"
+var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "login",
+  href: "https://www.digeam.com/login"
 }, "登入", -1 /* HOISTED */);
 var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ※新用戶請點此​"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "https://www.digeam.com/register"
@@ -21085,10 +21099,10 @@ var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   hidden: ""
 }, "請選擇領獎伺服器", -1 /* HOISTED */);
 var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "0"
+  value: "1"
 }, "黑恆星", -1 /* HOISTED */);
 var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "1"
+  value: "2"
 }, "冰珀星", -1 /* HOISTED */);
 var _hoisted_102 = [_hoisted_99, _hoisted_100, _hoisted_101];
 var _hoisted_103 = {
@@ -21219,7 +21233,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.updateReturnUrl();
     })
-  }, " 登出 ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"account\">\r\n                        您已登入掘夢網帳號<br>\r\n                        <span>{{ user.account }}</span>\r\n                    </p>\r\n                    <button class=\"logout\">登出</button> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.user.account ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_69, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登入鈕 "), _hoisted_70, _hoisted_71])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [_hoisted_73, _hoisted_74, _hoisted_75, _hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " 登出 ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"account\">\r\n                        您已登入掘夢網帳號<br>\r\n                        <span>{{ user.account }}</span>\r\n                    </p>\r\n                    <button class=\"logout\">登出</button> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.user.account ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_69, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 這邊登入鈕 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button><a class=\"login\" href=\"https://www.digeam.com/login\">登入</a></button> "), _hoisted_70, _hoisted_71])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [_hoisted_73, _hoisted_74, _hoisted_75, _hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "google",
     href: $data.link.androidLink,
     target: "_blank",
@@ -21256,7 +21270,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
       return $data.selected = $event;
     })
-  }, [].concat(_hoisted_102), 512 /* NEED_PATCH */)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.selected]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serverCheck == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_103, " 黑恆星 ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serverCheck == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_104, " 冰珀星 ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, [].concat(_hoisted_102), 512 /* NEED_PATCH */)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.selected]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serverCheck == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_103, " 黑恆星 ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serverCheck == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_104, " 冰珀星 ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "/img/20240403_joinAct/rewardLightPC.png",
     onClick: _cache[14] || (_cache[14] = function ($event) {
       return $options.popBVisable('PC');
@@ -21266,7 +21280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[15] || (_cache[15] = function ($event) {
       return $options.reward('Cb');
     })
-  }, [$data.user.serverCheck == 0 || $data.user.serverCheck == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_108, " 領獎完畢 ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serverCheck == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_109, "立即領獎")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_110, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_111, [_hoisted_112, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_113, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, [$data.user.serverCheck == 1 || $data.user.serverCheck == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_108, " 領獎完畢 ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user.serverCheck == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_109, "立即領獎")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_110, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_111, [_hoisted_112, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_113, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "/img/20240403_joinAct/rewardLightM.png",
     onClick: _cache[16] || (_cache[16] = function ($event) {
       return $options.popBVisable('m');

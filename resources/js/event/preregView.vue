@@ -186,11 +186,11 @@
             <a href="###" class="logo"></a>
             <div class="linkBox">
                 <a href="#header">首頁</a>
-                <a href="#sec01">事前預約</a>
-                <a href="#sec02">世界觀背景</a>
-                <a href="#sec03">職業介紹</a>
-                <a href="#sec04">遊戲特色</a>
-                <a href="#sec05">
+                <a href="#s1">事前預約</a>
+                <a href="#s2">世界觀背景</a>
+                <a href="#s3">職業介紹</a>
+                <a href="#s4">遊戲特色</a>
+                <a href="#s5">
                     手遊X端遊<br />
                     聯動特別活動
                 </a>
@@ -202,11 +202,12 @@
             <section class="sec01">
                 <div
                     class="sub01"
-                    id="sec01"
-                    data-aos="fade-left"
+                    data-aos="fade-down"
                     data-aos-offset="100"
                     data-aos-duration="100"
-                ></div>
+                >
+                    <div id="s1"></div>
+                </div>
                 <div class="stepWrap">
                     <div class="left stepBox">
                         <div class="decoTop"></div>
@@ -379,7 +380,9 @@
             </section>
             <section class="sec02">
                 <div class="sec02Wrap">
-                    <div class="sub02" id="sec02"></div>
+                    <div class="sub02">
+                        <div id="s2"></div>
+                    </div>
                     <swiper
                         :navigation="{
                             nextEl: '.swiper-button-next',
@@ -425,11 +428,12 @@
             <section class="sec03">
                 <div
                     class="sub03"
-                    id="sec03"
                     data-aos="fade-left"
                     data-aos-offset="100"
                     data-aos-duration="100"
-                ></div>
+                >
+                    <div id="s3"></div>
+                </div>
                 <div class="sec03Wrap">
                     <swiper
                         :navigation="{
@@ -541,12 +545,13 @@
             <section class="sec04">
                 <div
                     class="sub04"
-                    id="sec04"
                     data-aos="fade-left"
                     data-aos-offset="100"
                     data-aos-duration="100"
-                ></div>
-                <div class="sec04Wrap">
+                >
+                    <div id="s4"></div>
+                </div>
+                <div class="sec04Wrap" id="sec04">
                     <swiper
                         :navigation="true"
                         :pagination="{ clickable: true }"
@@ -569,12 +574,13 @@
             <section class="sec05">
                 <div
                     class="sub05"
-                    id="sec05"
                     data-aos="fade-left"
                     data-aos-offset="100"
                     data-aos-duration="100"
-                ></div>
-                <div class="sec05Wrap">
+                >
+                    <div id="s5"></div>
+                </div>
+                <div class="sec05Wrap" id="sec05">
                     <a
                         href="https://cbo.digeam.com/jointAct"
                         target="_blank"
@@ -653,7 +659,6 @@ export default {
         SwiperSlide,
     },
     setup() {
-        let charWrap = document.querySelector(".charWrap");
         const thumbsSwiper = ref(null);
         const setThumbsSwiper = (swiper) => {
             thumbsSwiper.value = swiper;
@@ -711,7 +716,7 @@ export default {
             ],
             slick03Data: [
                 {
-                    bgImg: "/img/prereg/WarriorBling1.png",
+                    bgImg: "/img/prereg/WarriorBling.png",
                     charImg: "/img/prereg/Warrior.png",
                     charName: "/img/prereg/WarriorText.png",
                     title: "/img/prereg/WarriorText.png",
@@ -743,39 +748,39 @@ export default {
                         "盾劍士渴望極強的防禦能力，不滿足於穿戴防禦力較高的重型盔甲，他們嘗試將魔力運用在防禦上，讓武器轉變為星之盾，開創出新的魔力運用方式。成為擁有絕對防禦能力的戰士。",
                     linkImg: "/img/prereg/ForceShielderVideo.png",
                 },
-                {
-                    bgImg: "/img/prereg/ForceBladerBling.png",
-                    charImg: "/img/prereg/ForceBlader.png",
-                    charName: "/img/prereg/ForceBladerText.png",
-                    title: "/img/prereg/ForceBladerText.png",
-                    weapon: "武器：單手刀",
-                    sub: "魔法與劍並存的暗殺者",
-                    content:
-                        "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
-                    linkImg: "/img/prereg/ForceBladerVideo.png",
-                },
-                {
-                    bgImg: "/img/prereg/WizardBling.png",
-                    charImg: "/img/prereg/Wizard.png",
-                    charName: "/img/prereg/WizardText.png",
-                    title: "/img/prereg/WizardText.png",
-                    weapon: "武器：魔徽",
-                    sub: "絕對的破壞力，魔法的支配者",
-                    content:
-                        "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
-                    linkImg: "/img/prereg/WizardVideo.png",
-                },
-                {
-                    bgImg: "/img/prereg/ForceArcherBling.png",
-                    charImg: "/img/prereg/ForceArcher.png",
-                    charName: "/img/prereg/ForceArcherText.png",
-                    title: "/img/prereg/ForceArcherText.png",
-                    weapon: "武器：星紋",
-                    sub: "穿過暴風的致命一擊",
-                    content:
-                        "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
-                    linkImg: "/img/prereg/ForceArcherVideo.png",
-                },
+                // {
+                //     bgImg: "/img/prereg/ForceBladerBling.png",
+                //     charImg: "/img/prereg/ForceBlader.png",
+                //     charName: "/img/prereg/ForceBladerText.png",
+                //     title: "/img/prereg/ForceBladerText.png",
+                //     weapon: "武器：單手刀",
+                //     sub: "魔法與劍並存的暗殺者",
+                //     content:
+                //         "魔劍士在一次次研究中，成功將魔法與劍術結合，發展出高超的戰鬥方式，每次攻擊帶來強大的破壞力，但由於需要同時使用兩種戰鬥方式的力量，因此在培養訓練上需要花費較多心力。",
+                //     linkImg: "/img/prereg/ForceBladerVideo.png",
+                // },
+                // {
+                //     bgImg: "/img/prereg/WizardBling.png",
+                //     charImg: "/img/prereg/Wizard.png",
+                //     charName: "/img/prereg/WizardText.png",
+                //     title: "/img/prereg/WizardText.png",
+                //     weapon: "武器：魔徽",
+                //     sub: "絕對的破壞力，魔法的支配者",
+                //     content:
+                //         "魔導師是掌握著魔法、爆發力和超級強大破壞力的絕對強者。他們可以隨心所欲地操控體內魔力與自然之力共鳴，甚至於同時施展多種魔法，將其化為毀滅性的魔法攻擊，破壞力足以令敵人望而生畏。",
+                //     linkImg: "/img/prereg/WizardVideo.png",
+                // },
+                // {
+                //     bgImg: "/img/prereg/ForceArcherBling.png",
+                //     charImg: "/img/prereg/ForceArcher.png",
+                //     charName: "/img/prereg/ForceArcherText.png",
+                //     title: "/img/prereg/ForceArcherText.png",
+                //     weapon: "武器：星紋",
+                //     sub: "穿過暴風的致命一擊",
+                //     content:
+                //         "弓箭手起源於魔導師，將魔力轉化為箭矢造成巨大的破壞力，而靈活性是他們最大的優勢之一，在戰場上輕鬆改變位置和躲避敵人的攻擊，憑藉著靈活的身手和卓越的射擊技巧，強大的遠程支援成為戰場上勝利的關鍵。",
+                //     linkImg: "/img/prereg/ForceArcherVideo.png",
+                // },
             ],
             slick03tab: [
                 {

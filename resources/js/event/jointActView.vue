@@ -176,7 +176,6 @@
                         </button>
                     </form>
 
-
                     <!-- <p class="account">
                         您已登入掘夢網帳號<br>
                         <span>{{ user.account }}</span>
@@ -185,7 +184,10 @@
                 </div>
                 <div class="logBox" v-if="!user.account">
                     <!-- 這邊登入鈕 -->
-                    <button class="login">登入</button>
+                    <!-- <button><a class="login" href="https://www.digeam.com/login">登入</a></button> -->
+                    <a class="login" href="https://www.digeam.com/login"
+                        >登入</a
+                    >
                     <p>
                         ※新用戶請點此​<a href="https://www.digeam.com/register"
                             >前往註冊</a
@@ -267,13 +269,13 @@
                     <img src="/img/20240403_joinAct/rewardLogoCb.png" />
                     <select v-model="selected" v-if="user.serverCheck == null">
                         <option value="null" hidden>請選擇領獎伺服器</option>
-                        <option value="0">黑恆星</option>
-                        <option value="1">冰珀星</option>
+                        <option value="1">黑恆星</option>
+                        <option value="2">冰珀星</option>
                     </select>
-                    <div class="serverCheck" v-if="user.serverCheck == 0">
+                    <div class="serverCheck" v-if="user.serverCheck == 1">
                         黑恆星
                     </div>
-                    <div class="serverCheck" v-if="user.serverCheck == 1">
+                    <div class="serverCheck" v-if="user.serverCheck == 2">
                         冰珀星
                     </div>
                 </div>
@@ -288,7 +290,7 @@
                     <div class="rewardBtn" @click="reward('Cb')">
                         <p
                             v-if="
-                                user.serverCheck == 0 || user.serverCheck == 1
+                                user.serverCheck == 1 || user.serverCheck == 2
                             "
                         >
                             領獎完畢
@@ -305,7 +307,7 @@
                             src="/img/20240403_joinAct/rewardLightM.png"
                             @click="popBVisable('m')"
                         />
-                        <p>【時裝箱】<br/>黑色契約校服<br/>​(30日)</p>
+                        <p>【時裝箱】<br />黑色契約校服<br />​(30日)</p>
                     </div>
                 </div>
                 <div class="rewardBtn" @click="reward('m')">
@@ -422,6 +424,9 @@ export default {
                 iOS: null,
             },
 
+            // 防連點
+            clickWall: 0,
+
             user: {
                 account: null,
                 serialNum: null,
@@ -449,7 +454,6 @@ export default {
     },
     methods: {
         async getSetting() {
-            console.log(9999);
             try {
                 const response = await axios.post(api, {
                     type: "login",
@@ -479,7 +483,6 @@ export default {
                 this.popBig.useCbValue = 1;
             } else if (detection == "notice") {
                 this.popBig.useCbValue = 2;
-                console.log(11288);
             }
             this.popBig.visable = !this.popBig.visable;
         },
@@ -504,6 +507,8 @@ export default {
         },
 
         async rewardCb() {
+            this.clickWall = 0;
+
             if (this.selected !== null) {
                 try {
                     const response = await axios.post(api, {
@@ -521,7 +526,11 @@ export default {
                             '請在黑色契約Online中<br>​創建至少一個角色<br><a href="#">​前往創建</a>​'
                         );
                     } else if (response.data.status == -98) {
-                        console.error("Error:", error);
+                        this.popSVisable("請先登入​");
+                    } else if (response.data.status == -97) {
+                        this.popSVisable("請正確選擇伺服器​");
+                    } else if (response.data.status == -96) {
+                        this.popSVisable("此帳號已領取獎勵");
                     } else {
                         console.error("Status is not 1:", response.data);
                     }
@@ -533,6 +542,8 @@ export default {
             }
         },
         async rewardCbm() {
+            this.clickWall = 0;
+
             try {
                 const response = await axios.post(api, {
                     type: "reward_m",
@@ -542,6 +553,10 @@ export default {
                 if (response.data.status == 1) {
                     this.popSVisable("領取成功");
                     this.user.serialNum = response.data.serial_num;
+                } else if (response.data.status == -99) {
+                    this.popSVisable("請先登入​");
+                } else if (response.data.status == -98) {
+                    this.popSVisable("此帳號已領取");
                 } else {
                     console.error("Status is not 1:", response.data);
                 }
@@ -553,33 +568,37 @@ export default {
             const privacy = this.checkList.includes("privacy");
             const notice = this.checkList.includes("notice");
 
-            if (actType == "m" && this.user.serialNum !== null) {
-                // CBM獎勵已經領取
-                return;
-            } else {
-                // 驗證step123
-                if (this.user.account !== null) {
-                    // 有登入 帳號
+            if (this.clickWall == 0) {
+                this.clickWall = 1;
 
-                    if (this.click.Android || this.click.iOS) {
-                        if (privacy && notice) {
-                            // 有同意隱私
+                if (actType == "m" && this.user.serialNum !== null) {
+                    // CBM獎勵已經領取
+                    return;
+                } else {
+                    // 驗證step123
+                    if (this.user.account !== null) {
+                        // 有登入 帳號
 
-                            if (actType == "Cb") {
-                                this.rewardCb();
-                            } else if (actType == "m") {
-                                this.rewardCbm();
+                        if (this.click.Android || this.click.iOS) {
+                            if (privacy && notice) {
+                                // 有同意隱私
+
+                                if (actType == "Cb") {
+                                    this.rewardCb();
+                                } else if (actType == "m") {
+                                    this.rewardCbm();
+                                }
+                            } else {
+                                this.popSVisable(
+                                    "請閱讀並同意<br>​隱私權政策與注意事項​"
+                                );
                             }
                         } else {
-                            this.popSVisable(
-                                "請閱讀並同意<br>​隱私權政策與注意事項​"
-                            );
+                            this.popSVisable("請點擊商店按紐<br>完成預約​​");
                         }
                     } else {
-                        this.popSVisable("請點擊商店按紐<br>完成預約​​");
+                        this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
                     }
-                } else {
-                    this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
                 }
             }
         },
@@ -606,7 +625,7 @@ export default {
 
         // 登入後再跳轉回來的功能
         updateReturnUrl() {
-            var returnUrl = "https://nage.digeam.com/event/20240111/";
+            var returnUrl = "http://219.84.160.36/jointAct";
             var encodedUrl = btoa(returnUrl);
             document.cookie =
                 "return_url=" +
@@ -616,7 +635,7 @@ export default {
     },
     mounted() {
         // API位址
-        var api = "";
+        var api = "api/jointAct";
         this.getSetting();
 
         // 監聽瀏覽器縮放
