@@ -1,4 +1,5 @@
 .sec04 {
+
 	@extend %f-c-c;
 	padding-top: 155px;
 
@@ -23,6 +24,13 @@
 		margin: 0px 10px;
 		background-image: url('/img/prereg/s4Title.png');
 		z-index: 2;
+		position: relative;
+
+		#s4 {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
 
 		@include sm() {
 			height: 100px;

@@ -617,7 +617,7 @@ export default {
     },
     mounted() {
         // API位址
-        var api = "";
+        var api = "api/jointAct";
         this.getSetting();
 
         // 監聽瀏覽器縮放

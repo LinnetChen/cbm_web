@@ -20770,7 +20770,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     // API位址
-    var api = "";
+    var api = "api/jointAct";
     this.getSetting();
 
     // 監聽瀏覽器縮放
