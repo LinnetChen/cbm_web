@@ -133,11 +133,13 @@
                         <span><i class="effect"></i></span>
                     </a>
                 </div>
-                <a
-                    href="https://www.facebook.com/DiGeamCabalM"
-                    class="fb"
-                    target="_blank"
-                ></a>
+                <div class="typeBox">
+                    <a
+                        href="https://www.facebook.com/DiGeamCabalM"
+                        class="fb"
+                        target="_blank"
+                    ></a>
+                </div>
                 <a href="#header" class="goTop"></a>
             </div>
             <button
@@ -198,7 +200,13 @@
 
         <main class="main">
             <section class="sec01">
-                <div class="sub01" id="sec01"></div>
+                <div
+                    class="sub01"
+                    id="sec01"
+                    data-aos="fade-left"
+                    data-aos-offset="100"
+                    data-aos-duration="100"
+                ></div>
                 <div class="stepWrap">
                     <div class="left stepBox">
                         <div class="decoTop"></div>
@@ -206,7 +214,7 @@
                             <div class="step"></div>
                             <p>輸入手機號碼</p>
                         </div>
-                        <div class="stepBoxWrap">
+                        <div class="stepBoxWrap" data-aos="fade-up">
                             <form action="" method="post">
                                 <div class="phoneBox">
                                     <select
@@ -244,7 +252,7 @@
                                     <label for="check"
                                         >勾選即同意
                                         <a
-                                            href="​https://www.digeam.com/terms2"
+                                            href="http://www.digeam.com/terms2"
                                             target="_blank"
                                             >事前預約相關隱私權條款</a
                                         ></label
@@ -277,7 +285,11 @@
                                 <div class="step"></div>
                                 <p>商店預約就送好禮</p>
                             </div>
-                            <div class="stepBoxWrap">
+                            <div
+                                class="stepBoxWrap"
+                                data-aos="fade-up"
+                                data-aos-duration="700"
+                            >
                                 <div class="awardBox">
                                     <img
                                         src="img/prereg/step2Gift.png"
@@ -335,9 +347,13 @@
                             <div class="decoDown"></div>
                             <div class="stepTitleBox">
                                 <div class="step"></div>
-                                <p>商店預約就送好禮</p>
+                                <p>追蹤粉絲團就送好禮</p>
                             </div>
-                            <div class="stepBoxWrap">
+                            <div
+                                class="stepBoxWrap"
+                                data-aos="fade-up"
+                                data-aos-duration="800"
+                            >
                                 <div class="awardBox">
                                     <img
                                         src="/img/prereg/step3Gift.png"
@@ -407,7 +423,13 @@
                 </div>
             </section>
             <section class="sec03">
-                <div class="sub03" id="sec03"></div>
+                <div
+                    class="sub03"
+                    id="sec03"
+                    data-aos="fade-left"
+                    data-aos-offset="100"
+                    data-aos-duration="100"
+                ></div>
                 <div class="sec03Wrap">
                     <swiper
                         :navigation="{
@@ -517,7 +539,13 @@
                 </div>
             </section>
             <section class="sec04">
-                <div class="sub04" id="sec04"></div>
+                <div
+                    class="sub04"
+                    id="sec04"
+                    data-aos="fade-left"
+                    data-aos-offset="100"
+                    data-aos-duration="100"
+                ></div>
                 <div class="sec04Wrap">
                     <swiper
                         :navigation="true"
@@ -539,7 +567,13 @@
                 </div>
             </section>
             <section class="sec05">
-                <div class="sub05" id="sec05"></div>
+                <div
+                    class="sub05"
+                    id="sec05"
+                    data-aos="fade-left"
+                    data-aos-offset="100"
+                    data-aos-duration="100"
+                ></div>
                 <div class="sec05Wrap">
                     <a
                         href="https://cbo.digeam.com/jointAct"
@@ -576,6 +610,7 @@
                 <a href="https://www.digeam.com/terms2" target="_blank"
                     >隱私條款</a
                 >
+
                 <a href="https://www.digeam.com/cs" target="_blank">客服中心</a>
                 <p class="Copyright">
                     Copyright © ESTgames Corp. All rights reserved.​ 2023
@@ -601,6 +636,8 @@
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Thumbs } from "swiper/modules";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -616,6 +653,7 @@ export default {
         SwiperSlide,
     },
     setup() {
+        let charWrap = document.querySelector(".charWrap");
         const thumbsSwiper = ref(null);
         const setThumbsSwiper = (swiper) => {
             thumbsSwiper.value = swiper;
@@ -895,7 +933,9 @@ export default {
                     ? (this.popSmsg =
                           "請稍後再進行預約<br/>同一個IP，一小時內只能預約三次")
                     : (this.popSmsg = "活動已結束");
-                res.data.status == 1 ? (this.user.status = true) : "";
+                res.data.status == 1
+                    ? ((this.user.status = true), (this.user.moblieNum = ""))
+                    : "";
                 return res;
             } catch (err) {
                 console.error(err);
@@ -928,7 +968,7 @@ export default {
     },
     mounted() {
         this.isMobileDevice();
-
+        AOS.init();
         let width = window.innerWidth;
         if (width <= 576) {
             window.onscroll = function () {

@@ -40,7 +40,7 @@
 		}
 
 		img {
-			width: 60%;
+			width: 55%;
 			margin-top: 5%;
 		}
 	}
@@ -96,7 +96,7 @@
 
 	.typeBox {
 		@extend %f-c-c;
-		width: 70%;
+		width: 80%;
 
 		@include md() {
 			width: 83%;

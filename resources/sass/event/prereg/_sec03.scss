@@ -48,7 +48,23 @@
 				// margin-top: -90px;
 				@extend %f-r-c;
 
+
 			}
+
+			.swiper-slide-active {
+				animation: fadeIn 2s !important;
+
+				@keyframes fadeIn {
+					0% {
+						opacity: 0;
+					}
+
+					100% {
+						opacity: 1;
+					}
+				}
+			}
+
 		}
 
 		.charWrap {
@@ -63,6 +79,7 @@
 
 			@include md() {
 				flex-direction: column;
+				border: 1px solid red;
 			}
 
 			.char_box {
@@ -96,6 +113,7 @@
 					width: 100%;
 					z-index: 2;
 
+
 					@include sm() {
 						left: -190px;
 						width: 160%;
@@ -116,6 +134,7 @@
 					width: 100%;
 					mix-blend-mode: screen;
 					filter: drop-shadow(10px 100px 25px #000);
+
 
 					@include sm() {
 						width: 160%;

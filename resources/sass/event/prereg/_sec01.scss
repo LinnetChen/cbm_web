@@ -554,13 +554,18 @@
 					}
 
 					.typeBox {
-						width: 55%;
+						width: 45%;
 						@extend %f-c-c;
 						display: flow-root;
 						overflow: hidden;
+						margin-left: 2%;
 
 						@include md {
 							width: 45%;
+						}
+
+						@include x3s {
+							width: 65%;
 						}
 
 						.fb-page {}
