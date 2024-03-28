@@ -25,6 +25,8 @@ Route::get('/prereg1', function () {
     return view('prereg1');
 });
 
-Route::get('/jointAct', function () {
-    return view('event/20240403_jointAct_index');
+Route::middleware(['setReturnUrl'])->group(function () {
+    Route::get('/jointAct', function () {
+        return view('event/20240403_jointAct_index');
+    });
 });
