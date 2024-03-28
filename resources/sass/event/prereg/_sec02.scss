@@ -92,6 +92,8 @@
 
 				@include x3s() {
 					bottom: 80px;
+				@include x3s() {
+					bottom: 80px;
 				}
 
 				img {
@@ -129,6 +131,7 @@
 		z-index: 10;
 
 		@include x3s() {
+			transform: translate(-50%, -490%);
 			transform: translate(-50%, -490%);
 		}
 	}

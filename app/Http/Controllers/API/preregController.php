@@ -50,7 +50,7 @@ class preregController extends Controller
         } else {
             $createLog = new prereg_user();
             $createLog->phone = $phone;
-            $createLog->type = $request->Phone_type;
+            $createLog->type = $request->phone_type;
             $createLog->ip = $real_ip;
             $createLog->save();
             return response()->json([

@@ -6,6 +6,10 @@
 		padding-top: 0;
 	}
 
+	@include x3s {
+		padding-top: 0;
+	}
+
 	.sub03 {
 		max-width: 581px;
 		@include size(100%, 183px);
