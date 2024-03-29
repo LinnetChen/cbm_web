@@ -30,8 +30,6 @@ class jointActController extends Controller
         } else {
             $real_ip = $_SERVER["REMOTE_ADDR"];
         }
-
-        // $_COOKIE['StrID']
         if (!isset($request->user) || $request->user == '') {
             return response()->json([
                 'status' => -99,
