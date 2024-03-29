@@ -1,5 +1,6 @@
 <template>
     <div class="wrap">
+        <div class="text" style="display: none">123</div>
         <div class="mask" v-if="this.mask == true" @click="close()"></div>
 
         <div class="popS" v-if="this.popS == true">
