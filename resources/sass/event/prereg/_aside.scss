@@ -376,6 +376,7 @@
 	left: 15px;
 	cursor: pointer;
 	z-index: 45;
+	filter: brightness(1.75);
 
 	@include sm() {
 		display: none

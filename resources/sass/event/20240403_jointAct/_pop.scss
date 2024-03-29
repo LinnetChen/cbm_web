@@ -78,6 +78,9 @@
         @include m3d{
             padding: 1% 6%;
         }
+        @include md{
+            padding: 6% 6%;
+        }
 
         &::-webkit-scrollbar-track {
             // 捲軸底色

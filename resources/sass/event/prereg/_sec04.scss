@@ -32,9 +32,7 @@
 			left: 0px;
 		}
 
-		@include sm() {
-			height: 100px;
-		}
+		@include sm() {}
 	}
 
 	.sec04Wrap {
@@ -45,6 +43,10 @@
 
 		@include xl() {
 			width: 100%;
+		}
+
+		@include sm() {
+			margin-top: 2%;
 		}
 
 		.swiper {
