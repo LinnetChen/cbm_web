@@ -158,7 +158,6 @@
                 <div class="logBox" v-if="user.account">
                     <!-- 這邊登出鈕 -->
                     <form
-                        @submit.prevent="logout"
                         id="logout-form"
                         action="https://www.digeam.com/logout"
                         method="POST"
@@ -168,6 +167,7 @@
                             name="return_url"
                             id="return_url"
                             v-model="link.returnUrl"
+                            value="<?php echo base64_encode('https://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]); ?>"
                         />
 
                         <p class="account">
@@ -179,7 +179,6 @@
                             id="logout-button"
                             type="submit"
                             value="Submit"
-                            @click="logout()"
                         >
                             登出
                         </button>
@@ -372,7 +371,7 @@ let api = "https://cbm.digeam.com/api/jointAct";
 export default {
     data() {
         return {
-            checkData:1,
+            checkData:2,
             screenWidth: window.innerWidth,
             menuM: false,
             link: {
