@@ -90,6 +90,20 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
+        'digeam' => [
+            'driver' => 'mysql',
+            'host' => '10.10.1.12',
+            'port' => '3306',
+            'database' => 'digeam',
+            'username' => 'digeam_usr',
+            'password' => 'gRLAaklwQd',
+            'unix_socket' => '',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
     ],
 

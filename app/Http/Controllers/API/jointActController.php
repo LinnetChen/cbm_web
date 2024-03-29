@@ -5,8 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\joinActCode;
 use App\Models\joinActUser;
+use App\Models\GameLoginLog;
 use Illuminate\Http\Request;
-
+use GuzzleHttp\Client;
 class jointActController extends Controller
 {
     public function index(Request $request)
@@ -53,7 +54,9 @@ class jointActController extends Controller
     }
     private function reward_cb($request)
     {
-
+        if(isset($request->user)){
+            $_COOKIE['StrID']  = $request->user;
+        }
         if (!isset($request->user) || $request->user == '') {
             return response()->json([
                 'status' => -99,
@@ -71,6 +74,22 @@ class jointActController extends Controller
                 'status' => -99,
             ]);
         } else {
+            if( $request->serve ==1){
+                $server_id = 'server01';
+            }else{
+                $server_id = 'server02';
+            }
+            // $client = new Client(['verify' => false]);
+            // $res = $client->request('GET', 'http://c1twapi.global.estgames.com/game/character/searchByCharacterId?userId=' . $_COOKIE['StrID'] . '&serverCode=' . $server_id);
+            // $check_char = $res->getBody();
+            // $check_char = json_decode($check_char);
+            // dd($check_char);
+            // if (count($check_char->data) <= 0) {
+            //     return response()->json([
+            //         'status' => -96,
+            //     ]);
+            }
+
             $user->cbo_reward_get = 'y';
             $user->cbo_reward_server = $request->serve;
             $user->save();
@@ -103,10 +122,12 @@ class jointActController extends Controller
             $getCode = joinActCode::where('user', null)->first();
             $getCode->user = $request->user;
             $getCode->ip = $real_ip;
+            $getCode->save();
             $user->cbm_serial_number = $getCode->code;
             $user->save();
             return response()->json([
                 'status' => 1,
+                'serial_num'=>$getCode->code,
             ]);
         }
 

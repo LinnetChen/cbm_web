@@ -36,7 +36,8 @@ class PreregController extends AdminController
             $filter->equal('phone', '手機號碼');
         });
         $grid->disableRowSelector();
-
+        $grid->disableActions();
+        $grid->disableCreateButton();
         return $grid;
     }
 
