@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\joinActCode;
 use App\Models\joinActUser;
 use Illuminate\Http\Request;
 
@@ -83,6 +84,11 @@ class jointActController extends Controller
     }
     private function reward_m($request)
     {
+        if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            $real_ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        } else {
+            $real_ip = $_SERVER["REMOTE_ADDR"];
+        }
 
         if (!isset($request->user) || $request->user == '') {
             return response()->json([
@@ -96,7 +102,10 @@ class jointActController extends Controller
                 'status' => -98,
             ]);
         } else {
-            $user->cbm_serial_number = 'aaa';
+            $getCode = joinActCode::where('user', null)->first();
+            $getCode->user = $request->user;
+            $getCode->ip = $real_ip;
+            $user->cbm_serial_number = $getCode->code;
             $user->save();
             return response()->json([
                 'status' => 1,
