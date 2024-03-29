@@ -372,6 +372,7 @@ let api = "https://cbm.digeam.com/api/jointAct";
 export default {
     data() {
         return {
+            checkData:1,
             screenWidth: window.innerWidth,
             menuM: false,
             link: {
