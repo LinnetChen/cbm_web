@@ -154,17 +154,24 @@
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
                 <div class="logBox" v-if="user.account">
                     <!-- 這邊登出鈕 -->
-                    <form
+                    <!-- <form
                         @submit.prevent="logout"
                         id="logout-form"
                         action="https://www.digeam.com/logout"
                         method="POST"
+                    > -->
+                    <form
+                        id="logout-form"
+                        action="https://www.digeam.com/logout"
+                        method="POST"
+
                     >
                         <input
                             type="hidden"
                             name="return_url"
                             id="return_url"
                             v-model="link.returnUrl"
+                            value="<?php echo base64_encode('https://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]); ?>"
                         />
 
                         <p class="account">
@@ -464,13 +471,13 @@ export default {
     },
     methods: {
 
-        logout(){
-            this.user.account = null;
+        // logout(){
+        //     this.user.account = null;
 
-            console.log(this.user.account);
+        //     console.log(this.user.account);
             
-            this.$router.push('/jointAct')
-        },
+        //     this.$router.push('/jointAct')
+        // },
         
         
         async getSetting() {
