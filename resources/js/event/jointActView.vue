@@ -2,12 +2,14 @@
     <div class="barPC" v-if="screenWidth > 900">
         <div class="menu">
             <ul class="menuList">
-                <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
+                <li class="menuListItem">
+                    <a :href="link.preregIndex">Mobile事前預約​</a>
+                </li>
                 <li class="menuDeco">|</li>
                 <li class="menuListItem"><a href="#header">聯動活動​</a></li>
                 <li class="menuDeco">|</li>
                 <li class="menuListItem">
-                    <a href="">涅瓦雷斯人才招募中心​</a>
+                    <a :href="link.index20240329">涅瓦雷斯人才招募中心​</a>
                 </li>
             </ul>
         </div>
@@ -20,12 +22,16 @@
         </div>
     </div>
     <ul class="menuM" v-if="screenWidth <= 900 && menuM == true">
-        <a class="logo" href=""
+        <a class="logo" :href="link.mIndex"
             ><img src="/img/20240403_joinAct/cbmLOGO.png" alt=""
         /></a>
-        <li class="menuListItem"><a href="">Mobile事前預約​</a></li>
+        <li class="menuListItem">
+            <a :href="link.preregIndex">Mobile事前預約​</a>
+        </li>
         <li class="menuListItem"><a href="#header">聯動活動​</a></li>
-        <li class="menuListItem"><a href="">涅瓦雷斯人才招募中心​</a></li>
+        <li class="menuListItem">
+            <a :href="link.index20240329">涅瓦雷斯人才招募中心​</a>
+        </li>
     </ul>
 
     <!-- 大跳窗 -->
@@ -149,10 +155,10 @@
                 <div class="logBox" v-if="user.account">
                     <!-- 這邊登出鈕 -->
                     <form
+                        @submit.prevent="logout"
                         id="logout-form"
                         action="https://www.digeam.com/logout"
                         method="POST"
-                        v-if="user.account"
                     >
                         <input
                             type="hidden"
@@ -170,20 +176,14 @@
                             id="logout-button"
                             type="submit"
                             value="Submit"
+                            @click="logout()"
                         >
                             登出
                         </button>
                     </form>
-
-                    <!-- <p class="account">
-                        您已登入掘夢網帳號<br>
-                        <span>{{ user.account }}</span>
-                    </p>
-                    <button class="logout">登出</button> -->
                 </div>
                 <div class="logBox" v-else-if="!user.account">
                     <!-- 這邊登入鈕 -->
-                    <!-- <button><a class="login" href="https://www.digeam.com/login">登入</a></button> -->
                     <a class="login" href="https://www.digeam.com/login"
                         >登入</a
                     >
@@ -284,7 +284,7 @@
                             src="/img/20240403_joinAct/rewardLightPC.png"
                             @click="popBVisable('PC')"
                         />
-                        <p>【坐騎外觀】<br />貴族小菲雞<br />的小雞​(30日)</p>
+                        <p>【坐騎外觀】<br />貴族小菲雞<br />​(30日)</p>
                     </div>
                     <div
                         class="rewardBtn"
@@ -295,7 +295,8 @@
                     <div
                         class="rewardBtn"
                         @click="reward('Cb')"
-                        v-else-if="user.serverCheck == null">
+                        v-else-if="user.serverCheck == null"
+                    >
                         <p>立即領獎</p>
                     </div>
                 </div>
@@ -319,7 +320,7 @@
                     <p>立即領獎</p>
                 </div>
                 <div class="rewardBtn" v-else-if="user.serialNum !== null">
-                    <p>{{ user.serialNum }}</p>
+                    <p>{{ serialNum }}</p>
                 </div>
             </div>
         </div>
@@ -378,7 +379,9 @@ export default {
                 iOSLink: "https://apps.apple.com/TW/app/id6476968999",
 
                 cbIndex: "https://cbo.digeam.com/index", //cb端遊官網
-                mIndex: "", //m的官網
+                mIndex: "#", //m的官網
+                preregIndex: "https://cbm.digeam.com/prereg", //事前預約
+                index20240329: "https://cbo.digeam.com/20240329", //329活動頁
             },
             popBig: {
                 visable: false,
@@ -436,7 +439,6 @@ export default {
             user: {
                 account: null,
                 serialNum: null,
-                // serialNum: 'XWE1234567891234',
                 serverCheck: null, //伺服器選後、領取後存入
             },
 
@@ -450,15 +452,27 @@ export default {
     computed: {
         items() {
             // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
-            // return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.cbmValue;
             return this.popBig.useCbValue === 0
                 ? this.popBig.cbValue
                 : this.popBig.useCbValue === 1
                 ? this.popBig.cbmValue
                 : this.popBig.noticeValue;
         },
+        serialNum() {
+            return this.user.serialNum;
+        },
     },
     methods: {
+
+        logout(){
+            this.user.account = null;
+
+            console.log(this.user.account);
+            
+            this.$router.push('/jointAct')
+        },
+        
+        
         async getSetting() {
             try {
                 const response = await axios.post(api, {
@@ -556,8 +570,11 @@ export default {
                 });
 
                 if (response.data.status == 1) {
-                    this.popSVisable("領取成功");
                     this.user.serialNum = response.data.serial_num;
+
+                    console.log(this.user.serialNum);
+
+                    this.popSVisable("領取成功");
                 } else if (response.data.status == -99) {
                     this.popSVisable("請先登入​");
                 } else if (response.data.status == -98) {
@@ -575,7 +592,6 @@ export default {
 
             if (this.clickWall == 0) {
                 this.clickWall = 1;
-                console.log(this.clickWall);
 
                 // 驗證step123
                 if (this.user.account !== null) {
@@ -607,7 +623,6 @@ export default {
                     this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
                 }
                 this.clickWall = 0;
-                console.log(this.clickWall);
             }
         },
 
@@ -632,14 +647,14 @@ export default {
         },
 
         // 登入後再跳轉回來的功能
-        updateReturnUrl() {
-            var returnUrl = "https://cbm.digeam.com/jointAct";
-            var encodedUrl = btoa(returnUrl);
-            document.cookie =
-                "return_url=" +
-                encodedUrl +
-                "; path=/; domain=.digeam.com; secure";
-        },
+        // updateReturnUrl() {
+        //     var returnUrl = "https://cbm.digeam.com/jointAct";
+        //     var encodedUrl = btoa(returnUrl);
+        //     document.cookie =
+        //         "return_url=" +
+        //         encodedUrl +
+        //         "; path=/; domain=.digeam.com; secure";
+        // },
     },
     mounted() {
         if (this.checkCookie("StrID")) {
