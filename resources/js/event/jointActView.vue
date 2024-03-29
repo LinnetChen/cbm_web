@@ -286,15 +286,17 @@
                         />
                         <p>【坐騎外觀】<br />貴族小菲雞<br />的小雞​(30日)</p>
                     </div>
-                    <div class="rewardBtn" @click="reward('Cb')">
-                        <p
-                            v-if="
-                                user.serverCheck == 1 || user.serverCheck == 2
-                            "
-                        >
-                            領獎完畢
-                        </p>
-                        <p v-if="user.serverCheck == null">立即領獎</p>
+                    <div
+                        class="rewardBtn"
+                        v-if="user.serverCheck == 1 || user.serverCheck == 2"
+                    >
+                        <p>領獎完畢</p>
+                    </div>
+                    <div
+                        class="rewardBtn"
+                        @click="reward('Cb')"
+                        v-else-if="user.serverCheck == null">
+                        <p>立即領獎</p>
                     </div>
                 </div>
             </div>
@@ -316,7 +318,7 @@
                 >
                     <p>立即領獎</p>
                 </div>
-                <div class="rewardBtn" v-if="user.serialNum !== null">
+                <div class="rewardBtn" v-else-if="user.serialNum !== null">
                     <p>{{ user.serialNum }}</p>
                 </div>
             </div>
@@ -512,7 +514,7 @@ export default {
         },
 
         async rewardCb() {
-            console.log('CBclick');
+            console.log("CBclick");
             if (this.selected !== null) {
                 try {
                     const response = await axios.post(api, {
@@ -522,8 +524,8 @@ export default {
                     });
 
                     if (response.data.status == 1) {
-                        this.popSVisable("領取成功");
                         this.user.serialNum = response.data.serial_num;
+                        this.popSVisable("領取成功");
                     } else if (response.data.status == -99) {
                         // 未有端遊角色
                         this.popSVisable(
@@ -546,7 +548,7 @@ export default {
             }
         },
         async rewardCbm() {
-            console.log('mclick');
+            console.log("mclick");
             try {
                 const response = await axios.post(api, {
                     type: "reward_m",
