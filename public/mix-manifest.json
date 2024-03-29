@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/event/jointAct.js": "/js/event/jointAct.js",
-    "/js/event/prereg.js": "/js/event/prereg.js",
-    "/css/event/prereg/style.css": "/css/event/prereg/style.css",
-    "/css/app.css": "/css/app.css",
-    "/css/event/20240403_jointAct/style.css": "/css/event/20240403_jointAct/style.css"
+    "/js/app.js": "/js/app.js?id=203654b0be94001a8fdae52d0022212f",
+    "/js/event/jointAct.js": "/js/event/jointAct.js?id=477b09d88027471d2d869fe6a095d8a4",
+    "/js/event/prereg.js": "/js/event/prereg.js?id=bebb0fe29879f7f13443f79b0b8b1ed6",
+    "/css/event/prereg/style.css": "/css/event/prereg/style.css?id=529b4a2cd6a6979b152685bd6a1f4fc1",
+    "/css/app.css": "/css/app.css?id=68b329da9893e34099c7d8ad5cb9c940",
+    "/css/event/20240403_jointAct/style.css": "/css/event/20240403_jointAct/style.css?id=0d29e2df626024e36283b49a30eb510b"
 }
