@@ -617,7 +617,9 @@
                     >隱私條款</a
                 >
 
-                <a href="https://www.digeam.com/cs" target="_blank">客服中心</a>
+                <a href="https://www.digeam.com/cs/cs_mobile" target="_blank"
+                    >客服中心</a
+                >
                 <p class="Copyright">
                     Copyright © ESTgames Corp. All rights reserved.​ 2023
                     Licensed and published for Taiwan, Hong Kong and Macau by
@@ -742,7 +744,7 @@ export default {
                     charImg: "/img/prereg/ForceShielder.png",
                     charName: "/img/prereg/ForceShielderText.png",
                     title: "/img/prereg/ForceShielderText.png",
-                    weapon: "武器：單手刀",
+                    weapon: "武器：單手劍",
                     sub: "意志與信念並存的防禦者",
                     content:
                         "盾劍士渴望極強的防禦能力，不滿足於穿戴防禦力較高的重型盔甲，他們嘗試將魔力運用在防禦上，讓武器轉變為星之盾，開創出新的魔力運用方式。成為擁有絕對防禦能力的戰士。",
