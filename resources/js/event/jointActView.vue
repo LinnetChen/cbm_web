@@ -473,9 +473,10 @@ export default {
             console.log(this.user.account);
 
             this.$router.push("/jointAct");
-            document.cookie = `StrID = ${Cookies.get(
-                "StrID"
-            )};domain= https://www.digeam.com;expires=Session`;
+            // document.cookie = `StrID = ${Cookies.get(
+            //     "StrID"
+            // )};domain= https://www.digeam.com;expires=Session`;
+            document.cookie = `StrID=;domain=digeam.com;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
         },
 
         async getSetting() {
