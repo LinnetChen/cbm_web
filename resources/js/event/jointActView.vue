@@ -36,9 +36,12 @@
 
     <!-- 大跳窗 -->
     <!-- <div class="popBig"> -->
-    <div class="popBig" v-if="popBig.visable">
+        <div class="popBig" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
+            <div class="deco">
+                <img src="/img/20240403_joinAct/popTop.png" alt="" />
+            </div>
             <div class="container" v-for="(value, key) in items" :key="key">
                 <div class="title" v-if="key.includes('title')">
                     {{ value }}
@@ -154,24 +157,17 @@
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
                 <div class="logBox" v-if="user.account">
                     <!-- 這邊登出鈕 -->
-                    <!-- <form
+                    <form
                         @submit.prevent="logout"
                         id="logout-form"
                         action="https://www.digeam.com/logout"
                         method="POST"
-                    > -->
-                    <form
-                        id="logout-form"
-                        action="https://www.digeam.com/logout"
-                        method="POST"
-
                     >
                         <input
                             type="hidden"
                             name="return_url"
                             id="return_url"
                             v-model="link.returnUrl"
-                            value="<?php echo base64_encode('https://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]); ?>"
                         />
 
                         <p class="account">
@@ -392,7 +388,7 @@ export default {
             },
             popBig: {
                 visable: false,
-                useCbValue: 1,
+                useCbValue: 2,
 
                 cbValue: {
                     img1: "/img/20240403_joinAct/rewardCbImg1.png",
@@ -459,6 +455,9 @@ export default {
     computed: {
         items() {
             // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
+
+            // return this.popBig.noticeValue;
+
             return this.popBig.useCbValue === 0
                 ? this.popBig.cbValue
                 : this.popBig.useCbValue === 1
@@ -470,16 +469,14 @@ export default {
         },
     },
     methods: {
+        logout() {
+            this.user.account = null;
 
-        // logout(){
-        //     this.user.account = null;
+            console.log(this.user.account);
 
-        //     console.log(this.user.account);
-            
-        //     this.$router.push('/jointAct')
-        // },
-        
-        
+            this.$router.push("/jointAct");
+        },
+
         async getSetting() {
             try {
                 const response = await axios.post(api, {
@@ -503,6 +500,13 @@ export default {
         popSVisable(text) {
             this.popSmall.text = text;
             this.popSmall.visable = !this.popSmall.visable;
+
+            // 鎖背景滾輪 scoll overflow
+            if (this.popSmall.visable == false) {
+                document.documentElement.style.overflow = "auto";
+            } else {
+                document.documentElement.style.overflow = "hidden";
+            }
         },
         popBVisable(detection) {
             if (detection == "PC") {
@@ -513,6 +517,13 @@ export default {
                 this.popBig.useCbValue = 2;
             }
             this.popBig.visable = !this.popBig.visable;
+
+            // 鎖背景滾輪 scoll overflow
+            if (this.popBig.visable == false) {
+                document.documentElement.style.overflow = "auto";
+            } else {
+                document.documentElement.style.overflow = "hidden";
+            }
         },
 
         checkCookie(name) {
