@@ -36,7 +36,7 @@
 
     <!-- 大跳窗 -->
     <!-- <div class="popBig"> -->
-        <div class="popBig" v-if="popBig.visable">
+    <div class="popBig" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
             <div class="deco">
@@ -456,8 +456,6 @@ export default {
         items() {
             // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
 
-            // return this.popBig.noticeValue;
-
             return this.popBig.useCbValue === 0
                 ? this.popBig.cbValue
                 : this.popBig.useCbValue === 1
@@ -475,6 +473,9 @@ export default {
             console.log(this.user.account);
 
             this.$router.push("/jointAct");
+            document.cookie = `StrID = ${Cookies.get(
+                "StrID"
+            )};domain= https://www.digeam.com;expires=Session`;
         },
 
         async getSetting() {
