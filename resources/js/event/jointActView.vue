@@ -161,7 +161,7 @@
                 <p class="stepTitle">STEP.1</p>
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
                 <div class="testBox logBox" v-if="user.account">
-                    <form action="https://www.digeam.com/logout" method="post" @submit.prevent="submitLogoutForm">
+                    <form action="https://www.digeam.com/logout" method="post">
                         <p class="account">
                             您已登入掘夢網帳號<br />
                             <span>{{ user.account }}</span>
@@ -170,7 +170,7 @@
                             type="hidden"
                             name="return_url"
                             id="return_url"
-                            value="https://cbm.digeam.com/jointAct"
+                            value="aHR0cHM6Ly9jYm0uZGlnZWFtLmNvbS9qb2ludEFjdA=="
                         />
                         <button
                             class="logout"
@@ -520,13 +520,13 @@ export default {
             }
         },
 
-        submitLogoutForm() {
-        // 獲取 input 的值
-        const returnUrl = document.getElementById('return_url').value;
+    //     submitLogoutForm() {
+    //     // 獲取 input 的值
+    //     const returnUrl = document.getElementById('return_url').value;
 
-        // 在這裡可以進行相應的操作，比如重定向到指定頁面
-        window.location.href = returnUrl;
-    },
+    //     // 在這裡可以進行相應的操作，比如重定向到指定頁面
+    //     window.location.href = returnUrl;
+    // },
 
         popSVisable(text) {
             this.popSmall.text = text;
