@@ -167,11 +167,19 @@
                             <span>{{ user.account }}</span>
                         </p>
                         <input
+                            class="logout"
+                            type="submit"
+                            value="登出"
+                            name="return_url"
+                            id="return_url"
+                            :value="returnUrl"
+                        />
+                        <!-- <input
                             type="submit"
                             value="登出"
                             class="logout"
                             @click="updateReturnUrl()"
-                        />
+                        /> -->
                     </form>
                 </div>
                 <!-- 這邊登出鈕 -->
@@ -279,11 +287,13 @@
                         <option value="1">冰珀星</option>
                         <option value="2">黑恆星</option>
                     </select>
-                    <div class="serverCheck" v-if="user.serverCheck == 1">
-                        冰珀星
-                    </div>
-                    <div class="serverCheck" v-if="user.serverCheck == 2">
-                        黑恆星
+                    <div
+                        class="serverCheck"
+                        v-else-if="
+                            user.serverCheck == 1 || user.serverCheck == 2
+                        "
+                    >
+                        {{ serverCheck }}
                     </div>
                 </div>
                 <div class="right">
@@ -298,14 +308,14 @@
                         class="rewardBtn"
                         v-if="user.serverCheck == 1 || user.serverCheck == 2"
                     >
-                        <p>領獎完畢</p>
+                        <p>{{ rewardCB }}</p>
                     </div>
                     <div
                         class="rewardBtn"
                         @click="reward('Cb')"
                         v-else-if="user.serverCheck == null"
                     >
-                        <p>立即領獎</p>
+                        <p>{{ rewardCB }}</p>
                     </div>
                 </div>
             </div>
@@ -459,6 +469,9 @@ export default {
 
             // 隱私權、注意事項點擊狀態
             checkList: [],
+
+            // 返回的網址
+            returnUrl: "",
         };
     },
     computed: {
@@ -473,6 +486,14 @@ export default {
         },
         serialNum() {
             return this.user.serialNum;
+        },
+        rewardCB() {
+            //領獎BTN文字更換
+            return this.user.serverCheck == null ? "立即領獎" : "領獎完畢";
+        },
+        serverCheck() {
+            // select 伺服器選擇鎖定
+            return user.serverCheck == 1 ? "冰珀星" : "黑恆星";
         },
     },
     methods: {
@@ -562,12 +583,12 @@ export default {
                     });
 
                     if (response.data.status == 1) {
-                        this.user.serialNum = response.data.serial_num;
+                        this.user.serverCheck = this.selected;
                         this.popSVisable("領取成功");
                     } else if (response.data.status == -99) {
                         // 未有端遊角色
                         this.popSVisable(
-                            '請在黑色契約Online中<br>​創建至少一個角色<br><a href="#">​前往創建</a>​'
+                            '請在黑色契約Online中<br>​創建至少一個角色<br><a href="https://cbo.digeam.com/game"  target="_blank">​前往創建</a>​'
                         );
                     } else if (response.data.status == -98) {
                         this.popSVisable("請先登入​");
@@ -595,9 +616,7 @@ export default {
 
                 if (response.data.status == 1) {
                     this.user.serialNum = response.data.serial_num;
-
                     console.log(this.user.serialNum);
-
                     this.popSVisable("領取成功");
                 } else if (response.data.status == -99) {
                     this.popSVisable("請先登入​");
@@ -714,6 +733,9 @@ export default {
         } else {
             this.click.iOS = true;
         }
+
+        // 使用 base64 編碼 return_url 登出返回此網址
+        this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
     },
 
     beforeUnmount() {
