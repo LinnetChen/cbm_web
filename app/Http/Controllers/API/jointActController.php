@@ -46,7 +46,7 @@ class jointActController extends Controller
             }
             return response()->json([
                 'status' => 1,
-                'serve' => $user['serve'],
+                'serve' => $user['cbo_reward_server'],
                 'serial_num' => $user['cbm_serial_number'],
             ]);
         }
@@ -70,7 +70,7 @@ class jointActController extends Controller
         $user = joinActUser::where('user', $request->user)->first();
         if ($user->cbo_reward_get != 'n') {
             return response()->json([
-                'status' => -99,
+                'status' => -96,
             ]);
         } else {
             if ($request->serve == 1) {
