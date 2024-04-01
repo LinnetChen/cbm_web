@@ -161,19 +161,24 @@
                 <p class="stepTitle">STEP.1</p>
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
                 <div class="testBox logBox" v-if="user.account">
-                    <form action="https://www.digeam.com/logout" method="post">
+                    <form action="https://www.digeam.com/logout" method="post" @submit.prevent="submitLogoutForm">
                         <p class="account">
                             您已登入掘夢網帳號<br />
                             <span>{{ user.account }}</span>
                         </p>
                         <input
-                            class="logout"
-                            type="submit"
-                            value="登出"
+                            type="hidden"
                             name="return_url"
                             id="return_url"
-                            :value="returnUrl"
+                            value="aHR0cHM6Ly9jYm0uZGlnZWFtLmNvbS9qb2ludEFjdA=="
                         />
+                        <button
+                            class="logout"
+                            type="submit"
+                            value="Send Request"
+                        >
+                            登出
+                        </button>
                         <!-- <input
                             type="submit"
                             value="登出"
@@ -469,7 +474,7 @@ export default {
             checkList: [],
 
             // 返回的網址
-            returnUrl: "",
+            // returnUrl: "",
         };
     },
     computed: {
@@ -514,6 +519,14 @@ export default {
                 console.error("Error:", error);
             }
         },
+
+        submitLogoutForm() {
+        // 獲取 input 的值
+        const returnUrl = document.getElementById('return_url').value;
+
+        // 在這裡可以進行相應的操作，比如重定向到指定頁面
+        window.location.href = returnUrl;
+    },
 
         popSVisable(text) {
             this.popSmall.text = text;
@@ -733,7 +746,9 @@ export default {
         }
 
         // 使用 base64 編碼 return_url 登出返回此網址
-        this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
+        // this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
+        // this.returnUrl = "aHR0cHM6Ly9jYm0uZGlnZWFtLmNvbS9qb2ludEFjdA==";
+        // console.log(this.returnUrl);
     },
 
     beforeUnmount() {
