@@ -287,13 +287,11 @@
                         <option value="1">冰珀星</option>
                         <option value="2">黑恆星</option>
                     </select>
-                    <div
-                        class="serverCheck"
-                        v-else-if="
-                            user.serverCheck == 1 || user.serverCheck == 2
-                        "
-                    >
-                        {{ serverCheck }}
+                    <div class="serverCheck" v-else-if="user.serverCheck == 1">
+                        冰珀星
+                    </div>
+                    <div class="serverCheck" v-else-if="user.serverCheck == 2">
+                        黑恆星
                     </div>
                 </div>
                 <div class="right">
@@ -491,10 +489,10 @@ export default {
             //領獎BTN文字更換
             return this.user.serverCheck == null ? "立即領獎" : "領獎完畢";
         },
-        serverCheck() {
-            // select 伺服器選擇鎖定
-            return user.serverCheck == 1 ? "冰珀星" : "黑恆星";
-        },
+        // serverCheck() {
+        //     // select 伺服器選擇鎖定
+        //     return user.serverCheck == '1' ? "冰珀星" : "黑恆星";
+        // },
     },
     methods: {
         async getSetting() {
