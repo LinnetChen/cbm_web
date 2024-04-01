@@ -9,7 +9,12 @@
                 <li class="menuListItem"><a href="#header">聯動活動​</a></li>
                 <li class="menuDeco">|</li>
                 <li class="menuListItem">
-                    <a :href="link.index20240329">涅瓦雷斯人才招募中心​</a>
+                    <a
+                        :href="link.index20240329"
+                        @mouseenter="changeTextOnMouseEnter"
+                        @mouseleave="changeTextOnMouseLeave"
+                        >{{ index20240329Text }}​</a
+                    >
                 </li>
             </ul>
         </div>
@@ -155,25 +160,23 @@
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.1</p>
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
-                <div class="testBox">
+                <div class="testBox logBox" v-if="user.account">
                     <form action="https://www.digeam.com/logout" method="post">
-                        <input type="submit" value="Send Request" />
+                        <p class="account">
+                            您已登入掘夢網帳號<br />
+                            <span>{{ user.account }}</span>
+                        </p>
+                        <input
+                            type="submit"
+                            value="登出"
+                            class="logout"
+                            @click="updateReturnUrl()"
+                        />
                     </form>
                 </div>
-                <div class="logBox" v-if="user.account">
-                    <!-- 這邊登出鈕 -->
-                    <form
-                        action="https://www.digeam.com/logout"
-                        method="post"
-                    >
-                        <input
-                            type="hidden"
-                            name="return_url"
-                            id="return_url"
-                            v-model="link.returnUrl"
-                            value="<?php echo base64_encode('https://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]); ?>"
-                        />
-
+                <!-- 這邊登出鈕 -->
+                <!-- <div class="logBox" v-if="user.account">
+                    <form action="https://www.digeam.com/logout" method="post">
                         <p class="account">
                             您已登入掘夢網帳號<br />
                             <span>{{ user.account }}</span>
@@ -186,7 +189,7 @@
                             登出
                         </button>
                     </form>
-                </div>
+                </div> -->
                 <div class="logBox" v-else-if="!user.account">
                     <!-- 這邊登入鈕 -->
                     <a class="login" href="https://www.digeam.com/login"
@@ -273,14 +276,14 @@
                     <img src="/img/20240403_joinAct/rewardLogoCb.png" />
                     <select v-model="selected" v-if="user.serverCheck == null">
                         <option value="null" hidden>請選擇領獎伺服器</option>
-                        <option value="1">黑恆星</option>
-                        <option value="2">冰珀星</option>
+                        <option value="1">冰珀星</option>
+                        <option value="2">黑恆星</option>
                     </select>
                     <div class="serverCheck" v-if="user.serverCheck == 1">
-                        黑恆星
+                        冰珀星
                     </div>
                     <div class="serverCheck" v-if="user.serverCheck == 2">
-                        冰珀星
+                        黑恆星
                     </div>
                 </div>
                 <div class="right">
@@ -451,6 +454,9 @@ export default {
             // 紀錄伺服器選項變化
             selected: null,
 
+            // 滑鼠移入換字
+            index20240329Text: "涅瓦雷斯人才招募中心",
+
             // 隱私權、注意事項點擊狀態
             checkList: [],
         };
@@ -470,18 +476,6 @@ export default {
         },
     },
     methods: {
-        logout() {
-            this.user.account = null;
-
-            console.log(this.user.account);
-
-            this.$router.push("/jointAct");
-            // document.cookie = `StrID = ${Cookies.get(
-            //     "StrID"
-            // )};domain= https://www.digeam.com;expires=Session`;
-            document.cookie = `StrID=;domain=digeam.com;expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
-        },
-
         async getSetting() {
             try {
                 const response = await axios.post(api, {
@@ -549,7 +543,14 @@ export default {
         menuShow() {
             this.menuM = !this.menuM;
         },
-
+        updateReturnUrl() {
+            var returnUrl = "https://cbm.digeam.com/jointAct";
+            var encodedUrl = btoa(returnUrl);
+            document.cookie =
+                "return_url=" +
+                encodedUrl +
+                "; path=/; domain=.digeam.com; secure";
+        },
         async rewardCb() {
             console.log("CBclick");
             if (this.selected !== null) {
@@ -667,6 +668,15 @@ export default {
                 localStorage.setItem("iOS", true);
                 this.click.iOS = true;
             }
+        },
+
+        changeTextOnMouseEnter() {
+            // 在滑鼠移入時更改連結文字
+            this.index20240329Text = "限時新手&回歸活動";
+        },
+        changeTextOnMouseLeave() {
+            // 在滑鼠移出時恢復原本的連結文字
+            this.index20240329Text = "涅瓦雷斯人才招募中心";
         },
 
         // 登入後再跳轉回來的功能
