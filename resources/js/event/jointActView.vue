@@ -167,11 +167,19 @@
                             <span>{{ user.account }}</span>
                         </p>
                         <input
+                            class="logout"
+                            type="submit"
+                            value="登出"
+                            name="return_url"
+                            id="return_url"
+                            :value="returnUrl"
+                        />
+                        <!-- <input
                             type="submit"
                             value="登出"
                             class="logout"
                             @click="updateReturnUrl()"
-                        />
+                        /> -->
                     </form>
                 </div>
                 <!-- 這邊登出鈕 -->
@@ -283,7 +291,8 @@
                         class="serverCheck"
                         v-else-if="
                             user.serverCheck == 1 || user.serverCheck == 2
-                        ">
+                        "
+                    >
                         {{ serverCheck }}
                     </div>
                 </div>
@@ -460,6 +469,9 @@ export default {
 
             // 隱私權、注意事項點擊狀態
             checkList: [],
+
+            // 返回的網址
+            returnUrl: "",
         };
     },
     computed: {
@@ -721,6 +733,9 @@ export default {
         } else {
             this.click.iOS = true;
         }
+
+        // 使用 base64 編碼 return_url 登出返回此網址
+        this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
     },
 
     beforeUnmount() {
