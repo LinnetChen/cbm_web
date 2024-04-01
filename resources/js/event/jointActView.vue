@@ -155,12 +155,16 @@
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.1</p>
                 <p class="text">註冊並登入DiGeam掘夢網平台帳號​</p>
+                <div class="testBox">
+                    <form action="https://www.digeam.com/logout" method="post">
+                        <input type="submit" value="Send Request" />
+                    </form>
+                </div>
                 <div class="logBox" v-if="user.account">
                     <!-- 這邊登出鈕 -->
                     <form
-                        id="logout-form"
                         action="https://www.digeam.com/logout"
-                        method="POST"
+                        method="post"
                     >
                         <input
                             type="hidden"
@@ -176,9 +180,8 @@
                         </p>
                         <button
                             class="logout"
-                            id="logout-button"
                             type="submit"
-                            value="Submit"
+                            value="Send Request"
                         >
                             登出
                         </button>
@@ -371,7 +374,7 @@ let api = "https://cbm.digeam.com/api/jointAct";
 export default {
     data() {
         return {
-            checkData:2,
+            checkData: 2,
             screenWidth: window.innerWidth,
             menuM: false,
             link: {
