@@ -174,12 +174,12 @@
                             id="return_url"
                             :value="returnUrl"
                         /> -->
-                        <input
+                        <!-- <input
                             type="submit"
                             value="登出"
                             class="logout"
                             @click="updateReturnUrl()"
-                        />
+                        /> -->
                     </form>
                 </div>
                 <!-- 這邊登出鈕 -->
@@ -471,7 +471,7 @@ export default {
             checkList: [],
 
             // 返回的網址
-            returnUrl: "",
+            // returnUrl: "",
         };
     },
     computed: {
