@@ -170,7 +170,7 @@
                             type="hidden"
                             name="return_url"
                             id="return_url"
-                            value="aHR0cHM6Ly9jYm0uZGlnZWFtLmNvbS9qb2ludEFjdA=="
+                            value="https://cbm.digeam.com/jointAct"
                         />
                         <button
                             class="logout"
@@ -575,14 +575,14 @@ export default {
         menuShow() {
             this.menuM = !this.menuM;
         },
-        updateReturnUrl() {
-            var returnUrl = "https://cbm.digeam.com/jointAct";
-            var encodedUrl = btoa(returnUrl);
-            document.cookie =
-                "return_url=" +
-                encodedUrl +
-                "; path=/; domain=.digeam.com; secure";
-        },
+        // updateReturnUrl() {
+        //     var returnUrl = "https://cbm.digeam.com/jointAct";
+        //     var encodedUrl = btoa(returnUrl);
+        //     document.cookie =
+        //         "return_url=" +
+        //         encodedUrl +
+        //         "; path=/; domain=.digeam.com; secure";
+        // },
         async rewardCb() {
             console.log("CBclick");
             if (this.selected !== null) {
