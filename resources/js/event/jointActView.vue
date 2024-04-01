@@ -166,14 +166,14 @@
                             您已登入掘夢網帳號<br />
                             <span>{{ user.account }}</span>
                         </p>
-                        <!-- <input
+                        <input
                             class="logout"
                             type="submit"
                             value="登出"
                             name="return_url"
                             id="return_url"
                             :value="returnUrl"
-                        /> -->
+                        />
                         <!-- <input
                             type="submit"
                             value="登出"
@@ -469,7 +469,7 @@ export default {
             checkList: [],
 
             // 返回的網址
-            // returnUrl: "",
+            returnUrl: "",
         };
     },
     computed: {
@@ -733,7 +733,7 @@ export default {
         }
 
         // 使用 base64 編碼 return_url 登出返回此網址
-        // this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
+        this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
     },
 
     beforeUnmount() {
