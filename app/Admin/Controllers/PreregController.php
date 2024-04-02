@@ -25,8 +25,8 @@ class PreregController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new prereg_user());
-
-        $grid->column('phone', __('手機號碼')); 
+        $grid->model()->orderBy('created_at', 'desc');
+        $grid->column('phone', __('手機號碼'));
         $grid->column('type', __('型號'));
         $grid->column('ip', __('Ip'));
         $grid->column('created_at', __('建立時間'));
