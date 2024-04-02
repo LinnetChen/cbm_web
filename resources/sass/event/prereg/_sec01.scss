@@ -459,7 +459,10 @@
 								display: inline;
 								overflow: hidden;
 								width: 100%;
-								padding-bottom: 29%;
+								// padding-bottom: 29%;
+								padding-bottom: 38%;
+								@include x3s{
+								}
 
 								.effect {
 									content: "";
