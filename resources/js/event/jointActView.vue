@@ -40,7 +40,6 @@
     </ul>
 
     <!-- 大跳窗 -->
-    <!-- <div class="popBig"> -->
     <div class="popBig" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
@@ -179,30 +178,8 @@
                         >
                             登出
                         </button>
-                        <!-- <input
-                            type="submit"
-                            value="登出"
-                            class="logout"
-                            @click="updateReturnUrl()"
-                        /> -->
                     </form>
                 </div>
-                <!-- 這邊登出鈕 -->
-                <!-- <div class="logBox" v-if="user.account">
-                    <form action="https://www.digeam.com/logout" method="post">
-                        <p class="account">
-                            您已登入掘夢網帳號<br />
-                            <span>{{ user.account }}</span>
-                        </p>
-                        <button
-                            class="logout"
-                            type="submit"
-                            value="Send Request"
-                        >
-                            登出
-                        </button>
-                    </form>
-                </div> -->
                 <div class="logBox" v-else-if="!user.account">
                     <!-- 這邊登入鈕 -->
                     <a class="login" href="https://www.digeam.com/login"
@@ -473,8 +450,6 @@ export default {
             // 隱私權、注意事項點擊狀態
             checkList: [],
 
-            // 返回的網址
-            // returnUrl: "",
         };
     },
     computed: {
@@ -519,14 +494,6 @@ export default {
                 console.error("Error:", error);
             }
         },
-
-    //     submitLogoutForm() {
-    //     // 獲取 input 的值
-    //     const returnUrl = document.getElementById('return_url').value;
-
-    //     // 在這裡可以進行相應的操作，比如重定向到指定頁面
-    //     window.location.href = returnUrl;
-    // },
 
         popSVisable(text) {
             this.popSmall.text = text;
@@ -575,14 +542,6 @@ export default {
         menuShow() {
             this.menuM = !this.menuM;
         },
-        // updateReturnUrl() {
-        //     var returnUrl = "https://cbm.digeam.com/jointAct";
-        //     var encodedUrl = btoa(returnUrl);
-        //     document.cookie =
-        //         "return_url=" +
-        //         encodedUrl +
-        //         "; path=/; domain=.digeam.com; secure";
-        // },
         async rewardCb() {
             console.log("CBclick");
             if (this.selected !== null) {
@@ -709,15 +668,6 @@ export default {
             this.index20240329Text = "涅瓦雷斯人才招募中心";
         },
 
-        // 登入後再跳轉回來的功能
-        // updateReturnUrl() {
-        //     var returnUrl = "https://cbm.digeam.com/jointAct";
-        //     var encodedUrl = btoa(returnUrl);
-        //     document.cookie =
-        //         "return_url=" +
-        //         encodedUrl +
-        //         "; path=/; domain=.digeam.com; secure";
-        // },
     },
     mounted() {
         if (this.checkCookie("StrID")) {
@@ -745,10 +695,6 @@ export default {
             this.click.iOS = true;
         }
 
-        // 使用 base64 編碼 return_url 登出返回此網址
-        // this.returnUrl = btoa("https://cbm.digeam.com/jointAct");
-        // this.returnUrl = "aHR0cHM6Ly9jYm0uZGlnZWFtLmNvbS9qb2ludEFjdA==";
-        // console.log(this.returnUrl);
     },
 
     beforeUnmount() {
