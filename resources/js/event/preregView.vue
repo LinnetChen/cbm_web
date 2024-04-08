@@ -933,7 +933,7 @@ export default {
                 this.mask = true;
                 this.popS = true;
                 res.data.status == 1
-                    ? (this.popSmsg = "恭喜預約成功！")
+                    ? (this.popSmsg = "<span>恭喜預約成功！</span>")
                     : res.data.status == -99
                     ? ((this.popSmsg = "此號碼已預約！"),
                       (this.user.status = true))
