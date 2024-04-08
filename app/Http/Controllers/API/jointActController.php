@@ -5,7 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\joinActCode;
 use App\Models\joinActUser;
+use App\Models\joinActGetLog;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class jointActController extends Controller
 {
@@ -53,8 +56,11 @@ class jointActController extends Controller
     }
     private function reward_cb($request)
     {
-        if (isset($request->user)) {
-            $_COOKIE['StrID'] = $request->user;
+
+        if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            $real_ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        } else {
+            $real_ip = $_SERVER["REMOTE_ADDR"];
         }
         if (!isset($request->user) || $request->user == '') {
             return response()->json([
@@ -78,23 +84,63 @@ class jointActController extends Controller
             } else {
                 $server_id = 'server02';
             }
-            // $client = new Client(['verify' => false]);
-            // $res = $client->request('GET', 'http://c1twapi.global.estgames.com/game/character/searchByCharacterId?userId=' . $_COOKIE['StrID'] . '&serverCode=' . $server_id);
-            // $check_char = $res->getBody();
-            // $check_char = json_decode($check_char);
-            // dd($check_char);
-            // if (count($check_char->data) <= 0) {
-            //     return response()->json([
-            //         'status' => -96,
-            //     ]);
-            // }
+            $client = new Client(['verify' => false]);
+            $res = $client->request('GET', 'http://c1twapi.global.estgames.com/game/character/searchByCharacterId?userId=' . $_COOKIE['StrID'] . '&serverCode=' . $server_id);
+            $check_char = $res->getBody();
+            $check_char = json_decode($check_char);
 
-            $user->cbo_reward_get = 'y';
-            $user->cbo_reward_server = $request->serve;
-            $user->save();
-            return response()->json([
-                'status' => 1,
-            ]);
+            if (count($check_char->data) <= 0) {
+                return response()->json([
+                    'status' => -96,
+                ]);
+            } else {
+                $user->cbo_reward_get = 'y';
+                $user->cbo_reward_server = $request->serve;
+                $user->save();
+                $item =
+                    [
+                    ['name'=>'貴族小菲雞(30日)','id' => 33560062, 'option' => 10, 'itemPeriod' => 17],
+                    ['name'=>'GM的祝福(Lv.4)聖水 x10','id' => 33560906, 'option' => 5, 'itemPeriod' => 0],
+                ];
+                $client = new Client(['verify' => false]);
+                $res = $client->request('GET', 'http://c1twapi.global.estgames.com/user/userNum?userId=' . $_COOKIE['StrID']);
+                $reqbody = $res->getBody();
+                $reqbody = json_decode($reqbody);
+                foreach ($item as $value) {
+                    $newLog = new joinActGetLog();
+                    $newLog->user = $_COOKIE['StrID'];
+                    $newLog->item = $value['name'];
+                    $newLog->ip = $real_ip;
+                    $newLog->save();
+
+                    
+                    $client = new Client();
+                    $data = [
+                        "userNum" => $reqbody->data,
+                        "deliveryTime" => Carbon::now()->format('Y-m-d H:i:s'),
+                        "expirationTime" => Carbon::now()->addDays(30)->format('Y-m-d H:i:s'),
+                        "itemKind" => $value['id'],
+                        "itemOption" => $value['option'],
+                        "itemPeriod" => $value['itemPeriod'],
+                        "count" => 1,
+                        "title" => 'CABAL M聯動獎勵',
+                        "serverIdx" => $request->serve,
+                    ];
+
+                    $headers = [
+                        'Content-Type' => 'application/json',
+                        'Accept' => 'application/json',
+                    ];
+
+                    $res = $client->request('POST', 'http://c1twapi.global.estgames.com/event/user/giveItemUserEventInventoryByUserNumAndItemInfo', [
+                        'headers' => $headers,
+                        'json' => $data,
+                    ]);
+                }
+                return response()->json([
+                    'status' => 1,
+                ]);
+            }
         }
 
     }
@@ -129,6 +175,5 @@ class jointActController extends Controller
                 'serial_num' => $getCode->code,
             ]);
         }
-
     }
 }
