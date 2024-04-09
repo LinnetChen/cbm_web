@@ -34,4 +34,3 @@ if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP
     });
 
 }
-

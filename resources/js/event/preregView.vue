@@ -583,7 +583,7 @@
                 </div>
                 <div class="sec05Wrap" id="sec05">
                     <a
-                        href="https://cbo.digeam.com/jointAct"
+                        href="https://cbm.digeam.com/jointAct"
                         target="_blank"
                         rel="noopener noreferrer"
                         title="前往黑色契約手遊X端遊聯動頁"
