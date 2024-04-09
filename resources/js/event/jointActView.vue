@@ -109,7 +109,7 @@
                         <iframe
                             ref="youtubePlayer"
                             frameborder="0"
-                            src="https://www.youtube.com/embed/5sYIlYpAQNU?si=ScTBN_qHzZa7L_Op&autoplay=1&playlist=5sYIlYpAQNU&loop=1"
+                            src="https://www.youtube.com/embed/DYe_cD3Cwig?si=1LTZGeFpkP40Z-Np&amp;controls=0&autoplay=1&playlist=DYe_cD3Cwig&loop=1"
                             allowfullscreen="true"
                         ></iframe>
                     </div>
@@ -449,7 +449,6 @@ export default {
 
             // 隱私權、注意事項點擊狀態
             checkList: [],
-
         };
     },
     computed: {
@@ -667,7 +666,6 @@ export default {
             // 在滑鼠移出時恢復原本的連結文字
             this.index20240329Text = "涅瓦雷斯人才招募中心";
         },
-
     },
     mounted() {
         if (this.checkCookie("StrID")) {
@@ -694,7 +692,6 @@ export default {
         } else {
             this.click.iOS = true;
         }
-
     },
 
     beforeUnmount() {
