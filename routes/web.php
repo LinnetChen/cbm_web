@@ -16,7 +16,7 @@ Route::get('/prereg', function () {
     return view('prereg');
 });
 
-// if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP'] == '211.23.144.219')) {
+if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP'] == '211.23.144.219')) {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -33,5 +33,4 @@ Route::get('/prereg', function () {
         });
     });
 
-// }
-
+}
