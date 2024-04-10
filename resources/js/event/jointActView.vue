@@ -586,7 +586,7 @@ export default {
                 if (response.data.status == 1) {
                     this.user.serialNum = response.data.serial_num;
                     console.log(this.user.serialNum);
-                    this.popSVisable("領取成功");
+                    this.popSVisable("獎勵序號已顯示，請記下序號並至遊戲內【序號兌換】輸入");
                 } else if (response.data.status == -99) {
                     this.popSVisable("請先登入​");
                 } else if (response.data.status == -98) {
