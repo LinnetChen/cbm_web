@@ -136,6 +136,7 @@
                         v-if="device.isAndroid"
                         :href="link.androidLink"
                         target="_blank"
+                        @click="saveBtnClick('Android')"
                         ><img src="/img/20240403_joinAct/headerGoogle.png"
                     /></a>
                     <a
@@ -143,6 +144,7 @@
                         v-if="device.isiOS"
                         :href="link.iOSLink"
                         target="_blank"
+                        @click="saveBtnClick('iOS')"
                         ><img src="/img/20240403_joinAct/headerIos.png"
                     /></a>
                 </div>
@@ -197,7 +199,7 @@
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.2</p>
                 <p>立即預約</p>
-                <div class="storeBtnBox">
+                <div class="storeBtnBox"  v-if="!device.isAndroid && !device.isiOS">
                     <a
                         class="google"
                         :href="link.androidLink"
@@ -206,10 +208,28 @@
                         ><img src="/img/20240403_joinAct/sec01Google.png"
                     /></a>
                     <a
-                        class="ios"
+                        class="iOS"
                         :href="link.iOSLink"
                         target="_blank"
-                        @click="saveBtnClick('ios')"
+                        @click="saveBtnClick('iOS')"
+                        ><img src="/img/20240403_joinAct/sec01Ios.png"
+                    /></a>
+                </div>
+                <div class="storeBtnBox" v-if="device.isAndroid || device.isiOS">
+                    <a
+                        class="google"
+                        v-if="device.isAndroid"
+                        :href="link.androidLink"
+                        target="_blank"
+                        @click="saveBtnClick('Android')"
+                        ><img src="/img/20240403_joinAct/sec01Google.png"
+                    /></a>
+                    <a
+                        class="iOS"
+                        v-if="device.isiOS"
+                        :href="link.iOSLink"
+                        target="_blank"
+                        @click="saveBtnClick('iOS')"
                         ><img src="/img/20240403_joinAct/sec01Ios.png"
                     /></a>
                 </div>
