@@ -99,8 +99,8 @@ class jointActController extends Controller
                 $user->save();
                 $item =
                     [
-                    ['name'=>'貴族小菲雞(30日)','id' => 33560062, 'option' => 10, 'itemPeriod' => 17],
-                    ['name'=>'GM的祝福(Lv.4)聖水 x10','id' => 33560906, 'option' => 5, 'itemPeriod' => 0],
+                    ['name'=>'貴族小菲雞(30日)','id' => 33556935, 'option' => 805306581, 'itemPeriod' => 17],
+                    ['name'=>'GM的祝福(Lv.4)聖水 x10','id' => 33555966, 'option' => 10, 'itemPeriod' => 0],
                 ];
                 $client = new Client(['verify' => false]);
                 $res = $client->request('GET', 'http://c1twapi.global.estgames.com/user/userNum?userId=' . $_COOKIE['StrID']);
