@@ -495,9 +495,9 @@ export default {
         },
     },
     methods: {
-        getSetting() {
+        async getSetting() {
             try {
-                const response = axios.post(api, {
+                const response = await axios.post(api, {
                     type: "login",
                     user: this.user.account,
                 });
@@ -562,10 +562,10 @@ export default {
         menuShow() {
             this.menuM = !this.menuM;
         },
-        rewardCb() {
+        async rewardCb() {
             if (this.selected !== null) {
                 try {
-                    const response = axios.post(api, {
+                    const response = await axios.post(api, {
                         type: "reward_cb",
                         user: this.user.account,
                         serve: this.selected,
@@ -603,9 +603,9 @@ export default {
                 this.clickWall = 0;
             }
         },
-        rewardCbm() {
+        async rewardCbm() {
             try {
-                const response = axios.post(api, {
+                const response = await axios.post(api, {
                     type: "reward_m",
                     user: this.user.account,
                 });
