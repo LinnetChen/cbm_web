@@ -199,7 +199,10 @@
                 <div class="deco2"></div>
                 <p class="stepTitle">STEP.2</p>
                 <p>立即預約</p>
-                <div class="storeBtnBox"  v-if="!device.isAndroid && !device.isiOS">
+                <div
+                    class="storeBtnBox"
+                    v-if="!device.isAndroid && !device.isiOS"
+                >
                     <a
                         class="google"
                         :href="link.androidLink"
@@ -215,7 +218,10 @@
                         ><img src="/img/20240403_joinAct/sec01Ios.png"
                     /></a>
                 </div>
-                <div class="storeBtnBox" v-if="device.isAndroid || device.isiOS">
+                <div
+                    class="storeBtnBox"
+                    v-if="device.isAndroid || device.isiOS"
+                >
                     <a
                         class="google"
                         v-if="device.isAndroid"
@@ -474,7 +480,6 @@ export default {
     computed: {
         items() {
             // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
-
             return this.popBig.useCbValue === 0
                 ? this.popBig.cbValue
                 : this.popBig.useCbValue === 1
@@ -488,15 +493,11 @@ export default {
             //領獎BTN文字更換
             return this.user.serverCheck == null ? "立即領獎" : "領獎完畢";
         },
-        // serverCheck() {
-        //     // select 伺服器選擇鎖定
-        //     return user.serverCheck == '1' ? "冰珀星" : "黑恆星";
-        // },
     },
     methods: {
-        async getSetting() {
+        getSetting() {
             try {
-                const response = await axios.post(api, {
+                const response = axios.post(api, {
                     type: "login",
                     user: this.user.account,
                 });
@@ -561,11 +562,10 @@ export default {
         menuShow() {
             this.menuM = !this.menuM;
         },
-        async rewardCb() {
-            console.log("CBclick");
+        rewardCb() {
             if (this.selected !== null) {
                 try {
-                    const response = await axios.post(api, {
+                    const response = axios.post(api, {
                         type: "reward_cb",
                         user: this.user.account,
                         serve: this.selected,
@@ -574,55 +574,68 @@ export default {
                     if (response.data.status == 1) {
                         this.user.serverCheck = this.selected;
                         this.popSVisable("領取成功");
+                        this.clickWall = 0;
                     } else if (response.data.status == -99) {
                         // 未有端遊角色
                         this.popSVisable(
                             '請在黑色契約Online中<br>​創建至少一個角色<br><a href="https://cbo.digeam.com/game"  target="_blank">​前往創建</a>​'
                         );
+                        this.clickWall = 0;
                     } else if (response.data.status == -98) {
                         this.popSVisable("請先登入​");
+                        this.clickWall = 0;
                     } else if (response.data.status == -97) {
                         this.popSVisable("請正確選擇伺服器​");
+                        this.clickWall = 0;
                     } else if (response.data.status == -96) {
                         this.popSVisable("此帳號已領取獎勵");
+                        this.clickWall = 0;
                     } else {
                         console.error("Status is not 1:", response.data);
+                        this.clickWall = 0;
                     }
                 } catch (error) {
                     console.error("Error:", error);
+                    this.clickWall = 0;
                 }
             } else {
                 this.popSVisable("請選領獎伺服器​");
+                this.clickWall = 0;
             }
         },
-        async rewardCbm() {
-            console.log("mclick");
+        rewardCbm() {
             try {
-                const response = await axios.post(api, {
+                const response = axios.post(api, {
                     type: "reward_m",
                     user: this.user.account,
                 });
 
                 if (response.data.status == 1) {
                     this.user.serialNum = response.data.serial_num;
-                    console.log(this.user.serialNum);
-                    this.popSVisable("獎勵序號已顯示，請記下序號並至遊戲內【序號兌換】輸入");
+                    this.popSVisable(
+                        "獎勵序號已顯示，請記下序號並至遊戲內【序號兌換】輸入"
+                    );
+                    this.clickWall = 0;
                 } else if (response.data.status == -99) {
                     this.popSVisable("請先登入​");
+                    this.clickWall = 0;
                 } else if (response.data.status == -98) {
                     this.popSVisable("此帳號已領取");
+                    this.clickWall = 0;
                 } else {
                     console.error("Status is not 1:", response.data);
+                    this.clickWall = 0;
                 }
             } catch (error) {
                 console.error("Error:", error);
+                this.clickWall = 0;
             }
         },
         reward(actType) {
             const privacy = this.checkList.includes("privacy");
             const notice = this.checkList.includes("notice");
 
-            if (this.clickWall == 0) {
+            if (this.clickWall === 0) {
                 this.clickWall = 1;
 
                 // 驗證step123
@@ -638,6 +651,7 @@ export default {
                             } else if (actType == "m") {
                                 if (this.user.serialNum !== null) {
                                     // CBM獎勵已經領取
+                                    this.clickWall = 0;
                                     return;
                                 } else {
                                     this.rewardCbm();
@@ -647,14 +661,18 @@ export default {
                             this.popSVisable(
                                 "請閱讀並同意<br>​隱私權政策與注意事項​"
                             );
+                            this.clickWall = 0;
                         }
                     } else {
                         this.popSVisable("請點擊商店按紐<br>完成預約​​");
+                        this.clickWall = 0;
                     }
                 } else {
                     this.popSVisable("請登入<br>DiGeam掘夢網平台帳號​");
+                    this.clickWall = 0;
                 }
-                this.clickWall = 0;
+            } else if (this.clickWall === 1) {
+                return;
             }
         },
 
