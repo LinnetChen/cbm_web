@@ -106,36 +106,43 @@ class jointActController extends Controller
                 $res = $client->request('GET', 'http://c1twapi.global.estgames.com/user/userNum?userId=' . $_COOKIE['StrID']);
                 $reqbody = $res->getBody();
                 $reqbody = json_decode($reqbody);
+
                 foreach ($item as $value) {
                     $newLog = new joinActGetLog();
                     $newLog->user = $_COOKIE['StrID'];
                     $newLog->item = $value['name'];
                     $newLog->ip = $real_ip;
                     $newLog->save();
-
                     
-                    $client = new Client();
-                    $data = [
-                        "userNum" => $reqbody->data,
-                        "deliveryTime" => Carbon::now()->format('Y-m-d H:i:s'),
-                        "expirationTime" => Carbon::now()->addDays(30)->format('Y-m-d H:i:s'),
-                        "itemKind" => $value['id'],
-                        "itemOption" => $value['option'],
-                        "itemPeriod" => $value['itemPeriod'],
-                        "count" => 1,
-                        "title" => 'CABAL M聯動獎勵',
-                        "serverIdx" => $request->serve,
-                    ];
-
-                    $headers = [
-                        'Content-Type' => 'application/json',
-                        'Accept' => 'application/json',
-                    ];
-
-                    $res = $client->request('POST', 'http://c1twapi.global.estgames.com/event/user/giveItemUserEventInventoryByUserNumAndItemInfo', [
-                        'headers' => $headers,
-                        'json' => $data,
-                    ]);
+                    $last_check = joinActGetLog::where('user', $_COOKIE['StrID'])->count();
+                    if($last_check >2){
+                        return response()->json([
+                            'status' => -96,
+                        ]);
+                    }else{
+                        $client = new Client();
+                        $data = [
+                            "userNum" => $reqbody->data,
+                            "deliveryTime" => Carbon::now()->format('Y-m-d H:i:s'),
+                            "expirationTime" => Carbon::now()->addDays(30)->format('Y-m-d H:i:s'),
+                            "itemKind" => $value['id'],
+                            "itemOption" => $value['option'],
+                            "itemPeriod" => $value['itemPeriod'],
+                            "count" => 1,
+                            "title" => 'CABAL M聯動獎勵',
+                            "serverIdx" => $request->serve,
+                        ];
+    
+                        $headers = [
+                            'Content-Type' => 'application/json',
+                            'Accept' => 'application/json',
+                        ];
+    
+                        $res = $client->request('POST', 'http://c1twapi.global.estgames.com/event/user/giveItemUserEventInventoryByUserNumAndItemInfo', [
+                            'headers' => $headers,
+                            'json' => $data,
+                        ]);
+                    }
                 }
                 return response()->json([
                     'status' => 1,
