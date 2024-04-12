@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 Route::get('/prereg', function () {
     return view('prereg');
 });
@@ -20,6 +21,7 @@ Route::middleware(['setReturnUrl'])->group(function () {
         return view('event/20240403_jointAct_index');
     });
 });
+
 if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP'] == '211.23.144.219')) {
     Route::get('/', function () {
         return view('welcome');
@@ -28,3 +30,7 @@ if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP
         return view('prereg1');
     });
 }
+
+Route::get('/gameMall', function () {
+    return view('gameMall_index');
+});

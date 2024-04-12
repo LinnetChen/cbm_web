@@ -16,6 +16,7 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js/")
     .js("resources/js/jointAct.js", "public/js/event")
     .js("resources/js/prereg.js", "public/js/event")
+    .js("resources/js/gameMall.js", "public/js/event")
     .sass(
         "resources/sass/event/prereg/style.scss",
         "public/css/event/prereg/style.css"
@@ -23,6 +24,10 @@ mix.js("resources/js/app.js", "public/js/")
     .sass(
         "resources/sass/event/20240403_jointAct/style.scss",
         "public/css/event/20240403_jointAct/style.css"
+    )
+    .sass(
+        "resources/sass/event/gameMall/style.scss",
+        "public/css/event/gameMall/style.css"
     )
     .postCss("resources/css/app.css", "public/css", [
         //
