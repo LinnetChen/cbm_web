@@ -1,0 +1,395 @@
+.popS,
+.popM,
+.popB,
+.popE {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mask {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+    .creditCardBtn,
+    .myCardBtn {
+        border: 0px;
+        background-image: url("/img/gameMall/btnBg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        cursor: pointer;
+        font-weight: 500;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff00;
+        width: 100%;
+        height: 100%;
+        max-width: 179px;
+        max-height: 50px;
+        font-size: 1.125rem;
+        &:hover {
+            filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+        }
+    }
+}
+
+.popS,
+.popE {
+    .popBg {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        max-width: 450px;
+        max-height: 330px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border: 2px solid #fff;
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .text {
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        .deco1 {
+            z-index: 1;
+            width: 100%;
+            max-width: 700px;
+            top: 1.5%;
+            position: absolute;
+
+            &::before,
+            &::after {
+                top: 0;
+                position: absolute;
+                content: "";
+                width: 22px;
+                height: 22px;
+                background-image: url("/img/20240403_joinAct/stepDeco.png");
+                background-position: center center;
+                background-size: cover;
+            }
+            &::before {
+                right: 1.2%;
+            }
+            &::after {
+                left: 1.2%;
+                transform: scaleX(-1);
+            }
+        }
+        .deco2 {
+            z-index: 1;
+            position: absolute;
+            width: 100%;
+            max-width: 700px;
+            bottom: 1.5%;
+
+            &::before,
+            &::after {
+                bottom: 0;
+                position: absolute;
+                content: "";
+                width: 22px;
+                height: 22px;
+                background-image: url("/img/20240403_joinAct/stepDeco.png");
+                background-position: center center;
+                background-size: cover;
+            }
+            &::before {
+                left: 1.2%;
+                transform: scaleY(-1) scaleX(-1);
+            }
+            &::after {
+                right: 1.2%;
+                transform: scaleY(-1);
+            }
+        }
+        img {
+            // border: 1px solid blue;
+            width: 100%;
+            height: 100%;
+            max-width: 215px;
+            max-height: 171px;
+            object-fit: contain;
+        }
+        .name,
+        .price {
+            font-size: 1.25rem;
+            color: #fff;
+            text-align: center;
+            line-height: 1.8rem;
+        }
+        .price {
+            color: #46d7dc;
+        }
+        .btnBox {
+            width: 85%;
+            height: 50%;
+            margin-top: 3%;
+            display: flex;
+            justify-content: center;
+            justify-content: space-between;
+        }
+    }
+
+    .x {
+        color: #fff;
+        font-size: 2rem;
+        top: -16%;
+        left: 0.5%;
+        cursor: pointer;
+    }
+}
+.popE{
+    .popBg{
+        justify-content: center;
+    }
+}
+.popM {
+    .popBg {
+        z-index: 1;
+        width: 80%;
+        height: 80%;
+        max-width: 700px;
+        max-height: 400px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border: 2px solid #fff;
+        padding: 2rem 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .deco1 {
+            z-index: 1;
+            width: 100%;
+            max-width: 700px;
+            top: 1%;
+            position: absolute;
+
+            &::before,
+            &::after {
+                top: 0;
+                position: absolute;
+                content: "";
+                width: 22px;
+                height: 22px;
+                background-image: url("/img/20240403_joinAct/stepDeco.png");
+                background-position: center center;
+                background-size: cover;
+            }
+            &::before {
+                right: 0;
+            }
+            &::after {
+                left: 0.5%;
+                transform: scaleX(-1);
+            }
+        }
+        .deco2 {
+            z-index: 1;
+            position: absolute;
+            width: 100%;
+            max-width: 700px;
+            bottom: 1%;
+
+            &::before,
+            &::after {
+                bottom: 0;
+                position: absolute;
+                content: "";
+                width: 22px;
+                height: 22px;
+                background-image: url("/img/20240403_joinAct/stepDeco.png");
+                background-position: center center;
+                background-size: cover;
+            }
+            &::before {
+                left: 0.5%;
+                transform: scaleY(-1) scaleX(-1);
+            }
+            &::after {
+                right: 0;
+                transform: scaleY(-1);
+            }
+        }
+        .left {
+            background-color: #ffffff2f;
+            padding: 3% 0;
+            height: 85%;
+            width: 35%;
+            text-align: center;
+            margin-right: 3%;
+            img {
+                // border: 1px solid blue;
+                width: 100%;
+                height: 100%;
+                max-width: 215px;
+                max-height: 171px;
+                object-fit: contain;
+            }
+            .name,
+            .price {
+                font-size: 1.25rem;
+                color: #fff;
+                text-align: center;
+                line-height: 1.8rem;
+                margin-top: 0.5rem;
+            }
+            .price {
+                color: #46d7dc;
+            }
+        }
+        .right {
+            max-width: 400px;
+            height: 85%;
+            width: 60%;
+            padding: 10px 9px;
+            background-color: rgba(255, 255, 255, 0.1);
+            overflow-y: scroll;
+            color: #fff;
+            font-size: 1.125rem;
+            line-height: 1.875rem;
+            &::-webkit-scrollbar-track {
+                // 捲軸底色
+                border: rgba(255, 255, 255, 0.1) 3px solid;
+                background-color: rgb(18, 18, 18);
+            }
+            &::-webkit-scrollbar {
+                // 捲軸寬度
+                width: 4px;
+                background-color: rgb(18, 18, 18);
+            }
+            &::-webkit-scrollbar-thumb {
+                //捲軸本體顏色
+                background-color: rgb(255, 255, 255);
+            }
+        }
+        .btnBox {
+            width: 60%;
+            height: 15%;
+            margin-top: 3%;
+            display: flex;
+            justify-content: center;
+            justify-content: space-between;
+        }
+    }
+    .x {
+        color: #fff;
+        font-size: 2rem;
+        top: -20%;
+        left: 0.5%;
+        cursor: pointer;
+    }
+}
+.popB {
+    .popBg {
+        z-index: 1;
+        width: 80%;
+        height: 80%;
+        max-width: 730px;
+        max-height: 600px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border: 2px solid #fff;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        overflow-y: scroll;
+        padding: 3rem 7rem;
+        @include m3d {
+            padding: 1% 6%;
+        }
+        @include md {
+            padding: 6% 6%;
+        }
+
+        &::-webkit-scrollbar-track {
+            // 捲軸底色
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #000;
+        }
+        &::-webkit-scrollbar {
+            // 捲軸寬度
+            width: 4px;
+            background-color: black;
+        }
+        &::-webkit-scrollbar-thumb {
+            //捲軸本體顏色
+            background-color: #565656;
+        }
+
+        .deco {
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        // &::before {
+        //     position: absolute;
+        //     top: 8px;
+        //     content: "";
+        //     max-width: 2370px;
+        //     max-height: 176px;
+        //     width: 60%;
+        //     height: 5.5%;
+        //     background-image: url("/img/20240403_joinAct/popTop.png");
+        //     background-position: center center;
+        //     background-size: cover;
+        //     background-repeat: no-repeat;
+        // }
+
+        .title {
+            font-family: "Noto Serif TC";
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            line-height: 2.8rem;
+        }
+        .text {
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1.8rem;
+
+            ul li {
+                color: #fff;
+                font-size: 1.1rem;
+                line-height: 2.5rem;
+                list-style-type: decimal;
+                list-style-position: inside;
+                &::marker {
+                    color: #00b4ff;
+                }
+            }
+        }
+
+        .imgBox {
+            margin-top: 3.5rem;
+            position: relative;
+            max-width: 170px;
+        }
+        .rewardCbmImg {
+            max-width: 240px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}

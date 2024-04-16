@@ -20509,7 +20509,7 @@ var api = "https://cbm.digeam.com/api/jointAct";
   },
   setup: function setup() {
     var onSlideChange = function onSlideChange() {
-      console.log("slide change");
+      // console.log("slide change");
     };
     return {
       onSlideChange: onSlideChange,
@@ -20518,6 +20518,7 @@ var api = "https://cbm.digeam.com/api/jointAct";
   },
   data: function data() {
     return {
+      slidesPerView: 3,
       screenWidth: window.innerWidth,
       menuM: false,
       barAccount: "登入帳號",
@@ -20542,9 +20543,20 @@ var api = "https://cbm.digeam.com/api/jointAct";
           Ul: "\n                    <ul>\n                        <li>\u3010\u4E0A\u5E02\u806F\u52D5\u6D3B\u52D5\u3011\u81EA\u5373\u65E5\u8D77\u81F3\u300A\u9ED1\u8272\u5951\u7D04Mobile\u300B\u4E8B\u524D\u9810\u7D04\u7D50\u675F\u6B62\u3002</li>\n                        <li>\u6BCF\u500B\u6398\u5922\u7DB2\u5E33\u865F\u50C5\u80FD\u53C3\u52A0\u4E00\u6B21\u6D3B\u52D5\u3001\u9818\u53D6\u4E00\u6B21\u734E\u52F5\u3002\u200B</li>\n                        <li>\u5FC5\u9808\u5B8C\u6210\u6D3B\u52D5\u6307\u5B9A\u689D\u4EF6\u624D\u7B26\u5408\u7372\u734E\u8CC7\u683C\u3002\u200B</li>\n                        <li>\u9078\u64C7\u300A\u9ED1\u8272\u5951\u7D04Cabal Online\u300B\u9818\u734E\u4F3A\u670D\u5668\uFF0C\u4E26\u9EDE\u64CA\u300C\u7ACB\u5373\u9818\u734E\u300D\u5F8C\uFF0C\u5C07\u7121\u6CD5\u8B8A\u66F4\u9818\u734E\u4F3A\u670D\u5668\uFF0C\u8ACB\u591A\u52A0\u6CE8\u610F\u3002</li>\n                        <li>\u300A\u9ED1\u8272\u5951\u7D04Cabal Online\u300B\u734E\u52F5\u9818\u53D6\u5F8C\uFF0C\u5C07\u767C\u9001\u81F3\u8A72\u5E33\u865F\u300C\u6D3B\u52D5\u80CC\u5305\u300D\u5167\u3002 \u200B</li>\n                        <li>\u5E8F\u865F\u514C\u63DB\uFF1A\u6253\u958B\u624B\u904A/\u8A2D\u5B9A/\u8CC7\u8A0A/\u767B\u9304\u5E8F\u865F\u5373\u53EF\u514C\u63DB\u3002\u200B</li>\n                        <li>\u5982\u9047\u4E0D\u53EF\u6297\u62D2\u4E4B\u56E0\u7D20\uFF0C\u6398\u5922\u7DB2\u4FDD\u6709\u96A8\u6642\u4FEE\u6539\u6D3B\u52D5\u8FA6\u6CD5\u53CA\u734E\u9805\u6216\u4E2D\u6B62\u672C\u6D3B\u52D5\u4E4B\u6B0A\u5229\u3002\u200B</li>\n                        <li>\u5176\u4ED6\u672A\u898F\u5B9A\u4E8B\u9805\uFF0C\u5B98\u65B9\u6703\u4F9D\u64DA\u72C0\u6CC1\u65BC\u904A\u6232\u7DB2\u7AD9\u6216\u904A\u6232\u4E2D\u516C\u544A\u6216\u88DC\u5145\uFF0C\u53C3\u52A0\u8005\u4E0D\u5F97\u7570\u8B70\u3002</li>\n                        <li>\u6398\u5922\u7DB2\u4FDD\u7559\u6D3B\u52D5\u6700\u7D42\u4FEE\u6539\u3001\u89E3\u91CB\u6B0A\u5229\u3002</li>\n                    </ul>\n                    "
         }
       },
+      popMiddle: {
+        visable: false,
+        img: "/img/gameMall/propImg.png",
+        name: "100鑽​",
+        price: "100TWD",
+        text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3"
+      },
       popSmall: {
         visable: false,
         text: ""
+      },
+      popEmpty: {
+        visable: false,
+        text: "1123333"
       },
       // 防連點
       clickWall: 0,
@@ -20592,13 +20604,11 @@ var api = "https://cbm.digeam.com/api/jointAct";
     popSVisable: function popSVisable(text) {
       this.popSmall.text = text;
       this.popSmall.visable = !this.popSmall.visable;
-
-      // 鎖背景滾輪 scoll overflow
-      if (this.popSmall.visable == false) {
-        document.documentElement.style.overflow = "auto";
-      } else {
-        document.documentElement.style.overflow = "hidden";
-      }
+      this.scrollLock();
+    },
+    popMVisable: function popMVisable(id) {
+      this.popMiddle.visable = !this.popMiddle.visable;
+      this.scrollLock();
     },
     popBVisable: function popBVisable(detection) {
       if (detection == "PC") {
@@ -20609,12 +20619,14 @@ var api = "https://cbm.digeam.com/api/jointAct";
         this.popBig.useCbValue = 2;
       }
       this.popBig.visable = !this.popBig.visable;
-
-      // 鎖背景滾輪 scoll overflow
-      if (this.popBig.visable == false) {
-        document.documentElement.style.overflow = "auto";
-      } else {
+      this.scrollLock();
+    },
+    // 鎖背景滾輪
+    scrollLock: function scrollLock() {
+      if (this.popBig.visable == true || this.popMiddle.visable == true || this.popSmall.visable == true) {
         document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "auto";
       }
     },
     checkCookie: function checkCookie(name) {
@@ -20632,7 +20644,6 @@ var api = "https://cbm.digeam.com/api/jointAct";
       this.screenWidth = window.innerWidth;
     },
     menuShow: function menuShow() {
-      console.log(123);
       this.menuM = !this.menuM;
     }
   },
@@ -20727,24 +20738,114 @@ var _hoisted_20 = {
 var _hoisted_21 = {
   "class": "popBg"
 };
-var _hoisted_22 = ["innerHTML"];
-var _hoisted_23 = {
+var _hoisted_22 = {
+  "class": "left"
+};
+var _hoisted_23 = ["src"];
+var _hoisted_24 = {
+  "class": "name"
+};
+var _hoisted_25 = {
+  "class": "price"
+};
+var _hoisted_26 = ["innerHTML"];
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "btnBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "creditCardBtn"
+}, "信用卡支付"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "myCardBtn"
+}, "MyCard")], -1 /* HOISTED */);
+var _hoisted_28 = {
   key: 5,
   "class": "popS"
 };
-var _hoisted_24 = {
+var _hoisted_29 = {
   "class": "popBg"
 };
-var _hoisted_25 = ["innerHTML"];
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco1"
+}, null, -1 /* HOISTED */);
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco2"
+}, null, -1 /* HOISTED */);
+var _hoisted_32 = ["src"];
+var _hoisted_33 = {
+  "class": "name"
+};
+var _hoisted_34 = {
+  "class": "price"
+};
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "btnBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "creditCardBtn"
+}, "信用卡支付"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "myCardBtn"
+}, "MyCard")], -1 /* HOISTED */);
+var _hoisted_36 = {
+  key: 6,
+  "class": "popE"
+};
+var _hoisted_37 = {
+  "class": "popBg"
+};
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco1"
+}, null, -1 /* HOISTED */);
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco2"
+}, null, -1 /* HOISTED */);
+var _hoisted_40 = ["innerHTML"];
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "fixBg"
 }, null, -1 /* HOISTED */);
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
+var _hoisted_42 = {
   "class": "header",
   id: "header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <swiper\r\n            :loop=\"true\"\r\n            :navigation=\"true\"\r\n            :modules=\"modules\"\r\n            :pagination=\"{ clickable: true }\"\r\n            :slides-per-view=\"3\"\r\n            :space-between=\"10\"\r\n            :autoplay=\"{ delay: 2500, disableOnInteraction: false }\"\r\n            @slideChange=\"onSlideChange\"\r\n            class=\"mySwiper\"\r\n        >\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n        </swiper> ")], -1 /* HOISTED */);
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"commoditySection\"><div class=\"contain\"><div class=\"box\"><div class=\"deco1\"></div><div class=\"deco2\"></div><img src=\"/img/gameMall/propImg.png\" alt=\"\"><div class=\"name\">100</div><div class=\"price\">100TWD</div><button class=\"btnBuy\">購買</button></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div></div></div><footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 2);
+};
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_47 = {
+  "class": "commoditySection"
+};
+var _hoisted_48 = {
+  "class": "contain"
+};
+var _hoisted_49 = {
+  "class": "box"
+};
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco1"
+}, null, -1 /* HOISTED */);
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "deco2"
+}, null, -1 /* HOISTED */);
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "name"
+}, "100", -1 /* HOISTED */);
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "price"
+}, "100TWD", -1 /* HOISTED */);
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_swiper_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper-slide");
+  var _component_swiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.screenWidth > 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [_hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.barAccount), 1 /* TEXT */)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.screenWidth <= 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
     "class": "barM",
@@ -20781,33 +20882,105 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.popBVisable();
     })
-  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 中跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 中跳窗 "), $data.popMiddle.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mask",
     onClick: _cache[3] || (_cache[3] = function ($event) {
-      return $options.popSVisable();
+      return $options.popMVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text",
-    innerHTML: $data.popSmall.text
-  }, null, 8 /* PROPS */, _hoisted_22)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"deco1\"></div>\r\n            <div class=\"deco2\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $data.popMiddle.img
+  }, null, 8 /* PROPS */, _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "right",
+    innerHTML: $data.popMiddle.text
+  }, null, 8 /* PROPS */, _hoisted_26), _hoisted_27]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[4] || (_cache[4] = function ($event) {
-      return $options.popSVisable();
+      return $options.popMVisable();
     })
-  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 小跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 小跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mask",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.popSVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text",
-    innerHTML: $data.popSmall.text
-  }, null, 8 /* PROPS */, _hoisted_25)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $data.popMiddle.img
+  }, null, 8 /* PROPS */, _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */), _hoisted_35]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.popSVisable();
     })
-  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_26, _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"section section5\" id=\"section5\">\r\n        <div class=\"sec_box\">\r\n            <div class=\"sec5_box2\">\r\n                <swiper\r\n                    :loop=\"true\"\r\n                    :navigation=\"true\"\r\n                    :modules=\"modules\"\r\n                    :pagination=\"{ clickable: true }\"\r\n                    :slides-per-view=\"2\"\r\n                    :space-between=\"10\"\r\n                    :autoplay=\"{ delay: 2500, disableOnInteraction: false }\"\r\n                    @slideChange=\"onSlideChange\"\r\n                    class=\"mySwiper\"\r\n                >\r\n                    <div class=\"swiper-wrapper\">\r\n                        <div class=\"swiper-slide swiper-slide--one\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--two\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--three\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--four\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                    </div>\r\n                </swiper>\r\n                <p class=\"swiper-button-prev swiper_btn\"></p>\r\n                <p class=\"swiper-button-next swiper_btn\"></p>\r\n                <div class=\"swiper-pagination\"></div>\r\n            </div>\r\n        </div>\r\n    </div> "), _hoisted_28], 64 /* STABLE_FRAGMENT */);
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 空小跳窗 "), $data.popEmpty.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "mask",
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return $options.popSVisable();
+    })
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "text",
+    innerHTML: $data.popEmpty.text
+  }, null, 8 /* PROPS */, _hoisted_40)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "x",
+    onClick: _cache[8] || (_cache[8] = function ($event) {
+      return $options.popSVisable();
+    })
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+    loop: true,
+    navigation: true,
+    modules: $setup.modules,
+    pagination: {
+      clickable: true
+    },
+    "slides-per-view": $data.slidesPerView,
+    "space-between": 10,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    onSlideChange: $setup.onSlideChange,
+    "class": "mySwiper"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_43];
+        }),
+        _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_44];
+        }),
+        _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_45];
+        }),
+        _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_46];
+        }),
+        _: 1 /* STABLE */
+      })];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["modules", "slides-per-view", "onSlideChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"section section5\" id=\"section5\">\r\n        <div class=\"sec_box\">\r\n            <div class=\"sec5_box2\">\r\n                <swiper\r\n                    :loop=\"true\"\r\n                    :navigation=\"true\"\r\n                    :modules=\"modules\"\r\n                    :pagination=\"{ clickable: true }\"\r\n                    :slides-per-view=\"2\"\r\n                    :space-between=\"10\"\r\n                    :autoplay=\"{ delay: 2500, disableOnInteraction: false }\"\r\n                    @slideChange=\"onSlideChange\"\r\n                    class=\"mySwiper\"\r\n                >\r\n                    <div class=\"swiper-wrapper\">\r\n                        <div class=\"swiper-slide swiper-slide--one\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--two\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--three\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--four\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                    </div>\r\n                </swiper>\r\n                <p class=\"swiper-button-prev swiper_btn\"></p>\r\n                <p class=\"swiper-button-next swiper_btn\"></p>\r\n                <div class=\"swiper-pagination\"></div>\r\n            </div>\r\n        </div>\r\n    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [_hoisted_50, _hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: "/img/gameMall/propImg.png",
+    onClick: _cache[9] || (_cache[9] = function ($event) {
+      return $options.popMVisable(1);
+    })
+  }), _hoisted_52, _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btnBuy",
+    onClick: _cache[10] || (_cache[10] = function ($event) {
+      return $options.popSVisable(_ctx.id);
+    })
+  }, "購買")]), _hoisted_54])]), _hoisted_60], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -20914,6 +21087,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "/**\n * Swiper 11.0.7\n * Most modern mobile touch slider and framework with hardware accelerated transitions\n * https://swiperjs.com\n *\n * Copyright 2014-2024 Vladimir Kharlampidi\n *\n * Released under the MIT License\n *\n * Released on: February 27, 2024\n */\n\n/* FONT_START */\n@font-face {\n  font-family: 'swiper-icons';\n  src: url('data:application/font-woff;charset=utf-8;base64, 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');\n  font-weight: 400;\n  font-style: normal;\n}\n/* FONT_END */\n:root {\n  --swiper-theme-color: #007aff;\n  /*\n  --swiper-preloader-color: var(--swiper-theme-color);\n  --swiper-wrapper-transition-timing-function: initial;\n  */\n}\n:host {\n  position: relative;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n}\n.swiper {\n  margin-left: auto;\n  margin-right: auto;\n  position: relative;\n  overflow: hidden;\n  list-style: none;\n  padding: 0;\n  /* Fix of Webkit flickering */\n  z-index: 1;\n  display: block;\n}\n.swiper-vertical > .swiper-wrapper {\n  flex-direction: column;\n}\n.swiper-wrapper {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  z-index: 1;\n  display: flex;\n  transition-property: transform;\n  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);\n  box-sizing: content-box;\n}\n.swiper-android .swiper-slide,\n.swiper-ios .swiper-slide,\n.swiper-wrapper {\n  transform: translate3d(0px, 0, 0);\n}\n.swiper-horizontal {\n  touch-action: pan-y;\n}\n.swiper-vertical {\n  touch-action: pan-x;\n}\n.swiper-slide {\n  flex-shrink: 0;\n  width: 100%;\n  height: 100%;\n  position: relative;\n  transition-property: transform;\n  display: block;\n}\n.swiper-slide-invisible-blank {\n  visibility: hidden;\n}\n/* Auto Height */\n.swiper-autoheight,\n.swiper-autoheight .swiper-slide {\n  height: auto;\n}\n.swiper-autoheight .swiper-wrapper {\n  align-items: flex-start;\n  transition-property: transform, height;\n}\n.swiper-backface-hidden .swiper-slide {\n  transform: translateZ(0);\n  backface-visibility: hidden;\n}\n/* 3D Effects */\n.swiper-3d.swiper-css-mode .swiper-wrapper {\n  perspective: 1200px;\n}\n.swiper-3d .swiper-wrapper {\n  transform-style: preserve-3d;\n}\n.swiper-3d {\n  perspective: 1200px;\n}\n.swiper-3d .swiper-slide,\n.swiper-3d .swiper-cube-shadow {\n  transform-style: preserve-3d;\n}\n/* CSS Mode */\n.swiper-css-mode > .swiper-wrapper {\n  overflow: auto;\n  scrollbar-width: none;\n  /* For Firefox */\n  -ms-overflow-style: none;\n  /* For Internet Explorer and Edge */\n}\n.swiper-css-mode > .swiper-wrapper::-webkit-scrollbar {\n  display: none;\n}\n.swiper-css-mode > .swiper-wrapper > .swiper-slide {\n  scroll-snap-align: start start;\n}\n.swiper-css-mode.swiper-horizontal > .swiper-wrapper {\n  scroll-snap-type: x mandatory;\n}\n.swiper-css-mode.swiper-vertical > .swiper-wrapper {\n  scroll-snap-type: y mandatory;\n}\n.swiper-css-mode.swiper-free-mode > .swiper-wrapper {\n  scroll-snap-type: none;\n}\n.swiper-css-mode.swiper-free-mode > .swiper-wrapper > .swiper-slide {\n  scroll-snap-align: none;\n}\n.swiper-css-mode.swiper-centered > .swiper-wrapper::before {\n  content: '';\n  flex-shrink: 0;\n  order: 9999;\n}\n.swiper-css-mode.swiper-centered > .swiper-wrapper > .swiper-slide {\n  scroll-snap-align: center center;\n  scroll-snap-stop: always;\n}\n.swiper-css-mode.swiper-centered.swiper-horizontal > .swiper-wrapper > .swiper-slide:first-child {\n  margin-inline-start: var(--swiper-centered-offset-before);\n}\n.swiper-css-mode.swiper-centered.swiper-horizontal > .swiper-wrapper::before {\n  height: 100%;\n  min-height: 1px;\n  width: var(--swiper-centered-offset-after);\n}\n.swiper-css-mode.swiper-centered.swiper-vertical > .swiper-wrapper > .swiper-slide:first-child {\n  margin-block-start: var(--swiper-centered-offset-before);\n}\n.swiper-css-mode.swiper-centered.swiper-vertical > .swiper-wrapper::before {\n  width: 100%;\n  min-width: 1px;\n  height: var(--swiper-centered-offset-after);\n}\n/* Slide styles start */\n/* 3D Shadows */\n.swiper-3d .swiper-slide-shadow,\n.swiper-3d .swiper-slide-shadow-left,\n.swiper-3d .swiper-slide-shadow-right,\n.swiper-3d .swiper-slide-shadow-top,\n.swiper-3d .swiper-slide-shadow-bottom,\n.swiper-3d .swiper-slide-shadow,\n.swiper-3d .swiper-slide-shadow-left,\n.swiper-3d .swiper-slide-shadow-right,\n.swiper-3d .swiper-slide-shadow-top,\n.swiper-3d .swiper-slide-shadow-bottom {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 10;\n}\n.swiper-3d .swiper-slide-shadow {\n  background: rgba(0, 0, 0, 0.15);\n}\n.swiper-3d .swiper-slide-shadow-left {\n  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));\n}\n.swiper-3d .swiper-slide-shadow-right {\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));\n}\n.swiper-3d .swiper-slide-shadow-top {\n  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));\n}\n.swiper-3d .swiper-slide-shadow-bottom {\n  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));\n}\n.swiper-lazy-preloader {\n  width: 42px;\n  height: 42px;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  margin-left: -21px;\n  margin-top: -21px;\n  z-index: 10;\n  transform-origin: 50%;\n  box-sizing: border-box;\n  border: 4px solid var(--swiper-preloader-color, var(--swiper-theme-color));\n  border-radius: 50%;\n  border-top-color: transparent;\n}\n.swiper:not(.swiper-watch-progress) .swiper-lazy-preloader,\n.swiper-watch-progress .swiper-slide-visible .swiper-lazy-preloader {\n  animation: swiper-preloader-spin 1s infinite linear;\n}\n.swiper-lazy-preloader-white {\n  --swiper-preloader-color: #fff;\n}\n.swiper-lazy-preloader-black {\n  --swiper-preloader-color: #000;\n}\n@keyframes swiper-preloader-spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n/* Slide styles end */\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".swiperBox {\n  width: 100%;\n  height: 100%;\n}\n.swiperBox img {\n  width: 100%;\n  height: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38492,6 +38689,36 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_15_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_15_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_15_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_gameMallView_vue_vue_type_style_index_0_id_312fe53e_lang_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_15_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_15_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_15_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_gameMallView_vue_vue_type_style_index_0_id_312fe53e_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_15_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_15_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_15_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_gameMallView_vue_vue_type_style_index_0_id_312fe53e_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -38806,13 +39033,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _gameMallView_vue_vue_type_template_id_312fe53e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gameMallView.vue?vue&type=template&id=312fe53e */ "./resources/js/event/gameMallView.vue?vue&type=template&id=312fe53e");
 /* harmony import */ var _gameMallView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameMallView.vue?vue&type=script&lang=js */ "./resources/js/event/gameMallView.vue?vue&type=script&lang=js");
-/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _gameMallView_vue_vue_type_style_index_0_id_312fe53e_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss */ "./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_gameMallView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_gameMallView_vue_vue_type_template_id_312fe53e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/event/gameMallView.vue"]])
+
+
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_gameMallView_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_gameMallView_vue_vue_type_template_id_312fe53e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/event/gameMallView.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -38849,6 +39079,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_gameMallView_vue_vue_type_template_id_312fe53e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_gameMallView_vue_vue_type_template_id_312fe53e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./gameMallView.vue?vue&type=template&id=312fe53e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=template&id=312fe53e");
+
+
+/***/ }),
+
+/***/ "./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_15_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_15_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_15_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_gameMallView_vue_vue_type_style_index_0_id_312fe53e_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/event/gameMallView.vue?vue&type=style&index=0&id=312fe53e&lang=scss");
 
 
 /***/ }),

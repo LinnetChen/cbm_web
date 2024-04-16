@@ -49,30 +49,59 @@
     </div>
 
     <!-- 中跳窗 -->
-    <div class="popM" v-if="popSmall.visable">
-        <div class="mask" @click="popSVisable()"></div>
+    <div class="popM" v-if="popMiddle.visable">
+        <div class="mask" @click="popMVisable()"></div>
         <div class="popBg">
-            <div class="text" v-html="popSmall.text"></div>
+            <!-- <div class="deco1"></div>
+            <div class="deco2"></div> -->
+            <div class="left">
+                <img :src="popMiddle.img" />
+                <div class="name">{{ popMiddle.name }}</div>
+                <div class="price">{{ popMiddle.price }}</div>
+            </div>
+            <div class="right" v-html="popMiddle.text"></div>
+            <div class="btnBox">
+                <div class="creditCardBtn">信用卡支付</div>
+                <div class="myCardBtn">MyCard</div>
+            </div>
         </div>
-        <div class="x" @click="popSVisable()"></div>
+        <div class="x" @click="popMVisable()">x</div>
     </div>
     <!-- 小跳窗 -->
     <div class="popS" v-if="popSmall.visable">
         <div class="mask" @click="popSVisable()"></div>
         <div class="popBg">
-            <div class="text" v-html="popSmall.text"></div>
+            <div class="deco1"></div>
+            <div class="deco2"></div>
+            <img :src="popMiddle.img" />
+            <div class="name">{{ popMiddle.name }}</div>
+            <div class="price">{{ popMiddle.price }}</div>
+            <div class="btnBox">
+                <div class="creditCardBtn">信用卡支付</div>
+                <div class="myCardBtn">MyCard</div>
+            </div>
         </div>
-        <div class="x" @click="popSVisable()"></div>
+        <div class="x" @click="popSVisable()">x</div>
+    </div>
+    <!-- 空小跳窗 -->
+    <div class="popE" v-if="popEmpty.visable">
+        <div class="mask" @click="popSVisable()"></div>
+        <div class="popBg">
+            <div class="deco1"></div>
+            <div class="deco2"></div>
+            <div class="text" v-html="popEmpty.text"></div>
+        </div>
+        <div class="x" @click="popSVisable()">x</div>
     </div>
 
     <div class="fixBg"></div>
     <header class="header" id="header">
-        <!-- <swiper
+        <swiper
             :loop="true"
             :navigation="true"
             :modules="modules"
             :pagination="{ clickable: true }"
-            :slides-per-view="3"
+            :slides-per-view=slidesPerView
             :space-between="10"
             :autoplay="{ delay: 2500, disableOnInteraction: false }"
             @slideChange="onSlideChange"
@@ -90,7 +119,7 @@
             <swiper-slide class="swiperBox"
                 ><img src="/img/gameMall/imgTest.jpg" alt=""
             /></swiper-slide>
-        </swiper> -->
+        </swiper>
     </header>
     <!-- <div class="section section5" id="section5">
         <div class="sec_box">
@@ -138,10 +167,10 @@
             <div class="box">
                 <div class="deco1"></div>
                 <div class="deco2"></div>
-                <img src="/img/gameMall/propImg.png" alt="" />
+                <img src="/img/gameMall/propImg.png" @click="popMVisable(1)">
                 <div class="name">100</div>
                 <div class="price">100TWD</div>
-                <button class="btnBuy">購買</button>
+                <button class="btnBuy"  @click="popSVisable(id)">購買</button>
             </div>
             <div class="box"></div>
             <div class="box"></div>
@@ -204,7 +233,7 @@ export default {
     },
     setup() {
         const onSlideChange = () => {
-            console.log("slide change");
+            // console.log("slide change");
         };
         return {
             onSlideChange,
@@ -213,6 +242,7 @@ export default {
     },
     data() {
         return {
+            slidesPerView: 3,
             screenWidth: window.innerWidth,
             menuM: false,
             barAccount: "登入帳號",
@@ -251,9 +281,20 @@ export default {
                     `,
                 },
             },
+            popMiddle: {
+                visable: false,
+                img: "/img/gameMall/propImg.png",
+                name: "100鑽​",
+                price: "100TWD",
+                text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3",
+            },
             popSmall: {
                 visable: false,
                 text: "",
+            },
+            popEmpty: {
+                visable: false,
+                text: "1123333",
             },
 
             // 防連點
@@ -310,13 +351,11 @@ export default {
         popSVisable(text) {
             this.popSmall.text = text;
             this.popSmall.visable = !this.popSmall.visable;
-
-            // 鎖背景滾輪 scoll overflow
-            if (this.popSmall.visable == false) {
-                document.documentElement.style.overflow = "auto";
-            } else {
-                document.documentElement.style.overflow = "hidden";
-            }
+            this.scrollLock();
+        },
+        popMVisable(id) {
+            this.popMiddle.visable = !this.popMiddle.visable;
+            this.scrollLock();
         },
         popBVisable(detection) {
             if (detection == "PC") {
@@ -327,12 +366,14 @@ export default {
                 this.popBig.useCbValue = 2;
             }
             this.popBig.visable = !this.popBig.visable;
-
-            // 鎖背景滾輪 scoll overflow
-            if (this.popBig.visable == false) {
-                document.documentElement.style.overflow = "auto";
-            } else {
+            this.scrollLock();
+        },
+        // 鎖背景滾輪
+        scrollLock(){
+            if (this.popBig.visable == true || this.popMiddle.visable == true || this.popSmall.visable == true) {
                 document.documentElement.style.overflow = "hidden";
+            } else {
+                document.documentElement.style.overflow = "auto";
             }
         },
 
@@ -352,7 +393,6 @@ export default {
             this.screenWidth = window.innerWidth;
         },
         menuShow() {
-            console.log(123);
             this.menuM = !this.menuM;
         },
     },
@@ -373,3 +413,14 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.swiperBox {
+    width: 100%;
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+</style>
