@@ -2,22 +2,22 @@
 @import "../../base/rwd";
 @import "../../base/placeholder";
 
-html{
+html {
     background-color: black;
     font-size: 16px;
     line-height: 16px;
-    @include xl(){
+    @include xl() {
         font-size: 14px;
         line-height: 14px;
     }
-    @include md(){
+    @include md() {
         font-size: 11px;
         line-height: 11px;
     }
 }
 body {
     background-color: black;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     .wrap {
         width: 100%;
         margin: 0 auto;

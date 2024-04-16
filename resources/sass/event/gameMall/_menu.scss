@@ -1,0 +1,151 @@
+.barPC {
+    width: 100vw;
+    height: 110px;
+    background-color: rgb(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    .menu {
+        border: 1px solid blue;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        @include xxl {
+            width: 100%;
+        }
+        .logo{
+            border: 1px solid blue;
+            max-width: 256px;
+            height: 91px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .menuList {
+            background-color: #fff;
+            border: 1px solid blue;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            .menuListItem {
+                a {
+                    font-size: 1.8rem;
+                    color: #fff;
+
+                    @include x3l {
+                        font-size: 1.5rem;
+                    }
+
+                    &:hover {
+                        color: #00b4ff;
+                        text-shadow:
+                            0.1rem 0.1rem 1rem #000,
+                            0.1rem 0.1rem 1rem #000,
+                            0.1rem 0.1rem 1rem #000;
+                    }
+                }
+            }
+            .menuDeco {
+                font-size: 1.56rem;
+                margin: 1.25rem;
+                color: #ffffff82;
+            }
+        }
+    }
+}
+
+.barM {
+    position: fixed;
+    right: 8px;
+    top: 8px;
+    z-index: 3;
+    border: 2px solid #c8e3ea;
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .spanBox {
+        span {
+            display: block;
+            position: relative;
+            width: 33px;
+            height: 4px;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            background-color: #c8e3ea;
+        }
+
+        &.active {
+            span {
+                &:nth-child(1) {
+                    transform: rotate(45deg) translate(9px, 7.5px);
+                }
+                &:nth-child(2) {
+                    transform: rotate(-45deg) translate(-2px, 2px);
+                }
+                &:nth-child(3) {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+.menuM {
+    position: fixed;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 400px;
+    background-color: rgb(0, 0, 0, 0.7);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    @include lg {
+        min-height: 700px;
+    }
+
+    .menuListItem {
+        text-align: center;
+        height: 10%;
+
+        @include m3d {
+            height: 10%;
+        }
+
+        a {
+            font-size: 2.5rem;
+            letter-spacing: 0.6rem;
+            color: #fff;
+            font-family: "Noto Serif TC";
+            font-weight: 600;
+        }
+    }
+    .logo {
+        position: absolute;
+        top: 2%;
+        width: 55%;
+
+        @include lg {
+            top: 5%;
+        }
+        @include m3d {
+            top: 12%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
