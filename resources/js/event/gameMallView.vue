@@ -16,8 +16,7 @@
             <span></span>
         </div>
     </div>
-    <ul class="menuM" v-if="screenWidth <= 900 && menuM == true">
-    </ul>
+    <ul class="menuM" v-if="screenWidth <= 900 && menuM == true"></ul>
 
     <!-- 大跳窗 -->
     <div class="popB" v-if="popBig.visable">
@@ -67,24 +66,91 @@
     </div>
 
     <div class="fixBg"></div>
-    <header class="section header" id="header">
+    <header class="header" id="header">
         <!-- <swiper
             :loop="true"
             :navigation="true"
             :modules="modules"
             :pagination="{ clickable: true }"
-            :slides-per-view="2"
+            :slides-per-view="3"
             :space-between="10"
             :autoplay="{ delay: 2500, disableOnInteraction: false }"
             @slideChange="onSlideChange"
             class="mySwiper"
         >
-            <swiper-slide class="swiperBox"><img src="/img/gameMall/imgTest.jpg" alt="" /></swiper-slide>
-            <swiper-slide>Slide 2</swiper-slide>
-            <swiper-slide>Slide 3</swiper-slide>
-            <swiper-slide>Slide 4</swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
         </swiper> -->
     </header>
+    <!-- <div class="section section5" id="section5">
+        <div class="sec_box">
+            <div class="sec5_box2">
+                <swiper
+                    :loop="true"
+                    :navigation="true"
+                    :modules="modules"
+                    :pagination="{ clickable: true }"
+                    :slides-per-view="2"
+                    :space-between="10"
+                    :autoplay="{ delay: 2500, disableOnInteraction: false }"
+                    @slideChange="onSlideChange"
+                    class="mySwiper"
+                >
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide swiper-slide--one">
+                            <img src="/img/gameMall/imgTest.jpg" alt="" />
+                        </div>
+                        <div class="swiper-slide swiper-slide--two">
+                            <img src="/img/gameMall/imgTest.jpg" alt="" />
+                        </div>
+                        <div class="swiper-slide swiper-slide--three">
+                            <img src="/img/gameMall/imgTest.jpg" alt="" />
+                        </div>
+                        <div class="swiper-slide swiper-slide--four">
+                            <img src="/img/gameMall/imgTest.jpg" alt="" />
+                        </div>
+                        <div class="swiper-slide swiper-slide--five">
+                            <img src="/img/gameMall/imgTest.jpg" alt="" />
+                        </div>
+                        <div class="swiper-slide swiper-slide--five">
+                            <img src="/img/gameMall/imgTest.jpg" alt="" />
+                        </div>
+                    </div>
+                </swiper>
+                <p class="swiper-button-prev swiper_btn"></p>
+                <p class="swiper-button-next swiper_btn"></p>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div> -->
+    <div class="commoditySection">
+        <div class="contain">
+            <div class="box">
+                <div class="deco1"></div>
+                <div class="deco2"></div>
+                <img src="/img/gameMall/propImg.png" alt="" />
+                <div class="name">100</div>
+                <div class="price">100TWD</div>
+                <button class="btnBuy">購買</button>
+            </div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
 
     <footer class="section footer">
         <div class="footerbox_logo">

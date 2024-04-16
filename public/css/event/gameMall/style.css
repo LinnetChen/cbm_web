@@ -252,18 +252,6 @@ html {
   font-size: 16px;
   line-height: 16px;
 }
-@media all and (max-width: 1024px) {
-  html {
-    font-size: 14px;
-    line-height: 14px;
-  }
-}
-@media all and (max-width: 768px) {
-  html {
-    font-size: 11px;
-    line-height: 11px;
-  }
-}
 
 body {
   background-color: black;
@@ -301,7 +289,6 @@ body .wrap {
   align-items: center;
 }
 .barPC .menu {
-  border: 1px solid blue;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -312,7 +299,6 @@ body .wrap {
   }
 }
 .barPC .menu .logo {
-  border: 1px solid blue;
   max-width: 256px;
   height: 91px;
 }
@@ -321,8 +307,6 @@ body .wrap {
   height: 100%;
 }
 .barPC .menu .menuList {
-  background-color: #fff;
-  border: 1px solid blue;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -436,7 +420,6 @@ body .wrap {
   position: fixed;
   top: 0;
   left: 0;
-  border: 1px solid red;
   background-image: url("/img/gameMall/headerPCBg.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -447,16 +430,183 @@ body .wrap {
 
 .header {
   width: 100%;
-  height: 950px;
-  background-color: rgba(131, 67, 67, 0.4941176471);
-}
-.header .mySwiper {
-  background-color: #fff;
+  height: 492px;
+  padding-top: 169px;
+  padding: 169px 0 0 37px;
 }
 .header .mySwiper .swiperBox {
-  border: 1px solid green;
   max-width: 616px;
   max-height: 363px;
   width: 100%;
   height: 100%;
+}
+
+.commoditySection {
+  width: 100%;
+  min-height: 492px;
+  display: flex;
+  justify-content: center;
+}
+
+.contain {
+  padding: 0 0.5% 0 2.5%;
+  width: 66%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+@media all and (max-width: 768px) {
+  .contain {
+    justify-content: center;
+  }
+}
+.contain .box {
+  background-color: rgba(0, 4, 44, 0.7);
+  width: 215px;
+  height: 300px;
+  margin-right: 2%;
+  margin-bottom: 3%;
+  padding: 0.3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contain .box .deco1 {
+  width: 100%;
+  max-width: 215px;
+}
+.contain .box .deco1::before, .contain .box .deco1::after {
+  top: 0;
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-image: url("/img/20240403_joinAct/stepDeco.png");
+  background-position: center center;
+  background-size: cover;
+}
+.contain .box .deco1::before {
+  right: 0;
+}
+.contain .box .deco1::after {
+  left: 0;
+  transform: scaleX(-1);
+}
+.contain .box .deco2 {
+  position: absolute;
+  width: 100%;
+  max-width: 215px;
+  bottom: 0.3rem;
+}
+.contain .box .deco2::before, .contain .box .deco2::after {
+  bottom: 0;
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-image: url("/img/20240403_joinAct/stepDeco.png");
+  background-position: center center;
+  background-size: cover;
+}
+.contain .box .deco2::before {
+  left: 2%;
+  transform: scaleY(-1) scaleX(-1);
+}
+.contain .box .deco2::after {
+  right: 1.1%;
+  transform: scaleY(-1);
+}
+.contain .box .name,
+.contain .box .price {
+  color: #fff;
+  margin-bottom: 0.8rem;
+}
+.contain .box .btnBuy {
+  border: 0px;
+  background-image: url("/img/gameMall/btnBg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  font-weight: 400;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0);
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+  width: 100%;
+  height: 100%;
+  max-width: 179px;
+  max-height: 50px;
+  font-size: 1rem;
+}
+.contain .box .btnBuy:hover {
+  filter: none;
+}
+
+.section5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section5 .sec_box {
+  z-index: 1;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section5 .sec_box .sec5_box1 {
+  width: 50%;
+  height: 20%;
+}
+@media all and (max-width: 768px) {
+  .section5 .sec_box .sec5_box1 {
+    width: 90%;
+  }
+}
+.section5 .sec_box .sec5_box1 img {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.section5 .sec_box .sec5_box2 {
+  width: 50%;
+  height: 80%;
+}
+@media all and (max-width: 1440px) {
+  .section5 .sec_box .sec5_box2 {
+    height: 60%;
+  }
+}
+@media all and (max-width: 960px) {
+  .section5 .sec_box .sec5_box2 {
+    height: 50%;
+    width: 60%;
+  }
+}
+@media all and (max-width: 768px) {
+  .section5 .sec_box .sec5_box2 {
+    height: 100%;
+    width: 90%;
+  }
+}
+@media all and (max-width: 320px) {
+  .section5 .sec_box .sec5_box2 {
+    width: 75%;
+    height: 71%;
+  }
+}
+@media all and (max-width: 375px) {
+  .section5 .sec_box .sec5_box2 {
+    width: 75%;
+    height: 72%;
+  }
 }
