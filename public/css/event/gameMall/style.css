@@ -927,30 +927,20 @@ body .wrap {
   cursor: pointer;
 }
 
+.popB {
+  background-color: rgba(0, 0, 0, 0.9);
+}
 .popB .popBg {
+  padding: 0 1rem;
   z-index: 1;
   width: 80%;
   height: 80%;
   max-width: 730px;
   max-height: 600px;
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid #fff;
-  padding: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
-  padding: 3rem 7rem;
-}
-@media all and (max-width: 800px) {
-  .popB .popBg {
-    padding: 1% 6%;
-  }
-}
-@media all and (max-width: 768px) {
-  .popB .popBg {
-    padding: 6% 6%;
-  }
 }
 .popB .popBg::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -963,15 +953,51 @@ body .wrap {
 .popB .popBg::-webkit-scrollbar-thumb {
   background-color: #565656;
 }
-.popB .popBg .deco img {
+.popB .popBg .tabBox {
+  margin-top: 1.2rem;
+  border-top: 1px solid #fff;
   width: 100%;
-  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.popB .popBg .tabBox .creditTab,
+.popB .popBg .tabBox .myCardTab {
+  position: relative;
+  top: -0.5px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  width: 103px;
+  height: 40px;
+  border: 0px;
+  margin: 0 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-clip-path: polygon(10% 100%, 90% 100%, 100% 0%, 0% 0%);
+          clip-path: polygon(10% 100%, 90% 100%, 100% 0%, 0% 0%);
+  background: #2f2f32;
+  color: #fff;
+}
+.popB .popBg .tabBox .creditTab:hover, .popB .popBg .tabBox .creditTab.active,
+.popB .popBg .tabBox .myCardTab:hover,
+.popB .popBg .tabBox .myCardTab.active {
+  color: #000;
+  background: #fff;
+}
+.popB .popBg .tabBox .myCardTab {
+  font-weight: 500;
 }
 .popB .popBg .title {
   font-family: "Noto Serif TC";
   font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 900;
+  background: linear-gradient(270deg, #fff 30%, #1f1f1f);
+  background: -webkit-linear-gradient(270deg, #fff 30%, #1f1f1f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   text-align: center;
   line-height: 2.8rem;
 }
@@ -1003,4 +1029,11 @@ body .wrap {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.popB .x {
+  color: #fff;
+  font-size: 2rem;
+  top: -32%;
+  left: 0.5%;
+  cursor: pointer;
 }

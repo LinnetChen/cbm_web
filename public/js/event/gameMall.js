@@ -20523,20 +20523,14 @@ var api = "https://cbm.digeam.com/api/jointAct";
       menuM: false,
       barAccount: "登入帳號",
       popBig: {
-        visable: false,
-        useCbValue: 2,
+        visable: true,
+        useCbValue: 0,
         cbValue: {
-          img1: "/img/20240403_joinAct/rewardCbImg1.png",
           title1: "【坐騎外觀】貴族小菲雞(30日)​",
+          img1: "/img/20240403_joinAct/rewardCbImg1.png",
           text1: "坐騎服裝領取後可使用30天，包含特效屬性：致命傷害+9%及3個空插槽，不可交易。",
           img2: "/img/20240403_joinAct/rewardCbImg2.png",
-          title2: "GM的祝福(Lv.4)聖水 x10",
           text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。"
-        },
-        cbmValue: {
-          img1: "/img/20240403_joinAct/rewardCbmImg1.png",
-          title: "【時裝箱】黑色契約校服(30日)",
-          text: "領取後可使用30天，包含1個空插槽，不可交易。​"
         },
         noticeValue: {
           title: "注意事項​",
@@ -20571,8 +20565,8 @@ var api = "https://cbm.digeam.com/api/jointAct";
   },
   computed: {
     items: function items() {
-      // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
-      return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.useCbValue === 1 ? this.popBig.cbmValue : this.popBig.noticeValue;
+      // useCbValue值0 產出儲值教學，不然 產出使用說明
+      return this.popBig.useCbValue === 0 ? this.popBig.cbValue : this.popBig.noticeValue;
     },
     serialNum: function serialNum() {
       return this.user.serialNum;
@@ -20712,102 +20706,102 @@ var _hoisted_13 = {
   "class": "popBg"
 };
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "deco"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/img/20240403_joinAct/popTop.png",
-  alt: ""
-})], -1 /* HOISTED */);
-var _hoisted_15 = {
+  "class": "title"
+}, "儲值教學", -1 /* HOISTED */);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "tabBox"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "creditTab"
+}, "信用卡"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "myCardTab"
+}, "MyCard")], -1 /* HOISTED */);
+var _hoisted_16 = {
   key: 0,
   "class": "title"
 };
-var _hoisted_16 = ["src"];
-var _hoisted_17 = {
+var _hoisted_17 = ["src"];
+var _hoisted_18 = {
   key: 0,
   "class": "t"
 };
-var _hoisted_18 = {
+var _hoisted_19 = {
   key: 2,
   "class": "text"
 };
-var _hoisted_19 = ["innerHTML"];
-var _hoisted_20 = {
+var _hoisted_20 = ["innerHTML"];
+var _hoisted_21 = {
   key: 4,
   "class": "popM"
 };
-var _hoisted_21 = {
+var _hoisted_22 = {
   "class": "popBg"
 };
-var _hoisted_22 = {
+var _hoisted_23 = {
   "class": "left"
 };
-var _hoisted_23 = ["src"];
-var _hoisted_24 = {
+var _hoisted_24 = ["src"];
+var _hoisted_25 = {
   "class": "name"
 };
-var _hoisted_25 = {
+var _hoisted_26 = {
   "class": "price"
 };
-var _hoisted_26 = ["innerHTML"];
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_27 = ["innerHTML"];
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "btnBox"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "creditCardBtn"
 }, "信用卡支付"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "myCardBtn"
 }, "MyCard")], -1 /* HOISTED */);
-var _hoisted_28 = {
+var _hoisted_29 = {
   key: 5,
   "class": "popS"
 };
-var _hoisted_29 = {
+var _hoisted_30 = {
   "class": "popBg"
 };
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_32 = ["src"];
-var _hoisted_33 = {
+var _hoisted_33 = ["src"];
+var _hoisted_34 = {
   "class": "name"
 };
-var _hoisted_34 = {
+var _hoisted_35 = {
   "class": "price"
 };
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "btnBox"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "creditCardBtn"
 }, "信用卡支付"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "myCardBtn"
 }, "MyCard")], -1 /* HOISTED */);
-var _hoisted_36 = {
+var _hoisted_37 = {
   key: 6,
   "class": "popE"
 };
-var _hoisted_37 = {
+var _hoisted_38 = {
   "class": "popBg"
 };
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_40 = ["innerHTML"];
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_41 = ["innerHTML"];
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "fixBg"
 }, null, -1 /* HOISTED */);
-var _hoisted_42 = {
+var _hoisted_43 = {
   "class": "header",
   id: "header"
 };
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/img/gameMall/imgTest.jpg",
-  alt: ""
-}, null, -1 /* HOISTED */);
 var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/gameMall/imgTest.jpg",
   alt: ""
@@ -20820,29 +20814,33 @@ var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   src: "/img/gameMall/imgTest.jpg",
   alt: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_47 = {
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_48 = {
   "class": "commoditySection"
 };
-var _hoisted_48 = {
+var _hoisted_49 = {
   "class": "contain"
 };
-var _hoisted_49 = {
+var _hoisted_50 = {
   "class": "box"
 };
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "name"
 }, "100", -1 /* HOISTED */);
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "price"
 }, "100TWD", -1 /* HOISTED */);
-var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_swiper_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper-slide");
   var _component_swiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper");
@@ -20861,68 +20859,68 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.popBVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.items, function (value, key) {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, _hoisted_15, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.items, function (value, key) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "container",
       key: key
-    }, [key.includes('title') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), key.includes('img') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    }, [key.includes('title') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), key.includes('img') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: 1,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["imgBox", {
         rewardCbmImg: value.includes('rewardCbmImg1')
       }])
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: value
-    }, null, 8 /* PROPS */, _hoisted_16), value.includes('rewardCbmImg1') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), key.includes('text') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), key.includes('Ul') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    }, null, 8 /* PROPS */, _hoisted_17), value.includes('rewardCbmImg1') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), key.includes('text') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), key.includes('Ul') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: 3,
       "class": "text",
       innerHTML: $data.popBig.noticeValue.Ul
-    }, null, 8 /* PROPS */, _hoisted_19)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }, null, 8 /* PROPS */, _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.popBVisable();
     })
-  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 中跳窗 "), $data.popMiddle.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, "X")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 中跳窗 "), $data.popMiddle.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mask",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.popMVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"deco1\"></div>\r\n            <div class=\"deco2\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"deco1\"></div>\r\n            <div class=\"deco2\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $data.popMiddle.img
-  }, null, 8 /* PROPS */, _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_24), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "right",
     innerHTML: $data.popMiddle.text
-  }, null, 8 /* PROPS */, _hoisted_26), _hoisted_27]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_27), _hoisted_28]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.popMVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 小跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 小跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mask",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.popSVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $data.popMiddle.img
-  }, null, 8 /* PROPS */, _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */), _hoisted_35]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_33), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */), _hoisted_36]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.popSVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 空小跳窗 "), $data.popEmpty.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 空小跳窗 "), $data.popEmpty.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mask",
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.popSVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [_hoisted_39, _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "text",
     innerHTML: $data.popEmpty.text
-  }, null, 8 /* PROPS */, _hoisted_40)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_41)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[8] || (_cache[8] = function ($event) {
       return $options.popSVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
     loop: true,
     navigation: true,
     modules: $setup.modules,
@@ -20943,13 +20941,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "swiperBox"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_43];
-        }),
-        _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
-        "class": "swiperBox"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_44];
         }),
         _: 1 /* STABLE */
@@ -20967,20 +20958,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [_hoisted_46];
         }),
         _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_47];
+        }),
+        _: 1 /* STABLE */
       })];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modules", "slides-per-view", "onSlideChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"section section5\" id=\"section5\">\r\n        <div class=\"sec_box\">\r\n            <div class=\"sec5_box2\">\r\n                <swiper\r\n                    :loop=\"true\"\r\n                    :navigation=\"true\"\r\n                    :modules=\"modules\"\r\n                    :pagination=\"{ clickable: true }\"\r\n                    :slides-per-view=\"2\"\r\n                    :space-between=\"10\"\r\n                    :autoplay=\"{ delay: 2500, disableOnInteraction: false }\"\r\n                    @slideChange=\"onSlideChange\"\r\n                    class=\"mySwiper\"\r\n                >\r\n                    <div class=\"swiper-wrapper\">\r\n                        <div class=\"swiper-slide swiper-slide--one\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--two\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--three\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--four\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                    </div>\r\n                </swiper>\r\n                <p class=\"swiper-button-prev swiper_btn\"></p>\r\n                <p class=\"swiper-button-next swiper_btn\"></p>\r\n                <div class=\"swiper-pagination\"></div>\r\n            </div>\r\n        </div>\r\n    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [_hoisted_50, _hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, 8 /* PROPS */, ["modules", "slides-per-view", "onSlideChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"section section5\" id=\"section5\">\r\n        <div class=\"sec_box\">\r\n            <div class=\"sec5_box2\">\r\n                <swiper\r\n                    :loop=\"true\"\r\n                    :navigation=\"true\"\r\n                    :modules=\"modules\"\r\n                    :pagination=\"{ clickable: true }\"\r\n                    :slides-per-view=\"2\"\r\n                    :space-between=\"10\"\r\n                    :autoplay=\"{ delay: 2500, disableOnInteraction: false }\"\r\n                    @slideChange=\"onSlideChange\"\r\n                    class=\"mySwiper\"\r\n                >\r\n                    <div class=\"swiper-wrapper\">\r\n                        <div class=\"swiper-slide swiper-slide--one\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--two\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--three\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--four\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                        <div class=\"swiper-slide swiper-slide--five\">\r\n                            <img src=\"/img/gameMall/imgTest.jpg\" alt=\"\" />\r\n                        </div>\r\n                    </div>\r\n                </swiper>\r\n                <p class=\"swiper-button-prev swiper_btn\"></p>\r\n                <p class=\"swiper-button-next swiper_btn\"></p>\r\n                <div class=\"swiper-pagination\"></div>\r\n            </div>\r\n        </div>\r\n    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "/img/gameMall/propImg.png",
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return $options.popMVisable(1);
     })
-  }), _hoisted_52, _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), _hoisted_53, _hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btnBuy",
     onClick: _cache[10] || (_cache[10] = function ($event) {
       return $options.popSVisable(_ctx.id);
     })
-  }, "購買")]), _hoisted_54])]), _hoisted_60], 64 /* STABLE_FRAGMENT */);
+  }, "購買")]), _hoisted_55])]), _hoisted_61], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

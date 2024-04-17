@@ -22,8 +22,10 @@
     <div class="popB" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
-            <div class="deco">
-                <img src="/img/20240403_joinAct/popTop.png" alt="" />
+            <div class="title">儲值教學</div>
+            <div class="tabBox">
+                <button class="creditTab">信用卡</button>
+                <button class="myCardTab">MyCard</button>
             </div>
             <div class="container" v-for="(value, key) in items" :key="key">
                 <div class="title" v-if="key.includes('title')">
@@ -45,7 +47,7 @@
                 ></div>
             </div>
         </div>
-        <div class="x" @click="popBVisable()"></div>
+        <div class="x" @click="popBVisable()">X</div>
     </div>
 
     <!-- 中跳窗 -->
@@ -248,21 +250,15 @@ export default {
             barAccount: "登入帳號",
 
             popBig: {
-                visable: false,
-                useCbValue: 2,
+                visable: true,
+                useCbValue: 0,
 
                 cbValue: {
-                    img1: "/img/20240403_joinAct/rewardCbImg1.png",
                     title1: "【坐騎外觀】貴族小菲雞(30日)​",
+                    img1: "/img/20240403_joinAct/rewardCbImg1.png",
                     text1: "坐騎服裝領取後可使用30天，包含特效屬性：致命傷害+9%及3個空插槽，不可交易。",
                     img2: "/img/20240403_joinAct/rewardCbImg2.png",
-                    title2: "GM的祝福(Lv.4)聖水 x10",
                     text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。",
-                },
-                cbmValue: {
-                    img1: "/img/20240403_joinAct/rewardCbmImg1.png",
-                    title: "【時裝箱】黑色契約校服(30日)",
-                    text: "領取後可使用30天，包含1個空插槽，不可交易。​",
                 },
                 noticeValue: {
                     title: "注意事項​",
@@ -312,11 +308,9 @@ export default {
     },
     computed: {
         items() {
-            // useCbValue值0 產出PC版跳窗資訊，1 產出手機板跳窗資訊
+            // useCbValue值0 產出儲值教學，不然 產出使用說明
             return this.popBig.useCbValue === 0
                 ? this.popBig.cbValue
-                : this.popBig.useCbValue === 1
-                ? this.popBig.cbmValue
                 : this.popBig.noticeValue;
         },
         serialNum() {
