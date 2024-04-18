@@ -617,7 +617,8 @@ body .wrap {
 .popS,
 .popM,
 .popB,
-.popE {
+.popE,
+.popUID {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
@@ -632,7 +633,8 @@ body .wrap {
 .popS .mask,
 .popM .mask,
 .popB .mask,
-.popE .mask {
+.popE .mask,
+.popUID .mask {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -642,12 +644,19 @@ body .wrap {
 }
 .popS .creditCardBtn,
 .popS .myCardBtn,
+.popS .submit,
 .popM .creditCardBtn,
 .popM .myCardBtn,
+.popM .submit,
 .popB .creditCardBtn,
 .popB .myCardBtn,
+.popB .submit,
 .popE .creditCardBtn,
-.popE .myCardBtn {
+.popE .myCardBtn,
+.popE .submit,
+.popUID .creditCardBtn,
+.popUID .myCardBtn,
+.popUID .submit {
   border: 0px;
   background-image: url("/img/gameMall/btnBg.png");
   background-repeat: no-repeat;
@@ -668,12 +677,19 @@ body .wrap {
 }
 .popS .creditCardBtn:hover,
 .popS .myCardBtn:hover,
+.popS .submit:hover,
 .popM .creditCardBtn:hover,
 .popM .myCardBtn:hover,
+.popM .submit:hover,
 .popB .creditCardBtn:hover,
 .popB .myCardBtn:hover,
+.popB .submit:hover,
 .popE .creditCardBtn:hover,
-.popE .myCardBtn:hover {
+.popE .myCardBtn:hover,
+.popE .submit:hover,
+.popUID .creditCardBtn:hover,
+.popUID .myCardBtn:hover,
+.popUID .submit:hover {
   filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
 }
 
@@ -927,6 +943,168 @@ body .wrap {
   cursor: pointer;
 }
 
+.popUID .popBg {
+  z-index: 1;
+  width: 80%;
+  height: 80%;
+  max-width: 700px;
+  max-height: 400px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #fff;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media all and (max-width: 768px) {
+  .popUID .popBg {
+    width: 90%;
+    height: 90%;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+.popUID .popBg .deco1 {
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  top: 1%;
+  position: absolute;
+}
+.popUID .popBg .deco1::before, .popUID .popBg .deco1::after {
+  top: 0;
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url("/img/20240403_joinAct/stepDeco.png");
+  background-position: center center;
+  background-size: cover;
+}
+.popUID .popBg .deco1::before {
+  right: 0;
+}
+.popUID .popBg .deco1::after {
+  left: 0.5%;
+  transform: scaleX(-1);
+}
+.popUID .popBg .deco2 {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  max-width: 700px;
+  bottom: 1%;
+}
+.popUID .popBg .deco2::before, .popUID .popBg .deco2::after {
+  bottom: 0;
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-image: url("/img/20240403_joinAct/stepDeco.png");
+  background-position: center center;
+  background-size: cover;
+}
+.popUID .popBg .deco2::before {
+  left: 0.5%;
+  transform: scaleY(-1) scaleX(-1);
+}
+.popUID .popBg .deco2::after {
+  right: 0;
+  transform: scaleY(-1);
+}
+.popUID .popBg .title {
+  font-family: "Noto Serif TC";
+  font-size: 2.18rem;
+  font-weight: 900;
+  background: linear-gradient(270deg, #fff 30%, #1f1f1f);
+  background: -webkit-linear-gradient(270deg, #fff 30%, #1f1f1f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  line-height: 2.8rem;
+}
+.popUID .popBg form {
+  margin-top: 2rem;
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.popUID .popBg form .inputBox {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.popUID .popBg form .inputBox .inputAccount,
+.popUID .popBg form .inputBox .selectServer,
+.popUID .popBg form .inputBox .selectCharacter {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+.popUID .popBg form .inputBox .text {
+  color: #ff0000;
+  font-size: 1rem;
+  text-align: left;
+}
+.popUID .popBg form .inputBox .accountManual {
+  width: 10%;
+  height: 108%;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  right: 0;
+  top: 0%;
+  border: 1px solid #ffffff;
+}
+.popUID .popBg form .inputBox label {
+  color: #fff;
+  width: 25%;
+  font-size: 1.3rem;
+}
+.popUID .popBg form .inputBox input,
+.popUID .popBg form .inputBox select {
+  height: 100%;
+  width: 60%;
+  font-size: 0.9rem;
+  border: 1px solid #bcbcbc;
+  background-color: #323232;
+  color: #bcbcbc;
+}
+.popUID .popBg form .inputBox input {
+  border: 1px solid #bcbcbc;
+  background-color: #000;
+  width: 58.5%;
+}
+.popUID .popBg form button {
+  position: absolute;
+  bottom: 0px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.popUID .popBg form .submit {
+  font-weight: 900;
+}
+.popUID .x {
+  color: #fff;
+  font-size: 2rem;
+  top: -20%;
+  left: 0.5%;
+  cursor: pointer;
+}
+@media all and (max-width: 768px) {
+  .popUID .x {
+    top: -40%;
+  }
+}
+
 .popB {
   background-color: rgba(0, 0, 0, 0.9);
 }
@@ -954,7 +1132,7 @@ body .wrap {
   background-color: #565656;
 }
 .popB .popBg .tabBox {
-  margin-top: 1.2rem;
+  margin: 1.2rem 0;
   border-top: 1px solid #fff;
   width: 100%;
   text-align: center;

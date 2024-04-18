@@ -3,9 +3,9 @@
         <div class="menu">
             <div class="logo"><img src="/img/gameMall/MLOGO.png" alt="" /></div>
             <ul class="menuList">
-                <button>儲值教學​</button>
-                <button>使用說明​</button>
-                <button>{{ barAccount }}</button>
+                <button @click="popBVisable(0)">儲值教學​</button>
+                <button @click="popBVisable(1)">使用說明​</button>
+                <button @click="popUIDVisable()">{{ barAccount }}</button>
             </ul>
         </div>
     </div>
@@ -22,10 +22,23 @@
     <div class="popB" v-if="popBig.visable">
         <div class="mask" @click="popBVisable()"></div>
         <div class="popBg">
-            <div class="title">儲值教學</div>
-            <div class="tabBox">
-                <button class="creditTab">信用卡</button>
-                <button class="myCardTab">MyCard</button>
+            <div class="title" v-if="popBig.titleType == 1">使用說明</div>
+            <div class="title" v-if="popBig.titleType == 0">儲值教學</div>
+            <div class="tabBox" v-if="popBig.titleType == 0">
+                <button
+                    @click="tabChange('creditValue')"
+                    class="creditTab"
+                    :class="{ active: popBig.tabType == 'creditValue' }"
+                >
+                    信用卡
+                </button>
+                <button
+                    @click="tabChange('myCardValue')"
+                    class="myCardTab"
+                    :class="{ active: popBig.tabType == 'myCardValue' }"
+                >
+                    MyCard
+                </button>
             </div>
             <div class="container" v-for="(value, key) in items" :key="key">
                 <div class="title" v-if="key.includes('title')">
@@ -54,8 +67,8 @@
     <div class="popM" v-if="popMiddle.visable">
         <div class="mask" @click="popMVisable()"></div>
         <div class="popBg">
-            <!-- <div class="deco1"></div>
-            <div class="deco2"></div> -->
+            <div class="deco1"></div>
+            <div class="deco2"></div>
             <div class="left">
                 <img :src="popMiddle.img" />
                 <div class="name">{{ popMiddle.name }}</div>
@@ -69,6 +82,57 @@
         </div>
         <div class="x" @click="popMVisable()">x</div>
     </div>
+    <!-- UID中跳窗 -->
+    <div class="popUID" v-if="popUID.visable">
+        <div class="mask" @click="popUIDVisable()"></div>
+        <div class="popBg">
+            <div class="title">登入帳號</div>
+            <div class="deco1"></div>
+            <div class="deco2"></div>
+            <form action="https://www.digeam.com/logout" method="post">
+                <div class="inputBox">
+                    <div class="inputAccount">
+                        <label for="">帳號UID</label>
+                        <input
+                            type="text"
+                            name="account"
+                            id="account"
+                            v-model="popUID.account"
+                        />
+                        <button class="accountManual" type="button" @click="">
+                            ?
+                        </button>
+                    </div>
+                    <div class="text">*查無此帳號，請再次檢查您輸入的資料​</div>
+                    <div class="selectServer">
+                        <label for="">選擇伺服器</label>
+                        <select name="server" id="server">
+                            <option value="" disabled="" selected="">
+                                伺服器
+                            </option>
+                        </select>
+                    </div>
+                    <div class="selectCharacter">
+                        <label for="">選擇角色</label>
+                        <select name="character" id="character">
+                            <option value="" disabled="" selected="">
+                                角色名稱
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <button
+                    class="submit"
+                    type="submit"
+                    value="Send Request"
+                    @click="accountSubmit()"
+                >
+                    送出帳號
+                </button>
+            </form>
+        </div>
+        <div class="x" @click="popUIDVisable()">x</div>
+    </div>
     <!-- 小跳窗 -->
     <div class="popS" v-if="popSmall.visable">
         <div class="mask" @click="popSVisable()"></div>
@@ -79,8 +143,8 @@
             <div class="name">{{ popMiddle.name }}</div>
             <div class="price">{{ popMiddle.price }}</div>
             <div class="btnBox">
-                <div class="creditCardBtn">信用卡支付</div>
-                <div class="myCardBtn">MyCard</div>
+                <div class="creditCardBtn" @click="redirectToUrl('credit')">信用卡支付</div>
+                <div class="myCardBtn" @click="redirectToUrl('mycard')">MyCard</div>
             </div>
         </div>
         <div class="x" @click="popSVisable()">x</div>
@@ -103,7 +167,7 @@
             :navigation="true"
             :modules="modules"
             :pagination="{ clickable: true }"
-            :slides-per-view=slidesPerView
+            :slides-per-view="slidesPerView"
             :space-between="10"
             :autoplay="{ delay: 2500, disableOnInteraction: false }"
             @slideChange="onSlideChange"
@@ -169,10 +233,10 @@
             <div class="box">
                 <div class="deco1"></div>
                 <div class="deco2"></div>
-                <img src="/img/gameMall/propImg.png" @click="popMVisable(1)">
+                <img src="/img/gameMall/propImg.png" @click="popMVisable(1)" />
                 <div class="name">100</div>
                 <div class="price">100TWD</div>
-                <button class="btnBuy"  @click="popSVisable(id)">購買</button>
+                <button class="btnBuy" @click="popSVisable(id)">購買</button>
             </div>
             <div class="box"></div>
             <div class="box"></div>
@@ -250,18 +314,25 @@ export default {
             barAccount: "登入帳號",
 
             popBig: {
-                visable: true,
-                useCbValue: 0,
+                visable: false,
+                titleType: 0,
+                tabType: "myCardValue",
 
-                cbValue: {
-                    title1: "【坐騎外觀】貴族小菲雞(30日)​",
+                creditValue: {
+                    title1: "creditValue​",
+                    img1: "/img/20240403_joinAct/rewardCbImg1.png",
+                    text1: "坐騎服裝領取後可使用30天，包含特效屬性：致命傷害+9%及3個空插槽，不可交易。",
+                    img2: "/img/20240403_joinAct/rewardCbImg2.png",
+                    text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。",
+                },
+                myCardValue: {
+                    title1: "myCardValue​",
                     img1: "/img/20240403_joinAct/rewardCbImg1.png",
                     text1: "坐騎服裝領取後可使用30天，包含特效屬性：致命傷害+9%及3個空插槽，不可交易。",
                     img2: "/img/20240403_joinAct/rewardCbImg2.png",
                     text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。",
                 },
                 noticeValue: {
-                    title: "注意事項​",
                     Ul: `
                     <ul>
                         <li>【上市聯動活動】自即日起至《黑色契約Mobile》事前預約結束止。</li>
@@ -279,6 +350,14 @@ export default {
             },
             popMiddle: {
                 visable: false,
+                img: "/img/gameMall/propImg.png",
+                name: "100鑽​",
+                price: "100TWD",
+                text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3",
+            },
+            popUID: {
+                visable: false,
+                account: "WWW",
                 img: "/img/gameMall/propImg.png",
                 name: "100鑽​",
                 price: "100TWD",
@@ -309,16 +388,13 @@ export default {
     computed: {
         items() {
             // useCbValue值0 產出儲值教學，不然 產出使用說明
-            return this.popBig.useCbValue === 0
-                ? this.popBig.cbValue
+            return this.popBig.titleType === 0 &&
+                this.popBig.tabType == "creditValue"
+                ? this.popBig.creditValue
+                : this.popBig.titleType === 0 &&
+                  this.popBig.tabType == "myCardValue"
+                ? this.popBig.myCardValue
                 : this.popBig.noticeValue;
-        },
-        serialNum() {
-            return this.user.serialNum;
-        },
-        rewardCB() {
-            //領獎BTN文字更換
-            return this.user.serverCheck == null ? "立即領獎" : "領獎完畢";
         },
     },
     methods: {
@@ -342,29 +418,76 @@ export default {
         //     }
         // },
 
+        redirectToUrl(paymentMethod) {
+            const url = ""; // 金流URL
+
+            // 發送道具id
+            const data = {
+                id: 12345, // 假設你要發送的 id 值為 12345，根據你的需求修改
+                method: paymentMethod, // 傳遞支付方式，這裡根據點擊的按鈕不同傳遞不同的值
+            };
+
+            // 創建一個 form 元素
+            const form = document.createElement("form");
+            form.method = "POST"; // 提交方法為 POST
+            form.action = url; // 表單 action 屬性為目標 URL
+            form.style.display = "none"; // 隱藏表單
+
+            // 將數據添加到 form 中作為 input 元素
+            for (const key in data) {
+                const input = document.createElement("input");
+                input.type = "hidden"; // 隱藏input
+                input.name = key; // input 的 name 屬性
+                input.value = data[key]; // 設置 input 的 value 屬性
+                form.appendChild(input); // input 添加到 form 中
+            }
+
+            // form 添加到文檔中，自動提交
+            document.body.appendChild(form);
+            form.submit();
+        },
+
+        // 儲值tab切換
+        tabChange(type) {
+            this.popBig.tabType = type;
+        },
+
+        // 帳號提交
+        accountSubmit() {
+            console.log(this.popUID.account);
+        },
+
         popSVisable(text) {
             this.popSmall.text = text;
             this.popSmall.visable = !this.popSmall.visable;
+            this.scrollLock();
+        },
+        popUIDVisable() {
+            this.popUID.visable = !this.popUID.visable;
             this.scrollLock();
         },
         popMVisable(id) {
             this.popMiddle.visable = !this.popMiddle.visable;
             this.scrollLock();
         },
-        popBVisable(detection) {
-            if (detection == "PC") {
-                this.popBig.useCbValue = 0;
-            } else if (detection == "m") {
-                this.popBig.useCbValue = 1;
-            } else if (detection == "notice") {
-                this.popBig.useCbValue = 2;
+        popBVisable(title) {
+            console.log(title);
+            if (title == 0) {
+                this.popBig.titleType = 0;
+            } else if (title == 1) {
+                this.popBig.titleType = 1;
+                this.popBig.tabType = "creditValue";
             }
             this.popBig.visable = !this.popBig.visable;
             this.scrollLock();
         },
         // 鎖背景滾輪
-        scrollLock(){
-            if (this.popBig.visable == true || this.popMiddle.visable == true || this.popSmall.visable == true) {
+        scrollLock() {
+            if (
+                this.popBig.visable == true ||
+                this.popMiddle.visable == true ||
+                this.popSmall.visable == true
+            ) {
                 document.documentElement.style.overflow = "hidden";
             } else {
                 document.documentElement.style.overflow = "auto";
