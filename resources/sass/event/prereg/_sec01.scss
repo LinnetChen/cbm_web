@@ -240,10 +240,22 @@
 
 
 				.awardBox {
-					width: 96%;
+					width: 90%;
 					margin: 20px 0;
 					@extend %f-r-c;
-
+					
+					@include x3l{
+						width: 70%;
+					}
+					@include xxl{
+						width: 80%;
+					}
+					@include xl{
+						width: 96%;
+					}
+					@include lg{
+						width: 100%;
+					}
 					@include md {
 						width: 66%;
 					}
