@@ -89,48 +89,51 @@
             <div class="title">登入帳號</div>
             <div class="deco1"></div>
             <div class="deco2"></div>
-            <form action="https://www.digeam.com/logout" method="post">
-                <div class="inputBox">
-                    <div class="inputAccount">
-                        <label for="">帳號UID</label>
-                        <input
-                            type="text"
-                            name="account"
-                            id="account"
-                            value="123"
-                            v-model="popUID.account"
-                        />
-                        <button class="accountManual" type="button" @click="">
-                            ?
-                        </button>
-                    </div>
-                    <div class="text">*查無此帳號，請再次檢查您輸入的資料​</div>
-                    <div class="selectServer">
-                        <label for="">選擇伺服器</label>
-                        <select name="server" id="server">
-                            <option value="" disabled="" selected="">
-                                伺服器
-                            </option>
-                        </select>
-                    </div>
-                    <div class="selectCharacter">
-                        <label for="">選擇角色</label>
-                        <select name="character" id="character">
-                            <option value="" disabled="" selected="">
-                                角色名稱
-                            </option>
-                        </select>
-                    </div>
+            <div class="inputBox">
+                <div class="inputAccount">
+                    <label for="">帳號UID</label>
+                    <input
+                        type="text"
+                        name="account"
+                        id="account"
+                        v-model="popUID.account"
+                        :disabled="popUID.disabled"
+                    />
+                    <button class="accountManual" type="button" @click="">
+                        ?
+                    </button>
                 </div>
-                <button
-                    class="submit"
-                    type="submit"
-                    value="Send Request"
-                    @click="accountSubmit()"
-                >
-                    送出帳號
-                </button>
-            </form>
+                <div class="text">{{ popUID.errorText }}​</div>
+                <div class="selectServer" v-if="popUID.selectShow">
+                    <label>選擇伺服器</label>
+                    <select
+                        name="server"
+                        id="server"
+                        v-model="popUID.server"
+                        @change="serverCheck"
+                    >
+                        <option hidden disabled selected>請選擇伺服器</option>
+                        <option value="1">冰珀星</option>
+                        <option value="2">黑恆星</option>
+                    </select>
+                </div>
+                <div class="selectCharacter" v-if="popUID.selectShow">
+                    <label>選擇角色</label>
+                    <select name="character" id="character">
+                        <option hidden disabled selected>請選擇角色</option>
+                        <option
+                            v-for="(character, index) in charList"
+                            :key="index"
+                            :value="character"
+                        >
+                            {{ character }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <button class="submit" @click="UIDSubmit()">
+                {{ popUID.btnText }}
+            </button>
         </div>
         <div class="x" @click="popUIDVisable()">x</div>
     </div>
@@ -292,25 +295,23 @@ export default {
     },
     data() {
         return {
-            slidesPerView: 3,  //swiper預覽數量
-            screenWidth: window.innerWidth,  //螢幕進入時寬度
-            menuM: false,  //手機選單顯示
-
+            slidesPerView: 3, //swiper預覽數量
+            screenWidth: window.innerWidth, //螢幕進入時寬度
+            menuM: false, //手機選單顯示
 
             // 玩家UID當前資料
             accountData: {
-                GameUID:"XWE00000",
-                server:0,
-                char:"小明"
+                GameUID: "XWE00000",
+                server: 0,
+                char: "小明",
             },
             // api回傳 該伺服器 角色列表
-            charList:["小明","花花"],
+            charList: ["小明", "花花"],
             // 帳號暫存
-            accountTemporary:"",
-
+            accountTemporary: "",
 
             // 商品分類tab目前選擇
-            commodityTab:"diamondTab",
+            commodityTab: "diamondTab",
 
             // 跳窗
             popBig: {
@@ -357,11 +358,13 @@ export default {
             },
             popUID: {
                 visable: false,
-                account: "WWW",
-                img: "/img/gameMall/propImg.png",
-                name: "100鑽​",
-                price: "100TWD",
-                text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3",
+                account: "WWW11111",
+                disabled: false, //input鎖
+                errorText: "",
+                selectShow: false, //預設false 藏
+                btnText: "送出帳號",
+                server: 0,
+                char: "小明",
             },
             popSmall: {
                 visable: false,
@@ -443,9 +446,32 @@ export default {
             this.popBig.tabType = type;
         },
 
-        // 帳號提交
-        accountSubmit() {
-            console.log(this.popUID.account);
+        // 帳號判定API
+        async UIDSubmit() {
+            if (this.popUID.btnText == "確認") {
+                this.popUIDVisable();
+            }
+            this.popUID.errorText = "";
+            this.popUID.selectShow = true;
+            this.popUID.btnText = "確認";
+            // try {
+            //     const response = await axios.post(api, {
+            //         type: "login",
+            //         GameUID: this.popUID.account,
+            //     });
+            //     if (response.data.status == 1) {
+            //         // 有此帳號
+            //     } else if (response.data.status == -99) {
+            //         // 無此帳號
+            //         this.popUID.errorText = "*查無此帳號，請再次檢查您輸入的資料"
+            //     }
+            // } catch (error) {
+            //     console.error("Error:", error);
+            // }
+        },
+        // server判定API
+        async serverCheck() {
+            console.log("選擇的服務器為", this.popUID.server);
         },
 
         popSVisable(text) {

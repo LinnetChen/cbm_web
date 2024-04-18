@@ -20491,6 +20491,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper/css/navigation */ "./node_modules/swiper/modules/navigation.css");
 /* harmony import */ var swiper_css_pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css/pagination */ "./node_modules/swiper/modules/pagination.css");
 /* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var api = "https://cbm.digeam.com/api/jointAct";
 
 // Import Swiper Vue.js components
@@ -20569,11 +20573,15 @@ var api = "https://cbm.digeam.com/api/jointAct";
       },
       popUID: {
         visable: false,
-        account: "WWW",
-        img: "/img/gameMall/propImg.png",
-        name: "100鑽​",
-        price: "100TWD",
-        text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3"
+        account: "WWW11111",
+        disabled: false,
+        //input鎖
+        errorText: "",
+        selectShow: false,
+        //預設false 藏
+        btnText: "送出帳號",
+        server: 0,
+        "char": "小明"
       },
       popSmall: {
         visable: false,
@@ -20645,9 +20653,54 @@ var api = "https://cbm.digeam.com/api/jointAct";
     tabChange: function tabChange(type) {
       this.popBig.tabType = type;
     },
-    // 帳號提交
-    accountSubmit: function accountSubmit() {
-      console.log(this.popUID.account);
+    // 帳號判定API
+    UIDSubmit: function UIDSubmit() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              if (_this.popUID.btnText == "確認") {
+                _this.popUIDVisable();
+              }
+              _this.popUID.errorText = "";
+              _this.popUID.selectShow = true;
+              _this.popUID.btnText = "確認";
+              // try {
+              //     const response = await axios.post(api, {
+              //         type: "login",
+              //         GameUID: this.popUID.account,
+              //     });
+              //     if (response.data.status == 1) {
+              //         // 有此帳號
+              //     } else if (response.data.status == -99) {
+              //         // 無此帳號
+              //         this.popUID.errorText = "*查無此帳號，請再次檢查您輸入的資料"
+              //     }
+              // } catch (error) {
+              //     console.error("Error:", error);
+              // }
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }))();
+    },
+    // server判定API
+    serverCheck: function serverCheck() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log("選擇的服務器為", _this2.popUID.server);
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
     },
     popSVisable: function popSVisable(text) {
       this.popSmall.text = text;
@@ -20834,102 +20887,133 @@ var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "deco2"
 }, null, -1 /* HOISTED */);
 var _hoisted_35 = {
-  action: "https://www.digeam.com/logout",
-  method: "post"
-};
-var _hoisted_36 = {
   "class": "inputBox"
 };
-var _hoisted_37 = {
+var _hoisted_36 = {
   "class": "inputAccount"
 };
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
 }, "帳號UID", -1 /* HOISTED */);
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"text\">*查無此帳號，請再次檢查您輸入的資料​</div><div class=\"selectServer\"><label for=\"\">選擇伺服器</label><select name=\"server\" id=\"server\"><option value=\"\" disabled=\"\" selected=\"\"> 伺服器 </option></select></div><div class=\"selectCharacter\"><label for=\"\">選擇角色</label><select name=\"character\" id=\"character\"><option value=\"\" disabled=\"\" selected=\"\"> 角色名稱 </option></select></div>", 3);
-var _hoisted_42 = {
+var _hoisted_38 = ["disabled"];
+var _hoisted_39 = {
+  "class": "text"
+};
+var _hoisted_40 = {
+  key: 0,
+  "class": "selectServer"
+};
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "選擇伺服器", -1 /* HOISTED */);
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  hidden: "",
+  disabled: "",
+  selected: ""
+}, "請選擇伺服器", -1 /* HOISTED */);
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "1"
+}, "冰珀星", -1 /* HOISTED */);
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "2"
+}, "黑恆星", -1 /* HOISTED */);
+var _hoisted_45 = [_hoisted_42, _hoisted_43, _hoisted_44];
+var _hoisted_46 = {
+  key: 1,
+  "class": "selectCharacter"
+};
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "選擇角色", -1 /* HOISTED */);
+var _hoisted_48 = {
+  name: "character",
+  id: "character"
+};
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  hidden: "",
+  disabled: "",
+  selected: ""
+}, "請選擇角色", -1 /* HOISTED */);
+var _hoisted_50 = ["value"];
+var _hoisted_51 = {
   key: 6,
   "class": "popS"
 };
-var _hoisted_43 = {
+var _hoisted_52 = {
   "class": "popBg"
 };
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_46 = ["src"];
-var _hoisted_47 = {
+var _hoisted_55 = ["src"];
+var _hoisted_56 = {
   "class": "name"
 };
-var _hoisted_48 = {
+var _hoisted_57 = {
   "class": "price"
 };
-var _hoisted_49 = {
+var _hoisted_58 = {
   "class": "btnBox"
 };
-var _hoisted_50 = {
+var _hoisted_59 = {
   key: 7,
   "class": "popE"
 };
-var _hoisted_51 = {
+var _hoisted_60 = {
   "class": "popBg"
 };
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_54 = ["innerHTML"];
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_63 = ["innerHTML"];
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "fixBg"
 }, null, -1 /* HOISTED */);
-var _hoisted_56 = {
+var _hoisted_65 = {
   "class": "header",
   id: "header"
 };
-var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/gameMall/imgTest.jpg",
   alt: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/gameMall/imgTest.jpg",
   alt: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/gameMall/imgTest.jpg",
   alt: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_60 = {
+var _hoisted_69 = {
   "class": "commoditySection"
 };
-var _hoisted_61 = {
+var _hoisted_70 = {
   key: 0,
   "class": "tabBox"
 };
-var _hoisted_62 = {
+var _hoisted_71 = {
   "class": "contain"
 };
-var _hoisted_63 = {
+var _hoisted_72 = {
   "class": "box"
 };
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "name"
 }, "100", -1 /* HOISTED */);
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "price"
 }, "100TWD", -1 /* HOISTED */);
-var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
+var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
+var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_swiper_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper-slide");
   var _component_swiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper");
@@ -21015,66 +21099,78 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[10] || (_cache[10] = function ($event) {
       return $options.popUIDVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, _hoisted_33, _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, _hoisted_33, _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     name: "account",
     id: "account",
-    value: "123",
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $data.popUID.account = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.popUID.account]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }),
+    disabled: $data.popUID.disabled
+  }, null, 8 /* PROPS */, _hoisted_38), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.popUID.account]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "accountManual",
     type: "button",
     onClick: _cache[12] || (_cache[12] = function () {})
-  }, " ? ")]), _hoisted_39]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "submit",
-    type: "submit",
-    value: "Send Request",
-    onClick: _cache[13] || (_cache[13] = function ($event) {
-      return $options.accountSubmit();
+  }, " ? ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popUID.errorText) + "​", 1 /* TEXT */), $data.popUID.selectShow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    name: "server",
+    id: "server",
+    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+      return $data.popUID.server = $event;
+    }),
+    onChange: _cache[14] || (_cache[14] = function () {
+      return $options.serverCheck && $options.serverCheck.apply($options, arguments);
     })
-  }, " 送出帳號 ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, [].concat(_hoisted_45), 544 /* NEED_HYDRATION, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.popUID.server]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.popUID.selectShow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_46, [_hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_48, [_hoisted_49, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.charList, function (character, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: index,
+      value: character
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(character), 9 /* TEXT, PROPS */, _hoisted_50);
+  }), 128 /* KEYED_FRAGMENT */))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "submit",
+    onClick: _cache[15] || (_cache[15] = function ($event) {
+      return $options.UIDSubmit();
+    })
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popUID.btnText), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
-    onClick: _cache[14] || (_cache[14] = function ($event) {
+    onClick: _cache[16] || (_cache[16] = function ($event) {
       return $options.popUIDVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 小跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 小跳窗 "), $data.popSmall.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "mask",
-    onClick: _cache[15] || (_cache[15] = function ($event) {
+    onClick: _cache[17] || (_cache[17] = function ($event) {
       return $options.popSVisable();
     })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, _hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $data.popMiddle.img
-  }, null, 8 /* PROPS */, _hoisted_46), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, _hoisted_55), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.popMiddle.price), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "creditCardBtn",
-    onClick: _cache[16] || (_cache[16] = function ($event) {
+    onClick: _cache[18] || (_cache[18] = function ($event) {
       return $options.redirectToUrl('credit');
     })
   }, " 信用卡支付 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "myCardBtn",
-    onClick: _cache[17] || (_cache[17] = function ($event) {
+    onClick: _cache[19] || (_cache[19] = function ($event) {
       return $options.redirectToUrl('mycard');
     })
   }, " MyCard ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
-    onClick: _cache[18] || (_cache[18] = function ($event) {
-      return $options.popSVisable();
-    })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 空小跳窗 "), $data.popEmpty.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "mask",
-    onClick: _cache[19] || (_cache[19] = function ($event) {
-      return $options.popSVisable();
-    })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [_hoisted_52, _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text",
-    innerHTML: $data.popEmpty.text
-  }, null, 8 /* PROPS */, _hoisted_54)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "x",
     onClick: _cache[20] || (_cache[20] = function ($event) {
       return $options.popSVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 空小跳窗 "), $data.popEmpty.visable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "mask",
+    onClick: _cache[21] || (_cache[21] = function ($event) {
+      return $options.popSVisable();
+    })
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [_hoisted_61, _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "text",
+    innerHTML: $data.popEmpty.text
+  }, null, 8 /* PROPS */, _hoisted_63)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "x",
+    onClick: _cache[22] || (_cache[22] = function ($event) {
+      return $options.popSVisable();
+    })
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
     loop: true,
     navigation: true,
     modules: $setup.modules,
@@ -21095,58 +21191,58 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "swiperBox"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_57];
+          return [_hoisted_66];
         }),
         _: 1 /* STABLE */
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
         "class": "swiperBox"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_58];
+          return [_hoisted_67];
         }),
         _: 1 /* STABLE */
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
         "class": "swiperBox"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_59];
+          return [_hoisted_68];
         }),
         _: 1 /* STABLE */
       })];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modules", "slides-per-view", "onSlideChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [$data.popBig.titleType == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[21] || (_cache[21] = function ($event) {
+  }, 8 /* PROPS */, ["modules", "slides-per-view", "onSlideChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [$data.popBig.titleType == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[23] || (_cache[23] = function ($event) {
       return $options.tabChange('diamondTab');
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["diamondTab", {
       active: $data.commodityTab == 'diamondTab'
     }])
   }, " 鑽石​ ", 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[22] || (_cache[22] = function ($event) {
+    onClick: _cache[24] || (_cache[24] = function ($event) {
       return $options.tabChange('giftTab');
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["giftTab", {
       active: $data.commodityTab == 'giftTab'
     }])
   }, " 禮包​ ", 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[23] || (_cache[23] = function ($event) {
+    onClick: _cache[25] || (_cache[25] = function ($event) {
       return $options.tabChange('promotionTab');
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["promotionTab", {
       active: $data.commodityTab == 'promotionTab'
     }])
-  }, " 促銷​ ", 2 /* CLASS */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [_hoisted_64, _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, " 促銷​ ", 2 /* CLASS */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [_hoisted_73, _hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "/img/gameMall/propImg.png",
-    onClick: _cache[24] || (_cache[24] = function ($event) {
+    onClick: _cache[26] || (_cache[26] = function ($event) {
       return $options.popMVisable(1);
     })
-  }), _hoisted_66, _hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), _hoisted_75, _hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btnBuy",
-    onClick: _cache[25] || (_cache[25] = function ($event) {
+    onClick: _cache[27] || (_cache[27] = function ($event) {
       return $options.popSVisable(_ctx.id);
     })
-  }, "購買")]), _hoisted_68])]), _hoisted_74], 64 /* STABLE_FRAGMENT */);
+  }, "購買")]), _hoisted_77])]), _hoisted_83], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
