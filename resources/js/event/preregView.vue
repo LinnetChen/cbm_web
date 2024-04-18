@@ -261,7 +261,7 @@
                 />
               </form>
               <div class="awardBox">
-                <img src="/img/prereg/giftPhone.png" alt="" />
+                <img src="/img/prereg/giftPhoneNew.png" alt="" />
                 <img src="/img/prereg/step1Gift.png" alt="" />
               </div>
               <button class="s1Notice" @click="popOpen()"></button>
@@ -536,7 +536,7 @@
             title="前往黑色契約手遊X端遊聯動頁"
           >
             <img
-              src="/img/prereg/s5Photo.png"
+              src="/img/prereg/s5PhotoNew.png"
               alt="黑色契約與黑色契約M聯動確定"
             />
           </a>
@@ -776,7 +776,7 @@ export default {
       src: "",
       user: {
         status: false,
-        moblieArea: "",
+        moblieArea: "+886",
         moblieNum: "",
         read: false,
         device: "",
