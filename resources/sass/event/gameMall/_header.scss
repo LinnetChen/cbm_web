@@ -1,14 +1,17 @@
 .fixBg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    // border: 1px solid red;
-    background-image: url("/img/gameMall/headerPCBg.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    max-width: 1920px;
-    width: 100%;
-    height: 100%;
+    @include nor{
+        position: fixed;
+        top: 0;
+        left: 0;
+        border: 1px solid yellow;
+        background-image: url("/img/gameMall/headerPCBg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        max-width: 1920px;
+        width: 100vw;
+        height: 100vh;
+    }
 }
 .header {
     width: 100%;

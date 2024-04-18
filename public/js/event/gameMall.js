@@ -20519,9 +20519,25 @@ var api = "https://cbm.digeam.com/api/jointAct";
   data: function data() {
     return {
       slidesPerView: 3,
+      //swiper預覽數量
       screenWidth: window.innerWidth,
+      //螢幕進入時寬度
       menuM: false,
-      barAccount: "登入帳號",
+      //手機選單顯示
+
+      // 玩家UID當前資料
+      accountData: {
+        GameUID: "XWE00000",
+        server: 0,
+        "char": "小明"
+      },
+      // api回傳 該伺服器 角色列表
+      charList: ["小明", "花花"],
+      // 帳號暫存
+      accountTemporary: "",
+      // 商品分類tab目前選擇
+      commodityTab: "diamondTab",
+      // 跳窗
       popBig: {
         visable: false,
         titleType: 0,
@@ -20568,14 +20584,7 @@ var api = "https://cbm.digeam.com/api/jointAct";
         text: "1123333"
       },
       // 防連點
-      clickWall: 0,
-      user: {
-        account: null,
-        serialNum: null,
-        serverCheck: null //伺服器選後、領取後存入
-      },
-      // 紀錄伺服器選項變化
-      selected: null
+      clickWall: 0
     };
   },
   computed: {
@@ -20690,8 +20699,8 @@ var api = "https://cbm.digeam.com/api/jointAct";
     }
   },
   mounted: function mounted() {
-    if (this.checkCookie("StrID")) {
-      this.user.account = this.checkCookie("StrID");
+    if (this.checkCookie("GameUID")) {
+      this.accountData.GameUID = this.checkCookie("GameUID");
     }
     // API位址
     // this.getSetting();
@@ -20878,38 +20887,52 @@ var _hoisted_54 = ["innerHTML"];
 var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "fixBg"
 }, null, -1 /* HOISTED */);
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
+var _hoisted_56 = {
   "class": "header",
   id: "header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <swiper\r\n            :loop=\"true\"\r\n            :navigation=\"true\"\r\n            :modules=\"modules\"\r\n            :pagination=\"{ clickable: true }\"\r\n            :slides-per-view=\"slidesPerView\"\r\n            :space-between=\"0\"\r\n            :autoplay=\"{ delay: 2500, disableOnInteraction: false }\"\r\n            @slideChange=\"onSlideChange\"\r\n            class=\"mySwiper\"\r\n        >\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n            <swiper-slide class=\"swiperBox\"\r\n                ><img src=\"/img/gameMall/imgTest.jpg\" alt=\"\"\r\n            /></swiper-slide>\r\n        </swiper> ")], -1 /* HOISTED */);
-var _hoisted_57 = {
+};
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/gameMall/imgTest.jpg",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_60 = {
   "class": "commoditySection"
 };
-var _hoisted_58 = {
+var _hoisted_61 = {
   key: 0,
   "class": "tabBox"
 };
-var _hoisted_59 = {
+var _hoisted_62 = {
   "class": "contain"
 };
-var _hoisted_60 = {
+var _hoisted_63 = {
   "class": "box"
 };
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "name"
 }, "100", -1 /* HOISTED */);
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "price"
 }, "100TWD", -1 /* HOISTED */);
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
+var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_swiper_slide = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper-slide");
+  var _component_swiper = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("swiper");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.screenWidth > 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.popBVisable(0);
@@ -20922,7 +20945,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.popUIDVisable();
     })
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.barAccount), 1 /* TEXT */)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.screenWidth <= 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+  }, "登入帳號")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.screenWidth <= 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
     "class": "barM",
     onClick: _cache[3] || (_cache[3] = function ($event) {
@@ -20996,6 +21019,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "text",
     name: "account",
     id: "account",
+    value: "123",
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $data.popUID.account = $event;
     })
@@ -21050,31 +21074,79 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[20] || (_cache[20] = function ($event) {
       return $options.popSVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_55, _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [$data.popBig.titleType == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper, {
+    loop: true,
+    navigation: true,
+    modules: $setup.modules,
+    pagination: {
+      clickable: true
+    },
+    "slides-per-view": $data.slidesPerView,
+    "space-between": 0,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    onSlideChange: $setup.onSlideChange,
+    "class": "mySwiper"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_57];
+        }),
+        _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_58];
+        }),
+        _: 1 /* STABLE */
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_swiper_slide, {
+        "class": "swiperBox"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_59];
+        }),
+        _: 1 /* STABLE */
+      })];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["modules", "slides-per-view", "onSlideChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [$data.popBig.titleType == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[21] || (_cache[21] = function ($event) {
-      return $options.tabChange('creditValue');
+      return $options.tabChange('diamondTab');
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["creditTab", {
-      active: $data.popBig.tabType == 'creditValue'
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["diamondTab", {
+      active: $data.commodityTab == 'diamondTab'
     }])
-  }, " 信用卡 ", 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " 鑽石​ ", 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[22] || (_cache[22] = function ($event) {
-      return $options.tabChange('myCardValue');
+      return $options.tabChange('giftTab');
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["myCardTab", {
-      active: $data.popBig.tabType == 'myCardValue'
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["giftTab", {
+      active: $data.commodityTab == 'giftTab'
     }])
-  }, " MyCard ", 2 /* CLASS */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [_hoisted_61, _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: "/img/gameMall/propImg.png",
+  }, " 禮包​ ", 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[23] || (_cache[23] = function ($event) {
+      return $options.tabChange('promotionTab');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["promotionTab", {
+      active: $data.commodityTab == 'promotionTab'
+    }])
+  }, " 促銷​ ", 2 /* CLASS */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [_hoisted_64, _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: "/img/gameMall/propImg.png",
+    onClick: _cache[24] || (_cache[24] = function ($event) {
       return $options.popMVisable(1);
     })
-  }), _hoisted_63, _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), _hoisted_66, _hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btnBuy",
-    onClick: _cache[24] || (_cache[24] = function ($event) {
+    onClick: _cache[25] || (_cache[25] = function ($event) {
       return $options.popSVisable(_ctx.id);
     })
-  }, "購買")]), _hoisted_65])]), _hoisted_71], 64 /* STABLE_FRAGMENT */);
+  }, "購買")]), _hoisted_68])]), _hoisted_74], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

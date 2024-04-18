@@ -5,7 +5,7 @@
             <ul class="menuList">
                 <button @click="popBVisable(0)">儲值教學​</button>
                 <button @click="popBVisable(1)">使用說明​</button>
-                <button @click="popUIDVisable()">{{ barAccount }}</button>
+                <button @click="popUIDVisable()">登入帳號</button>
             </ul>
         </div>
     </div>
@@ -97,6 +97,7 @@
                             type="text"
                             name="account"
                             id="account"
+                            value="123"
                             v-model="popUID.account"
                         />
                         <button class="accountManual" type="button" @click="">
@@ -166,7 +167,7 @@
 
     <div class="fixBg"></div>
     <header class="header" id="header">
-        <!-- <swiper
+        <swiper
             :loop="true"
             :navigation="true"
             :modules="modules"
@@ -186,28 +187,32 @@
             <swiper-slide class="swiperBox"
                 ><img src="/img/gameMall/imgTest.jpg" alt=""
             /></swiper-slide>
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
-        </swiper> -->
+        </swiper>
     </header>
     <div class="commoditySection">
         <div class="tabBox" v-if="popBig.titleType == 0">
-                <button
-                    @click="tabChange('creditValue')"
-                    class="creditTab"
-                    :class="{ active: popBig.tabType == 'creditValue' }"
-                >
-                    信用卡
-                </button>
-                <button
-                    @click="tabChange('myCardValue')"
-                    class="myCardTab"
-                    :class="{ active: popBig.tabType == 'myCardValue' }"
-                >
-                    MyCard
-                </button>
-            </div>
+            <button
+                @click="tabChange('diamondTab')"
+                class="diamondTab"
+                :class="{ active: commodityTab == 'diamondTab' }"
+            >
+                鑽石​
+            </button>
+            <button
+                @click="tabChange('giftTab')"
+                class="giftTab"
+                :class="{ active: commodityTab == 'giftTab' }"
+            >
+                禮包​
+            </button>
+            <button
+                @click="tabChange('promotionTab')"
+                class="promotionTab"
+                :class="{ active: commodityTab == 'promotionTab' }"
+            >
+                促銷​
+            </button>
+        </div>
         <div class="contain">
             <div class="box">
                 <div class="deco1"></div>
@@ -287,11 +292,27 @@ export default {
     },
     data() {
         return {
-            slidesPerView: 3,
-            screenWidth: window.innerWidth,
-            menuM: false,
-            barAccount: "登入帳號",
+            slidesPerView: 3,  //swiper預覽數量
+            screenWidth: window.innerWidth,  //螢幕進入時寬度
+            menuM: false,  //手機選單顯示
 
+
+            // 玩家UID當前資料
+            accountData: {
+                GameUID:"XWE00000",
+                server:0,
+                char:"小明"
+            },
+            // api回傳 該伺服器 角色列表
+            charList:["小明","花花"],
+            // 帳號暫存
+            accountTemporary:"",
+
+
+            // 商品分類tab目前選擇
+            commodityTab:"diamondTab",
+
+            // 跳窗
             popBig: {
                 visable: false,
                 titleType: 0,
@@ -353,15 +374,6 @@ export default {
 
             // 防連點
             clickWall: 0,
-
-            user: {
-                account: null,
-                serialNum: null,
-                serverCheck: null, //伺服器選後、領取後存入
-            },
-
-            // 紀錄伺服器選項變化
-            selected: null,
         };
     },
     computed: {
@@ -492,8 +504,8 @@ export default {
         },
     },
     mounted() {
-        if (this.checkCookie("StrID")) {
-            this.user.account = this.checkCookie("StrID");
+        if (this.checkCookie("GameUID")) {
+            this.accountData.GameUID = this.checkCookie("GameUID");
         }
         // API位址
         // this.getSetting();
@@ -510,7 +522,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .swiperBox {
     width: 100%;
     height: 100%;
@@ -520,5 +531,4 @@ export default {
         height: 100%;
     }
 }
-
 </style>

@@ -11,11 +11,39 @@
     align-items: center;
 }
 
-.tabBox{
+.tabBox {
     border: 1px solid blue;
     width: 66%;
     height: 100%;
-
+    margin: 1.2rem 0;
+    border-bottom: 2px solid #adc3cd;
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    .diamondTab,
+    .giftTab,
+    .promotionTab {
+        position: relative;
+        font-size: 1.25rem;
+        font-weight: 600;
+        width: 103px;
+        height: 40px;
+        border: 0px;
+        margin: 0 .5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+        background: #22294b;
+        color: #fff;
+        &:hover,
+        &.active {
+            color: #000;
+            background: linear-gradient(270deg, #fff 30%, #adc3cd);
+            background: -webkit-linear-gradient(270deg, #fff 30%, #adc3cd);
+        }
+    }
 }
 
 .contain {
@@ -29,7 +57,7 @@
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    
+
     @include md {
         justify-content: center;
     }

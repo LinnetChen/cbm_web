@@ -261,7 +261,13 @@ body .wrap {
   width: 100%;
   margin: 0 auto;
   max-width: 1920px;
-  max-height: 950px;
+  min-height: 950px;
+  position: relative;
+  margin: 0 auto;
+  background-image: url("/img/gameMall/headerPCBg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 ::-webkit-scrollbar {
@@ -275,6 +281,11 @@ body .wrap {
 ::-webkit-scrollbar-track {
   background: #000000;
   border: #000000 1px solid;
+}
+
+footer.section {
+  height: 100%;
+  padding: 1rem 0;
 }
 
 .barPC {
@@ -416,16 +427,20 @@ body .wrap {
   height: 100%;
 }
 
-.fixBg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-image: url("/img/gameMall/headerPCBg.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  max-width: 1920px;
-  width: 100%;
-  height: 100%;
+@media all and (max-width: 1920px) {
+  .fixBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 1px solid yellow;
+    background-image: url("/img/gameMall/headerPCBg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    max-width: 1920px;
+    width: 100vw;
+    height: 100vh;
+  }
 }
 
 .header {
@@ -447,6 +462,39 @@ body .wrap {
   border: 1px solid blue;
   width: 66%;
   height: 100%;
+  margin: 1.2rem 0;
+  border-bottom: 2px solid #adc3cd;
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+}
+.tabBox .diamondTab,
+.tabBox .giftTab,
+.tabBox .promotionTab {
+  position: relative;
+  font-size: 1.25rem;
+  font-weight: 600;
+  width: 103px;
+  height: 40px;
+  border: 0px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+          clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  background: #22294b;
+  color: #fff;
+}
+.tabBox .diamondTab:hover, .tabBox .diamondTab.active,
+.tabBox .giftTab:hover,
+.tabBox .giftTab.active,
+.tabBox .promotionTab:hover,
+.tabBox .promotionTab.active {
+  color: #000;
+  background: linear-gradient(270deg, #fff 30%, #adc3cd);
+  background: -webkit-linear-gradient(270deg, #fff 30%, #adc3cd);
 }
 
 .contain {
