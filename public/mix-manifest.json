@@ -1,10 +1,10 @@
 {
-    "/js/app.js": "/js/app.js?id=cd81022883ccefa8131dc836b3db1cc7",
-    "/js/event/jointAct.js": "/js/event/jointAct.js?id=744a31bf8fa14ec497e24616004740e2",
-    "/js/event/prereg.js": "/js/event/prereg.js?id=b64f36d210178782a67deafe7dfc4653",
-    "/js/event/gameMall.js": "/js/event/gameMall.js?id=2f2b3263c1c7525a2b7e01362a2e9b4e",
-    "/css/event/prereg/style.css": "/css/event/prereg/style.css?id=d07f368c5e5bfcbfafd5dc3637d3f406",
-    "/css/app.css": "/css/app.css?id=68b329da9893e34099c7d8ad5cb9c940",
-    "/css/event/gameMall/style.css": "/css/event/gameMall/style.css?id=d7518e1f579651d3472572a2e0c8c78d",
-    "/css/event/20240403_jointAct/style.css": "/css/event/20240403_jointAct/style.css?id=0e3a1bf2fd28653be59317e10c925079"
+    "/js/app.js": "/js/app.js",
+    "/js/event/jointAct.js": "/js/event/jointAct.js",
+    "/js/event/prereg.js": "/js/event/prereg.js",
+    "/js/event/gameMall.js": "/js/event/gameMall.js",
+    "/css/event/prereg/style.css": "/css/event/prereg/style.css",
+    "/css/app.css": "/css/app.css",
+    "/css/event/gameMall/style.css": "/css/event/gameMall/style.css",
+    "/css/event/20240403_jointAct/style.css": "/css/event/20240403_jointAct/style.css"
 }
