@@ -20886,25 +20886,29 @@ var _hoisted_57 = {
   "class": "commoditySection"
 };
 var _hoisted_58 = {
-  "class": "contain"
+  key: 0,
+  "class": "tabBox"
 };
 var _hoisted_59 = {
+  "class": "contain"
+};
+var _hoisted_60 = {
   "class": "box"
 };
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco1"
 }, null, -1 /* HOISTED */);
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "deco2"
 }, null, -1 /* HOISTED */);
-var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "name"
 }, "100", -1 /* HOISTED */);
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "price"
 }, "100TWD", -1 /* HOISTED */);
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div><div class=\"box\"></div>", 6);
+var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"section footer\"><div class=\"footerbox_logo\"><a href=\"https://www.digeam.com/index\" target=\"_blank\"><img class=\"logo_digeam\" src=\"/img/footer/digeam_logo.png\"></a><img class=\"est_icon\" src=\"/img/footer/est_icon.png\"></div><div class=\"spec\"><a href=\"https://www.digeam.com/terms\" target=\"_blank\">會員服務條款</a><a href=\"https://www.digeam.com/terms2\" target=\"_blank\">隱私條款</a><a href=\"https://www.digeam.com/cs\" target=\"_blank\">客服中心</a><p class=\"Copyright\"> Copyright © ESTgames Corp. All rights reserved.​ 2023 Licensed and published for Taiwan, Hong Kong and Macau by DiGeam Co.,Ltd​ CABAL Online is a registered trademark of ESTgames Corp (and the logo of ESTgames).​ </p></div><div class=\"classlavel\"><img src=\"/img/footer/15_icon.png\" alt=\"普遍級\"><ul><li>本遊戲為免費使用，部分內容涉及暴力情節。​</li><li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li><li>請注意遊戲時間，避免沉迷。​</li><li>本遊戲服務區域包含台灣、香港、澳門。​</li></ul></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.screenWidth > 900 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -21046,17 +21050,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[20] || (_cache[20] = function ($event) {
       return $options.popSVisable();
     })
-  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_55, _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [_hoisted_60, _hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: "/img/gameMall/propImg.png",
+  }, "x")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_55, _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [$data.popBig.titleType == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[21] || (_cache[21] = function ($event) {
+      return $options.tabChange('creditValue');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["creditTab", {
+      active: $data.popBig.tabType == 'creditValue'
+    }])
+  }, " 信用卡 ", 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[22] || (_cache[22] = function ($event) {
+      return $options.tabChange('myCardValue');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["myCardTab", {
+      active: $data.popBig.tabType == 'myCardValue'
+    }])
+  }, " MyCard ", 2 /* CLASS */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [_hoisted_61, _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: "/img/gameMall/propImg.png",
+    onClick: _cache[23] || (_cache[23] = function ($event) {
       return $options.popMVisable(1);
     })
-  }), _hoisted_62, _hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), _hoisted_63, _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btnBuy",
-    onClick: _cache[22] || (_cache[22] = function ($event) {
+    onClick: _cache[24] || (_cache[24] = function ($event) {
       return $options.popSVisable(_ctx.id);
     })
-  }, "購買")]), _hoisted_64])]), _hoisted_70], 64 /* STABLE_FRAGMENT */);
+  }, "購買")]), _hoisted_65])]), _hoisted_71], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

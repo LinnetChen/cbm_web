@@ -192,6 +192,22 @@
         </swiper> -->
     </header>
     <div class="commoditySection">
+        <div class="tabBox" v-if="popBig.titleType == 0">
+                <button
+                    @click="tabChange('creditValue')"
+                    class="creditTab"
+                    :class="{ active: popBig.tabType == 'creditValue' }"
+                >
+                    信用卡
+                </button>
+                <button
+                    @click="tabChange('myCardValue')"
+                    class="myCardTab"
+                    :class="{ active: popBig.tabType == 'myCardValue' }"
+                >
+                    MyCard
+                </button>
+            </div>
         <div class="contain">
             <div class="box">
                 <div class="deco1"></div>
