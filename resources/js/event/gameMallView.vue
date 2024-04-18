@@ -166,7 +166,7 @@
 
     <div class="fixBg"></div>
     <header class="header" id="header">
-        <swiper
+        <!-- <swiper
             :loop="true"
             :navigation="true"
             :modules="modules"
@@ -189,49 +189,8 @@
             <swiper-slide class="swiperBox"
                 ><img src="/img/gameMall/imgTest.jpg" alt=""
             /></swiper-slide>
-        </swiper>
+        </swiper> -->
     </header>
-    <!-- <div class="section section5" id="section5">
-        <div class="sec_box">
-            <div class="sec5_box2">
-                <swiper
-                    :loop="true"
-                    :navigation="true"
-                    :modules="modules"
-                    :pagination="{ clickable: true }"
-                    :slides-per-view="2"
-                    :space-between="10"
-                    :autoplay="{ delay: 2500, disableOnInteraction: false }"
-                    @slideChange="onSlideChange"
-                    class="mySwiper"
-                >
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide swiper-slide--one">
-                            <img src="/img/gameMall/imgTest.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide swiper-slide--two">
-                            <img src="/img/gameMall/imgTest.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide swiper-slide--three">
-                            <img src="/img/gameMall/imgTest.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide swiper-slide--four">
-                            <img src="/img/gameMall/imgTest.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide swiper-slide--five">
-                            <img src="/img/gameMall/imgTest.jpg" alt="" />
-                        </div>
-                        <div class="swiper-slide swiper-slide--five">
-                            <img src="/img/gameMall/imgTest.jpg" alt="" />
-                        </div>
-                    </div>
-                </swiper>
-                <p class="swiper-button-prev swiper_btn"></p>
-                <p class="swiper-button-next swiper_btn"></p>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div> -->
     <div class="commoditySection">
         <div class="contain">
             <div class="box">
