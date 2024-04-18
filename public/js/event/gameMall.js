@@ -20654,12 +20654,11 @@ var api = "https://cbm.digeam.com/api/jointAct";
       this.scrollLock();
     },
     popBVisable: function popBVisable(title) {
-      console.log(title);
       if (title == 0) {
         this.popBig.titleType = 0;
+        this.popBig.tabType = "creditValue";
       } else if (title == 1) {
         this.popBig.titleType = 1;
-        this.popBig.tabType = "creditValue";
       }
       this.popBig.visable = !this.popBig.visable;
       this.scrollLock();
@@ -21042,12 +21041,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[16] || (_cache[16] = function ($event) {
       return $options.redirectToUrl('credit');
     })
-  }, "信用卡支付"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, " 信用卡支付 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "myCardBtn",
     onClick: _cache[17] || (_cache[17] = function ($event) {
       return $options.redirectToUrl('mycard');
     })
-  }, "MyCard")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, " MyCard ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[18] || (_cache[18] = function ($event) {
       return $options.popSVisable();
@@ -21073,7 +21072,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       clickable: true
     },
     "slides-per-view": $data.slidesPerView,
-    "space-between": 10,
+    "space-between": 0,
     autoplay: {
       delay: 2500,
       disableOnInteraction: false
@@ -21253,7 +21252,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".swiperBox {\n  width: 100%;\n  height: 100%;\n}\n.swiperBox img {\n  width: 100%;\n  height: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".swiperBox {\n  width: 100%;\n  height: 100%;\n}\n.swiperBox img {\n  -o-object-fit: contain;\n     object-fit: contain;\n  width: 100%;\n  height: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

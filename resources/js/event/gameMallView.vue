@@ -143,8 +143,12 @@
             <div class="name">{{ popMiddle.name }}</div>
             <div class="price">{{ popMiddle.price }}</div>
             <div class="btnBox">
-                <div class="creditCardBtn" @click="redirectToUrl('credit')">信用卡支付</div>
-                <div class="myCardBtn" @click="redirectToUrl('mycard')">MyCard</div>
+                <div class="creditCardBtn" @click="redirectToUrl('credit')">
+                    信用卡支付
+                </div>
+                <div class="myCardBtn" @click="redirectToUrl('mycard')">
+                    MyCard
+                </div>
             </div>
         </div>
         <div class="x" @click="popSVisable()">x</div>
@@ -168,7 +172,7 @@
             :modules="modules"
             :pagination="{ clickable: true }"
             :slides-per-view="slidesPerView"
-            :space-between="10"
+            :space-between="0"
             :autoplay="{ delay: 2500, disableOnInteraction: false }"
             @slideChange="onSlideChange"
             class="mySwiper"
@@ -471,12 +475,11 @@ export default {
             this.scrollLock();
         },
         popBVisable(title) {
-            console.log(title);
             if (title == 0) {
                 this.popBig.titleType = 0;
+                this.popBig.tabType = "creditValue";
             } else if (title == 1) {
                 this.popBig.titleType = 1;
-                this.popBig.tabType = "creditValue";
             }
             this.popBig.visable = !this.popBig.visable;
             this.scrollLock();
@@ -532,12 +535,15 @@ export default {
 </script>
 
 <style lang="scss">
+
 .swiperBox {
     width: 100%;
     height: 100%;
     img {
+        object-fit: contain;
         width: 100%;
         height: 100%;
     }
 }
+
 </style>
