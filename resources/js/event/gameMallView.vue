@@ -1,11 +1,29 @@
 <template>
     <div class="barPC" v-if="screenWidth > 900">
         <div class="menu">
-            <div class="logo"><img src="/img/gameMall/MLOGO.png" alt="" /></div>
+            <div class="logo"><img src="/img/gameMall/MLOGO.png" /></div>
             <ul class="menuList">
-                <button @click="popBVisable(0)">儲值教學​</button>
-                <button @click="popBVisable(1)">使用說明​</button>
-                <button @click="popUIDVisable()">登入帳號</button>
+                <button class="cardValue" @click="popBVisable(0)">
+                    儲值教學​
+                </button>
+                <button class="noticeValue" @click="popBVisable(1)">
+                    使用說明​
+                </button>
+                <!-- <button
+                    class="login"
+                    @click="popUIDVisable()"
+                    v-if="accountData.GameUID == null"
+                >
+                    登入帳號
+                </button> -->
+                <!-- <li v-if="accountData.GameUID !== null">{{ accountData.GameUID }}</li> -->
+                <li class="GameUID">
+                    <span> XWE0000000000000</span>
+                    <ul class="UIDOpen" data-menuaction="id_open">
+                        <li>切換帳號</li>
+                        <li>切換角色</li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -76,8 +94,12 @@
             </div>
             <div class="right" v-html="popMiddle.text"></div>
             <div class="btnBox">
-                <div class="creditCardBtn">信用卡支付</div>
-                <div class="myCardBtn">MyCard</div>
+                <div class="creditCardBtn" @click="buy('credit', popMiddle.id)">
+                    信用卡支付
+                </div>
+                <div class="myCardBtn" @click="buy('mycard', popMiddle.id)">
+                    MyCard
+                </div>
             </div>
         </div>
         <div class="x" @click="popMVisable()">x</div>
@@ -96,7 +118,7 @@
                         type="text"
                         name="account"
                         id="account"
-                        v-model="popUID.account"
+                        v-model="popUID.GameUID"
                         :disabled="popUID.disabled"
                     />
                     <button class="accountManual" type="button" @click="">
@@ -112,15 +134,18 @@
                         v-model="popUID.server"
                         @change="serverCheck"
                     >
-                        <option hidden disabled selected>請選擇伺服器</option>
                         <option value="1">冰珀星</option>
                         <option value="2">黑恆星</option>
                     </select>
                 </div>
                 <div class="selectCharacter" v-if="popUID.selectShow">
                     <label>選擇角色</label>
-                    <select name="character" id="character">
-                        <option hidden disabled selected>請選擇角色</option>
+                    <select
+                        name="character"
+                        id="character"
+                        v-model="popUID.char"
+                        @change="charCheck"
+                    >
                         <option
                             v-for="(character, index) in charList"
                             :key="index"
@@ -143,14 +168,14 @@
         <div class="popBg">
             <div class="deco1"></div>
             <div class="deco2"></div>
-            <img :src="popMiddle.img" />
-            <div class="name">{{ popMiddle.name }}</div>
-            <div class="price">{{ popMiddle.price }}</div>
+            <img :src="popSmall.img" />
+            <div class="name">{{ popSmall.name }}</div>
+            <div class="price">{{ popSmall.price }}</div>
             <div class="btnBox">
-                <div class="creditCardBtn" @click="redirectToUrl('credit')">
+                <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
                     信用卡支付
                 </div>
-                <div class="myCardBtn" @click="redirectToUrl('mycard')">
+                <div class="myCardBtn" @click="buy('mycard', popSmall.id)">
                     MyCard
                 </div>
             </div>
@@ -159,13 +184,13 @@
     </div>
     <!-- 空小跳窗 -->
     <div class="popE" v-if="popEmpty.visable">
-        <div class="mask" @click="popSVisable()"></div>
+        <div class="mask" @click="popEVisable()"></div>
         <div class="popBg">
             <div class="deco1"></div>
             <div class="deco2"></div>
             <div class="text" v-html="popEmpty.text"></div>
         </div>
-        <div class="x" @click="popSVisable()">x</div>
+        <div class="x" @click="popEVisable()">x</div>
     </div>
 
     <div class="fixBg"></div>
@@ -190,14 +215,24 @@
             <swiper-slide class="swiperBox"
                 ><img src="/img/gameMall/imgTest.jpg" alt=""
             /></swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide class="swiperBox"
+                ><img src="/img/gameMall/imgTest.jpg" alt=""
+            /></swiper-slide>
         </swiper>
     </header>
     <div class="commoditySection">
-        <div class="tabBox" v-if="popBig.titleType == 0">
+        <div class="tabBox">
             <button
                 @click="tabChange('diamondTab')"
                 class="diamondTab"
                 :class="{ active: commodityTab == 'diamondTab' }"
+                v-if="item_tab.includes('normal')"
             >
                 鑽石​
             </button>
@@ -205,6 +240,7 @@
                 @click="tabChange('giftTab')"
                 class="giftTab"
                 :class="{ active: commodityTab == 'giftTab' }"
+                v-if="item_tab.includes('gift')"
             >
                 禮包​
             </button>
@@ -212,25 +248,55 @@
                 @click="tabChange('promotionTab')"
                 class="promotionTab"
                 :class="{ active: commodityTab == 'promotionTab' }"
+                v-if="item_tab.includes('sale')"
             >
                 促銷​
             </button>
         </div>
         <div class="contain">
-            <div class="box">
+            <div
+                v-for="(item, index) in filteredItemList"
+                :key="index"
+                class="box"
+            >
+                <div class="deco1"></div>
+                <div class="deco2"></div>
+                <img
+                    :src="item.img"
+                    @click="
+                        popMVisable(
+                            item.id,
+                            item.img,
+                            item.item_name,
+                            item.ntd_price,
+                            item.content
+                        )
+                    "
+                />
+                <div class="name">{{ item.item_name }}</div>
+                <div class="price">{{ item.ntd_price }}</div>
+                <button
+                    class="btnBuy"
+                    @click="
+                        popSVisable(
+                            item.id,
+                            item.img,
+                            item.item_name,
+                            item.ntd_price
+                        )
+                    "
+                >
+                    購買
+                </button>
+            </div>
+            <!-- <div class="box">
                 <div class="deco1"></div>
                 <div class="deco2"></div>
                 <img src="/img/gameMall/propImg.png" @click="popMVisable(1)" />
                 <div class="name">100</div>
                 <div class="price">100TWD</div>
                 <button class="btnBuy" @click="popSVisable(id)">購買</button>
-            </div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+            </div> -->
         </div>
     </div>
 
@@ -299,6 +365,39 @@ export default {
             screenWidth: window.innerWidth, //螢幕進入時寬度
             menuM: false, //手機選單顯示
 
+            // 要顯示的商品分類
+            item_tab: ["normal", "gift", "sale"],
+            // 商品分類tab目前選擇
+            commodityTab: "diamondTab",
+
+            item_lists: [
+                {
+                    id: "1",
+                    item_name: "211鑽",
+                    img: "/img/gameMall/propImg.png",
+                    ntd_price: "1700TWD",
+                    content: "1233",
+                    item_cate: "normal",
+                },
+                {
+                    id: "2",
+                    item_name: "244鑽",
+                    img: "/img/gameMall/propImg.png",
+                    ntd_price: "1780TWD",
+                    content: "15555",
+                    item_cate: "sale",
+                },
+                {
+                    id: "3",
+                    item_name: "555鑽",
+                    img: "/img/gameMall/propImg.png",
+                    ntd_price: "1550TWD",
+                    content: "15555",
+                    item_cate: "gift",
+                },
+            ],
+            img_url: [{}],
+
             // 玩家UID當前資料
             accountData: {
                 GameUID: "XWE00000",
@@ -307,11 +406,8 @@ export default {
             },
             // api回傳 該伺服器 角色列表
             charList: ["小明", "花花"],
-            // 帳號暫存
+            // 帳號input暫存
             accountTemporary: "",
-
-            // 商品分類tab目前選擇
-            commodityTab: "diamondTab",
 
             // 跳窗
             popBig: {
@@ -352,13 +448,13 @@ export default {
             popMiddle: {
                 visable: false,
                 img: "/img/gameMall/propImg.png",
-                name: "100鑽​",
+                name: "1000鑽​",
                 price: "100TWD",
                 text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3",
             },
             popUID: {
                 visable: false,
-                account: "WWW11111",
+                GameUID: "WWW11111",
                 disabled: false, //input鎖
                 errorText: "",
                 selectShow: false, //預設false 藏
@@ -368,7 +464,10 @@ export default {
             },
             popSmall: {
                 visable: false,
-                text: "",
+                id: "",
+                img: "",
+                name: "",
+                price: "",
             },
             popEmpty: {
                 visable: false,
@@ -390,67 +489,145 @@ export default {
                 ? this.popBig.myCardValue
                 : this.popBig.noticeValue;
         },
+        filteredItemList() {
+            if (this.commodityTab == "diamondTab") {
+                return this.item_lists.filter(
+                    (item) => item.item_cate == "normal"
+                );
+            } else if (this.commodityTab == "giftTab") {
+                return this.item_lists.filter(
+                    (item) => item.item_cate == "gift"
+                );
+            } else if (this.commodityTab == "promotionTab") {
+                return this.item_lists.filter(
+                    (item) => item.item_cate == "sale"
+                );
+            } else {
+                // 如果沒有符合的標籤類型，返回空陣列或者全部項目
+                return [];
+            }
+        },
     },
     methods: {
-        // async getSetting() {
-        //     try {
-        //         const response = await axios.post(api, {
-        //             type: "login",
-        //             user: this.user.account,
-        //         });
-        //         if (response.data.status == 1) {
-        //             // 序號
-        //             this.user.serialNum = response.data.serial_num;
-
-        //             // 伺服器
-        //             this.user.serverCheck = response.data.serve;
-        //         } else {
-        //             console.error("Status is not 1:", response.data);
-        //         }
-        //     } catch (error) {
-        //         console.error("Error:", error);
-        //     }
-        // },
-
-        redirectToUrl(paymentMethod) {
-            const url = ""; // 金流URL
-
-            // 發送道具id
-            const data = {
-                id: 12345, // 假設你要發送的 id 值為 12345，根據你的需求修改
-                method: paymentMethod, // 傳遞支付方式，這裡根據點擊的按鈕不同傳遞不同的值
-            };
-
-            // 創建一個 form 元素
-            const form = document.createElement("form");
-            form.method = "POST"; // 提交方法為 POST
-            form.action = url; // 表單 action 屬性為目標 URL
-            form.style.display = "none"; // 隱藏表單
-
-            // 將數據添加到 form 中作為 input 元素
-            for (const key in data) {
-                const input = document.createElement("input");
-                input.type = "hidden"; // 隱藏input
-                input.name = key; // input 的 name 屬性
-                input.value = data[key]; // 設置 input 的 value 屬性
-                form.appendChild(input); // input 添加到 form 中
+        async setting() {
+            try {
+                const response = await axios.post(api, {
+                    type: "setting",
+                });
+                if (response.data.status == 1) {
+                    this.img_url = response.data.img_url;
+                    this.item_lists = response.data.item_lists;
+                    this.item_tab = response.data.item_tab;
+                } else if (response.data.status == -99) {
+                    console.error("Status is not 1:", response.data);
+                }
+            } catch (error) {
+                console.error("Error:", error);
             }
+        },
 
-            // form 添加到文檔中，自動提交
-            document.body.appendChild(form);
-            form.submit();
+        // 購買道具
+        async buy(type, id) {
+            if (this.clickWall === 0) {
+                this.clickWall = 1;
+                if (
+                    this.accountData.GameUID !== null &&
+                    this.accountData.server !== 0 &&
+                    this.accountData.char !== null
+                ) {
+                    try {
+                        const response = await axios.post(api, {
+                            type: type,
+                            GameUID: this.accountData.GameUID,
+                            item_id: id,
+                            server: this.accountData.server,
+                            char: this.accountData.char,
+                        });
+                        if (response.data.status == 1) {
+                            const url = ""; // 金流URL
+
+                            // 塞入API res
+                            const data = {
+                                GameUID: "",
+                                ChoosePayment: "",
+                                EncryptType: "",
+                                EncryptType: "",
+                                ItemName: "",
+                                MerchantID: "",
+                                MerchantTradeDate: "",
+                                MerchantTradeNo: "",
+                                PaymentType: "",
+                                ReturnURL: "",
+                                TotalAmount: "",
+                                TradeDesc: "",
+                                CheckMacValue: "",
+                            };
+
+                            // 創建一個 form 元素
+                            const form = document.createElement("form");
+                            form.method = "POST"; // 提交方法為 POST
+                            form.action = url; // 表單 action 屬性為目標 URL
+                            form.style.display = "none"; // 隱藏表單
+
+                            // 將數據添加到 form 中作為 input 元素
+                            for (const key in data) {
+                                const input = document.createElement("input");
+                                input.type = "hidden"; // 隱藏input
+                                input.name = key; // input 的 name 屬性
+                                input.value = data[key]; // 設置 input 的 value 屬性
+                                form.appendChild(input); // input 添加到 form 中
+                            }
+
+                            // form 添加到文檔中，自動提交
+                            document.body.appendChild(form);
+                            form.submit();
+                            this.clickWall = 0;
+                        } else if (response.data.status == -99) {
+                            this.popEVisable("請先登入帳號UID");
+                            this.clickWall = 0;
+                        } else if (response.data.status == -98) {
+                            this.popEVisable(
+                                "系統無此商品，請重整畫面，重新選擇商品"
+                            );
+                            this.clickWall = 0;
+                        }
+                    } catch (error) {
+                        console.error("Error:", error);
+                        this.clickWall = 0;
+                    }
+                } else {
+                    this.popEVisable("請先登入帳號，及選擇伺服器、角色");
+                    this.clickWall = 0;
+                }
+            }
         },
 
         // 儲值tab切換
         tabChange(type) {
+            console.log(type);
             this.popBig.tabType = type;
+            if (
+                type == "diamondTab" ||
+                type == "giftTab" ||
+                type == "promotionTab"
+            ) {
+                this.commodityTab = type;
+            }
         },
 
         // 帳號判定API
         async UIDSubmit() {
+            // 選完角色.伺服 關掉視窗
             if (this.popUID.btnText == "確認") {
+                this.accountData.GameUID = this.popUID.GameUID;
+                this.accountData.server = this.popUID.server;
+                this.accountData.char = this.popUID.char;
                 this.popUIDVisable();
             }
+
+            // 有此帳號
+            localStorage.setItem("GameUID", this.accountData.GameUID);
+            this.charList = "";
             this.popUID.errorText = "";
             this.popUID.selectShow = true;
             this.popUID.btnText = "確認";
@@ -472,18 +649,58 @@ export default {
         // server判定API
         async serverCheck() {
             console.log("選擇的服務器為", this.popUID.server);
+            localStorage.setItem("server", this.popUID.server);
+
+            this.charList = ["小明", "花花"];
+
+            try {
+                const response = await axios.post(api, {
+                    type: "server",
+                    GameUID: this.accountData.GameUID,
+                    server_num: this.accountData.server,
+                });
+                if (response.data.status == 1) {
+                    this.charList = response.data.char_list;
+                } else if (response.data.status == -99) {
+                    // 無此帳號
+                    this.popEVisable("帳號錯誤，請重新整理畫面");
+                } else if (response.data.status == -98) {
+                    // 無此帳號
+                    this.popEVisable("伺服器錯誤，帳號錯誤，請重新整理畫面");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        },
+        // 選角色存localStorage
+        charCheck() {
+            console.log("選擇的角色為", this.popUID.char);
+            localStorage.setItem("char", this.popUID.char);
         },
 
-        popSVisable(text) {
-            this.popSmall.text = text;
+        popSVisable(id, img, name, price) {
+            this.popSmall.id = id;
+            this.popSmall.img = img;
+            this.popSmall.name = name;
+            this.popSmall.price = price;
             this.popSmall.visable = !this.popSmall.visable;
+            this.scrollLock();
+        },
+        popEVisable(text) {
+            this.popEmpty.text = text;
+            this.popEmpty.visable = !this.popEmpty.visable;
             this.scrollLock();
         },
         popUIDVisable() {
             this.popUID.visable = !this.popUID.visable;
             this.scrollLock();
         },
-        popMVisable(id) {
+        popMVisable(id, img, name, price, content) {
+            this.popMiddle.id = id;
+            this.popMiddle.img = img;
+            this.popMiddle.name = name;
+            this.popMiddle.price = price;
+            this.popMiddle.text = content;
             this.popMiddle.visable = !this.popMiddle.visable;
             this.scrollLock();
         },
@@ -530,11 +747,16 @@ export default {
         },
     },
     mounted() {
-        if (this.checkCookie("GameUID")) {
-            this.accountData.GameUID = this.checkCookie("GameUID");
+        const GameUID = localStorage.getItem("GameUID");
+
+        if (GameUID == undefined) {
+            this.accountData.GameUID = null;
+        } else {
+            this.accountData.GameUID = GameUID;
         }
+
         // API位址
-        // this.getSetting();
+        this.setting();
 
         // 監聽瀏覽器縮放
         window.addEventListener("resize", this.updateScreenWidth);
