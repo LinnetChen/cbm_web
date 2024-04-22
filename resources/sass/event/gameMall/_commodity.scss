@@ -9,152 +9,152 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-}
-
-.tabBox {
-    border: 1px solid blue;
-    width: 66%;
-    height: 100%;
-    margin: 1.2rem 0;
-    border-bottom: 2px solid #adc3cd;
-    text-align: center;
-    display: flex;
-    justify-content: flex-start;
-    .diamondTab,
-    .giftTab,
-    .promotionTab {
-        position: relative;
-        font-size: 1.25rem;
-        font-weight: 600;
-        width: 103px;
-        height: 40px;
-        border: 0px;
-        margin: 0 .5rem;
-        cursor: pointer;
+    .tabBox {
+        border: 1px solid blue;
+        width: 66%;
+        height: 100%;
+        margin: 1.2rem 0;
+        border-bottom: 2px solid #adc3cd;
+        text-align: center;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-        background: #22294b;
-        color: #fff;
-        &:hover,
-        &.active {
-            color: #000;
-            background: linear-gradient(270deg, #fff 30%, #adc3cd);
-            background: -webkit-linear-gradient(270deg, #fff 30%, #adc3cd);
-        }
-    }
-}
-
-.contain {
-    border: 1px solid red;
-    padding: 0 0.5% 0 2.5%;
-    width: 66%;
-    height: 100%;
-    // min-height: 100%;
-
-    // background-color: #ffffff7e;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
-    @include md {
-        justify-content: center;
-    }
-
-    .box {
-        background-color: rgb(0, 4, 44, 0.7);
-        // width: calc(20% - 3%);
-        // width: 20%;
-        // max-width: 215px;
-        // max-height: 300px;
-        // height: 100%;
-        width: 215px;
-        height: 300px;
-        margin-right: 2%;
-        margin-bottom: 3%;
-        padding: 0.3%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .deco1 {
-            width: 100%;
-            max-width: 215px;
-
-            &::before,
-            &::after {
-                top: 0;
-                position: absolute;
-                content: "";
-                width: 20px;
-                height: 20px;
-                background-image: url("/img/20240403_joinAct/stepDeco.png");
-                background-position: center center;
-                background-size: cover;
-            }
-            &::before {
-                right: 0;
-            }
-            &::after {
-                left: 0;
-                transform: scaleX(-1);
-            }
-        }
-        .deco2 {
-            position: absolute;
-            width: 100%;
-            max-width: 215px;
-            bottom: 0.3rem;
-
-            &::before,
-            &::after {
-                bottom: 0;
-                position: absolute;
-                content: "";
-                width: 20px;
-                height: 20px;
-                background-image: url("/img/20240403_joinAct/stepDeco.png");
-                background-position: center center;
-                background-size: cover;
-            }
-            &::before {
-                left: 2%;
-                transform: scaleY(-1) scaleX(-1);
-            }
-            &::after {
-                right: 1.1%;
-                transform: scaleY(-1);
-            }
-        }
-        .name,
-        .price {
-            color: #fff;
-            margin-bottom: 0.8rem;
-        }
-        .btnBuy {
-            // margin-top: 7%;
+        justify-content: flex-start;
+        .diamondTab,
+        .giftTab,
+        .promotionTab {
+            position: relative;
+            font-size: 1.25rem;
+            font-weight: 600;
+            width: 103px;
+            height: 40px;
             border: 0px;
-            // border: 1px solid red;
-            background-image: url("/img/gameMall/btnBg.png");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
+            margin: 0 .5rem;
             cursor: pointer;
-            font-weight: 400;
-            color: #fff;
             display: flex;
-            align-items: center;
             justify-content: center;
-            background-color: #ffffff00;
-            filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
-            width: 100%;
-            height: 100%;
-            max-width: 179px;
-            max-height: 50px;
-            font-size: 1rem;
-            &:hover {
-                filter: none;
+            align-items: center;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+            background: #22294b;
+            color: #fff;
+            &:hover,
+            &.active {
+                color: #000;
+                background: linear-gradient(270deg, #fff 30%, #adc3cd);
+                background: -webkit-linear-gradient(270deg, #fff 30%, #adc3cd);
+            }
+        }
+    }
+    .contain {
+        border: 1px solid red;
+        padding: 0 0.5% 0 2.5%;
+        width: 66%;
+        height: 100%;
+        // min-height: 100%;
+    
+        // background-color: #ffffff7e;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    
+        @include md {
+            justify-content: center;
+        }
+    
+        .box {
+            background-color: rgb(0, 4, 44, 0.7);
+            // width: calc(20% - 3%);
+            // width: 20%;
+            // max-width: 215px;
+            // max-height: 300px;
+            // height: 100%;
+            width: 215px;
+            height: 300px;
+            margin-right: 2%;
+            margin-bottom: 3%;
+            padding: 0.3%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .deco1 {
+                width: 100%;
+                max-width: 215px;
+    
+                &::before,
+                &::after {
+                    top: 0;
+                    position: absolute;
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    background-image: url("/img/20240403_joinAct/stepDeco.png");
+                    background-position: center center;
+                    background-size: cover;
+                }
+                &::before {
+                    right: 0;
+                }
+                &::after {
+                    left: 0;
+                    transform: scaleX(-1);
+                }
+            }
+            .deco2 {
+                position: absolute;
+                width: 100%;
+                max-width: 215px;
+                bottom: 0.3rem;
+    
+                &::before,
+                &::after {
+                    bottom: 0;
+                    position: absolute;
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    background-image: url("/img/20240403_joinAct/stepDeco.png");
+                    background-position: center center;
+                    background-size: cover;
+                }
+                &::before {
+                    left: 2%;
+                    transform: scaleY(-1) scaleX(-1);
+                }
+                &::after {
+                    right: 1.1%;
+                    transform: scaleY(-1);
+                }
+            }
+            .name,
+            .price {
+                color: #fff;
+                margin-bottom: 0.8rem;
+            }
+            .btnBuy {
+                // margin-top: 7%;
+                border: 0px;
+                // border: 1px solid red;
+                background-image: url("/img/gameMall/btnBg.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                cursor: pointer;
+                font-weight: 400;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #ffffff00;
+                filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+                width: 100%;
+                height: 100%;
+                max-width: 179px;
+                max-height: 50px;
+                font-size: 1rem;
+                &:hover {
+                    filter: none;
+                }
             }
         }
     }
 }
+
+

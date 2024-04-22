@@ -1,27 +1,32 @@
 <template>
-    <div class="barPC" v-if="screenWidth > 900">
+    <!-- <div class="barPC" v-if="screenWidth > 900"> -->
+    <div class="barPC">
         <div class="menu">
             <div class="logo"><img src="/img/gameMall/MLOGO.png" /></div>
-            <ul class="menuList">
+            <ul class="menuList" v-if="screenWidth > 900">
                 <button class="cardValue" @click="popBVisable(0)">
                     儲值教學​
                 </button>
                 <button class="noticeValue" @click="popBVisable(1)">
                     使用說明​
                 </button>
-                <!-- <button
+                <button
                     class="login"
                     @click="popUIDVisable()"
                     v-if="accountData.GameUID == null"
                 >
                     登入帳號
-                </button> -->
-                <!-- <li v-if="accountData.GameUID !== null">{{ accountData.GameUID }}</li> -->
-                <li class="GameUID">
-                    <span> XWE0000000000000</span>
-                    <ul class="UIDOpen" data-menuaction="id_open">
-                        <li>切換帳號</li>
-                        <li>切換角色</li>
+                </button>
+                <li
+                    class="GameUID"
+                    v-if="accountData.GameUID !== null"
+                    @mouseover="toggleUIDOpen(true)"
+                    @mouseleave="toggleUIDOpen(false)"
+                >
+                    <span> {{ accountData.GameUID }}</span>
+                    <ul class="UIDOpen" v-if="UIDOpen">
+                        <li @click="changeUID()">切換帳號</li>
+                        <li @click="changeChar()">切換角色</li>
                     </ul>
                 </li>
             </ul>
@@ -34,76 +39,25 @@
             <span></span>
         </div>
     </div>
-    <ul class="menuM" v-if="screenWidth <= 900 && menuM == true"></ul>
+    <ul class="menuM" v-if="screenWidth <= 900 && menuM == true">
+        <button
+            class="login"
+            @click="popUIDVisable()"
+            v-if="accountData.GameUID == null"
+        >
+            登入帳號
+        </button>
+        <li class="GameUID" v-if="accountData.GameUID !== null">
+            <span @click="toggleUIDOpen()"> {{ accountData.GameUID }}</span>
+            <ul class="UIDOpen" v-if="UIDOpen">
+                <li @click="changeUID()">切換帳號</li>
+                <li @click="changeChar()">切換角色</li>
+            </ul>
+        </li>
+        <button class="cardValue" @click="popBVisable(0)">儲值教學​</button>
+        <button class="noticeValue" @click="popBVisable(1)">使用說明​</button>
+    </ul>
 
-    <!-- 大跳窗 -->
-    <div class="popB" v-if="popBig.visable">
-        <div class="mask" @click="popBVisable()"></div>
-        <div class="popBg">
-            <div class="title" v-if="popBig.titleType == 1">使用說明</div>
-            <div class="title" v-if="popBig.titleType == 0">儲值教學</div>
-            <div class="tabBox" v-if="popBig.titleType == 0">
-                <button
-                    @click="tabChange('creditValue')"
-                    class="creditTab"
-                    :class="{ active: popBig.tabType == 'creditValue' }"
-                >
-                    信用卡
-                </button>
-                <button
-                    @click="tabChange('myCardValue')"
-                    class="myCardTab"
-                    :class="{ active: popBig.tabType == 'myCardValue' }"
-                >
-                    MyCard
-                </button>
-            </div>
-            <div class="container" v-for="(value, key) in items" :key="key">
-                <div class="title" v-if="key.includes('title')">
-                    {{ value }}
-                </div>
-                <div
-                    class="imgBox"
-                    v-if="key.includes('img')"
-                    :class="{ rewardCbmImg: value.includes('rewardCbmImg1') }"
-                >
-                    <img :src="value" />
-                    <div class="t" v-if="value.includes('rewardCbmImg1')"></div>
-                </div>
-                <div class="text" v-if="key.includes('text')">{{ value }}</div>
-                <div
-                    class="text"
-                    v-if="key.includes('Ul')"
-                    v-html="popBig.noticeValue.Ul"
-                ></div>
-            </div>
-        </div>
-        <div class="x" @click="popBVisable()">X</div>
-    </div>
-
-    <!-- 中跳窗 -->
-    <div class="popM" v-if="popMiddle.visable">
-        <div class="mask" @click="popMVisable()"></div>
-        <div class="popBg">
-            <div class="deco1"></div>
-            <div class="deco2"></div>
-            <div class="left">
-                <img :src="popMiddle.img" />
-                <div class="name">{{ popMiddle.name }}</div>
-                <div class="price">{{ popMiddle.price }}</div>
-            </div>
-            <div class="right" v-html="popMiddle.text"></div>
-            <div class="btnBox">
-                <div class="creditCardBtn" @click="buy('credit', popMiddle.id)">
-                    信用卡支付
-                </div>
-                <div class="myCardBtn" @click="buy('mycard', popMiddle.id)">
-                    MyCard
-                </div>
-            </div>
-        </div>
-        <div class="x" @click="popMVisable()">x</div>
-    </div>
     <!-- UID中跳窗 -->
     <div class="popUID" v-if="popUID.visable">
         <div class="mask" @click="popUIDVisable()"></div>
@@ -162,6 +116,78 @@
         </div>
         <div class="x" @click="popUIDVisable()">x</div>
     </div>
+
+    <!-- 大跳窗 -->
+    <div class="popB" v-if="popBig.visable">
+        <div class="mask" @click="popBVisable()"></div>
+        <div class="popBg">
+            <div class="title" v-if="popBig.titleType == 1">使用說明</div>
+            <div class="title" v-if="popBig.titleType == 0">儲值教學</div>
+            <div class="tabBox" v-if="popBig.titleType == 0">
+                <button
+                    @click="tabChange('creditValue')"
+                    class="creditTab"
+                    :class="{ active: popBig.tabType == 'creditValue' }"
+                >
+                    信用卡
+                </button>
+                <button
+                    @click="tabChange('myCardValue')"
+                    class="myCardTab"
+                    :class="{ active: popBig.tabType == 'myCardValue' }"
+                >
+                    MyCard
+                </button>
+            </div>
+            <div class="container">
+                <div v-for="(value, key) in items" :key="key">
+                    <div class="title" v-if="key.includes('title')">
+                        {{ value }}
+                    </div>
+                    <div
+                        class="imgBox"
+                        v-if="key.includes('img')"
+                        :class="{ rewardCbmImg: value.includes('rewardCbmImg1') }"
+                    >
+                        <img :src="value" />
+                        <div class="t" v-if="value.includes('rewardCbmImg1')"></div>
+                    </div>
+                    <div class="text" v-if="key.includes('text')">{{ value }}</div>
+                    <div
+                        class="text"
+                        v-if="key.includes('Ul')"
+                        v-html="popBig.noticeValue.Ul"
+                    ></div>
+                </div>
+            </div>
+        </div>
+        <div class="x" @click="popBVisable()">X</div>
+    </div>
+
+    <!-- 中跳窗 -->
+    <div class="popM" v-if="popMiddle.visable">
+        <div class="mask" @click="popMVisable()"></div>
+        <div class="popBg">
+            <div class="deco1"></div>
+            <div class="deco2"></div>
+            <div class="left">
+                <img :src="popMiddle.img" />
+                <div class="name">{{ popMiddle.name }}</div>
+                <div class="price">{{ popMiddle.price }}</div>
+            </div>
+            <div class="right" v-html="popMiddle.text"></div>
+            <div class="btnBox">
+                <div class="creditCardBtn" @click="buy('credit', popMiddle.id)">
+                    信用卡支付
+                </div>
+                <div class="myCardBtn" @click="buy('mycard', popMiddle.id)">
+                    MyCard
+                </div>
+            </div>
+        </div>
+        <div class="x" @click="popMVisable()">x</div>
+    </div>
+
     <!-- 小跳窗 -->
     <div class="popS" v-if="popSmall.visable">
         <div class="mask" @click="popSVisable()"></div>
@@ -206,24 +232,15 @@
             @slideChange="onSlideChange"
             class="mySwiper"
         >
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
-            <swiper-slide class="swiperBox"
-                ><img src="/img/gameMall/imgTest.jpg" alt=""
-            /></swiper-slide>
+            <swiper-slide
+                class="swiperBox"
+                v-for="(item, index) in img_url3"
+                :key="index"
+            >
+                <a :href="item.href" :target="item.target">
+                    <img src="/img/gameMall/imgTest.jpg" />
+                </a>
+            </swiper-slide>
         </swiper>
     </header>
     <div class="commoditySection">
@@ -333,7 +350,10 @@
 </template>
 
 <script>
-let api = "https://cbm.digeam.com/api/jointAct";
+let setting_api = "http://192.168.0.43/api/cbm_get_items"; //setting商品
+let buy_api = "http://192.168.0.43/api/funPoint"; //購買商品
+let login_api = "http://192.168.0.43/api/cbm_search_user"; //帳號判定
+let server_api = "http://192.168.0.43/api/cbm_search_characters"; //伺服器 查角色
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -363,7 +383,9 @@ export default {
         return {
             slidesPerView: 3, //swiper預覽數量
             screenWidth: window.innerWidth, //螢幕進入時寬度
+            screenHeight: window.innerHeight, //螢幕進入時高度
             menuM: false, //手機選單顯示
+            UIDOpen: false, //GameUID選單展開
 
             // 要顯示的商品分類
             item_tab: ["normal", "gift", "sale"],
@@ -397,11 +419,37 @@ export default {
                 },
             ],
             img_url: [{}],
+            img_url3: [
+                {
+                    href: "#",
+                    target: "_blank",
+                },
+                {
+                    href: "#",
+                    target: "_blank",
+                },
+                {
+                    href: "#",
+                    target: "_blank",
+                },
+                {
+                    href: "#",
+                    target: "_blank",
+                },
+                {
+                    href: "#",
+                    target: "_blank",
+                },
+                {
+                    href: "#",
+                    target: "_blank",
+                },
+            ], //測試用imgurl
 
             // 玩家UID當前資料
             accountData: {
-                GameUID: "XWE00000",
-                server: 0,
+                GameUID: "",
+                server: 1,
                 char: "小明",
             },
             // api回傳 該伺服器 角色列表
@@ -507,17 +555,30 @@ export default {
                 return [];
             }
         },
+        sizeDetection() {
+            if (this.screenWidth / this.screenHeight >= 1) {
+                return (this.slidesPerView = 3);
+            } else if (this.screenWidth / this.screenHeight < 1) {
+                return (this.slidesPerView = 1);
+            }
+        },
+        // UIDOpen() {
+        //     return this.UIDOpen = !this.UIDOpen;
+        // },
     },
     methods: {
         async setting() {
             try {
-                const response = await axios.post(api, {
+                const response = await axios.post(setting_api, {
                     type: "setting",
                 });
                 if (response.data.status == 1) {
                     this.img_url = response.data.img_url;
                     this.item_lists = response.data.item_lists;
                     this.item_tab = response.data.item_tab;
+
+                    console.log(this.item_lists);
+                    // this.accountData.GameUID = GameUID;
                 } else if (response.data.status == -99) {
                     console.error("Status is not 1:", response.data);
                 }
@@ -528,40 +589,47 @@ export default {
 
         // 購買道具
         async buy(type, id) {
-            if (this.clickWall === 0) {
+            console.log(type);
+            if (this.clickWall == 0) {
                 this.clickWall = 1;
                 if (
                     this.accountData.GameUID !== null &&
-                    this.accountData.server !== 0 &&
+                    this.accountData.server !== "0" &&
                     this.accountData.char !== null
                 ) {
+                    // console.log(this.accountData.GameUID);
+                    // console.log(this.accountData.server);
+                    // console.log(this.accountData.char);
                     try {
-                        const response = await axios.post(api, {
+                        const response = await axios.post(buy_api, {
                             type: type,
                             GameUID: this.accountData.GameUID,
                             item_id: id,
-                            server: this.accountData.server,
+                            server_num: this.accountData.server,
                             char: this.accountData.char,
+                            GameCode: "CMTW",
                         });
                         if (response.data.status == 1) {
-                            const url = ""; // 金流URL
+                            const url =
+                                "https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
 
                             // 塞入API res
                             const data = {
-                                GameUID: "",
-                                ChoosePayment: "",
-                                EncryptType: "",
-                                EncryptType: "",
-                                ItemName: "",
-                                MerchantID: "",
-                                MerchantTradeDate: "",
-                                MerchantTradeNo: "",
-                                PaymentType: "",
-                                ReturnURL: "",
-                                TotalAmount: "",
-                                TradeDesc: "",
-                                CheckMacValue: "",
+                                GameUID: response.data.GameUID,
+                                ChoosePayment: response.data.ChoosePayment,
+                                EncryptType: response.data.EncryptType,
+                                ItemName: response.data.ItemName,
+                                MerchantID: response.data.MerchantID,
+                                MerchantTradeDate:
+                                    response.data.MerchantTradeDate,
+                                MerchantTradeNo: response.data.MerchantTradeNo,
+                                PaymentType: response.data.PaymentType,
+                                ReturnURL: response.data.ReturnURL,
+                                TotalAmount: response.data.TotalAmount,
+                                TradeDesc: response.data.TradeDesc,
+                                CheckMacValue: response.data.CheckMacValue,
                             };
+                            console.log(data);
 
                             // 創建一個 form 元素
                             const form = document.createElement("form");
@@ -583,9 +651,11 @@ export default {
                             form.submit();
                             this.clickWall = 0;
                         } else if (response.data.status == -99) {
+                            this.popSmall.visable = !this.popSmall.visable;
                             this.popEVisable("請先登入帳號UID");
                             this.clickWall = 0;
                         } else if (response.data.status == -98) {
+                            this.popSmall.visable = !this.popSmall.visable;
                             this.popEVisable(
                                 "系統無此商品，請重整畫面，重新選擇商品"
                             );
@@ -596,6 +666,10 @@ export default {
                         this.clickWall = 0;
                     }
                 } else {
+                    console.log(this.accountData.GameUID);
+                    console.log(this.accountData.server);
+                    console.log(this.accountData.char);
+                    this.popSmall.visable = !this.popSmall.visable;
                     this.popEVisable("請先登入帳號，及選擇伺服器、角色");
                     this.clickWall = 0;
                 }
@@ -617,6 +691,8 @@ export default {
 
         // 帳號判定API
         async UIDSubmit() {
+            this.popUID.errorText = "";
+
             // 選完角色.伺服 關掉視窗
             if (this.popUID.btnText == "確認") {
                 this.accountData.GameUID = this.popUID.GameUID;
@@ -626,25 +702,33 @@ export default {
             }
 
             // 有此帳號
-            localStorage.setItem("GameUID", this.accountData.GameUID);
-            this.charList = "";
-            this.popUID.errorText = "";
-            this.popUID.selectShow = true;
-            this.popUID.btnText = "確認";
-            // try {
-            //     const response = await axios.post(api, {
-            //         type: "login",
-            //         GameUID: this.popUID.account,
-            //     });
-            //     if (response.data.status == 1) {
-            //         // 有此帳號
-            //     } else if (response.data.status == -99) {
-            //         // 無此帳號
-            //         this.popUID.errorText = "*查無此帳號，請再次檢查您輸入的資料"
-            //     }
-            // } catch (error) {
-            //     console.error("Error:", error);
-            // }
+            // localStorage.setItem("GameUID", this.accountData.GameUID);
+            // this.charList = "";
+            // this.popUID.errorText = "";
+            // this.popUID.selectShow = true;
+            // this.popUID.btnText = "確認";
+            try {
+                const response = await axios.post(login_api, {
+                    type: "login",
+                    GameUID: this.popUID.GameUID,
+                });
+                if (response.data.status == 1) {
+                    // 有此帳號
+                    localStorage.setItem("GameUID", this.accountData.GameUID);
+                    this.charList = "";
+                    this.popUID.errorText = "";
+                    this.popUID.disabled = true;
+                    this.popUID.selectShow = true;
+                    this.popUID.btnText = "確認";
+                } else if (response.data.status == -99) {
+                    console.log(this.popUID.GameUID);
+                    // 無此帳號
+                    this.popUID.errorText =
+                        "*查無此帳號，請再次檢查您輸入的資料";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
         },
         // server判定API
         async serverCheck() {
@@ -676,6 +760,34 @@ export default {
         charCheck() {
             console.log("選擇的角色為", this.popUID.char);
             localStorage.setItem("char", this.popUID.char);
+        },
+
+        changeUID() {
+            this.popUIDVisable();
+            this.popUID = {
+                visable: true,
+                GameUID: "",
+                disabled: false, //input鎖
+                errorText: "",
+                selectShow: false, //預設false 藏
+                btnText: "送出帳號",
+                server: 0,
+                char: "",
+            };
+        },
+        changeChar() {
+            this.popUIDVisable();
+
+            this.popUID = {
+                visable: true,
+                GameUID: this.accountData.GameUID,
+                disabled: true, //input鎖
+                errorText: "",
+                selectShow: true, //預設false 藏
+                btnText: "確認",
+                server: this.accountData.server,
+                char: this.accountData.char,
+            };
         },
 
         popSVisable(id, img, name, price) {
@@ -714,6 +826,14 @@ export default {
             this.popBig.visable = !this.popBig.visable;
             this.scrollLock();
         },
+        //帳號的切換選單 展開
+        toggleUIDOpen(status) {
+            if (status == undefined || status == null) {
+                this.UIDOpen = !this.UIDOpen;
+            } else {
+                this.UIDOpen = status;
+            }
+        },
         // 鎖背景滾輪
         scrollLock() {
             if (
@@ -748,11 +868,23 @@ export default {
     },
     mounted() {
         const GameUID = localStorage.getItem("GameUID");
+        const server = localStorage.getItem("server");
+        const char = localStorage.getItem("char");
 
         if (GameUID == undefined) {
             this.accountData.GameUID = null;
         } else {
             this.accountData.GameUID = GameUID;
+        }
+        if (server == undefined) {
+            this.accountData.server = null;
+        } else {
+            this.accountData.server = server;
+        }
+        if (char == undefined) {
+            this.accountData.char = null;
+        } else {
+            this.accountData.char = char;
         }
 
         // API位址
