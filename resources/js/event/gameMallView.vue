@@ -1,4 +1,20 @@
 <template>
+    <div class="loading-container" v-if="loadingVisible">
+        <div class="loader">
+            <span>C</span>
+            <span>A</span>
+            <span>B</span>
+            <span>A</span>
+            <span>L</span>
+            <span>&nbsp;&nbsp;</span>
+            <span>M</span>
+            <span>O</span>
+            <span>B</span>
+            <span>I</span>
+            <span>L</span>
+            <span>E</span>
+        </div>
+    </div>
     <!-- <div class="barPC" v-if="screenWidth > 900"> -->
     <div class="barPC">
         <div class="menu">
@@ -13,13 +29,19 @@
                 <button
                     class="login"
                     @click="popUIDVisable()"
-                    v-if="accountData.GameUID == null"
+                    v-if="
+                        accountData.GameUID == null ||
+                        accountData.GameUID == 'null'
+                    "
                 >
                     登入帳號
                 </button>
                 <li
                     class="GameUID"
-                    v-if="accountData.GameUID !== null"
+                    v-if="
+                        accountData.GameUID !== null &&
+                        accountData.GameUID !== 'null'
+                    "
                     @mouseover="toggleUIDOpen(true)"
                     @mouseleave="toggleUIDOpen(false)"
                 >
@@ -75,7 +97,11 @@
                         v-model="popUID.GameUID"
                         :disabled="popUID.disabled"
                     />
-                    <button class="accountManual" type="button" @click="">
+                    <button
+                        class="accountManual"
+                        type="button"
+                        @click="popBVisable(2)"
+                    >
                         ?
                     </button>
                 </div>
@@ -147,12 +173,19 @@
                     <div
                         class="imgBox"
                         v-if="key.includes('img')"
-                        :class="{ rewardCbmImg: value.includes('rewardCbmImg1') }"
+                        :class="{
+                            rewardCbmImg: value.includes('rewardCbmImg1'),
+                        }"
                     >
                         <img :src="value" />
-                        <div class="t" v-if="value.includes('rewardCbmImg1')"></div>
+                        <div
+                            class="t"
+                            v-if="value.includes('rewardCbmImg1')"
+                        ></div>
                     </div>
-                    <div class="text" v-if="key.includes('text')">{{ value }}</div>
+                    <div class="text" v-if="key.includes('text')">
+                        {{ value }}
+                    </div>
                     <div
                         class="text"
                         v-if="key.includes('Ul')"
@@ -371,9 +404,7 @@ export default {
         SwiperSlide,
     },
     setup() {
-        const onSlideChange = () => {
-            // console.log("slide change");
-        };
+        const onSlideChange = () => {};
         return {
             onSlideChange,
             modules: [Autoplay, Navigation, Pagination],
@@ -381,11 +412,12 @@ export default {
     },
     data() {
         return {
+            loadingVisible: false,
             slidesPerView: 3, //swiper預覽數量
-            screenWidth: window.innerWidth, //螢幕進入時寬度
-            screenHeight: window.innerHeight, //螢幕進入時高度
-            menuM: false, //手機選單顯示
-            UIDOpen: false, //GameUID選單展開
+            screenWidth: window.innerWidth, //螢幕寬度
+            screenHeight: window.innerHeight, //螢幕高度
+            menuM: false, //手機選單
+            UIDOpen: false, //GameUID選單開
 
             // 要顯示的商品分類
             item_tab: ["normal", "gift", "sale"],
@@ -419,10 +451,48 @@ export default {
                 },
             ],
             img_url: [{}],
+            img_url2: [
+                {
+                    id: 1,
+                    file_name: "upload/bn/2ac91f3a1dcffb353ebbf3f3db41aae1.jpg",
+                    url: "#",
+                    type: "CMTW_M",
+                    sort: 1,
+                    status: "Y",
+                    created_at: "2024-04-19T07:56:27.000000Z",
+                    updated_at: "2024-04-19T07:56:27.000000Z",
+                    img_url:
+                        "http://192.168.0.43/upload/bn/2ac91f3a1dcffb353ebbf3f3db41aae1.jpg",
+                },
+                {
+                    id: 2,
+                    file_name: "upload/bn/6c79383ce8973a6280ca5f9304a53221.jpg",
+                    url: "#",
+                    type: "CMTW_M",
+                    sort: 2,
+                    status: "Y",
+                    created_at: "2024-04-19T07:56:49.000000Z",
+                    updated_at: "2024-04-19T07:56:49.000000Z",
+                    img_url:
+                        "http://192.168.0.43/upload/bn/6c79383ce8973a6280ca5f9304a53221.jpg",
+                },
+                {
+                    id: 3,
+                    file_name: "upload/bn/7ed4f5b5e3c4c650cfb59d349b34139f.jpg",
+                    url: "#",
+                    type: "CMTW_M",
+                    sort: 3,
+                    status: "Y",
+                    created_at: "2024-04-19T07:57:02.000000Z",
+                    updated_at: "2024-04-19T07:57:02.000000Z",
+                    img_url:
+                        "http://192.168.0.43/upload/bn/7ed4f5b5e3c4c650cfb59d349b34139f.jpg",
+                },
+            ],
             img_url3: [
                 {
-                    href: "#",
-                    target: "_blank",
+                    href: "",
+                    target: "",
                 },
                 {
                     href: "#",
@@ -444,18 +514,15 @@ export default {
                     href: "#",
                     target: "_blank",
                 },
-            ], //測試用imgurl
+            ],
 
             // 玩家UID當前資料
             accountData: {
                 GameUID: "",
                 server: 1,
-                char: "小明",
+                char: "",
             },
-            // api回傳 該伺服器 角色列表
-            charList: ["小明", "花花"],
-            // 帳號input暫存
-            accountTemporary: "",
+            charList: [], // api回傳 該伺服器 角色列表
 
             // 跳窗
             popBig: {
@@ -492,6 +559,9 @@ export default {
                     </ul>
                     `,
                 },
+                teachUIDSerch: {
+                    title1: "teachUIDSerch",
+                },
             },
             popMiddle: {
                 visable: false,
@@ -502,13 +572,13 @@ export default {
             },
             popUID: {
                 visable: false,
-                GameUID: "WWW11111",
+                GameUID: "",
                 disabled: false, //input鎖
                 errorText: "",
                 selectShow: false, //預設false 藏
                 btnText: "送出帳號",
                 server: 0,
-                char: "小明",
+                char: "",
             },
             popSmall: {
                 visable: false,
@@ -528,14 +598,17 @@ export default {
     },
     computed: {
         items() {
-            // useCbValue值0 產出儲值教學，不然 產出使用說明
-            return this.popBig.titleType === 0 &&
-                this.popBig.tabType == "creditValue"
-                ? this.popBig.creditValue
-                : this.popBig.titleType === 0 &&
-                  this.popBig.tabType == "myCardValue"
-                ? this.popBig.myCardValue
-                : this.popBig.noticeValue;
+            if (this.popBig.titleType == 0) {
+                if (this.popBig.tabType == "creditValue") {
+                    return this.popBig.creditValue;
+                } else if (this.popBig.tabType == "myCardValue") {
+                    return this.popBig.myCardValue;
+                }
+            } else if (this.popBig.titleType == 1) {
+                return this.popBig.noticeValue;
+            } else if (this.popBig.titleType == 2) {
+                return this.popBig.teachUIDSerch;
+            }
         },
         filteredItemList() {
             if (this.commodityTab == "diamondTab") {
@@ -551,7 +624,6 @@ export default {
                     (item) => item.item_cate == "sale"
                 );
             } else {
-                // 如果沒有符合的標籤類型，返回空陣列或者全部項目
                 return [];
             }
         },
@@ -562,11 +634,73 @@ export default {
                 return (this.slidesPerView = 1);
             }
         },
-        // UIDOpen() {
-        //     return this.UIDOpen = !this.UIDOpen;
-        // },
     },
     methods: {
+        // 帳號判定API
+        async UIDSubmit() {
+            if (this.popUID.btnText == "確認") {
+                // 選角色.伺服 階段
+                this.accountData.GameUID = this.popUID.GameUID;
+                if (this.popUID.server == 0 || this.popUID.char == null) {
+                    this.popUID.errorText = "*請選擇伺服器、角色";
+                } else {
+                    this.accountData.server = this.popUID.server;
+                    this.accountData.char = this.popUID.char;
+                    this.popUIDVisable();
+                }
+            } else {
+                try {
+                    const response = await axios.post(login_api, {
+                        type: "login",
+                        GameUID: this.popUID.GameUID,
+                    });
+                    if (response.data.status == 1) {
+                        this.accountData.GameUID = this.popUID.GameUID;
+                        localStorage.setItem(
+                            "GameUID",
+                            this.accountData.GameUID
+                        );
+
+                        //清空角色列、錯誤提示，鎖帳號input
+                        this.charList = "";
+                        this.popUID.errorText = "";
+                        this.popUID.disabled = true;
+
+                        this.popUID.selectShow = true;
+                        this.popUID.btnText = "確認";
+                    } else if (response.data.status == -99) {
+                        this.popUID.errorText =
+                            "*查無此帳號，請再次檢查您輸入的資料";
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        },
+        // server判定API
+        async serverCheck() {
+            console.log("選擇的服務器為", this.popUID.server);
+            localStorage.setItem("server", this.popUID.server);
+            this.accountData.server = this.popUID.server;
+
+            try {
+                const response = await axios.post(server_api, {
+                    type: "server",
+                    GameUID: this.accountData.GameUID,
+                    server_num: this.accountData.server,
+                });
+                if (response.data.status == 1) {
+                    this.charList = response.data.char_list;
+                } else if (response.data.status == -99) {
+                    this.popEVisable("帳號錯誤，請重新整理畫面");
+                } else if (response.data.status == -98) {
+                    this.popEVisable("伺服器錯誤，帳號錯誤，請重新整理畫面");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        },
+
         async setting() {
             try {
                 const response = await axios.post(setting_api, {
@@ -576,8 +710,6 @@ export default {
                     this.img_url = response.data.img_url;
                     this.item_lists = response.data.item_lists;
                     this.item_tab = response.data.item_tab;
-
-                    console.log(this.item_lists);
                     // this.accountData.GameUID = GameUID;
                 } else if (response.data.status == -99) {
                     console.error("Status is not 1:", response.data);
@@ -589,7 +721,6 @@ export default {
 
         // 購買道具
         async buy(type, id) {
-            console.log(type);
             if (this.clickWall == 0) {
                 this.clickWall = 1;
                 if (
@@ -597,9 +728,6 @@ export default {
                     this.accountData.server !== "0" &&
                     this.accountData.char !== null
                 ) {
-                    // console.log(this.accountData.GameUID);
-                    // console.log(this.accountData.server);
-                    // console.log(this.accountData.char);
                     try {
                         const response = await axios.post(buy_api, {
                             type: type,
@@ -609,13 +737,47 @@ export default {
                             char: this.accountData.char,
                             GameCode: "CMTW",
                         });
+
+                        // if (response.data.status == 1) {
+                        //     console.log(response.data.GameUID);
+                        //     console.log(response.data.ChoosePayment);
+                        //     console.log(response.data.EncryptType);
+                        //     console.log(response.data.ItemName);
+                        //     console.log(response.data.MerchantID);
+                        //     console.log(response.data.MerchantTradeDate);
+                        //     console.log(response.data.MerchantTradeNo);
+                        //     console.log(response.data.PaymentType);
+                        //     console.log(response.data.ReturnURL);
+                        //     console.log(response.data.TotalAmount);
+                        //     console.log(response.data.TradeDesc);
+                        //     console.log(response.data.CheckMacValue);
+                        //     console.log(response.data.OrderResultURL);
+                        //     // await axios.post('https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5', {
+                        //     //     GameUID: response.data.GameUID,
+                        //     //     ChoosePayment: response.data.ChoosePayment,
+                        //     //     EncryptType: response.data.EncryptType,
+                        //     //     ItemName: response.data.ItemName,
+                        //     //     MerchantID: response.data.MerchantID,
+                        //     //     MerchantTradeDate:
+                        //     //         response.data.MerchantTradeDate,
+                        //     //     MerchantTradeNo: response.data.MerchantTradeNo,
+                        //     //     PaymentType: response.data.PaymentType,
+                        //     //     ReturnURL: response.data.ReturnURL,
+                        //     //     TotalAmount: response.data.TotalAmount,
+                        //     //     TradeDesc: response.data.TradeDesc,
+                        //     //     CheckMacValue: response.data.CheckMacValue,
+                        //     //     OrderResultURL: response.data.OrderResultURL,
+                        //     // });
+
+                        //     this.clickWall = 0;
+                        // }
+                        // form 表單發送
                         if (response.data.status == 1) {
                             const url =
                                 "https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
 
                             // 塞入API res
                             const data = {
-                                GameUID: response.data.GameUID,
                                 ChoosePayment: response.data.ChoosePayment,
                                 EncryptType: response.data.EncryptType,
                                 ItemName: response.data.ItemName,
@@ -628,8 +790,8 @@ export default {
                                 TotalAmount: response.data.TotalAmount,
                                 TradeDesc: response.data.TradeDesc,
                                 CheckMacValue: response.data.CheckMacValue,
+                                OrderResultURL: response.data.OrderResultURL,
                             };
-                            console.log(data);
 
                             // 創建一個 form 元素
                             const form = document.createElement("form");
@@ -646,9 +808,10 @@ export default {
                                 form.appendChild(input); // input 添加到 form 中
                             }
 
-                            // form 添加到文檔中，自動提交
+                            // 將 form 添加到文檔中，然後自動提交
                             document.body.appendChild(form);
                             form.submit();
+
                             this.clickWall = 0;
                         } else if (response.data.status == -99) {
                             this.popSmall.visable = !this.popSmall.visable;
@@ -666,9 +829,6 @@ export default {
                         this.clickWall = 0;
                     }
                 } else {
-                    console.log(this.accountData.GameUID);
-                    console.log(this.accountData.server);
-                    console.log(this.accountData.char);
                     this.popSmall.visable = !this.popSmall.visable;
                     this.popEVisable("請先登入帳號，及選擇伺服器、角色");
                     this.clickWall = 0;
@@ -678,7 +838,6 @@ export default {
 
         // 儲值tab切換
         tabChange(type) {
-            console.log(type);
             this.popBig.tabType = type;
             if (
                 type == "diamondTab" ||
@@ -689,76 +848,8 @@ export default {
             }
         },
 
-        // 帳號判定API
-        async UIDSubmit() {
-            this.popUID.errorText = "";
-
-            // 選完角色.伺服 關掉視窗
-            if (this.popUID.btnText == "確認") {
-                this.accountData.GameUID = this.popUID.GameUID;
-                this.accountData.server = this.popUID.server;
-                this.accountData.char = this.popUID.char;
-                this.popUIDVisable();
-            }
-
-            // 有此帳號
-            // localStorage.setItem("GameUID", this.accountData.GameUID);
-            // this.charList = "";
-            // this.popUID.errorText = "";
-            // this.popUID.selectShow = true;
-            // this.popUID.btnText = "確認";
-            try {
-                const response = await axios.post(login_api, {
-                    type: "login",
-                    GameUID: this.popUID.GameUID,
-                });
-                if (response.data.status == 1) {
-                    // 有此帳號
-                    localStorage.setItem("GameUID", this.accountData.GameUID);
-                    this.charList = "";
-                    this.popUID.errorText = "";
-                    this.popUID.disabled = true;
-                    this.popUID.selectShow = true;
-                    this.popUID.btnText = "確認";
-                } else if (response.data.status == -99) {
-                    console.log(this.popUID.GameUID);
-                    // 無此帳號
-                    this.popUID.errorText =
-                        "*查無此帳號，請再次檢查您輸入的資料";
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        },
-        // server判定API
-        async serverCheck() {
-            console.log("選擇的服務器為", this.popUID.server);
-            localStorage.setItem("server", this.popUID.server);
-
-            this.charList = ["小明", "花花"];
-
-            try {
-                const response = await axios.post(api, {
-                    type: "server",
-                    GameUID: this.accountData.GameUID,
-                    server_num: this.accountData.server,
-                });
-                if (response.data.status == 1) {
-                    this.charList = response.data.char_list;
-                } else if (response.data.status == -99) {
-                    // 無此帳號
-                    this.popEVisable("帳號錯誤，請重新整理畫面");
-                } else if (response.data.status == -98) {
-                    // 無此帳號
-                    this.popEVisable("伺服器錯誤，帳號錯誤，請重新整理畫面");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        },
         // 選角色存localStorage
         charCheck() {
-            console.log("選擇的角色為", this.popUID.char);
             localStorage.setItem("char", this.popUID.char);
         },
 
@@ -822,6 +913,8 @@ export default {
                 this.popBig.tabType = "creditValue";
             } else if (title == 1) {
                 this.popBig.titleType = 1;
+            } else if (title == 2) {
+                this.popBig.titleType = 2;
             }
             this.popBig.visable = !this.popBig.visable;
             this.scrollLock();
@@ -892,6 +985,10 @@ export default {
 
         // 監聽瀏覽器縮放
         window.addEventListener("resize", this.updateScreenWidth);
+
+        setTimeout(() => {
+            this.loadingVisible = false;
+        }, 50);
     },
 
     beforeUnmount() {

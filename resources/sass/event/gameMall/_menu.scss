@@ -36,7 +36,7 @@
 
         .menuList {
             // background-color: #fff;
-            border: 1px solid blue;
+            // border: 1px solid blue;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -67,7 +67,7 @@
                 width: 50%;
                 height: 100%;
                 max-width: 250px;
-                border: 1px solid blue;
+                // border: 1px solid blue;
                 text-align: center;
                 font-weight: 500;
                 font-size: 1.2rem;
@@ -103,6 +103,9 @@
                     top: 5.3rem;
                     width: 100%;
                     height: 100%;
+                    @include lg{
+                        top: 3.9rem;
+                    }
                     li {
                         line-height: 5rem;
                         color: #fff;
@@ -205,6 +208,7 @@
             position: absolute;
             top: 80px;
             background-color: #0a162f;
+
             li {
                 font-weight: 600;
                 border-top: #fff 1px solid;
