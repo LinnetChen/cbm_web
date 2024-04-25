@@ -69,7 +69,11 @@
         >
             登入帳號
         </button>
-        <li class="GameUID" v-if="accountData.GameUID !== null"  @click="toggleUIDOpen()">
+        <li
+            class="GameUID"
+            v-if="accountData.GameUID !== null"
+            @click="toggleUIDOpen()"
+        >
             <span> {{ accountData.GameUID }}</span>
             <ul class="UIDOpen" v-if="UIDOpen">
                 <li @click="changeUID()">切換帳號</li>
@@ -627,12 +631,18 @@ export default {
                 return [];
             }
         },
+        // sizeDetection() {
+        //     if (this.screenWidth / this.screenHeight > 1) {
+        //         return (this.slidesPerView = 3);
+        //     } else if (this.screenWidth / this.screenHeight <= 1) {
+        //         return (this.slidesPerView = 1);
+        //     }
+        // },
         sizeDetection() {
-            if (this.screenWidth / this.screenHeight >= 1) {
-                return (this.slidesPerView = 3);
-            } else if (this.screenWidth / this.screenHeight < 1) {
-                return (this.slidesPerView = 1);
-            }
+            return this.screenWidth / this.screenHeight > 1 ? 3 : 1;
+        },
+        slidesPerView() {
+            return this.sizeDetection;
         },
     },
     methods: {
