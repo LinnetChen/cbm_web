@@ -35,7 +35,6 @@
         }
 
         .menuList {
-            // background-color: #fff;
             // border: 1px solid blue;
             display: flex;
             justify-content: space-evenly;
@@ -64,10 +63,10 @@
                 }
             }
             .GameUID {
+                // border: 1px solid blue;
                 width: 50%;
                 height: 100%;
                 max-width: 250px;
-                // border: 1px solid blue;
                 text-align: center;
                 font-weight: 500;
                 font-size: 1.2rem;
@@ -187,6 +186,7 @@
         line-height: 4.7rem;
     }
     .GameUID {
+        // border: #00b4ff 1px solid;
         display: flex;
         justify-content: center;
         span {

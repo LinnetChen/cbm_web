@@ -69,8 +69,8 @@
         >
             登入帳號
         </button>
-        <li class="GameUID" v-if="accountData.GameUID !== null">
-            <span @click="toggleUIDOpen()"> {{ accountData.GameUID }}</span>
+        <li class="GameUID" v-if="accountData.GameUID !== null"  @click="toggleUIDOpen()">
+            <span> {{ accountData.GameUID }}</span>
             <ul class="UIDOpen" v-if="UIDOpen">
                 <li @click="changeUID()">切換帳號</li>
                 <li @click="changeChar()">切換角色</li>
@@ -737,40 +737,6 @@ export default {
                             char: this.accountData.char,
                             GameCode: "CMTW",
                         });
-
-                        // if (response.data.status == 1) {
-                        //     console.log(response.data.GameUID);
-                        //     console.log(response.data.ChoosePayment);
-                        //     console.log(response.data.EncryptType);
-                        //     console.log(response.data.ItemName);
-                        //     console.log(response.data.MerchantID);
-                        //     console.log(response.data.MerchantTradeDate);
-                        //     console.log(response.data.MerchantTradeNo);
-                        //     console.log(response.data.PaymentType);
-                        //     console.log(response.data.ReturnURL);
-                        //     console.log(response.data.TotalAmount);
-                        //     console.log(response.data.TradeDesc);
-                        //     console.log(response.data.CheckMacValue);
-                        //     console.log(response.data.OrderResultURL);
-                        //     // await axios.post('https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5', {
-                        //     //     GameUID: response.data.GameUID,
-                        //     //     ChoosePayment: response.data.ChoosePayment,
-                        //     //     EncryptType: response.data.EncryptType,
-                        //     //     ItemName: response.data.ItemName,
-                        //     //     MerchantID: response.data.MerchantID,
-                        //     //     MerchantTradeDate:
-                        //     //         response.data.MerchantTradeDate,
-                        //     //     MerchantTradeNo: response.data.MerchantTradeNo,
-                        //     //     PaymentType: response.data.PaymentType,
-                        //     //     ReturnURL: response.data.ReturnURL,
-                        //     //     TotalAmount: response.data.TotalAmount,
-                        //     //     TradeDesc: response.data.TradeDesc,
-                        //     //     CheckMacValue: response.data.CheckMacValue,
-                        //     //     OrderResultURL: response.data.OrderResultURL,
-                        //     // });
-
-                        //     this.clickWall = 0;
-                        // }
                         // form 表單發送
                         if (response.data.status == 1) {
                             const url =
