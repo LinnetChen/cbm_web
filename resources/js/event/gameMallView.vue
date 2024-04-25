@@ -18,7 +18,7 @@
     <!-- <div class="barPC" v-if="screenWidth > 900"> -->
     <div class="barPC">
         <div class="menu">
-            <div class="logo"><img src="/img/gameMall/MLOGO.png" /></div>
+            <div class="logo"><img src="/img/gameMall/MLogo.png" /></div>
             <ul class="menuList" v-if="screenWidth > 900">
                 <button class="cardValue" @click="popBVisable(0)">
                     儲值教學​
@@ -343,14 +343,6 @@
                     購買
                 </button>
             </div>
-            <!-- <div class="box">
-                <div class="deco1"></div>
-                <div class="deco2"></div>
-                <img src="/img/gameMall/propImg.png" @click="popMVisable(1)" />
-                <div class="name">100</div>
-                <div class="price">100TWD</div>
-                <button class="btnBuy" @click="popSVisable(id)">購買</button>
-            </div> -->
         </div>
     </div>
 
@@ -631,13 +623,6 @@ export default {
                 return [];
             }
         },
-        // sizeDetection() {
-        //     if (this.screenWidth / this.screenHeight > 1) {
-        //         return (this.slidesPerView = 3);
-        //     } else if (this.screenWidth / this.screenHeight <= 1) {
-        //         return (this.slidesPerView = 1);
-        //     }
-        // },
         sizeDetection() {
             return this.screenWidth / this.screenHeight > 1 ? 3 : 1;
         },
