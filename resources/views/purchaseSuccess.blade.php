@@ -27,7 +27,7 @@
             <div class="title">購買成功</div>
             <img src="/img/gameMall/propImg.png" />
             <div class="name">鑽石100顆</div>
-            <button class="backHomeBtn">返回商城</button>
+            <a href="https://cbm.digeam.com/gameMall" class="backHomeBtn">返回商城</a>
         </div>
     </div>
 </body>

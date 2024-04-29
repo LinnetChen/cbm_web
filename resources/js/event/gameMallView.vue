@@ -217,7 +217,11 @@
                 <div class="creditCardBtn" @click="buy('credit', popMiddle.id)">
                     信用卡支付
                 </div>
-                <div class="myCardBtn" @click="buy('mycard', popMiddle.id)">
+                <div
+                    v-if="popMiddle.payment == 2"
+                    class="myCardBtn"
+                    @click="buy('mycard', popMiddle.id)"
+                >
                     MyCard
                 </div>
             </div>
@@ -238,7 +242,11 @@
                 <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
                     信用卡支付
                 </div>
-                <div class="myCardBtn" @click="buy('mycard', popSmall.id)">
+                <div
+                    v-if="popSmall.payment == 2"
+                    class="myCardBtn"
+                    @click="buy('mycard', popSmall.id)"
+                >
                     MyCard
                 </div>
             </div>
@@ -431,7 +439,7 @@ export default {
                     ntd_price: "1700TWD",
                     content: "1233",
                     item_cate: "normal",
-                    payment:1,
+                    payment: 1,
                 },
                 {
                     id: "2",
@@ -569,6 +577,7 @@ export default {
                 name: "1000鑽​",
                 price: "100TWD",
                 text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3",
+                payment: "",
             },
             popUID: {
                 visable: false,
@@ -586,6 +595,7 @@ export default {
                 img: "",
                 name: "",
                 price: "",
+                payment: "",
             },
             popEmpty: {
                 visable: false,
@@ -843,11 +853,12 @@ export default {
             };
         },
 
-        popSVisable(id, img, name, price) {
+        popSVisable(id, img, name, price, payment) {
             this.popSmall.id = id;
             this.popSmall.img = img;
             this.popSmall.name = name;
             this.popSmall.price = price;
+            this.popSmall.payment = payment;
             this.popSmall.visable = !this.popSmall.visable;
             this.scrollLock();
         },
@@ -860,12 +871,13 @@ export default {
             this.popUID.visable = !this.popUID.visable;
             this.scrollLock();
         },
-        popMVisable(id, img, name, price, content) {
+        popMVisable(id, img, name, price, content, payment) {
             this.popMiddle.id = id;
             this.popMiddle.img = img;
             this.popMiddle.name = name;
             this.popMiddle.price = price;
             this.popMiddle.text = content;
+            this.popMiddle.payment = payment;
             this.popMiddle.visable = !this.popMiddle.visable;
             this.scrollLock();
         },
