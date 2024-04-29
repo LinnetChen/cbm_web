@@ -274,7 +274,8 @@
                 v-for="(item, index) in img_url3"
                 :key="index"
             >
-                <a :href="item.href" :target="item.target">
+                <a :href="item.url" :target="item.target">
+                    <!-- <img :src="item.img_url" /> -->
                     <img src="/img/gameMall/imgTest.jpg" />
                 </a>
             </swiper-slide>
@@ -323,7 +324,8 @@
                             item.img,
                             item.item_name,
                             item.ntd_price,
-                            item.content
+                            item.content,
+                            item.payment
                         )
                     "
                 />
@@ -336,7 +338,8 @@
                             item.id,
                             item.img,
                             item.item_name,
-                            item.ntd_price
+                            item.ntd_price,
+                            item.payment
                         )
                     "
                 >
@@ -428,6 +431,7 @@ export default {
                     ntd_price: "1700TWD",
                     content: "1233",
                     item_cate: "normal",
+                    payment:1,
                 },
                 {
                     id: "2",
@@ -585,7 +589,7 @@ export default {
             },
             popEmpty: {
                 visable: false,
-                text: "1123333",
+                text: "",
             },
 
             // 防連點
@@ -775,11 +779,9 @@ export default {
 
                             this.clickWall = 0;
                         } else if (response.data.status == -99) {
-                            this.popSmall.visable = !this.popSmall.visable;
                             this.popEVisable("請先登入帳號UID");
                             this.clickWall = 0;
                         } else if (response.data.status == -98) {
-                            this.popSmall.visable = !this.popSmall.visable;
                             this.popEVisable(
                                 "系統無此商品，請重整畫面，重新選擇商品"
                             );
@@ -790,7 +792,6 @@ export default {
                         this.clickWall = 0;
                     }
                 } else {
-                    this.popSmall.visable = !this.popSmall.visable;
                     this.popEVisable("請先登入帳號，及選擇伺服器、角色");
                     this.clickWall = 0;
                 }
@@ -968,5 +969,43 @@ export default {
         width: 100%;
         height: 100%;
     }
+}
+.swiper-button-prev,
+.swiper-button-next {
+    background-image: url("/img/gameMall/arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    scale: 1.3;
+    filter: drop-shadow(0px 0px 2px #000000) drop-shadow(0px 0px 2px #000000);
+    &:after {
+        content: "";
+    }
+}
+.swiper-button-next {
+    right: 30%;
+    @media all and (max-width: 960px) {
+        right: 5%;
+    }
+}
+.swiper-button-prev {
+    left: 30%;
+    transform: scaleX(-1);
+    @media all and (max-width: 960px) {
+        left: 5%;
+    }
+}
+.swiper-slide {
+    -webkit-filter: brightness(0.1);
+    opacity: 0.7;
+    @media all and (max-width: 960px) {
+        -webkit-filter: brightness(1);
+        opacity: 1;
+    }
+}
+.swiper-slide-active + .swiper-slide {
+    -webkit-filter: brightness(1);
+    scale: 1;
+    opacity: 1;
 }
 </style>

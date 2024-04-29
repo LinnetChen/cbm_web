@@ -13,6 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     .mask {
         width: 100%;
         height: 100%;
@@ -49,6 +50,9 @@
 
 .popS,
 .popE {
+    @include x3s{
+        flex-direction: column;
+    }
     .popBg {
         z-index: 1;
         width: 100%;
@@ -154,6 +158,10 @@
         top: -16%;
         left: 0.5%;
         cursor: pointer;
+        @include x3s{
+            top: 0;
+            left: 0;
+        }
     }
 }
 .popE {
@@ -167,6 +175,9 @@
     }
 }
 .popM {
+    @include x3s{
+        flex-direction: column;
+    }
     .popBg {
         z-index: 1;
         width: 80%;
@@ -305,7 +316,7 @@
             justify-content: space-between;
             @include sm() {
                 width: 100%;
-                height: 100%;
+                height: 15%;
             }
         }
     }
@@ -315,9 +326,16 @@
         top: -20%;
         left: 0.5%;
         cursor: pointer;
+        @include x3s{
+            top: 0;
+            left: 0;
+        }
     }
 }
 .popUID {
+    @include x3s{
+        flex-direction: column;
+    }
     .popBg {
         z-index: 1;
         width: 80%;
@@ -330,6 +348,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
         @include md() {
             width: 100%;
             height: 100%;
@@ -477,6 +496,10 @@
         cursor: pointer;
         @include md() {
             top: -40%;
+        }
+        @include x3s{
+            top: 0;
+            left: 0;
         }
     }
 }
