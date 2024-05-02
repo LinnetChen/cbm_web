@@ -30,8 +30,7 @@
                     class="login"
                     @click="popUIDVisable()"
                     v-if="
-                        accountData.GameUID == null ||
-                        accountData.GameUID == 'null'
+                        accountData.char == null || accountData.char == 'null'
                     "
                 >
                     登入帳號
@@ -39,13 +38,12 @@
                 <li
                     class="GameUID"
                     v-if="
-                        accountData.GameUID !== null &&
-                        accountData.GameUID !== 'null'
+                        accountData.char !== null && accountData.char !== 'null'
                     "
                     @mouseover="toggleUIDOpen(true)"
                     @mouseleave="toggleUIDOpen(false)"
                 >
-                    <span> {{ accountData.GameUID }}</span>
+                    <span>{{ accountData.char }}</span>
                     <ul class="UIDOpen" v-if="UIDOpen">
                         <li @click="changeUID()">切換帳號</li>
                         <li @click="changeChar()">切換角色</li>
@@ -65,16 +63,16 @@
         <button
             class="login"
             @click="popUIDVisable()"
-            v-if="accountData.GameUID == null"
+            v-if="accountData.char == null || accountData.char == 'null'"
         >
             登入帳號
         </button>
         <li
             class="GameUID"
-            v-if="accountData.GameUID !== null"
+            v-if="accountData.char !== null && accountData.char !== 'null'"
             @click="toggleUIDOpen()"
         >
-            <span> {{ accountData.GameUID }}</span>
+            <span>{{ accountData.char }}</span>
             <ul class="UIDOpen" v-if="UIDOpen">
                 <li @click="changeUID()">切換帳號</li>
                 <li @click="changeChar()">切換角色</li>
@@ -118,8 +116,8 @@
                         v-model="popUID.server"
                         @change="serverCheck"
                     >
-                        <option value="1">冰珀星</option>
-                        <option value="2">黑恆星</option>
+                        <option value="server01">冰珀星</option>
+                        <option value="server02">黑恆星</option>
                     </select>
                 </div>
                 <div class="selectCharacter" v-if="popUID.selectShow">
@@ -209,8 +207,12 @@
             <div class="deco2"></div>
             <div class="left">
                 <img :src="popMiddle.img" />
-                <div class="name">{{ popMiddle.name }}</div>
-                <div class="price">{{ popMiddle.price }}</div>
+                <div class="name">
+                    {{ popMiddle.name }}<br>
+                    <span class="price">{{ popMiddle.price }}</span>
+                </div>
+                <!-- <div class="name">{{ popMiddle.name }}</div> -->
+                <!-- <div class="price">{{ popMiddle.price }}</div> -->
             </div>
             <div class="right" v-html="popMiddle.text"></div>
             <div class="btnBox">
@@ -585,7 +587,7 @@ export default {
                 disabled: false, //input鎖
                 errorText: "",
                 selectShow: false, //預設false 藏
-                btnText: "送出帳號",
+                btnText: "登入",
                 server: 0,
                 char: "",
             },
@@ -833,7 +835,7 @@ export default {
                 disabled: false, //input鎖
                 errorText: "",
                 selectShow: false, //預設false 藏
-                btnText: "送出帳號",
+                btnText: "登入",
                 server: 0,
                 char: "",
             };
@@ -868,6 +870,11 @@ export default {
             this.scrollLock();
         },
         popUIDVisable() {
+            this.popUID.GameUID = null;
+            this.popUID.disabled = false;
+            this.popUID.errorText = "";
+            this.popUID.selectShow = false;
+            this.popUID.btnText = "登入";
             this.popUID.visable = !this.popUID.visable;
             this.scrollLock();
         },
@@ -1009,7 +1016,7 @@ export default {
 }
 .swiper-slide {
     -webkit-filter: brightness(0.1);
-    opacity: 0.7;
+    opacity: 1;
     @media all and (max-width: 960px) {
         -webkit-filter: brightness(1);
         opacity: 1;

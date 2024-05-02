@@ -61,12 +61,13 @@
                         0.1rem 0.1rem 1rem #000,
                         0.1rem 0.1rem 1rem #000;
                 }
+                // border: 1px solid blue;
             }
             .GameUID {
                 // border: 1px solid blue;
                 width: 50%;
-                height: 100%;
-                max-width: 250px;
+                height: 120%;
+                max-width: 200px;
                 text-align: center;
                 font-weight: 500;
                 font-size: 1.2rem;
@@ -75,7 +76,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
+                
                 span {
                     display: inline-block;
                     max-width: 180px;
@@ -99,11 +100,11 @@
                 }
                 .UIDOpen {
                     position: absolute;
-                    top: 5.3rem;
+                    top: 6.8rem;
                     width: 100%;
                     height: 100%;
                     @include lg{
-                        top: 3.9rem;
+                        top: 4.3rem;
                     }
                     li {
                         line-height: 5rem;
