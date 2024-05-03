@@ -37,6 +37,7 @@ Route::get('/gameMall', function () {
 Route::get('/purchaseSuccess', function () {
     return view('purchaseSuccess');
 });
+
 Route::get('/purchaseFailed', function () {
     return view('purchaseFailed');
 });
