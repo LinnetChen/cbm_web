@@ -706,9 +706,9 @@ export default {
     // 購買道具
     async buy(type, id) {
       if (type == "mycard") {
-        buy_api = buy_api_mycard;
+        let buy_api = buy_api_mycard;
       } else {
-        buy_api = buy_api_funpoint;
+        let buy_api = buy_api_funpoint;
       }
       if (this.clickWall == 0) {
         this.clickWall = 1;

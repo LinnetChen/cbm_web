@@ -20860,14 +20860,14 @@ var buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoi
     buy: function buy(type, id) {
       var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        var response, url, data, form, key, input;
+        var _buy_api, _buy_api2, response, url, data, form, key, input;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               if (type == "mycard") {
-                buy_api = buy_api_mycard;
+                _buy_api = buy_api_mycard;
               } else {
-                buy_api = buy_api_funpoint;
+                _buy_api2 = buy_api_funpoint;
               }
               if (!(_this4.clickWall == 0)) {
                 _context4.next = 19;
