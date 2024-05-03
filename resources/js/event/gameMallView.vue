@@ -711,7 +711,7 @@ export default {
       } else {
         buy_api = buy_api_funpoint;
       }
-      console.log(buy_api);
+
       if (this.clickWall == 0) {
         this.clickWall = 1;
         if (
@@ -775,6 +775,8 @@ export default {
             } else if (response.data.status == -98) {
               this.popEVisable("系統無此商品，請重整畫面，重新選擇商品");
               this.clickWall = 0;
+            } else if (response.data.status == 1 && type == "mycard") {
+              window.location = response.data.url;
             }
           } catch (error) {
             console.error("Error:", error);
