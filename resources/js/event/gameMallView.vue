@@ -372,7 +372,6 @@
 
 <script>
 let setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商品
-let buy_api = "https://testmobileapi.digeam.com/api/funPoint"; //購買商品
 let login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 let server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
 
@@ -705,6 +704,11 @@ export default {
 
     // 購買道具
     async buy(type, id) {
+      if (type == "mycard") {
+        let buy_api = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+      } else {
+        let buy_api = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
+      }
       if (this.clickWall == 0) {
         this.clickWall = 1;
         if (
@@ -722,7 +726,7 @@ export default {
               GameCode: "CMTW",
             });
             // form 表單發送
-            if (response.data.status == 1) {
+            if (response.data.status == 1 && type == "credit") {
               const url =
                 "https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
 

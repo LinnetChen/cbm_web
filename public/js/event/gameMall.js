@@ -20496,7 +20496,6 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商品
-var buy_api = "https://testmobileapi.digeam.com/api/funPoint"; //購買商品
 var login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
 
@@ -20860,21 +20859,26 @@ var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺
     buy: function buy(type, id) {
       var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        var response, url, data, form, key, input;
+        var _buy_api, _buy_api2, response, url, data, form, key, input;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
+              if (type == "mycard") {
+                _buy_api = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+              } else {
+                _buy_api2 = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
+              }
               if (!(_this4.clickWall == 0)) {
-                _context4.next = 18;
+                _context4.next = 19;
                 break;
               }
               _this4.clickWall = 1;
               if (!(_this4.accountData.GameUID !== null && _this4.accountData.server !== "0" && _this4.accountData["char"] !== null)) {
-                _context4.next = 16;
+                _context4.next = 17;
                 break;
               }
-              _context4.prev = 3;
-              _context4.next = 6;
+              _context4.prev = 4;
+              _context4.next = 7;
               return axios.post(buy_api, {
                 type: type,
                 GameUID: _this4.accountData.GameUID,
@@ -20883,10 +20887,10 @@ var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺
                 "char": _this4.accountData["char"],
                 GameCode: "CMTW"
               });
-            case 6:
+            case 7:
               response = _context4.sent;
               // form 表單發送
-              if (response.data.status == 1) {
+              if (response.data.status == 1 && type == "credit") {
                 url = "https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
                 // 塞入API res
                 data = {
@@ -20928,24 +20932,24 @@ var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺
                 _this4.popEVisable("系統無此商品，請重整畫面，重新選擇商品");
                 _this4.clickWall = 0;
               }
-              _context4.next = 14;
+              _context4.next = 15;
               break;
-            case 10:
-              _context4.prev = 10;
-              _context4.t0 = _context4["catch"](3);
+            case 11:
+              _context4.prev = 11;
+              _context4.t0 = _context4["catch"](4);
               console.error("Error:", _context4.t0);
               _this4.clickWall = 0;
-            case 14:
-              _context4.next = 18;
+            case 15:
+              _context4.next = 19;
               break;
-            case 16:
+            case 17:
               _this4.popEVisable("請先登入帳號，及選擇伺服器、角色");
               _this4.clickWall = 0;
-            case 18:
+            case 19:
             case "end":
               return _context4.stop();
           }
-        }, _callee4, null, [[3, 10]]);
+        }, _callee4, null, [[4, 11]]);
       }))();
     },
     // 儲值tab切換
