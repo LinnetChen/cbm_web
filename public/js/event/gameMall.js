@@ -20498,7 +20498,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商品
 var login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
-
+var buy_api_mycard = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+var buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
 // Import Swiper Vue.js components
 
 
@@ -20859,14 +20860,14 @@ var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺
     buy: function buy(type, id) {
       var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        var _buy_api, _buy_api2, response, url, data, form, key, input;
+        var response, url, data, form, key, input;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               if (type == "mycard") {
-                _buy_api = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+                buy_api = buy_api_mycard;
               } else {
-                _buy_api2 = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
+                buy_api = buy_api_funpoint;
               }
               if (!(_this4.clickWall == 0)) {
                 _context4.next = 19;

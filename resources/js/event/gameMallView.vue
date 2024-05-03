@@ -374,7 +374,8 @@
 let setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商品
 let login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 let server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
-
+let buy_api_mycard = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+let buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -705,9 +706,9 @@ export default {
     // 購買道具
     async buy(type, id) {
       if (type == "mycard") {
-        let buy_api = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+        buy_api = buy_api_mycard;
       } else {
-        let buy_api = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
+        buy_api = buy_api_funpoint;
       }
       if (this.clickWall == 0) {
         this.clickWall = 1;
