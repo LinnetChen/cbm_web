@@ -20860,26 +20860,27 @@ var buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoi
     buy: function buy(type, id) {
       var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        var _buy_api, _buy_api2, response, url, data, form, key, input;
+        var response, url, data, form, key, input;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               if (type == "mycard") {
-                _buy_api = buy_api_mycard;
+                buy_api = buy_api_mycard;
               } else {
-                _buy_api2 = buy_api_funpoint;
+                buy_api = buy_api_funpoint;
               }
+              console.log(buy_api);
               if (!(_this4.clickWall == 0)) {
-                _context4.next = 19;
+                _context4.next = 20;
                 break;
               }
               _this4.clickWall = 1;
               if (!(_this4.accountData.GameUID !== null && _this4.accountData.server !== "0" && _this4.accountData["char"] !== null)) {
-                _context4.next = 17;
+                _context4.next = 18;
                 break;
               }
-              _context4.prev = 4;
-              _context4.next = 7;
+              _context4.prev = 5;
+              _context4.next = 8;
               return axios.post(buy_api, {
                 type: type,
                 GameUID: _this4.accountData.GameUID,
@@ -20888,7 +20889,7 @@ var buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoi
                 "char": _this4.accountData["char"],
                 GameCode: "CMTW"
               });
-            case 7:
+            case 8:
               response = _context4.sent;
               // form 表單發送
               if (response.data.status == 1 && type == "credit") {
@@ -20933,24 +20934,24 @@ var buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoi
                 _this4.popEVisable("系統無此商品，請重整畫面，重新選擇商品");
                 _this4.clickWall = 0;
               }
-              _context4.next = 15;
+              _context4.next = 16;
               break;
-            case 11:
-              _context4.prev = 11;
-              _context4.t0 = _context4["catch"](4);
+            case 12:
+              _context4.prev = 12;
+              _context4.t0 = _context4["catch"](5);
               console.error("Error:", _context4.t0);
               _this4.clickWall = 0;
-            case 15:
-              _context4.next = 19;
+            case 16:
+              _context4.next = 20;
               break;
-            case 17:
+            case 18:
               _this4.popEVisable("請先登入帳號，及選擇伺服器、角色");
               _this4.clickWall = 0;
-            case 19:
+            case 20:
             case "end":
               return _context4.stop();
           }
-        }, _callee4, null, [[4, 11]]);
+        }, _callee4, null, [[5, 12]]);
       }))();
     },
     // 儲值tab切換
