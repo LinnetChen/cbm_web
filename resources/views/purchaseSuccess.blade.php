@@ -21,14 +21,23 @@
     <meta name="Resource-type" content="Document">
     <meta name="description" content="《黑色契約MOBILE》遊戲商城">
 </head>
+
 <body>
     <div class="purchaseSuccessBg">
         <div class="purchaseSuccess">
             <div class="title">購買成功</div>
             <img src="/img/gameMall/propImg.png" />
-            <div class="name">鑽石100顆</div>
+            <div class="name"></div>
             <a href="https://cbm.digeam.com/gameMall" class="backHomeBtn">返回商城</a>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var url = location.href.split("?");
+            var name = (url[url.length - 1]);
+            document.querySelector('.name').textContent = name;
+        });
+    </script>
 </body>
+
 </html>
