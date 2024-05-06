@@ -44,3 +44,10 @@ if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP
 Route::get('/gameMall', function () {
     return view('gameMall_index');
 });
+Route::get('/purchaseSuccess', function () {
+    return view('purchaseSuccess');
+});
+
+Route::get('/purchaseFailed', function () {
+    return view('purchaseFailed');
+});

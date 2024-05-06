@@ -7,17 +7,17 @@ footer.section {
     align-items: center;
     color: #fff;
     background-color: #000;
-    @include lg{
+    @include lg {
         height: 180px;
     }
-    @include m3d{
+    @include m3d {
         height: 215px;
     }
     @include md {
         flex-direction: column;
         align-items: center;
         height: 190px;
-        justify-content: space-evenly
+        justify-content: space-evenly;
     }
 
     .footerbox_logo {
@@ -25,7 +25,7 @@ footer.section {
         justify-content: space-evenly;
         align-items: center;
         margin-right: 1rem;
-        
+
         .logo_digeam {
             margin-right: 1rem;
             object-fit: contain;
@@ -33,23 +33,23 @@ footer.section {
         .est_icon {
             object-fit: contain;
             pointer-events: none;
-            filter:invert(1);
+            filter: invert(1);
         }
     }
-    
+
     .spec {
         width: 25%;
 
-        @include md{
+        @include md {
             width: 40%;
         }
-        @include mmd{
+        @include mmd {
             width: 55%;
         }
-        @include xxs{
+        @include xxs {
             width: 80%;
         }
-        
+
         a {
             color: #00b4ff;
             text-decoration: underline;
@@ -62,8 +62,11 @@ footer.section {
         }
         .Copyright {
             color: #fff;
-            font-size: .8rem;
+            font-size: 0.8rem;
             line-height: 1.1rem;
+            @include sm {
+                font-size: 0.5rem;
+            }
         }
     }
 
@@ -71,7 +74,7 @@ footer.section {
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         img {
             width: 12%;
             height: 100%;
@@ -82,13 +85,14 @@ footer.section {
         }
         li {
             color: #fff;
-            font-size: .8rem;
+            font-size: 0.8rem;
             line-height: 1.1rem;
             &:nth-child(4) {
                 color: #00b4ff;
             }
+            @include sm {
+                font-size: 0.7rem;
+            }
         }
     }
 }
-
-
