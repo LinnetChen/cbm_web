@@ -22,6 +22,7 @@
         <div class="store"> 
           <a href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/Google.png"></a> 
           <a href="https://apps.apple.com/TW/app/id6476968999" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/Ios.png"></a> 
+          <a href="#" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/apk.png"></a> 
         </div>
       </div>
     </header>
