@@ -13,7 +13,7 @@ class preregController extends Controller
     public function index(Request $request)
     {
         //活動時間判斷
-        if (date('YmdHis') > '20240505235959') {
+        if (date('YmdHis') > '20240513120000') {
             return response()->json([
                 'status' => -90,
             ]);

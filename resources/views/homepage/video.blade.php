@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title', '《黑色契約MOBILE》影片展示')
+@section('og:title', '《黑色契約MOBILE》影片展示')
+@section('og:url', 'https://cbm.digeam.com/video')
 @section('css')
 	<link rel="stylesheet" href="/css/homepage/jquery.popup.css">
 	<link rel="stylesheet" href="/css/homepage/page.css">

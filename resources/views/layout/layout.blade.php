@@ -14,9 +14,9 @@
     <meta property="og:image" content="/img/prereg/share.png">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/homepage/normalize.css">
-    <link rel="stylesheet" href="/css/homepage/common.css">
+    <link rel="stylesheet" href="/css/homepage/common.css?v=6">
     @yield('css')
-    <link rel="stylesheet" href="/css/homepage/mobile.css">
+    <link rel="stylesheet" href="/css/homepage/mobile.css?v=10">
     <link rel="icon" href="/img/homepage/favicon.ico">
 
     <script>
@@ -70,6 +70,7 @@
         <a class="btn_dc" href="https://discord.gg/YyPkJrwqvs" target="_blank" title="Discord"><img src="/img/homepage/main/dcIcon.png"></a> 
         <a class="btn_gm" href="https://forum.gamer.com.tw/A.php?bsn=36485" target="_blank" title="巴哈姆特"><img src="/img/homepage/main/bahaIcon.png"></a> 
       </div>
+      <div class="logo_area"><img src="/img/homepage/main/nav_logo.png"></div>
     	<div class="store_m">
         <a href="https://apps.apple.com/TW/app/id6476968999" target="_blank" id="ios_m"><img src="/img/homepage/main/Ios.png"></a>
         <a href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw" target="_blank" id="aos_m"><img src="/img/homepage/main/Google.png"></a>
@@ -103,19 +104,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.0/swiper-bundle.min.js"></script> 
-    <script src="/js/homepage/action.js?v=2"></script>
+    <script src="/js/homepage/action.js?v=21"></script>
     <script>
       $(function () {
         var userAgent = (navigator.platform).toLowerCase();
 
-        if (userAgent.includes('android')) {
-          $('#ios_m').css('display','none');
-        }
-        if (userAgent.includes('win')) {
-          $('#ios_m').css('display','none');
-        }
         if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
           $('#aos_m').css('display','none');
+        } else {
+          $('#ios_m').css('display','none');
         }
       });
     </script>

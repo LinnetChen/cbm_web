@@ -128,9 +128,25 @@
             <div class="warText"><img src="/img/homepage/s2/warBlueTitle.png"></div>
           </div>
           <div class="warScore">
-            <div class="score blueScore">0</div>
-        <div class="textDeco"><img src="/img/homepage/s2/wartextDeco.png"></div>
-            <div class="score redScore">0</div>        
+            @if ($result->data->warResult == null)
+            <div class="score blueScore">00</div>
+            @else
+                @if ($result->data->warResult->capella < 10)
+                <div class="score blueScore">0{{ $result->data->warResult->capella }}</div>
+                @else
+                <div class="score blueScore">{{ $result->data->warResult->capella }}</div>
+                @endif
+            @endif
+            <div class="textDeco"><img src="/img/homepage/s2/wartextDeco.png"></div>
+            @if ($result->data->warResult == null)
+            <div class="score redScore">00</div>
+            @else
+                @if ($result->data->warResult->procyon < 10)
+                <div class="score redScore">0{{ $result->data->warResult->procyon }}</div>
+                @else
+                <div class="score redScore">{{ $result->data->warResult->procyon }}</div>
+                @endif 
+            @endif    
         </div>
           <div class="warRed">
             <div class="warIcon"><img src="/img/homepage/s2/warRedIconBling.png"></div>
@@ -227,7 +243,7 @@
                 <div class="charInfo">
                   <div class="charTop">
                     <div class="charTitle"><img src="/img/homepage/s3/char05_tit.png"></div>
-                    <div class="charVideo charVideo05"> <a href="https://www.youtube.com/embed/xxxxxx" data-action="watch-video"></a></div>
+                    <div class="charVideo charVideo05"> <a href="https://www.youtube.com/embed/z9gSAcgYDbA" data-action="watch-video"></a></div>
                   </div>
                   <div class="charTextImg"><img src="/img/homepage/s3/char05_text.png"></div>
                   <div class="charText">
@@ -281,7 +297,7 @@
                 <div class="charInfo">
                   <div class="charTop">
                     <div class="charTitle"><img src="/img/homepage/s3/char08_tit.png"></div>
-                    <div class="charVideo charVideo08"> <a href="https://www.youtube.com/embed/xxxxxx" data-action="watch-video"></a></div>
+                    <div class="charVideo charVideo08"> <a href="https://www.youtube.com/embed/Roj1W0_Fvgk" data-action="watch-video"></a></div>
                   </div>
                   <div class="charTextImg"><img src="/img/homepage/s3/char08_text.png"></div>
                   <div class="charText">
@@ -299,7 +315,7 @@
                 <div class="charInfo">
                   <div class="charTop">
                     <div class="charTitle"><img src="/img/homepage/s3/char09_tit.png"></div>
-                    <div class="charVideo charVideo09"> <a href="https://www.youtube.com/embed/xxxxxx" data-action="watch-video"></a></div>
+                    <div class="charVideo charVideo09"> <a href="https://www.youtube.com/embed/5OeeBapc4Tg" data-action="watch-video"></a></div>
                   </div>
                   <div class="charTextImg"><img src="/img/homepage/s3/char09_text.png"></div>
                   <div class="charText">

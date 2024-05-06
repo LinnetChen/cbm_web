@@ -12,13 +12,19 @@ $(function () {
 	
 	/*-----TOP-----*/
     $(function () {
+        var top_click = false;
         $("#gotop").click(function () {
-            jQuery("html,body").animate({
-                scrollTop: 0
-            }, 1000);
+            if(top_click == false) {
+                top_click = true;
+                jQuery("html,body").animate({
+                    scrollTop: 0
+                }, 1000 , function(){
+                    top_click = false;
+                });
+            }
         });
         $(window).scroll(function () {
-            if ($(this).scrollTop() > 300) {
+            if ($(this).scrollTop() > 450) {
                 $('#gotop').fadeIn("fast");
             } else {
                 $('#gotop').stop().fadeOut("fast");
@@ -98,10 +104,10 @@ $(function () {
         creativeEffect: {
             prev: {
                 shadow: false,
-                translate: ["100%", 0, -1],
+                translate: ["-100%", 0, -250],
             },
             next: {
-                translate: ["100%", 0, 0],
+                translate: ["100%", 0, -250],
                 shadow: false,
             }
         },

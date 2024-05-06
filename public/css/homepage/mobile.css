@@ -100,10 +100,19 @@
         margin: 90px auto;
         position: relative;
         transform: scale(2);
+        width: 50%;
+    }
+    .logo_area {
+        margin: 10% auto;
+        z-index: -999;
+        position: relative;
+        display: block;
     }
     .store_m {
         display: block;
         transform: scale(2);
+        width: 50%;
+        margin: auto;
     }
     /*----mobile menu----*/
     .nav_bg {
@@ -232,8 +241,12 @@
     .mainVisualEffect {
         display: none;
     }
+    header .store {
+        margin-top: -25%;
+    }
     .store {
         margin: 370px auto 5%;
+        padding-bottom: 40%;
     }
     .store.apk {
         margin: 4px auto 60px;
@@ -247,6 +260,7 @@
     /*----s2----*/
     .warScore {
         width: 40%;
+        margin-left: -18px;
     }
     /*----classes----*/
     .char .tabs {
@@ -316,8 +330,8 @@
     background: url(/img/homepage/war/warBlueBg.png) center top no-repeat;
 }
     .textDeco {
-        /* display: none; */
-        margin-left: 40px;
+        /* display: none;
+        margin-left: 40px; */
     }
     .rankbox_pc {
     display: none;

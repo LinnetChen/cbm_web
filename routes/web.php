@@ -38,9 +38,7 @@ if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP
 
     Route::get('/video', 'homepage\FrontController@video')->name('video');
 
-    Route::get('/war', function () {
-        return view('homepage/war');
-    });
+    Route::get('/war', 'homepage\FrontController@war')->name('war');
 }
 
 Route::get('/gameMall', function () {
