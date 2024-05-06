@@ -625,7 +625,7 @@
         }
         .title {
             font-family: "Noto Serif TC";
-            font-size: 1.6rem;
+            font-size: 2.1rem;
             font-weight: 900;
             background: linear-gradient(270deg, #fff 30%, #1f1f1f);
             background: -webkit-linear-gradient(270deg, #fff 30%, #1f1f1f);
@@ -634,11 +634,12 @@
             color: transparent;
             text-align: center;
             line-height: 2.8rem;
+            margin-bottom: .5rem;
         }
         .text {
             color: #fff;
             font-size: 1.3rem;
-            line-height: 1.8rem;
+            line-height: 2.2rem;
 
             ul li {
                 color: #fff;
@@ -653,9 +654,10 @@
         }
 
         .imgBox {
-            margin-top: 3.5rem;
+            margin-top: .5rem;
+            margin-bottom: 3.5rem;
             position: relative;
-            max-width: 170px;
+            // max-width: 170px;
         }
         .rewardCbmImg {
             max-width: 240px;
