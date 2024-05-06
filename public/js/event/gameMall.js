@@ -20499,8 +20499,7 @@ var setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商
 var login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 var server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
 var buy_api_mycard = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
-var buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
-var buy_api = "";
+var buy_api_funpoint = "https://mobileapi.digeam.com/api/funPoint"; //funPoint購買商品
 // Import Swiper Vue.js components
 
 
