@@ -755,6 +755,9 @@ export default {
                         });
                         // form 表單發送
                         if (response.data.status == 1 && type == "credit") {
+                            this.loadingText = "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
+                            this.loadingVisible = true;
+                            
                             const url =
                                 "https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
 
