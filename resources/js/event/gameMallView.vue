@@ -640,8 +640,9 @@ export default {
         },
     },
     methods: {
-        handlePopstate() {
-            // 在發生回上一頁動作時將 loadingVisible 設置為 false
+        async handlePopstate() {
+            // 等待一小段時間再設置 loadingVisible
+            await new Promise((resolve) => setTimeout(resolve, 50));
             this.loadingVisible = false;
         },
         // 帳號判定API
@@ -732,8 +733,14 @@ export default {
         // 購買道具
         async buy(type, id) {
             if (type == "mycard") {
+                this.loadingText =
+                    "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
+                this.loadingVisible = true;
                 buy_api = buy_api_mycard;
             } else {
+                this.loadingText =
+                    "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
+                this.loadingVisible = true;
                 buy_api = buy_api_funpoint;
             }
 
@@ -755,11 +762,8 @@ export default {
                         });
                         // form 表單發送
                         if (response.data.status == 1 && type == "credit") {
-                            this.loadingText = "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
-                            this.loadingVisible = true;
-                            
                             const url =
-                                "https://payment-stage.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
+                                "https://payment.funpoint.com.tw/Cashier/AioCheckOut/V5"; // 信用卡 金流URL
 
                             // 塞入API res
                             const data = {
@@ -802,14 +806,14 @@ export default {
                             response.data.status == 1 &&
                             type == "mycard"
                         ) {
-                            this.loadingText = "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
                             // 跳轉到api傳送過來的網址
                             window.location = response.data.url;
-                            this.loadingVisible = true;
                         } else if (response.data.status == -99) {
+                            this.loadingVisible = false;
                             this.popEVisable("請先登入帳號UID");
                             this.clickWall = 0;
                         } else if (response.data.status == -98) {
+                            this.loadingVisible = false;
                             this.popEVisable(
                                 "系統無此商品，請重整畫面，重新選擇商品"
                             );
@@ -820,6 +824,7 @@ export default {
                         this.clickWall = 0;
                     }
                 } else {
+                    this.loadingVisible = false;
                     this.popEVisable("請先登入帳號，及選擇伺服器、角色");
                     this.clickWall = 0;
                 }
