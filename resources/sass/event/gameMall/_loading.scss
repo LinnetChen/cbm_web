@@ -9,8 +9,6 @@
 }
 
 .loader {
-    // width: 100%;
-    // border: #00b4ff 1px solid;
     font-family: "Noto Serif TC";
     position: absolute;
     top: 50%;
@@ -22,7 +20,7 @@
         font-weight: 700;
         color: #fff;
         text-shadow: 0 0 0 #fff;
-        animation: loading 2s ease-in-out infinite alternate;
+        animation: loading 1s ease-in-out infinite alternate;
 
         @for $i from 2 through 22 {
             &:nth-child(#{$i}) {

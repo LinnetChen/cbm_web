@@ -34,7 +34,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var url = location.href.split("?");
-            var name = (url[url.length - 1]);
+            var name = decodeURIComponent(url[url.length - 1]);
             document.querySelector('.name').textContent = name;
         });
     </script>
