@@ -1,21 +1,9 @@
 <template>
     <div class="loading-container" v-if="loadingVisible">
         <div class="loader">
-            <span>C</span>
-            <span>A</span>
-            <span>B</span>
-            <span>A</span>
-            <span>L</span>
-            <span>&nbsp;&nbsp;</span>
-            <span>M</span>
-            <span>O</span>
-            <span>B</span>
-            <span>I</span>
-            <span>L</span>
-            <span>E</span>
+            <span v-html="loadingText"></span>
         </div>
     </div>
-    <!-- <div class="barPC" v-if="screenWidth > 900"> -->
     <div class="barPC">
         <div class="menu">
             <div class="logo"><img src="/img/gameMall/MLogo.png" /></div>
@@ -396,8 +384,7 @@ let setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商
 let login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 let server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
 let buy_api_mycard = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
-let buy_api_funpoint = "https://testmobileapi.digeam.com/api/funPoint"; //funPoint購買商品
-let buy_api = "";
+let buy_api_funpoint = "https://mobileapi.digeam.com/api/funPoint"; //funPoint購買商品
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -422,7 +409,8 @@ export default {
     },
     data() {
         return {
-            loadingVisible: false,
+            loadingVisible: true,
+            loadingText: `<span>C</span><span>A</span><span>B</span><span>A</span><span>L</span><span>&nbsp;&nbsp;</span><span>M</span><span>O</span><span>B</span><span>I</span><span>L</span><span>E</span>`,
             slidesPerView: 3, //swiper預覽數量
             screenWidth: window.innerWidth, //螢幕寬度
             screenHeight: window.innerHeight, //螢幕高度
@@ -650,6 +638,10 @@ export default {
         },
     },
     methods: {
+        handlePopstate() {
+            // 在發生回上一頁動作時將 loadingVisible 設置為 false
+            this.loadingVisible = false;
+        },
         // 帳號判定API
         async UIDSubmit() {
             if (this.popUID.btnText == "確認") {
@@ -724,7 +716,9 @@ export default {
                     this.img_url = response.data.img_url;
                     this.item_lists = response.data.item_lists;
                     this.item_tab = response.data.item_tab;
-                    // this.accountData.GameUID = GameUID;
+                    setTimeout(() => {
+                        this.loadingVisible = false;
+                    }, 500);
                 } else if (response.data.status == -99) {
                     console.error("Status is not 1:", response.data);
                 }
@@ -803,8 +797,10 @@ export default {
                             response.data.status == 1 &&
                             type == "mycard"
                         ) {
+                            this.loadingText = "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
                             // 跳轉到api傳送過來的網址
                             window.location = response.data.url;
+                            this.loadingVisible = true;
                         } else if (response.data.status == -99) {
                             this.popEVisable("請先登入帳號UID");
                             this.clickWall = 0;
@@ -979,17 +975,17 @@ export default {
         // API位址
         this.setting();
 
+        // 監聽瀏覽器歷史記錄的變化
+        window.addEventListener("popstate", this.handlePopstate);
+
         // 監聽瀏覽器縮放
         window.addEventListener("resize", this.updateScreenWidth);
-
-        setTimeout(() => {
-            this.loadingVisible = false;
-        }, 50);
     },
 
     beforeUnmount() {
         // 組件銷毀前移除事件監聽
         window.removeEventListener("resize", this.updateScreenWidth);
+        window.removeEventListener("popstate", this.handlePopstate);
     },
 };
 </script>
