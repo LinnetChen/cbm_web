@@ -127,7 +127,6 @@
             }
         }
         img {
-            // border: 1px solid blue;
             width: 100%;
             height: 100%;
             max-width: 215px;
@@ -258,7 +257,6 @@
             }
         }
         .left {
-            // background-color: #ffffff2f;
             padding: 3% 0;
             height: 85%;
             width: 35%;
@@ -275,7 +273,6 @@
             @include xxs {
             }
             img {
-                // border: 1px solid blue;
                 width: 100%;
                 height: 100%;
                 max-width: 215px;
@@ -361,7 +358,6 @@
         min-height: 400px;
         max-height: 400px;
         color: #fff;
-        // top: -20%;
         left: 0.5%;
         cursor: pointer;
         @include x3s {
@@ -371,9 +367,6 @@
     }
 }
 .popUID {
-    // @include x3s {
-    //     flex-direction: column;
-    // }
     .popBg {
         z-index: 1;
         width: 80%;
@@ -475,13 +468,11 @@
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
-            // border: 1px solid blue;
             .inputAccount,
             .selectServer,
             .selectCharacter {
                 width: 100%;
                 height: 20%;
-                // border: 1px solid blue;
                 display: flex;
                 justify-content: space-between;
                 align-items: baseline;
@@ -505,7 +496,6 @@
             label {
                 color: #fff;
                 width: 25%;
-                // border: 1px solid red;
                 font-size: 1.3rem;
             }
             input,
@@ -524,7 +514,6 @@
             }
         }
         button {
-            // border: 1px solid blue;
             position: absolute;
             bottom: 10px;
             font-size: 1.3rem;
@@ -535,7 +524,6 @@
         }
     }
     .x {
-        // border: red solid 1px;
         height: 80%;
         max-height: 400px;
         min-height: 400px;
@@ -566,7 +554,6 @@
         background-color: #565656;
     }
     .popBg {
-        // border: 1px solid red;
         padding: 0 1rem;
         z-index: 1;
         width: 80%;
@@ -619,7 +606,6 @@
             }
         }
         .container {
-            // border: 1px solid blue;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -658,7 +644,6 @@
             margin-top: 0.5rem;
             margin-bottom: 3.5rem;
             position: relative;
-            // max-width: 170px;
         }
         .rewardCbmImg {
             max-width: 240px;
@@ -670,7 +655,6 @@
         }
     }
     .x {
-        // border: 1px solid red;
         color: #fff;
         height: 80%;
         max-height: 600px;

@@ -13,7 +13,6 @@
         background-color: rgb(0, 0, 0, 1);
     }
     .menu {
-        // border: 1px solid blue;
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -22,7 +21,6 @@
             width: 100%;
         }
         .logo {
-            // border: 1px solid blue;
             max-width: 256px;
             height: 91px;
             @include lg {
@@ -35,7 +33,6 @@
         }
 
         .menuList {
-            // border: 1px solid blue;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -61,10 +58,8 @@
                         0.1rem 0.1rem 1rem #000,
                         0.1rem 0.1rem 1rem #000;
                 }
-                // border: 1px solid blue;
             }
             .GameUID {
-                // border: 1px solid blue;
                 width: 50%;
                 height: 120%;
                 max-width: 200px;
@@ -175,7 +170,6 @@
 
     button,
     li {
-        // border: #00b4ff 1px solid;
         border: 0;
         font-size: 1.2rem;
         font-weight: 700;
@@ -187,7 +181,6 @@
         line-height: 4.7rem;
     }
     .GameUID {
-        // border: #00b4ff 1px solid;
         display: flex;
         justify-content: center;
         span {
