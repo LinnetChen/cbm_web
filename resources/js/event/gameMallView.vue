@@ -6,7 +6,11 @@
     </div>
     <div class="barPC">
         <div class="menu">
-            <div class="logo"><img src="/img/gameMall/MLogo.png" /></div>
+            <div class="logo">
+                <a href="https://cbm.digeam.com/index"
+                    ><img src="/img/gameMall/MLogo.png"
+                /></a>
+            </div>
             <ul class="menuList" v-if="screenWidth > 900">
                 <button class="cardValue" @click="popBVisable(0)">
                     儲值教學​
@@ -199,8 +203,6 @@
                     {{ popMiddle.name }}<br />
                     <span class="price">{{ popMiddle.price }}</span>
                 </div>
-                <!-- <div class="name">{{ popMiddle.name }}</div> -->
-                <!-- <div class="price">{{ popMiddle.price }}</div> -->
             </div>
             <div class="right" v-html="popMiddle.text"></div>
             <div class="btnBox">
@@ -271,7 +273,6 @@
                 class="swiperBox"
                 v-for="(item, index) in repeatedImgUrl"
                 :key="index"
-
             >
                 <a v-if="item.url == ''">
                     <img :src="item.img_url" />
@@ -427,33 +428,9 @@ export default {
             // 商品分類tab目前選擇
             commodityTab: "diamondTab",
 
-            item_lists: [
-                {
-                    id: 27,
-                    item_name: "100000力量晶石",
-                    ntd_price: 50000,
-                    item_cate: "normal",
-                    img: "https://mobileimg.digeam.com/upload/items/6c92184f8e63bf3f2904719eab9a0e32.png",
-                    content: null,
-                    payment: 1,
-                },
-            ],
+            item_lists: [{}],
             img_url: [{}],
-            img_url2: [
-                {
-                    id: 5,
-                    file_name: "upload/bn/0506.png",
-                    url: "",
-                    game_code: "CMTW_M",
-                    sort: 1,
-                    status: "Y",
-                    created_at: "2024-05-06T09:11:00.000000Z",
-                    updated_at: "2024-05-06T09:11:00.000000Z",
-                    img_url: "https://mobileimg.digeam.com/upload/bn/0506.png",
-                    target: "",
-                },
-            ],
-            repeatedImgUrl: [],
+            repeatedImgUrl: [], //img_url物件重複兩次
 
             // 玩家UID當前資料
             accountData: {
@@ -473,15 +450,15 @@ export default {
                     title1: "creditValue​",
                     img1: "",
                     text1: "",
-                    img2: "/img/20240403_joinAct/rewardCbImg2.png",
-                    text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。",
+                    img2: "/img/gameMall/.png",
+                    text2: "文字",
                 },
                 myCardValue: {
                     title1: "myCardValue​",
                     img1: "",
                     text1: "",
-                    img2: "/img/20240403_joinAct/rewardCbImg2.png",
-                    text2: "裝有Lv.4 GM祝福的聖水，使用後大幅提升角色能力值，持續1小時，不可交易。",
+                    img2: "/img/gameMall/.png",
+                    text2: "文字",
                 },
                 noticeValue: {
                     Ul: `
@@ -507,10 +484,10 @@ export default {
             },
             popMiddle: {
                 visable: false,
-                img: "/img/gameMall/propImg.png",
-                name: "1000鑽​",
-                price: "100TWD",
-                text: "2<br>32<br>32<br>32<br>32<br>32<br><br><br><br>3",
+                img: "",
+                name: "​",
+                price: "",
+                text: "",
                 payment: "",
             },
             popUID: {
@@ -672,15 +649,12 @@ export default {
 
         // 購買道具
         async buy(type, id) {
+            // this.loadingText =
+            //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
+            // this.loadingVisible = true;
             if (type == "mycard") {
-                // this.loadingText =
-                //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
-                // this.loadingVisible = true;
                 buy_api = buy_api_mycard;
             } else {
-                // this.loadingText =
-                //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
-                // this.loadingVisible = true;
                 buy_api = buy_api_funpoint;
             }
 
@@ -751,7 +725,6 @@ export default {
                             type == "mycard"
                         ) {
                             // 跳轉到api傳送過來的網址
-                            // window.location = response.data.url;
                             window.open(response.data.url, "_blank");
                             this.popSmall.visable = false;
                             this.popEmpty.visable = false;
@@ -974,7 +947,6 @@ export default {
 .swiper-button-next {
     right: 30%;
     @media all and (max-width: 960px) {
-        // right: 5%;
         display: none;
     }
 }
@@ -982,7 +954,6 @@ export default {
     left: 30%;
     transform: scaleX(-1);
     @media all and (max-width: 960px) {
-        // left: 5%;
         display: none;
     }
 }
