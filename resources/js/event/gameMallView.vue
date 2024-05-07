@@ -263,18 +263,18 @@
             :pagination="{ clickable: true }"
             :slides-per-view="slidesPerView"
             :space-between="0"
-            :autoplay="{ delay: 2500, disableOnInteraction: false }"
+            :autoplay="{ delay: 5000, disableOnInteraction: false }"
             @slideChange="onSlideChange"
             class="mySwiper"
         >
             <swiper-slide
                 class="swiperBox"
-                v-for="(item, index) in img_url3"
+                v-for="(item, index) in repeatedImgUrl"
                 :key="index"
+
             >
                 <a :href="item.url" :target="item.target">
-                    <!-- <img :src="item.img_url" /> -->
-                    <img src="/img/gameMall/imgTest.jpg" />
+                    <img :src="item.img_url" />
                 </a>
             </swiper-slide>
         </swiper>
@@ -426,101 +426,36 @@ export default {
 
             item_lists: [
                 {
-                    id: "1",
-                    item_name: "211鑽",
-                    img: "/img/gameMall/propImg.png",
-                    ntd_price: "1700TWD",
-                    content: "1233",
+                    id: 27,
+                    item_name: "100000力量晶石",
+                    ntd_price: 50000,
                     item_cate: "normal",
+                    img: "https://mobileimg.digeam.com/upload/items/6c92184f8e63bf3f2904719eab9a0e32.png",
+                    content: null,
                     payment: 1,
-                },
-                {
-                    id: "2",
-                    item_name: "244鑽",
-                    img: "/img/gameMall/propImg.png",
-                    ntd_price: "1780TWD",
-                    content: "15555",
-                    item_cate: "sale",
-                },
-                {
-                    id: "3",
-                    item_name: "555鑽",
-                    img: "/img/gameMall/propImg.png",
-                    ntd_price: "1550TWD",
-                    content: "15555",
-                    item_cate: "gift",
                 },
             ],
             img_url: [{}],
             img_url2: [
                 {
-                    id: 1,
-                    file_name: "upload/bn/2ac91f3a1dcffb353ebbf3f3db41aae1.jpg",
-                    url: "#",
-                    type: "CMTW_M",
+                    id: 5,
+                    file_name: "upload/bn/0506.png",
+                    url: "",
+                    game_code: "CMTW_M",
                     sort: 1,
                     status: "Y",
-                    created_at: "2024-04-19T07:56:27.000000Z",
-                    updated_at: "2024-04-19T07:56:27.000000Z",
-                    img_url:
-                        "http://192.168.0.43/upload/bn/2ac91f3a1dcffb353ebbf3f3db41aae1.jpg",
-                },
-                {
-                    id: 2,
-                    file_name: "upload/bn/6c79383ce8973a6280ca5f9304a53221.jpg",
-                    url: "#",
-                    type: "CMTW_M",
-                    sort: 2,
-                    status: "Y",
-                    created_at: "2024-04-19T07:56:49.000000Z",
-                    updated_at: "2024-04-19T07:56:49.000000Z",
-                    img_url:
-                        "http://192.168.0.43/upload/bn/6c79383ce8973a6280ca5f9304a53221.jpg",
-                },
-                {
-                    id: 3,
-                    file_name: "upload/bn/7ed4f5b5e3c4c650cfb59d349b34139f.jpg",
-                    url: "#",
-                    type: "CMTW_M",
-                    sort: 3,
-                    status: "Y",
-                    created_at: "2024-04-19T07:57:02.000000Z",
-                    updated_at: "2024-04-19T07:57:02.000000Z",
-                    img_url:
-                        "http://192.168.0.43/upload/bn/7ed4f5b5e3c4c650cfb59d349b34139f.jpg",
-                },
-            ],
-            img_url3: [
-                {
-                    href: "",
+                    created_at: "2024-05-06T09:11:00.000000Z",
+                    updated_at: "2024-05-06T09:11:00.000000Z",
+                    img_url: "https://mobileimg.digeam.com/upload/bn/0506.png",
                     target: "",
                 },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
             ],
+            repeatedImgUrl: [],
 
             // 玩家UID當前資料
             accountData: {
                 GameUID: "",
-                server: 1,
+                server: 0,
                 char: "",
             },
             charList: [], // api回傳 該伺服器 角色列表
@@ -562,7 +497,8 @@ export default {
                     img1: "/img/gameMall/teachUIDSerchImg01.png",
                     text2: "Step2：左下滑到下方，找到「資訊」。",
                     img2: "/img/gameMall/teachUIDSerchImg02.png",
-                    text3: "Step3：在資訊中，找到「UID」欄位，旁邊還有貼心的複製功能可以讓您快速的複製貼上唷！",
+                    text3: "Step3：在資訊中，找到「UID」欄位。",
+                    text4: "旁邊還有貼心的複製功能可以讓您快速的複製貼上唷！",
                     img3: "/img/gameMall/teachUIDSerchImg03.png",
                 },
             },
@@ -602,6 +538,14 @@ export default {
         };
     },
     computed: {
+        // repeatedImgUrl() {
+        //     // 讓img_url的物件重複2次，因為少於3張會報錯+尺寸出錯
+        //     const repeatedArray = [];
+        //     for (let i = 0; i < 2; i++) {
+        //         repeatedArray.push(...this.img_url);
+        //     }
+        //     return repeatedArray;
+        // },
         items() {
             if (this.popBig.titleType == 0) {
                 if (this.popBig.tabType == "creditValue") {
@@ -650,7 +594,7 @@ export default {
             if (this.popUID.btnText == "確認") {
                 // 選角色.伺服 階段
                 this.accountData.GameUID = this.popUID.GameUID;
-                if (this.popUID.server == 0 || this.popUID.char == null) {
+                if (this.popUID.server == 0 || this.popUID.char == "") {
                     this.popUID.errorText = "*請選擇伺服器、角色";
                 } else {
                     this.accountData.server = this.popUID.server;
@@ -717,6 +661,7 @@ export default {
                 });
                 if (response.data.status == 1) {
                     this.img_url = response.data.img_url;
+                    this.repeatedImgUrl = [...this.img_url, ...this.img_url];
                     this.item_lists = response.data.item_lists;
                     this.item_tab = response.data.item_tab;
                     setTimeout(() => {
@@ -733,14 +678,14 @@ export default {
         // 購買道具
         async buy(type, id) {
             if (type == "mycard") {
-                this.loadingText =
-                    "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
-                this.loadingVisible = true;
+                // this.loadingText =
+                //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
+                // this.loadingVisible = true;
                 buy_api = buy_api_mycard;
             } else {
-                this.loadingText =
-                    "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
-                this.loadingVisible = true;
+                // this.loadingText =
+                //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
+                // this.loadingVisible = true;
                 buy_api = buy_api_funpoint;
             }
 
@@ -786,6 +731,7 @@ export default {
                             const form = document.createElement("form");
                             form.method = "POST"; // 提交方法為 POST
                             form.action = url; // 表單 action 屬性為目標 URL
+                            form.target = "_blank"; //另開分頁
                             form.style.display = "none"; // 隱藏表單
 
                             // 將數據添加到 form 中作為 input 元素
@@ -801,13 +747,21 @@ export default {
                             document.body.appendChild(form);
                             form.submit();
 
+                            this.popSmall.visable = false;
+                            this.popEmpty.visable = false;
+                            this.popMiddle.visable = false;
                             this.clickWall = 0;
                         } else if (
                             response.data.status == 1 &&
                             type == "mycard"
                         ) {
                             // 跳轉到api傳送過來的網址
-                            window.location = response.data.url;
+                            // window.location = response.data.url;
+                            window.open(response.data.url, "_blank");
+                            this.popSmall.visable = false;
+                            this.popEmpty.visable = false;
+                            this.popMiddle.visable = false;
+                            this.clickWall = 0;
                         } else if (response.data.status == -99) {
                             this.loadingVisible = false;
                             this.popEVisable("請先登入帳號UID");
@@ -1025,19 +979,25 @@ export default {
 .swiper-button-next {
     right: 30%;
     @media all and (max-width: 960px) {
-        right: 5%;
+        // right: 5%;
+        display: none;
     }
 }
 .swiper-button-prev {
     left: 30%;
     transform: scaleX(-1);
     @media all and (max-width: 960px) {
-        left: 5%;
+        // left: 5%;
+        display: none;
     }
 }
 .swiper-slide {
     -webkit-filter: brightness(0.1);
     opacity: 1;
+    // transform: translate3d(0,0,0);
+    // & *{
+    //     transform: translate3d(0,0,0);
+    // }
     @media all and (max-width: 960px) {
         -webkit-filter: brightness(1);
         opacity: 1;
