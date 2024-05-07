@@ -25,8 +25,7 @@
 <body>
     <div class="purchaseSuccessBg">
         <div class="purchaseSuccess">
-            <div class="title">購買失敗</div>
-            <div class="name"></div>
+            <div class="title"></div>
             <a href="https://cbm.digeam.com/gameMall" class="backHomeBtn">返回商城</a>
         </div>
     </div>
@@ -34,7 +33,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             var url = location.href.split("?");
             var name = decodeURIComponent(url[url.length - 1]);
-            document.querySelector('.name').textContent = name;
+            document.querySelector('.title').textContent = name;
         });
     </script>
 </body>
