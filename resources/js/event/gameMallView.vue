@@ -273,7 +273,10 @@
                 :key="index"
 
             >
-                <a :href="item.url" :target="item.target">
+                <a v-if="item.url == ''">
+                    <img :src="item.img_url" />
+                </a>
+                <a v-else :href="item.url" :target="item.target">
                     <img :src="item.img_url" />
                 </a>
             </swiper-slide>
@@ -538,14 +541,6 @@ export default {
         };
     },
     computed: {
-        // repeatedImgUrl() {
-        //     // 讓img_url的物件重複2次，因為少於3張會報錯+尺寸出錯
-        //     const repeatedArray = [];
-        //     for (let i = 0; i < 2; i++) {
-        //         repeatedArray.push(...this.img_url);
-        //     }
-        //     return repeatedArray;
-        // },
         items() {
             if (this.popBig.titleType == 0) {
                 if (this.popBig.tabType == "creditValue") {
@@ -992,18 +987,16 @@ export default {
     }
 }
 .swiper-slide {
+    pointer-events: none;
     -webkit-filter: brightness(0.1);
     opacity: 1;
-    // transform: translate3d(0,0,0);
-    // & *{
-    //     transform: translate3d(0,0,0);
-    // }
     @media all and (max-width: 960px) {
         -webkit-filter: brightness(1);
         opacity: 1;
     }
 }
 .swiper-slide-active + .swiper-slide {
+    pointer-events: auto;
     -webkit-filter: brightness(1);
     scale: 1;
     opacity: 1;

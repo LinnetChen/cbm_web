@@ -30,6 +30,13 @@
             <a href="https://cbm.digeam.com/gameMall" class="backHomeBtn">返回商城</a>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var url = location.href.split("?");
+            var name = decodeURIComponent(url[url.length - 1]);
+            document.querySelector('.name').textContent = name;
+        });
+    </script>
 </body>
 
 </html>
