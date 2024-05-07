@@ -263,7 +263,7 @@
             :pagination="{ clickable: true }"
             :slides-per-view="slidesPerView"
             :space-between="0"
-            :autoplay="{ delay: 2500, disableOnInteraction: false }"
+            :autoplay="{ delay: 5000, disableOnInteraction: false }"
             @slideChange="onSlideChange"
             class="mySwiper"
         >
@@ -271,7 +271,7 @@
                 class="swiperBox"
                 v-for="(item, index) in repeatedImgUrl"
                 :key="index"
-                style="width: auto"
+
             >
                 <a :href="item.url" :target="item.target">
                     <img :src="item.img_url" />
@@ -426,101 +426,36 @@ export default {
 
             item_lists: [
                 {
-                    id: "1",
-                    item_name: "211鑽",
-                    img: "/img/gameMall/propImg.png",
-                    ntd_price: "1700TWD",
-                    content: "1233",
+                    id: 27,
+                    item_name: "100000力量晶石",
+                    ntd_price: 50000,
                     item_cate: "normal",
+                    img: "https://mobileimg.digeam.com/upload/items/6c92184f8e63bf3f2904719eab9a0e32.png",
+                    content: null,
                     payment: 1,
-                },
-                {
-                    id: "2",
-                    item_name: "244鑽",
-                    img: "/img/gameMall/propImg.png",
-                    ntd_price: "1780TWD",
-                    content: "15555",
-                    item_cate: "sale",
-                },
-                {
-                    id: "3",
-                    item_name: "555鑽",
-                    img: "/img/gameMall/propImg.png",
-                    ntd_price: "1550TWD",
-                    content: "15555",
-                    item_cate: "gift",
                 },
             ],
             img_url: [{}],
             img_url2: [
                 {
-                    id: 1,
-                    file_name: "upload/bn/2ac91f3a1dcffb353ebbf3f3db41aae1.jpg",
-                    url: "#",
-                    type: "CMTW_M",
+                    id: 5,
+                    file_name: "upload/bn/0506.png",
+                    url: "",
+                    game_code: "CMTW_M",
                     sort: 1,
                     status: "Y",
-                    created_at: "2024-04-19T07:56:27.000000Z",
-                    updated_at: "2024-04-19T07:56:27.000000Z",
-                    img_url:
-                        "http://192.168.0.43/upload/bn/2ac91f3a1dcffb353ebbf3f3db41aae1.jpg",
-                },
-                {
-                    id: 2,
-                    file_name: "upload/bn/6c79383ce8973a6280ca5f9304a53221.jpg",
-                    url: "#",
-                    type: "CMTW_M",
-                    sort: 2,
-                    status: "Y",
-                    created_at: "2024-04-19T07:56:49.000000Z",
-                    updated_at: "2024-04-19T07:56:49.000000Z",
-                    img_url:
-                        "http://192.168.0.43/upload/bn/6c79383ce8973a6280ca5f9304a53221.jpg",
-                },
-                {
-                    id: 3,
-                    file_name: "upload/bn/7ed4f5b5e3c4c650cfb59d349b34139f.jpg",
-                    url: "#",
-                    type: "CMTW_M",
-                    sort: 3,
-                    status: "Y",
-                    created_at: "2024-04-19T07:57:02.000000Z",
-                    updated_at: "2024-04-19T07:57:02.000000Z",
-                    img_url:
-                        "http://192.168.0.43/upload/bn/7ed4f5b5e3c4c650cfb59d349b34139f.jpg",
-                },
-            ],
-            img_url3: [
-                {
-                    href: "",
+                    created_at: "2024-05-06T09:11:00.000000Z",
+                    updated_at: "2024-05-06T09:11:00.000000Z",
+                    img_url: "https://mobileimg.digeam.com/upload/bn/0506.png",
                     target: "",
                 },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
-                {
-                    href: "#",
-                    target: "_blank",
-                },
             ],
+            repeatedImgUrl: [],
 
             // 玩家UID當前資料
             accountData: {
                 GameUID: "",
-                server: 1,
+                server: 0,
                 char: "",
             },
             charList: [], // api回傳 該伺服器 角色列表
@@ -603,14 +538,14 @@ export default {
         };
     },
     computed: {
-        repeatedImgUrl() {
-            // 讓img_url的物件重複2次，因為少於3張會報錯+尺寸出錯
-            const repeatedArray = [];
-            for (let i = 0; i < 2; i++) {
-                repeatedArray.push(...this.img_url);
-            }
-            return repeatedArray;
-        },
+        // repeatedImgUrl() {
+        //     // 讓img_url的物件重複2次，因為少於3張會報錯+尺寸出錯
+        //     const repeatedArray = [];
+        //     for (let i = 0; i < 2; i++) {
+        //         repeatedArray.push(...this.img_url);
+        //     }
+        //     return repeatedArray;
+        // },
         items() {
             if (this.popBig.titleType == 0) {
                 if (this.popBig.tabType == "creditValue") {
@@ -653,14 +588,13 @@ export default {
             // 等待一小段時間再設置 loadingVisible
             await new Promise((resolve) => setTimeout(resolve, 50));
             this.loadingVisible = false;
-            console.log("handlePopstate");
         },
         // 帳號判定API
         async UIDSubmit() {
             if (this.popUID.btnText == "確認") {
                 // 選角色.伺服 階段
                 this.accountData.GameUID = this.popUID.GameUID;
-                if (this.popUID.server == 0 || this.popUID.char == null) {
+                if (this.popUID.server == 0 || this.popUID.char == "") {
                     this.popUID.errorText = "*請選擇伺服器、角色";
                 } else {
                     this.accountData.server = this.popUID.server;
@@ -727,6 +661,7 @@ export default {
                 });
                 if (response.data.status == 1) {
                     this.img_url = response.data.img_url;
+                    this.repeatedImgUrl = [...this.img_url, ...this.img_url];
                     this.item_lists = response.data.item_lists;
                     this.item_tab = response.data.item_tab;
                     setTimeout(() => {
@@ -1044,19 +979,25 @@ export default {
 .swiper-button-next {
     right: 30%;
     @media all and (max-width: 960px) {
-        right: 5%;
+        // right: 5%;
+        display: none;
     }
 }
 .swiper-button-prev {
     left: 30%;
     transform: scaleX(-1);
     @media all and (max-width: 960px) {
-        left: 5%;
+        // left: 5%;
+        display: none;
     }
 }
 .swiper-slide {
     -webkit-filter: brightness(0.1);
     opacity: 1;
+    // transform: translate3d(0,0,0);
+    // & *{
+    //     transform: translate3d(0,0,0);
+    // }
     @media all and (max-width: 960px) {
         -webkit-filter: brightness(1);
         opacity: 1;
