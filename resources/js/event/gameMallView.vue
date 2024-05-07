@@ -269,12 +269,12 @@
         >
             <swiper-slide
                 class="swiperBox"
-                v-for="(item, index) in img_url3"
+                v-for="(item, index) in repeatedImgUrl"
                 :key="index"
+                style="width: auto"
             >
                 <a :href="item.url" :target="item.target">
-                    <!-- <img :src="item.img_url" /> -->
-                    <img src="/img/gameMall/imgTest.jpg" />
+                    <img :src="item.img_url" />
                 </a>
             </swiper-slide>
         </swiper>
@@ -562,7 +562,8 @@ export default {
                     img1: "/img/gameMall/teachUIDSerchImg01.png",
                     text2: "Step2：左下滑到下方，找到「資訊」。",
                     img2: "/img/gameMall/teachUIDSerchImg02.png",
-                    text3: "Step3：在資訊中，找到「UID」欄位，旁邊還有貼心的複製功能可以讓您快速的複製貼上唷！",
+                    text3: "Step3：在資訊中，找到「UID」欄位。",
+                    text4: "旁邊還有貼心的複製功能可以讓您快速的複製貼上唷！",
                     img3: "/img/gameMall/teachUIDSerchImg03.png",
                 },
             },
@@ -602,6 +603,14 @@ export default {
         };
     },
     computed: {
+        repeatedImgUrl() {
+            // 讓img_url的物件重複2次，因為少於3張會報錯+尺寸出錯
+            const repeatedArray = [];
+            for (let i = 0; i < 2; i++) {
+                repeatedArray.push(...this.img_url);
+            }
+            return repeatedArray;
+        },
         items() {
             if (this.popBig.titleType == 0) {
                 if (this.popBig.tabType == "creditValue") {
@@ -644,6 +653,7 @@ export default {
             // 等待一小段時間再設置 loadingVisible
             await new Promise((resolve) => setTimeout(resolve, 50));
             this.loadingVisible = false;
+            console.log("handlePopstate");
         },
         // 帳號判定API
         async UIDSubmit() {
@@ -733,14 +743,14 @@ export default {
         // 購買道具
         async buy(type, id) {
             if (type == "mycard") {
-                this.loadingText =
-                    "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
-                this.loadingVisible = true;
+                // this.loadingText =
+                //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
+                // this.loadingVisible = true;
                 buy_api = buy_api_mycard;
             } else {
-                this.loadingText =
-                    "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>後</span>";
-                this.loadingVisible = true;
+                // this.loadingText =
+                //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
+                // this.loadingVisible = true;
                 buy_api = buy_api_funpoint;
             }
 
@@ -786,6 +796,7 @@ export default {
                             const form = document.createElement("form");
                             form.method = "POST"; // 提交方法為 POST
                             form.action = url; // 表單 action 屬性為目標 URL
+                            form.target = "_blank"; //另開分頁
                             form.style.display = "none"; // 隱藏表單
 
                             // 將數據添加到 form 中作為 input 元素
@@ -801,13 +812,21 @@ export default {
                             document.body.appendChild(form);
                             form.submit();
 
+                            this.popSmall.visable = false;
+                            this.popEmpty.visable = false;
+                            this.popMiddle.visable = false;
                             this.clickWall = 0;
                         } else if (
                             response.data.status == 1 &&
                             type == "mycard"
                         ) {
                             // 跳轉到api傳送過來的網址
-                            window.location = response.data.url;
+                            // window.location = response.data.url;
+                            window.open(response.data.url, "_blank");
+                            this.popSmall.visable = false;
+                            this.popEmpty.visable = false;
+                            this.popMiddle.visable = false;
+                            this.clickWall = 0;
                         } else if (response.data.status == -99) {
                             this.loadingVisible = false;
                             this.popEVisable("請先登入帳號UID");
