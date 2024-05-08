@@ -45,7 +45,7 @@
               <li class="active"><a href="#info_all">公告</a></li>
               <li class=""><a href="#info_event">活動</a></li>
               <li class=""><a href="#info_update">更新</a></li>
-              <a class="more" href="/news_list/all">More</a>
+              <a class="more" href="/newlist/all">More</a>
             </ul>
             <div class="info_container">
               <div class="info_box active" id ="info_all">

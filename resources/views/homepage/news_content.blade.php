@@ -17,21 +17,21 @@
 					@else
 						<li class="">
 					@endif
-					  		<a href="/news_list/all">公告</a>
+					  		<a href="/newlist/all">公告</a>
 					  	</li>
 					@if ($type == 'event')
 					  	<li class="active">
 					@else
 						<li class="">
 					@endif
-					  		<a href="/news_list/event">活動</a>
+					  		<a href="/newlist/event">活動</a>
 					  	</li>
 					@if ($type == 'system')
 					  	<li class="active">
 					@else
 						<li class="">
 					@endif
-					  		<a href="/news_list/system">更新</a>
+					  		<a href="/newlist/system">更新</a>
 					  	</li>
 				</ul>
 				<div class="news_content">

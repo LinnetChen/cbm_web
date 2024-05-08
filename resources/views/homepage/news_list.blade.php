@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title', '《黑色契約MOBILE》遊戲公告')
 @section('og:title', '《黑色契約MOBILE》遊戲公告')
-@section('og:url', 'https://cbm.digeam.com/news_list')
+@section('og:url', 'https://cbm.digeam.com/newlist')
 @section('css')
 	<link rel="stylesheet" href="/css/homepage/page.css?v=3">
 @endsection
@@ -58,7 +58,7 @@
 @section('js')
 	<script>
         _url = window.location.href
-        addActive = _url.split('news_list/').pop()
+        addActive = _url.split('newlist/').pop()
         if (addActive != 'all' && addActive != 'event' && addActive != 'system') {
             $('.all').addClass('active')
         } else {
@@ -67,7 +67,7 @@
 
 
         function newsClick(cate) {
-            document.location.href = "/news_list/" + cate
+            document.location.href = "/newlist/" + cate
         }
     </script>
 @endsection

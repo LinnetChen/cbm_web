@@ -32,7 +32,7 @@ if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP
 
     Route::get('/index', 'homepage\FrontController@index')->name('index');
 
-    Route::get('/news_list/{cate?}', 'homepage\FrontController@news_list')->name('news_list');
+    Route::get('/newlist/{cate?}', 'homepage\FrontController@news_list')->name('news_list');
 
     Route::get('/news_content/{id?}', 'homepage\FrontController@news_content')->name('news_content');
 
