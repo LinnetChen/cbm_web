@@ -740,7 +740,7 @@ export default {
                         } else if (response.data.status == -98) {
                             this.loadingVisible = false;
                             this.popEVisable(
-                                "系統無此商品，請重整畫面，重新選擇商品"
+                                "查無此帳號，請檢查您的UID帳號"
                             );
                             this.clickWall = 0;
                         }
