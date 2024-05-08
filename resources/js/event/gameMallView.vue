@@ -719,6 +719,7 @@ export default {
                             this.popSmall.visable = false;
                             this.popEmpty.visable = false;
                             this.popMiddle.visable = false;
+                            this.scrollLock();
                             this.clickWall = 0;
                         } else if (
                             response.data.status == 1 &&
@@ -729,6 +730,7 @@ export default {
                             this.popSmall.visable = false;
                             this.popEmpty.visable = false;
                             this.popMiddle.visable = false;
+                            this.scrollLock();
                             this.clickWall = 0;
                         } else if (response.data.status == -99) {
                             this.loadingVisible = false;

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>《黑色契約MOBILE》購買成功</title>
+    <title>《黑色契約MOBILE》購買失敗</title>
     <link rel="icon" sizes="192x192" href="/img/footer/favicon.ico">
     <link href="{{ mix('css/event/gameMall/style.css') }}" rel="stylesheet">
 
