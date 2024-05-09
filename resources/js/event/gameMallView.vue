@@ -755,7 +755,7 @@ export default {
                             const form = document.createElement("form");
                             form.method = "POST"; // 提交方法為 POST
                             form.action = url; // 表單 action 屬性為目標 URL
-                            form.target = "_blank"; //另開分頁
+                            form.target = "_blank";
                             form.style.display = "none"; // 隱藏表單
 
                             // 將數據添加到 form 中作為 input 元素
@@ -768,11 +768,19 @@ export default {
                             }
 
                             // 將 form 添加到文檔中，然後自動提交
-                            document.body.appendChild(form);
-                            form.submit();
+
+                            // document.body.appendChild(form);
+                            // form.submit();
+
+                            setTimeout(() => {
+                                document.body.appendChild(form);
+                                form.submit();
+                            }, 0);
+
                             // setTimeout(() => {
-                            //     form.submit();
                             //     window.open(url, "_blank");
+                            //     newWindow.document.body.appendChild(form);
+                            //     form.submit();
                             // }, 0);
 
                             this.popSmall.visable = false;
