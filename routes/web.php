@@ -22,21 +22,19 @@ Route::middleware(['setReturnUrl'])->group(function () {
     });
 });
 
+Route::get('/prereg1', function () {
+    return view('prereg1');
+});
+Route::get('/', 'homepage\FrontController@index');
+
+Route::get('/index', 'homepage\FrontController@index')->name('index');
+
+Route::get('/newlist/{cate?}', 'homepage\FrontController@news_list')->name('news_list');
+
+Route::get('/news_content/{id?}', 'homepage\FrontController@news_content')->name('news_content');
+
+Route::get('/video', 'homepage\FrontController@video')->name('video');
 if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP'] == '211.23.144.219')) {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('/prereg1', function () {
-        return view('prereg1');
-    });
-
-    Route::get('/index', 'homepage\FrontController@index')->name('index');
-
-    Route::get('/newlist/{cate?}', 'homepage\FrontController@news_list')->name('news_list');
-
-    Route::get('/news_content/{id?}', 'homepage\FrontController@news_content')->name('news_content');
-
-    Route::get('/video', 'homepage\FrontController@video')->name('video');
 
     Route::get('/war', 'homepage\FrontController@war')->name('war');
 }
