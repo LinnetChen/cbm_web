@@ -547,6 +547,21 @@ button, a, div {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .job_button, .job-pagination {
+    width: 80%;
+    margin: -100px auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 9;
+    position: relative;
+    cursor: pointer;
+}
+.job_button .swiper-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+/*.job_button, .job-pagination {
     display: flex;
     flex-direction: row;
     justify-content: space-around;

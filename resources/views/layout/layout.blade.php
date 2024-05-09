@@ -11,10 +11,10 @@
     <meta property="og:site_name" content="《黑色契約MOBILE》官方正式網站">
     <meta property="og:description" content="經典IP移植手遊《黑色契約MOBILE》事前預約進行中！一鍵開啟遊戲，隨時隨地創造屬於你的史詩冒險。">
     <meta property="og:url" content=@yield('og:url')>
-    <meta property="og:image" content="/img/share.jpg">
+    <meta property="og:image" content="/img/prereg/share.png">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/homepage/normalize.css">
-    <link rel="stylesheet" href="/css/homepage/common.css?v=6">
+    <link rel="stylesheet" href="/css/homepage/common.css?v=9">
     @yield('css')
     <link rel="stylesheet" href="/css/homepage/mobile.css?v=10">
     <link rel="icon" href="/img/homepage/favicon.ico">
@@ -58,8 +58,9 @@
       <div class="logo"><img src="/img/homepage/main/logo.png"></div>
       <div class="nav_bg"></div>
       <ul>
-        <li><a href="/newslist">最新消息</a></li>
-        <li><a href="/war">國家戰爭</a></li>
+        <li><a href="/newlist">最新消息</a></li>
+        <!--<li><a href="/war">國家戰爭</a></li>-->
+        <li><a href="javascript:alert('敬請期待');">國家戰爭</a></li>
         <li><a href="/video">影片展示</a></li>
         <li><a href="/gameMall" target="_blank">儲值商店</a></li>
         <li><a href="https://www.digeam.com/cs/cs_mobile" target="_blank">聯繫客服</a></li>

@@ -22,7 +22,7 @@
         <div class="store"> 
           <a href="https://play.google.com/store/apps/details?id=com.estgames.cm.tw" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/Google.png"></a> 
           <a href="https://apps.apple.com/TW/app/id6476968999" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/Ios.png"></a> 
-          <a href="#" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/apk.png"></a> 
+          <a href="https://download.digeam.com/download/cbm/CM-10-tw_ls-release-aligned.apk" target="_blank"><span><i class="effect"></i></span><img src="/img/homepage/main/apk.png"></a> 
         </div>
       </div>
     </header>
@@ -119,7 +119,7 @@
         </div>
       </div>
     </section>
-    <section id="s2">
+    <!--<section id="s2">
       <div class="wrap">
         <div class="title"><img src="/img/homepage/s2/warTitle.png"></div>
         <div class="title"><img src="/img/homepage/s2/warConsequenceTitle.png"></div>
@@ -157,7 +157,7 @@
       <div class="text">(僅統計最近三個月)</div>  
       <div class="war_btn"><a href="/war">更多國家戰爭數據</a></div>
       </div>
-    </section>
+    </section>-->
     <section id="s3">
       <div class="wrap">
         <div class="title"><img src="/img/homepage/s3/occupationTitle.png"></div>   
@@ -235,7 +235,7 @@
                 </div>
               </div>
           </div>
-              <div class="swiper-slide">
+              <!--<div class="swiper-slide">
           <div class="jobBox">
                 <div class="charImg">
                   <div class="char"><img src="/img/homepage/s3/char05.png"></div>
@@ -252,7 +252,7 @@
                   </div>
                 </div>
               </div>
-          </div>
+          </div>-->
               <div class="swiper-slide">
           <div class="jobBox">
                 <div class="charImg">
@@ -289,7 +289,7 @@
                 </div>
               </div>
           </div>
-              <div class="swiper-slide">
+              <!--<div class="swiper-slide">
           <div class="jobBox">
                 <div class="charImg">
                   <div class="char"><img src="/img/homepage/s3/char08.png"></div>
@@ -324,7 +324,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>-->
         </div>
             
           </div>
@@ -340,16 +340,16 @@
           </div>
           <div class="swiper-slide job_tab4">
           </div>
-          <div class="swiper-slide job_tab5">     
-          </div>
+          <!--<div class="swiper-slide job_tab5">     
+          </div>-->
           <div class="swiper-slide job_tab6">     
           </div>
           <div class="swiper-slide job_tab7">     
           </div>
-          <div class="swiper-slide job_tab8">     
+          <!--<div class="swiper-slide job_tab8">     
           </div>
           <div class="swiper-slide job_tab9">     
-          </div>
+          </div>-->
           </div>
           </div>
               <div class="next-job"><img src="/img/homepage/s3/occupationArrowR.png"></div>
@@ -413,7 +413,7 @@
                   });
               });
           });
-        /*---------War----------*/
+        /*---------War----------
         var str1 = $(".score").eq(0).html();
         var str2 = $(".score").eq(1).html();
         $(".score").html('');
@@ -422,7 +422,7 @@
         });
         str2.toString().split('').forEach(function(number) {
           $(".score").eq(1).append('<img src="/img/homepage/war/score_number_'+number+'.png">');
-        });
+        });*/
       });
     </script>
 @endsection
