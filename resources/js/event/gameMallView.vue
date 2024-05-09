@@ -637,7 +637,8 @@ export default {
                 } else if (response.data.status == -99) {
                     this.popUID.errorText = "無此帳號";
                 } else if (response.data.status == -98) {
-                    this.popUID.errorText = "信箱格式錯誤";
+                    alert("信箱格式錯誤");
+                    this.popUID.errorText = "";
                 }
             } catch (error) {
                 console.error("Error:", error);
