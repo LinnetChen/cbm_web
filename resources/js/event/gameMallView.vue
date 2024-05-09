@@ -576,6 +576,10 @@ export default {
         },
         // 帳號判定API
         async UIDSubmit() {
+            if( this.popUID.selectShow == false ){
+                // 防止玩家輸入UID後直接關掉，再次輸入時，信箱欄位會跑出來
+                this.popUID.emailInputShow = false;
+            }
             if (this.popUID.btnText == "確認") {
                 // 選角色.伺服.信箱 階段
                 this.accountData.GameUID = this.popUID.GameUID;
