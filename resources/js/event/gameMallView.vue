@@ -769,13 +769,13 @@ export default {
 
                             // 將 form 添加到文檔中，然後自動提交
 
-                            // document.body.appendChild(form);
-                            // form.submit();
+                            document.body.appendChild(form);
+                            form.submit();
 
-                            setTimeout(() => {
-                                document.body.appendChild(form);
-                                form.submit();
-                            }, 0);
+                            // setTimeout(() => {
+                            //     document.body.appendChild(form);
+                            //     form.submit();
+                            // }, 0);
 
                             // setTimeout(() => {
                             //     window.open(url, "_blank");
