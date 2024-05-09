@@ -22,7 +22,9 @@
                     class="login"
                     @click="popUIDVisable()"
                     v-if="
-                        accountData.char == null || accountData.char == 'null'
+                        accountData.char == null ||
+                        accountData.char == 'null' ||
+                        accountData.email == ''
                     "
                 >
                     登入帳號
@@ -30,7 +32,9 @@
                 <li
                     class="GameUID"
                     v-if="
-                        accountData.char !== null && accountData.char !== 'null'
+                        accountData.char !== null &&
+                        accountData.char !== 'null' &&
+                        accountData.email !== ''
                     "
                     @mouseover="toggleUIDOpen(true)"
                     @mouseleave="toggleUIDOpen(false)"
@@ -447,6 +451,7 @@ export default {
                 GameUID: "",
                 server: 0,
                 char: "",
+                email: "",
             },
             charList: [], // api回傳 該伺服器 角色列表
 
@@ -610,8 +615,11 @@ export default {
                         this.charList = "";
                         this.popUID.errorText = "";
                         this.popUID.disabled = true;
+                        localStorage.setItem("server", 0);
 
                         this.popUID.selectShow = true;
+                        this.popUID.server = 0;
+                        this.popUID.char = "";
                         this.popUID.btnText = "確認";
                         if (response.data.email == "") {
                             // 如果未綁定信箱，就出現信箱input
@@ -638,6 +646,7 @@ export default {
                 if (response.data.status == 1) {
                     this.accountData.server = this.popUID.server;
                     this.accountData.char = this.popUID.char;
+                    this.accountData.email = this.popUID.email;
                     this.popUIDVisable();
                 } else if (response.data.status == -99) {
                     this.popUID.errorText = "無此帳號";
@@ -760,10 +769,11 @@ export default {
 
                             // 將 form 添加到文檔中，然後自動提交
                             document.body.appendChild(form);
+                            form.submit();
                             // setTimeout(() => {
+                            //     form.submit();
                             //     window.open(url, "_blank");
                             // }, 0);
-                            form.submit();
 
                             this.popSmall.visable = false;
                             this.popEmpty.visable = false;
@@ -869,6 +879,8 @@ export default {
             this.popUID.errorText = "";
             this.popUID.selectShow = false;
             this.popUID.btnText = "登入";
+            this.popUID.emailInputShow = false;
+            this.popUID.email = "";
             this.popUID.visable = !this.popUID.visable;
             this.scrollLock();
         },
