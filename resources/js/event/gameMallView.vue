@@ -474,6 +474,7 @@ export default {
                 noticeValue: {
                     Ul: `
                     <ul>
+                        <li style="color:red;">ios用戶請使用chrome瀏覽器進行購買</li>
                         <li>商品購買完成後，會自動配發到郵件箱的道具倉庫中。</li>
                         <li>特定優惠禮包可能會有時效性，請詳閱商品說明，實際效果或限制依遊戲設定為主。</li>
                         <li>若有發生儲值相關異常狀況，請至客服中心回報。</li>
@@ -755,6 +756,7 @@ export default {
 
                             // 將 form 添加到文檔中，然後自動提交
                             document.body.appendChild(form);
+                            // window.open('', '_blank').document.body.appendChild(form);
                             form.submit();
 
                             this.popSmall.visable = false;
