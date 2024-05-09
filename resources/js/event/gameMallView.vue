@@ -777,12 +777,6 @@ export default {
                             //     form.submit();
                             // }, 0);
 
-                            // setTimeout(() => {
-                            //     window.open(url, "_blank");
-                            //     newWindow.document.body.appendChild(form);
-                            //     form.submit();
-                            // }, 0);
-
                             this.popSmall.visable = false;
                             this.popEmpty.visable = false;
                             this.popMiddle.visable = false;
