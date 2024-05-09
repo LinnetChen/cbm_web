@@ -511,8 +511,8 @@ export default {
                 btnText: "登入",
                 server: 0,
                 char: "",
-                emailInputShow:false,
-                email:"",
+                emailInputShow: false,
+                email: "",
             },
             popSmall: {
                 visable: false,
@@ -577,14 +577,18 @@ export default {
         },
         // 帳號判定API
         async UIDSubmit() {
-            if( this.popUID.selectShow == false ){
+            if (this.popUID.selectShow == false) {
                 // 防止玩家輸入UID後直接關掉，再次輸入時，信箱欄位會跑出來
                 this.popUID.emailInputShow = false;
             }
             if (this.popUID.btnText == "確認") {
                 // 選角色.伺服.信箱 階段
                 this.accountData.GameUID = this.popUID.GameUID;
-                if (this.popUID.server == 0 || this.popUID.char == "" || this.popUID.email == "") {
+                if (
+                    this.popUID.server == 0 ||
+                    this.popUID.char == "" ||
+                    this.popUID.email == ""
+                ) {
                     this.popUID.errorText = "*請正確填寫資料";
                 } else {
                     this.emailSubmit();
@@ -609,10 +613,10 @@ export default {
 
                         this.popUID.selectShow = true;
                         this.popUID.btnText = "確認";
-                        if ( response.data.email == '' ){
+                        if (response.data.email == "") {
                             // 如果未綁定信箱，就出現信箱input
                             this.popUID.emailInputShow = true;
-                        }else{
+                        } else {
                             this.popUID.email = response.data.email;
                         }
                     } else if (response.data.status == -99) {
@@ -756,7 +760,9 @@ export default {
 
                             // 將 form 添加到文檔中，然後自動提交
                             document.body.appendChild(form);
-                            // window.open('', '_blank').document.body.appendChild(form);
+                            setTimeout(() => {
+                                window.open(url, "_blank");
+                            }, 0);
                             form.submit();
 
                             this.popSmall.visable = false;
@@ -781,9 +787,7 @@ export default {
                             this.clickWall = 0;
                         } else if (response.data.status == -98) {
                             this.loadingVisible = false;
-                            this.popEVisable(
-                                "查無此帳號，請檢查您的UID帳號"
-                            );
+                            this.popEVisable("查無此帳號，請檢查您的UID帳號");
                             this.clickWall = 0;
                         }
                     } catch (error) {
@@ -826,8 +830,8 @@ export default {
                 btnText: "登入",
                 server: 0,
                 char: "",
-                emailInputShow:false,
-                email:"",
+                emailInputShow: false,
+                email: "",
             };
         },
         changeChar() {
