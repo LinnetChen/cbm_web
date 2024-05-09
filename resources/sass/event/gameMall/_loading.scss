@@ -21,6 +21,13 @@
         color: #fff;
         text-shadow: 0 0 0 #fff;
         animation: loading 1s ease-in-out infinite alternate;
+        
+        @include sm{
+            font-size: 1.4rem;
+        }
+        @include xxs{
+            font-size: .8rem;
+        }
 
         @for $i from 2 through 22 {
             &:nth-child(#{$i}) {
