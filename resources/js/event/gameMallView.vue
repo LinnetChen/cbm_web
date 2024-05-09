@@ -400,7 +400,7 @@
 let setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商品
 let login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 let server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
-let buy_api_mycard = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
+let buy_api_mycard = "https://mobileapi.digeam.com/api/myCard"; //myCard購買商品
 let buy_api_funpoint = "https://mobileapi.digeam.com/api/funPoint"; //funPoint購買商品
 let buy_api = "";
 let email_api = "https://mobileapi.digeam.com/api/bind_email";
