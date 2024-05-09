@@ -129,6 +129,15 @@
                         </option>
                     </select>
                 </div>
+                <div class="inputEmail" v-if="popUID.emailInputShow">
+                    <label for="">信箱</label>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        v-model="popUID.email"
+                    />
+                </div>
             </div>
             <button class="submit" @click="UIDSubmit()">
                 {{ popUID.btnText }}
@@ -390,6 +399,7 @@ let server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺
 let buy_api_mycard = "https://testmobileapi.digeam.com/api/myCard"; //myCard購買商品
 let buy_api_funpoint = "https://mobileapi.digeam.com/api/funPoint"; //funPoint購買商品
 let buy_api = "";
+let email_api = "https://mobileapi.digeam.com/api/bind_email";
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -500,6 +510,8 @@ export default {
                 btnText: "登入",
                 server: 0,
                 char: "",
+                emailInputShow:false,
+                email:"",
             },
             popSmall: {
                 visable: false,
@@ -565,14 +577,12 @@ export default {
         // 帳號判定API
         async UIDSubmit() {
             if (this.popUID.btnText == "確認") {
-                // 選角色.伺服 階段
+                // 選角色.伺服.信箱 階段
                 this.accountData.GameUID = this.popUID.GameUID;
-                if (this.popUID.server == 0 || this.popUID.char == "") {
-                    this.popUID.errorText = "*請選擇伺服器、角色";
+                if (this.popUID.server == 0 || this.popUID.char == "" || this.popUID.email == "") {
+                    this.popUID.errorText = "*請正確填寫資料";
                 } else {
-                    this.accountData.server = this.popUID.server;
-                    this.accountData.char = this.popUID.char;
-                    this.popUIDVisable();
+                    this.emailSubmit();
                 }
             } else {
                 try {
@@ -594,6 +604,12 @@ export default {
 
                         this.popUID.selectShow = true;
                         this.popUID.btnText = "確認";
+                        if ( response.data.email == '' ){
+                            // 如果未綁定信箱，就出現信箱input
+                            this.popUID.emailInputShow = true;
+                        }else{
+                            this.popUID.email = response.data.email;
+                        }
                     } else if (response.data.status == -99) {
                         this.popUID.errorText =
                             "*查無此帳號，請再次檢查您輸入的資料";
@@ -603,9 +619,28 @@ export default {
                 }
             }
         },
+        // email發送API
+        async emailSubmit() {
+            try {
+                const response = await axios.post(email_api, {
+                    GameUID: this.accountData.GameUID,
+                    email: this.popUID.email,
+                });
+                if (response.data.status == 1) {
+                    this.accountData.server = this.popUID.server;
+                    this.accountData.char = this.popUID.char;
+                    this.popUIDVisable();
+                } else if (response.data.status == -99) {
+                    this.popUID.errorText = "無此帳號";
+                } else if (response.data.status == -98) {
+                    this.popUID.errorText = "信箱格式錯誤";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        },
         // server判定API
         async serverCheck() {
-            console.log("選擇的服務器為", this.popUID.server);
             localStorage.setItem("server", this.popUID.server);
             this.accountData.server = this.popUID.server;
 
@@ -784,6 +819,8 @@ export default {
                 btnText: "登入",
                 server: 0,
                 char: "",
+                emailInputShow:false,
+                email:"",
             };
         },
         changeChar() {
