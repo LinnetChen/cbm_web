@@ -113,7 +113,7 @@
                         @change="serverCheck"
                     >
                         <option value="server01">冰珀星</option>
-                        <option value="server02">黑恆星</option>
+                        <!-- <option value="server02">黑恆星</option> -->
                     </select>
                 </div>
                 <div class="selectCharacter" v-if="popUID.selectShow">
@@ -244,7 +244,7 @@
                         Array.isArray(popMiddle.payment) &&
                         popMiddle.payment.includes(3)
                     "
-                    class="creditCardBtn"
+                    class="myCardBtn"
                     @click="buy('MyCardInGame', popMiddle.id)"
                 >
                     MyCard實體卡
@@ -302,7 +302,7 @@
                         Array.isArray(popSmall.payment) &&
                         popSmall.payment.includes(3)
                     "
-                    class="creditCardBtn"
+                    class="myCardBtn"
                     @click="buy('MyCardInGame', popSmall.id)"
                 >
                     MyCard實體卡
