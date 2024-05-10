@@ -156,7 +156,7 @@
         <div class="popBg">
             <div class="title" v-if="popBig.titleType == 1">使用說明</div>
             <div class="title" v-if="popBig.titleType == 0">儲值教學</div>
-            <!-- <div class="tabBox" v-if="popBig.titleType == 0">
+            <div class="tabBox" v-if="popBig.titleType == 0">
                 <button
                     @click="tabChange('creditValue')"
                     class="creditTab"
@@ -171,7 +171,7 @@
                 >
                     MyCard
                 </button>
-            </div> -->
+            </div>
             <div class="container">
                 <div v-for="(value, key) in items" :key="key">
                     <div class="title" v-if="key.includes('title')">
@@ -470,11 +470,14 @@ export default {
                     img3: "/img/gameMall/creditValueImg03.png",
                 },
                 myCardValue: {
-                    title1: "myCardValue​",
-                    img1: "",
-                    text1: "",
-                    img2: "/img/gameMall/.png",
-                    text2: "文字",
+                    text1: "Step1：在官網上找到您要儲值的金額後，點選「購買」。",
+                    img1: "/img/gameMall/mycardValueImg01.png",
+                    text2: "Step2：選擇您欲使用的支付方式，前往付款。",
+                    img2: "/img/gameMall/mycardValueImg02.png",
+                    text3: "Step3：選擇「MyCard」，填寫完資料後，點選「確認送出」。",
+                    img3: "/img/gameMall/mycardValueImg03.png",
+                    text4: "Step4：填寫完紅框處信用卡資料，輸入驗證碼後，即可完成付款。",
+                    img4: "/img/gameMall/mycardValueImg04.png",
                 },
                 noticeValue: {
                     Ul: `
