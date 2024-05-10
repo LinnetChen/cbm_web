@@ -244,7 +244,7 @@
                         Array.isArray(popMiddle.payment) &&
                         popMiddle.payment.includes(3)
                     "
-                    class="creditCardBtn"
+                    class="myCardBtn"
                     @click="buy('MyCardInGame', popMiddle.id)"
                 >
                     MyCard實體卡
@@ -302,7 +302,7 @@
                         Array.isArray(popSmall.payment) &&
                         popSmall.payment.includes(3)
                     "
-                    class="creditCardBtn"
+                    class="myCardBtn"
                     @click="buy('MyCardInGame', popSmall.id)"
                 >
                     MyCard實體卡
