@@ -858,7 +858,9 @@ export default {
                             this.clickWall = 0;
                         } else if (
                             response.data.status == 1 &&
-                            type == "mycard"
+                            (type == "MyCardCredit" ||
+                                type == "MyCardInGame" ||
+                                type == "MyCardMember")
                         ) {
                             // 跳轉到api傳送過來的網址
                             window.open(response.data.url, "_blank");
