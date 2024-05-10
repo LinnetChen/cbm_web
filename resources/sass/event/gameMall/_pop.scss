@@ -171,15 +171,47 @@
         }
     }
 }
+.popS {
+    .popBg {
+        min-height: 390px;
+        max-height: 390px;
+        @include x3s {
+            width: 100%;
+            height: 100%;
+        }
+        .btnBox {
+            width: 100%;
+            height: 100%;
+            flex-wrap: wrap;
+            .creditCardBtn,
+            .myCardBtn {
+                @include x3s {
+                    width: 40%;
+                    height: 40%;
+                }
+                @include xxs{
+                    font-size: .9rem;
+                }
+            }
+        }
+    }
+    .x {
+        min-height: 390px;
+        max-height: 390px;
+        @include x3s {
+            display: none;
+        }
+    }
+}
 .popM {
     .popBg {
         z-index: 1;
         width: 80%;
         height: 80%;
         min-width: 700px;
-        min-height: 400px;
+        min-height: 500px;
         max-width: 700px;
-        max-height: 400px;
+        max-height: 500px;
         background-color: rgba(0, 0, 0, 0.8);
         border: 2px solid #fff;
         padding: 2rem 2rem;
@@ -192,7 +224,7 @@
             height: 90%;
             max-width: 100vw;
             min-width: 90vw;
-            min-height: 400px;
+            min-height: 500px;
             max-height: 50vh;
         }
         @include x3s {
@@ -258,7 +290,7 @@
         }
         .left {
             padding: 3% 0;
-            height: 85%;
+            height: 75%;
             width: 35%;
             text-align: center;
             margin-right: 3%;
@@ -297,7 +329,7 @@
         }
         .right {
             max-width: 400px;
-            height: 85%;
+            height: 75%;
             width: 60%;
             padding: 10px 9px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -342,28 +374,41 @@
             }
         }
         .btnBox {
-            width: 60%;
-            height: 15%;
+            // border: #00b4ff 1px solid;
+            width: 90%;
+            height: 25%;
             margin-top: 3%;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
             @include sm() {
                 width: 100%;
-                height: 15%;
+                height: 25%;
+            }
+
+            .creditCardBtn,
+            .myCardBtn {
+                // border: #a1e3ff 1px solid;
+                @include sm {
+                    width: 40%;
+                    height: 40%;
+                    font-size: .9rem;
+                }
+                @include xxs{
+                    font-size: .8rem;
+                }
             }
         }
     }
     .x {
+        // border: #00b4ff 1px solid;
         height: 80%;
-        min-height: 400px;
-        max-height: 400px;
+        min-height: 500px;
+        max-height: 500px;
         color: #fff;
         left: 0.5%;
         cursor: pointer;
-        @include x3s {
-            top: 0;
-            left: 5px;
-        }
     }
 }
 .popUID {
@@ -512,10 +557,10 @@
                 border: 1px solid #bcbcbc;
                 background-color: #000;
                 width: 59%;
-                @include sm{
+                @include sm {
                     width: 58.7%;
                 }
-                @include x3s{
+                @include x3s {
                     width: 58.5%;
                 }
             }
@@ -670,5 +715,3 @@
         cursor: pointer;
     }
 }
-
-// 4顆按鈕排版

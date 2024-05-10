@@ -219,15 +219,45 @@
             </div>
             <div class="right" v-html="popMiddle.text"></div>
             <div class="btnBox">
-                <div class="creditCardBtn" @click="buy('credit', popMiddle.id)">
+                <div
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(1)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('credit', popMiddle.id)"
+                >
                     信用卡支付
                 </div>
                 <div
-                    v-if="popMiddle.payment == 2"
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(2)
+                    "
                     class="myCardBtn"
-                    @click="buy('mycard', popMiddle.id)"
+                    @click="buy('MyCardCredit', popMiddle.id)"
                 >
-                    MyCard
+                    MyCard信用卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(3)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('MyCardInGame', popMiddle.id)"
+                >
+                    MyCard實體卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(4)
+                    "
+                    class="myCardBtn"
+                    @click="buy('MyCardMember', popMiddle.id)"
+                >
+                    MyCard會員點數
                 </div>
             </div>
         </div>
@@ -244,32 +274,54 @@
             <div class="name">{{ popSmall.name }}</div>
             <div class="price">{{ popSmall.price }}</div>
             <div class="btnBox">
-                <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
+                <!-- <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
+                    信用卡支付
+                </div> -->
+                <div
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(1)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('credit', popSmall.id)"
+                >
                     信用卡支付
                 </div>
                 <div
-                    v-if="popSmall.payment == 2"
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(2)
+                    "
                     class="myCardBtn"
-                    @click="buy('mycard', popSmall.id)"
+                    @click="buy('MyCardCredit', popSmall.id)"
                 >
-                    MyCard
+                    MyCard信用卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(3)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('MyCardInGame', popSmall.id)"
+                >
+                    MyCard實體卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(4)
+                    "
+                    class="myCardBtn"
+                    @click="buy('MyCardMember', popSmall.id)"
+                >
+                    MyCard會員點數
                 </div>
             </div>
-            <!-- <div class="btnBox">
-                <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
-                    信用卡支付
-                </div>
-                <div
-                    v-if="popSmall.payment == 2"
-                    class="myCardBtn"
-                    @click="buy('mycard', popSmall.id)"
-                >
-                    MyCard
-                </div>
-            </div> -->
         </div>
         <div class="x" @click="popSVisable()">x</div>
     </div>
+
     <!-- 空小跳窗 -->
     <div class="popE" v-if="popEmpty.visable">
         <div class="mask" @click="popEVisable()"></div>
@@ -409,7 +461,7 @@
 </template>
 
 <script>
-let setting_api = "https://mobileapi.digeam.com/api/cbm_get_items"; //setting商品
+let setting_api = "https://testmobileapi.digeam.com/api/cbm_get_items"; //setting商品
 let login_api = "https://mobileapi.digeam.com/api/cbm_search_user"; //帳號判定
 let server_api = "https://mobileapi.digeam.com/api/cbm_search_characters"; //伺服器 查角色
 let buy_api_mycard = "https://mobileapi.digeam.com/api/myCard"; //myCard購買商品
@@ -725,7 +777,11 @@ export default {
             // this.loadingText =
             //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
             // this.loadingVisible = true;
-            if (type == "mycard") {
+            if (
+                type == "MyCardCredit" ||
+                type == "MyCardInGame" ||
+                type == "MyCardMember"
+            ) {
                 buy_api = buy_api_mycard;
             } else {
                 buy_api = buy_api_funpoint;
@@ -992,10 +1048,6 @@ export default {
         } else {
             this.accountData.email = email;
         }
-
-        console.log(this.accountData.char);
-        console.log(this.accountData.server);
-        console.log(this.accountData.email);
 
         // API位址
         this.setting();

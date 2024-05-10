@@ -992,14 +992,52 @@ footer.section {
   text-align: center;
 }
 
+.popS .popBg {
+  min-height: 390px;
+  max-height: 390px;
+}
+@media all and (max-width: 425px) {
+  .popS .popBg {
+    width: 100%;
+    height: 100%;
+  }
+}
+.popS .popBg .btnBox {
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+@media all and (max-width: 425px) {
+  .popS .popBg .btnBox .creditCardBtn,
+  .popS .popBg .btnBox .myCardBtn {
+    width: 40%;
+    height: 40%;
+  }
+}
+@media all and (max-width: 375px) {
+  .popS .popBg .btnBox .creditCardBtn,
+  .popS .popBg .btnBox .myCardBtn {
+    font-size: 0.9rem;
+  }
+}
+.popS .x {
+  min-height: 390px;
+  max-height: 390px;
+}
+@media all and (max-width: 425px) {
+  .popS .x {
+    display: none;
+  }
+}
+
 .popM .popBg {
   z-index: 1;
   width: 80%;
   height: 80%;
   min-width: 700px;
-  min-height: 400px;
+  min-height: 500px;
   max-width: 700px;
-  max-height: 400px;
+  max-height: 500px;
   background-color: rgba(0, 0, 0, 0.8);
   border: 2px solid #fff;
   padding: 2rem 2rem;
@@ -1014,7 +1052,7 @@ footer.section {
     height: 90%;
     max-width: 100vw;
     min-width: 90vw;
-    min-height: 400px;
+    min-height: 500px;
     max-height: 50vh;
   }
 }
@@ -1078,7 +1116,7 @@ footer.section {
 }
 .popM .popBg .left {
   padding: 3% 0;
-  height: 85%;
+  height: 75%;
   width: 35%;
   text-align: center;
   margin-right: 3%;
@@ -1120,7 +1158,7 @@ footer.section {
 }
 .popM .popBg .right {
   max-width: 400px;
-  height: 85%;
+  height: 75%;
   width: 60%;
   padding: 10px 9px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -1166,31 +1204,41 @@ footer.section {
   cursor: pointer;
 }
 .popM .popBg .btnBox {
-  width: 60%;
-  height: 15%;
+  width: 90%;
+  height: 25%;
   margin-top: 3%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
 }
 @media all and (max-width: 576px) {
   .popM .popBg .btnBox {
     width: 100%;
-    height: 15%;
+    height: 25%;
+  }
+}
+@media all and (max-width: 576px) {
+  .popM .popBg .btnBox .creditCardBtn,
+  .popM .popBg .btnBox .myCardBtn {
+    width: 40%;
+    height: 40%;
+    font-size: 0.9rem;
+  }
+}
+@media all and (max-width: 375px) {
+  .popM .popBg .btnBox .creditCardBtn,
+  .popM .popBg .btnBox .myCardBtn {
+    font-size: 0.8rem;
   }
 }
 .popM .x {
   height: 80%;
-  min-height: 400px;
-  max-height: 400px;
+  min-height: 500px;
+  max-height: 500px;
   color: #fff;
   left: 0.5%;
   cursor: pointer;
-}
-@media all and (max-width: 425px) {
-  .popM .x {
-    top: 0;
-    left: 5px;
-  }
 }
 
 .popUID .popBg {
