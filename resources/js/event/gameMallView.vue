@@ -156,7 +156,7 @@
         <div class="popBg">
             <div class="title" v-if="popBig.titleType == 1">使用說明</div>
             <div class="title" v-if="popBig.titleType == 0">儲值教學</div>
-            <!-- <div class="tabBox" v-if="popBig.titleType == 0">
+            <div class="tabBox" v-if="popBig.titleType == 0">
                 <button
                     @click="tabChange('creditValue')"
                     class="creditTab"
@@ -171,7 +171,7 @@
                 >
                     MyCard
                 </button>
-            </div> -->
+            </div>
             <div class="container">
                 <div v-for="(value, key) in items" :key="key">
                     <div class="title" v-if="key.includes('title')">
@@ -219,15 +219,45 @@
             </div>
             <div class="right" v-html="popMiddle.text"></div>
             <div class="btnBox">
-                <div class="creditCardBtn" @click="buy('credit', popMiddle.id)">
+                <div
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(1)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('credit', popMiddle.id)"
+                >
                     信用卡支付
                 </div>
                 <div
-                    v-if="popMiddle.payment == 2"
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(2)
+                    "
                     class="myCardBtn"
-                    @click="buy('mycard', popMiddle.id)"
+                    @click="buy('MyCardCredit', popMiddle.id)"
                 >
-                    MyCard
+                    MyCard信用卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(3)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('MyCardInGame', popMiddle.id)"
+                >
+                    MyCard實體卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popMiddle.payment) &&
+                        popMiddle.payment.includes(4)
+                    "
+                    class="myCardBtn"
+                    @click="buy('MyCardMember', popMiddle.id)"
+                >
+                    MyCard會員點數
                 </div>
             </div>
         </div>
@@ -244,20 +274,54 @@
             <div class="name">{{ popSmall.name }}</div>
             <div class="price">{{ popSmall.price }}</div>
             <div class="btnBox">
-                <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
+                <!-- <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
+                    信用卡支付
+                </div> -->
+                <div
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(1)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('credit', popSmall.id)"
+                >
                     信用卡支付
                 </div>
                 <div
-                    v-if="popSmall.payment == 2"
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(2)
+                    "
                     class="myCardBtn"
-                    @click="buy('mycard', popSmall.id)"
+                    @click="buy('MyCardCredit', popSmall.id)"
                 >
-                    MyCard
+                    MyCard信用卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(3)
+                    "
+                    class="creditCardBtn"
+                    @click="buy('MyCardInGame', popSmall.id)"
+                >
+                    MyCard實體卡
+                </div>
+                <div
+                    v-if="
+                        Array.isArray(popSmall.payment) &&
+                        popSmall.payment.includes(4)
+                    "
+                    class="myCardBtn"
+                    @click="buy('MyCardMember', popSmall.id)"
+                >
+                    MyCard會員點數
                 </div>
             </div>
         </div>
         <div class="x" @click="popSVisable()">x</div>
     </div>
+
     <!-- 空小跳窗 -->
     <div class="popE" v-if="popEmpty.visable">
         <div class="mask" @click="popEVisable()"></div>
@@ -470,11 +534,14 @@ export default {
                     img3: "/img/gameMall/creditValueImg03.png",
                 },
                 myCardValue: {
-                    title1: "myCardValue​",
-                    img1: "",
-                    text1: "",
-                    img2: "/img/gameMall/.png",
-                    text2: "文字",
+                    text1: "Step1：在官網上找到您要儲值的金額後，點選「購買」。",
+                    img1: "/img/gameMall/mycardValueImg01.png",
+                    text2: "Step2：選擇您欲使用的支付方式，前往付款。",
+                    img2: "/img/gameMall/mycardValueImg02.png",
+                    text3: "Step3：選擇「MyCard」，填寫完資料後，點選「確認送出」。",
+                    img3: "/img/gameMall/mycardValueImg03.png",
+                    text4: "Step4：填寫完紅框處信用卡資料，輸入驗證碼後，即可完成付款。",
+                    img4: "/img/gameMall/mycardValueImg04.png",
                 },
                 noticeValue: {
                     Ul: `
@@ -626,6 +693,8 @@ export default {
                             this.popUID.emailInputShow = true;
                         } else {
                             this.popUID.email = response.data.email;
+                            this.accountData.email = response.data.email;
+                            localStorage.setItem("email", this.popUID.email);
                         }
                     } else if (response.data.status == -99) {
                         this.popUID.errorText =
@@ -647,6 +716,7 @@ export default {
                     this.accountData.server = this.popUID.server;
                     this.accountData.char = this.popUID.char;
                     this.accountData.email = this.popUID.email;
+                    localStorage.setItem("email", this.popUID.email);
                     this.popUIDVisable();
                 } else if (response.data.status == -99) {
                     this.popUID.errorText = "無此帳號";
@@ -707,7 +777,11 @@ export default {
             // this.loadingText =
             //     "<span>頁</span><span>面</span><span>跳</span><span>轉</span><span>中</span><span>，</span><span>請</span><span>稍</span><span>候</span>";
             // this.loadingVisible = true;
-            if (type == "mycard") {
+            if (
+                type == "MyCardCredit" ||
+                type == "MyCardInGame" ||
+                type == "MyCardMember"
+            ) {
                 buy_api = buy_api_mycard;
             } else {
                 buy_api = buy_api_funpoint;
@@ -774,12 +848,6 @@ export default {
 
                             // setTimeout(() => {
                             //     document.body.appendChild(form);
-                            //     form.submit();
-                            // }, 0);
-
-                            // setTimeout(() => {
-                            //     window.open(url, "_blank");
-                            //     newWindow.document.body.appendChild(form);
                             //     form.submit();
                             // }, 0);
 
@@ -958,6 +1026,7 @@ export default {
         const GameUID = localStorage.getItem("GameUID");
         const server = localStorage.getItem("server");
         const char = localStorage.getItem("char");
+        const email = localStorage.getItem("email");
 
         if (GameUID == undefined) {
             this.accountData.GameUID = null;
@@ -973,6 +1042,11 @@ export default {
             this.accountData.char = null;
         } else {
             this.accountData.char = char;
+        }
+        if (email == undefined) {
+            this.accountData.email = null;
+        } else {
+            this.accountData.email = email;
         }
 
         // API位址
