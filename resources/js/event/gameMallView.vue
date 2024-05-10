@@ -255,6 +255,18 @@
                     MyCard
                 </div>
             </div>
+            <!-- <div class="btnBox">
+                <div class="creditCardBtn" @click="buy('credit', popSmall.id)">
+                    信用卡支付
+                </div>
+                <div
+                    v-if="popSmall.payment == 2"
+                    class="myCardBtn"
+                    @click="buy('mycard', popSmall.id)"
+                >
+                    MyCard
+                </div>
+            </div> -->
         </div>
         <div class="x" @click="popSVisable()">x</div>
     </div>
@@ -629,6 +641,8 @@ export default {
                             this.popUID.emailInputShow = true;
                         } else {
                             this.popUID.email = response.data.email;
+                            this.accountData.email = response.data.email;
+                            localStorage.setItem("email", this.popUID.email);
                         }
                     } else if (response.data.status == -99) {
                         this.popUID.errorText =
@@ -650,6 +664,7 @@ export default {
                     this.accountData.server = this.popUID.server;
                     this.accountData.char = this.popUID.char;
                     this.accountData.email = this.popUID.email;
+                    localStorage.setItem("email", this.popUID.email);
                     this.popUIDVisable();
                 } else if (response.data.status == -99) {
                     this.popUID.errorText = "無此帳號";
@@ -955,6 +970,7 @@ export default {
         const GameUID = localStorage.getItem("GameUID");
         const server = localStorage.getItem("server");
         const char = localStorage.getItem("char");
+        const email = localStorage.getItem("email");
 
         if (GameUID == undefined) {
             this.accountData.GameUID = null;
@@ -971,6 +987,15 @@ export default {
         } else {
             this.accountData.char = char;
         }
+        if (email == undefined) {
+            this.accountData.email = null;
+        } else {
+            this.accountData.email = email;
+        }
+
+        console.log(this.accountData.char);
+        console.log(this.accountData.server);
+        console.log(this.accountData.email);
 
         // API位址
         this.setting();

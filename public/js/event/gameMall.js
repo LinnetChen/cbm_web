@@ -20749,6 +20749,8 @@ var email_api = "https://mobileapi.digeam.com/api/bind_email";
                   _this2.popUID.emailInputShow = true;
                 } else {
                   _this2.popUID.email = response.data.email;
+                  _this2.accountData.email = response.data.email;
+                  localStorage.setItem("email", _this2.popUID.email);
                 }
               } else if (response.data.status == -99) {
                 _this2.popUID.errorText = "*查無此帳號，請再次檢查您輸入的資料";
@@ -20786,6 +20788,7 @@ var email_api = "https://mobileapi.digeam.com/api/bind_email";
                 _this3.accountData.server = _this3.popUID.server;
                 _this3.accountData["char"] = _this3.popUID["char"];
                 _this3.accountData.email = _this3.popUID.email;
+                localStorage.setItem("email", _this3.popUID.email);
                 _this3.popUIDVisable();
               } else if (response.data.status == -99) {
                 _this3.popUID.errorText = "無此帳號";
@@ -21134,6 +21137,7 @@ var email_api = "https://mobileapi.digeam.com/api/bind_email";
     var GameUID = localStorage.getItem("GameUID");
     var server = localStorage.getItem("server");
     var _char = localStorage.getItem("char");
+    var email = localStorage.getItem("email");
     if (GameUID == undefined) {
       this.accountData.GameUID = null;
     } else {
@@ -21149,6 +21153,14 @@ var email_api = "https://mobileapi.digeam.com/api/bind_email";
     } else {
       this.accountData["char"] = _char;
     }
+    if (email == undefined) {
+      this.accountData.email = null;
+    } else {
+      this.accountData.email = email;
+    }
+    console.log(this.accountData["char"]);
+    console.log(this.accountData.server);
+    console.log(this.accountData.email);
 
     // API位址
     this.setting();
@@ -21634,7 +21646,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[34] || (_cache[34] = function ($event) {
       return $options.buy('mycard', $data.popSmall.id);
     })
-  }, " MyCard ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, " MyCard ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"btnBox\">\r\n                <div class=\"creditCardBtn\" @click=\"buy('credit', popSmall.id)\">\r\n                    信用卡支付\r\n                </div>\r\n                <div\r\n                    v-if=\"popSmall.payment == 2\"\r\n                    class=\"myCardBtn\"\r\n                    @click=\"buy('mycard', popSmall.id)\"\r\n                >\r\n                    MyCard\r\n                </div>\r\n            </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "x",
     onClick: _cache[35] || (_cache[35] = function ($event) {
       return $options.popSVisable();
