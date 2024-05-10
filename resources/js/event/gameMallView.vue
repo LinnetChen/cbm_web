@@ -113,7 +113,7 @@
                         @change="serverCheck"
                     >
                         <option value="server01">冰珀星</option>
-                        <option value="server02">黑恆星</option>
+                        <!-- <option value="server02">黑恆星</option> -->
                     </select>
                 </div>
                 <div class="selectCharacter" v-if="popUID.selectShow">
