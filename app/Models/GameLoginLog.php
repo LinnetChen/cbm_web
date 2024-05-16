@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GameLoginLog extends Model
 {
-    protected $table = 'digeam.game_login_log'
+    protected $table = 'digeam.game_login_log';
     use HasFactory;
 }

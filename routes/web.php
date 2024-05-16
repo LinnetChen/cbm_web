@@ -35,7 +35,9 @@ Route::get('/news_content/{id?}', 'homepage\FrontController@news_content')->name
 
 Route::get('/video', 'homepage\FrontController@video')->name('video');
 if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && ($_SERVER['HTTP_CF_CONNECTING_IP'] == '211.23.144.219')) {
-
+    Route::get('/game_religion', function () {
+        return view('homepage/game_religion');
+    });
     Route::get('/war', 'homepage\FrontController@war')->name('war');
 }
 
@@ -49,3 +51,5 @@ Route::get('/purchaseSuccess', function () {
 Route::get('/purchaseFailed', function () {
     return view('purchaseFailed');
 });
+
+
